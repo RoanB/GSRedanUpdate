@@ -1,0 +1,38 @@
+{% import "_default/macro.tabler.twig" as tabler %}
+<ul class="navbar-nav">
+	<li class="nav-item">
+		<a class="nav-link{% if env.module.get_module_path() == '/admin' %} active{% endif %}" href="/admin">
+			<span class="nav-link-title">{{ tabler.icon('home') }} {% trans "Dashboard" %}</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link{% if env.module.get_module_path() == '/admin/block' %} active{% endif %}" href="/admin/block">
+			<span class="nav-link-title">{{ tabler.icon('layout-grid') }} {% trans "Cards" %}</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link{% if env.module.get_module_path() == '/admin/calendar' %} active{% endif %}" href="/admin/calendar">
+			<span class="nav-link-title">{{ tabler.icon('calendar') }} {% trans "Calendar" %}</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link{% if env.module.get_module_path() == '/admin/download' %} active{% endif %}" href="/admin/download">
+			<span class="nav-link-title">{{ tabler.icon('download') }} {% trans "Files" %}</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link{% if env.module.get_module_path() == '/admin/settings' %} active{% endif %}" href="/admin/settings">
+			<span class="nav-link-title">{{ tabler.icon('settings') }} {% trans "Settings" %}</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="/members" target="_blank">
+			<span class="nav-link-title">{{ tabler.icon('eye') }} {% trans "Members area" %}</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="/" target="_blank">
+			<span class="nav-link-title">{{ tabler.icon('external-link') }} {% trans "View site" %}</span>
+		</a>
+	</li>
+</ul>

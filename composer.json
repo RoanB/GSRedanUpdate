@@ -1,0 +1,42 @@
+{
+"config": {
+		"vendor-dir": "lib/external/packages",
+		"allow-plugins": {
+			"composer/installers": true,
+			"oomphinc/composer-installers-extender": true,
+			"php-http/discovery": false
+		}
+	},
+	"extra": {
+	   "installer-types": ["bower-asset", "npm-asset"],
+	   "installer-paths": {
+		   "lib/external/assets/{$name}/": ["type:bower-asset", "type:npm-asset"]
+	   }
+	},
+	"autoload": {
+		"psr-4": {"Event\\": "lib/event"}
+	},
+	 "repositories": [
+		{
+			"type": "composer",
+			"url": "https://asset-packagist.org"
+		}
+	],
+    "require": {
+				"tigron/skeleton": "^4.0",
+				"tigron/skeleton-i18n": "^4.1",
+				"tigron/skeleton-file": "^2.0",
+				"tigron/skeleton-pager": "^3.0",
+				"tigron/skeleton-transaction": "^5.1",
+				"npm-asset/tabler--core": "^1.4",
+				"tigron/skeleton-file-picture": "^0.2.21",
+				"npm-asset/fullcalendar": "^6.1"
+		},
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roan Buysse",
+            "email": "roan@buysse.be"
+        }
+    ]
+}

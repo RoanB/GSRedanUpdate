@@ -1,0 +1,16 @@
+{#
+	Masthead
+
+	The H1 comes from the masthead_title setting; the caption line is the
+	per-language masthead block body.
+#}
+<header class="masthead" id="main-content">
+	<div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+		<div class="d-flex justify-content-center">
+			<div class="text-center">
+				<h1 class="h1 mx-auto my-0 text-uppercase">{{ settings.masthead_title|default('Gs Redan') }}</h1>
+				<h2 class="h2 text-white mx-auto mt-2 mb-5 tight-heading">{{ translation.body }}</h2>
+			</div>
+		</div>
+	</div>
+</header>

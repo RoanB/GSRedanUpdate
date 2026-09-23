@@ -1,0 +1,105 @@
+{#
+	Tabler-like icon macro with inline SVGs.
+
+	The tabler--core npm package ships CSS/JS only (no icon font or sprite),
+	so icons are drawn as inline stroke SVGs. The `icon` macro maps a
+	short name to a tabler-compatible path and renders a 24x24 stroke icon.
+
+	Twig macros cannot access template-level variables, so the icon path
+	map lives inside the macro body instead of a top-level {% set %} (a
+	top-level set renders unreachable inside macro scope and produced empty
+	<svg> elements).
+#}
+
+{% macro icon(name, class = '') %}
+	{% set icon_paths = {
+		'home': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/>',
+		'layout-grid': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>',
+		'download': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><polyline points="7 11 12 16 17 11"/><line x1="12" y1="4" x2="12" y2="16"/>',
+		'upload': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="16" x2="12" y2="4"/>',
+		'settings': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37c1 .608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/>',
+		'user': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>',
+		'logout': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/><path d="M7 12h14l-3 -3m0 6l3 -3"/>',
+		'external-link': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"/><line x1="10" y1="14" x2="20" y2="4"/><polyline points="15 4 20 4 20 9"/>',
+		'plus': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+		'edit': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"/><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"/><path d="M16 5l3 3"/>',
+		'trash': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="4" y1="7" x2="20" y2="7"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/>',
+		'eye': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M21 12c-2.4 4.5-6.2 7-9 7s-6.6-2.5-9-7c2.4-4.5 6.2-7 9-7s6.6 2.5 9 7"/>',
+		'eye-off': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="3" y1="3" x2="21" y2="21"/><path d="M10.584 10.587a2 2 0 0 0 2.828 2.83"/><path d="M9.363 5.365a9.865 9.865 0 0 1 2.637 -.365c2.8 0 6.6 2.5 9 7c-.6 1.1-1.3 2.2-2.2 3.2m-2.6 1.5c-1.3 1-2.7 1.5-4.2 1.5c-2.8 0-6.6-2.5-9 -7c.6-1.1 1.3-2.2 2.2-3.2"/>',
+		'grip-vertical': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/>',
+		'arrow-left': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="12" x2="11" y2="18"/><line x1="5" y1="12" x2="11" y2="6"/>',
+		'chevron-left': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18"/>',
+		'chevron-up': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 15 12 9 18 15"/>',
+		'chevron-down': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 9 12 15 18 9"/>',
+		'map-pin': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/>',
+		'mail': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2V7z"/><polyline points="3 7 12 13 21 7"/>',
+		'lock': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11v-4a4 4 0 0 1 8 0v4"/>',
+		'save': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2H6a2 2 0 0 1 -2 -2V6a2 2 0 0 1 2 -2z"/><circle cx="12" cy="14" r="3"/><polyline points="8 6 8 10 16 10 16 6"/>',
+		'circle-check': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2l4 -4"/>',
+		'alert-circle': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+		'info-circle': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+		'alert-triangle': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 9v4"/><path d="M10.3 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0 -3.4 0z"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+		'file': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1 -2 -2V5a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/>',
+		'calendar': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="4" y1="11" x2="20" y2="11"/><rect x="8" y="15" width="2" height="2" fill="currentColor" stroke-width="0"/>',
+		'copy': '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"/>',
+	} %}
+
+	{% set path = icon_paths[name] is defined ? icon_paths[name] : icon_paths['file'] %}
+	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler{% if class is not empty %} {{ class }}{% endif %}" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{{ path|raw }}</svg>
+{% endmacro %}
+
+{# {{ tabler.alert('info', 'Already submitted'|trans, 'This report has already been submitted'|trans) }} #}
+
+{% macro alert(type, message, secondary_message = '', dismissable = false, margin = true, row = false) %}
+	{# Macros have no access to template-level variables, so import the file's
+	   own macros explicitly. #}
+	{% import _self as tabler_self %}
+
+	{% if type == 'success' %}
+		{% set icon_name = 'circle-check' %}
+	{% elseif type == 'danger' %}
+		{% set icon_name = 'alert-circle' %}
+	{% elseif type == 'info' %}
+		{% set icon_name = 'info-circle' %}
+	{% elseif type == 'warning' %}
+		{% set icon_name = 'alert-triangle' %}
+	{% endif %}
+
+	<div class="{% if row == true %}row {% endif %}alert alert-{{ type }}{% if margin == false %} m-0{% endif %}{% if dismissable %} alert-dismissible{% endif %}" role="alert">
+		<div class="alert-icon">{{ tabler_self.icon(icon_name) }}</div>
+		{% if secondary_message is not empty %}
+			<div>
+				<h4 class="alert-heading">{{ message|raw }}</h4>
+				<div class="alert-description">{{ secondary_message|raw }}</div>
+			</div>
+		{% else %}
+			{{ message|raw }}
+		{% endif %}
+		{% if dismissable %}
+			<a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+		{% endif %}
+	</div>
+{% endmacro %}
+
+{% macro show_errors(errors) %}
+	<ul class="mb-0">
+		{% for key, message in errors %}
+			<li>{{ key }}: {{ message|trans }}</li>
+		{% endfor %}
+	</ul>
+{% endmacro %}
+
+{# {{ tabler.copy_input(value, id) }} — readonly input with a copy-to-clipboard
+   button (base.js init_copy_buttons). #}
+
+{% macro copy_input(value, id) %}
+	{% import _self as tabler_self %}
+
+	<div class="input-group">
+		<input type="text" class="form-control" id="{{ id }}" value="{{ value }}" readonly onclick="this.select()">
+		<button class="btn btn-icon btn-outline-secondary copy-button" type="button" data-copy-target="#{{ id }}" title="{% trans "Copy" %}" aria-label="{% trans "Copy" %}">
+			{{ tabler_self.icon('copy', 'copy-button-icon') }}
+			{{ tabler_self.icon('circle-check', 'copy-button-check d-none') }}
+		</button>
+	</div>
+{% endmacro %}

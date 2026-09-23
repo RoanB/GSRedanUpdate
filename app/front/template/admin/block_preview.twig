@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block header_title %}{% endblock header_title %}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preload" as="image" href="/caving-banner-tiny.webp"/>
+	<link href="/styles.css?v=20260917b" rel="stylesheet"/>
+</head>
+<body>
+	{% include "_block/" ~ block.type ~ ".twig" with {
+		'block': block,
+		'translation': translation,
+		'settings': settings,
+		'pictures': pictures ?? [],
+		'images': images ?? []
+	} %}
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% import "_default/macro.tabler.twig" as tabler %}
+<ul class="navbar-nav">
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+		<span class="nav-link-title">{{ tabler.icon('mail-opened') }} {% trans "Messages" %} </span>
+		</a>
+		<div class="dropdown-menu">
+			<div class="dropdown-menu-columns">
+				<div class="dropdown-menu-column">
+					<a class="dropdown-item d-block" href="/customer/message?action=inbox&organization={{ env.session.organization.slug }}">
+						{{ tabler.icon('inbox') }}
+						{% trans "Inbox" %}
+						{% if message_counts.inbox > 0 %}
+							<span class="float-end badge text-bg-secondary">{{ message_counts.inbox }}</span>
+						{% endif %}
+					</a>
+					<a class="dropdown-item" href="/customer/message?action=outbox&organization={{ env.session.organization.slug }}">
+						{{ tabler.icon('mail-share') }}
+						{% trans "Outbox" %}
+						{% if message_counts.outbox > 0 %}
+							<span class="float-end badge text-bg-secondary">{{ message_counts.outbox }}</span>
+						{% endif %}
+					</a>
+					<a class="dropdown-item" href="/customer/message?action=sent&organization={{ env.session.organization.slug }}">
+						{{ tabler.icon('send') }}
+						{% trans "Sent" %}
+						{% if message_counts.sent > 0 %}
+							<span class="float-end badge text-bg-secondary">{{ message_counts.sent }}</span>
+						{% endif %}
+					</a>
+					<a class="dropdown-item" href="/customer/message?action=failed&organization={{ env.session.organization.slug }}">
+						{{ tabler.icon('location-broken') }}
+						{% trans "Failed" %}
+						{% if message_counts.failed > 0 %}
+							<span class="float-end badge text-bg-secondary">{{ message_counts.failed }}</span>
+						{% endif %}
+					</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/customer/message?action=create&organization={{ env.session.organization.slug }}">
+						{{ tabler.icon('mail-plus') }}
+						{% trans "New message" %}
+					</a>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="/customer/organization/detail?organization={{ env.session.organization.slug }}">
+			<span class="nav-link-title">{{ tabler.icon('building') }} {% trans "Organization" %} </span>
+		</a>
+	</li>
+</ul>

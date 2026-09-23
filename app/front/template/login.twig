@@ -1,0 +1,35 @@
+{% extends "_default/layout.login.twig" %}
+{% block content %}
+	<div class="card card-md">
+		<div class="card-body">
+			<h2 class="h2 text-center mb-4">{% trans "Log in" %}</h2>
+			{% if login_failed is defined and login_failed %}
+				<div class="alert alert-danger" role="alert">
+					{% trans "Invalid credentials." %}
+				</div>
+			{% endif %}
+			<form method="post" action="/login" autocomplete="off">
+				<div class="mb-3">
+					<label class="form-label">{% trans "Email" %}</label>
+					<input type="email" name="login" class="form-control" placeholder="{% trans "your@email.com" %}" autocomplete="username" required autofocus>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">{% trans "Password" %}</label>
+					<div class="input-group input-group-flat">
+						<input type="password" name="password" id="login_password" class="form-control" placeholder="{% trans "Password" %}" autocomplete="current-password" required>
+						<span class="input-group-text">
+							<a href="#" class="link-secondary" data-toggle-password="#login_password" title="{% trans "Show password" %}" aria-label="{% trans "Show password" %}">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M21 12c-2.4 4.5-6.2 7-9 7s-6.6-2.5-9-7c2.4-4.5 6.2-7 9-7s6.6 2.5 9 7"/></svg>
+							</a>
+						</span>
+					</div>
+				</div>
+				<div>
+					<button type="submit" class="btn btn-primary w-100">
+						{% trans "Log in" %}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock content %}

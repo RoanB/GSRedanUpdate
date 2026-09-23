@@ -1,0 +1,136 @@
+{% extends "_default/layout.base.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% block header_title %}{% trans "Settings" %}{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item active">{% trans "Settings" %}</li>
+{% endblock header_breadcrumb %}
+
+{% block content %}
+	{% if env.get.saved is defined %}
+		{{ tabler.alert('success', 'Saved'|trans) }}
+	{% endif %}
+	<form method="post" action="/admin/settings">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Contact" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label required">Email</label>
+							<input type="email" name="contact_email" class="form-control" value="{{ settings.contact_email }}" required>
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Local address" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">{% trans "Street" %}</label>
+							<input type="text" name="address_local_street" class="form-control" value="{{ settings.address_local_street }}">
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">{% trans "Zip" %}</label>
+								<input type="text" name="address_local_zip" class="form-control" value="{{ settings.address_local_zip }}">
+							</div>
+							<div class="col">
+								<label class="form-label">{% trans "City" %}</label>
+								<input type="text" name="address_local_city" class="form-control" value="{{ settings.address_local_city }}">
+							</div>
+						</div>
+						<div class="mt-3">
+							<label class="form-label">{% trans "Maps link" %}</label>
+							<input type="url" name="address_local_maps" class="form-control" value="{{ settings.address_local_maps }}">
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Club address" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">{% trans "Street" %}</label>
+							<input type="text" name="address_club_street" class="form-control" value="{{ settings.address_club_street }}">
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">{% trans "Zip" %}</label>
+								<input type="text" name="address_club_zip" class="form-control" value="{{ settings.address_club_zip }}">
+							</div>
+							<div class="col">
+								<label class="form-label">{% trans "City" %}</label>
+								<input type="text" name="address_club_city" class="form-control" value="{{ settings.address_club_city }}">
+							</div>
+						</div>
+						<div class="mt-3">
+							<label class="form-label">{% trans "Maps link" %}</label>
+							<input type="url" name="address_club_maps" class="form-control" value="{{ settings.address_club_maps }}">
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Social" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">Instagram</label>
+							<input type="url" name="social_instagram" class="form-control" value="{{ settings.social_instagram }}">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Facebook</label>
+							<input type="url" name="social_facebook" class="form-control" value="{{ settings.social_facebook }}">
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Footer & masthead" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">{% trans "Masthead title" %}</label>
+							<input type="text" name="masthead_title" class="form-control" value="{{ settings.masthead_title }}">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{% trans "Company number" %}</label>
+							<input type="text" name="footer_company_number" class="form-control" value="{{ settings.footer_company_number }}">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Download center password" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">{% trans "New password" %}</label>
+							<input type="password" name="download_password" class="form-control" autocomplete="new-password" placeholder="{% trans "Leave empty to keep the current password" %}">
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary w-100">
+							{{ tabler.icon('save') }} {% trans "Save" %}
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock content %}

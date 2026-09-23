@@ -1,0 +1,136 @@
+{% extends "_default/layout.base.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% block header_title %}{% trans "Calendar" %}{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item active">{% trans "Calendar" %}</li>
+{% endblock header_breadcrumb %}
+
+{% block content %}
+	{% if env.get.saved is defined %}
+		{{ tabler.alert('success', 'Saved'|trans) }}
+	{% endif %}
+	{% if env.get.add_failed is defined %}
+		{{ tabler.alert('danger', 'Event could not be added'|trans) }}
+	{% endif %}
+
+	<div class="row row-cards">
+		{# Calendar view + subscribing card side by side #}
+		<div class="col-lg-8">
+			<div class="card">
+				<div class="card-header">
+					<div>
+						<h3 class="card-title">{% trans "Calendar" %}</h3>
+					</div>
+					<div class="card-actions">
+						<a href="/admin/calendar?action=edit" class="btn btn-sm btn-primary">
+							{{ tabler.icon('plus') }} {% trans "Add event" %}
+						</a>
+					</div>
+				</div>
+				<div class="card-body">
+					<div id="admin-calendar"></div>
+				</div>
+				<div class="card-footer">
+					<span class="text-secondary me-3">{% trans "Categories" %}:</span>
+					{% for calendar_category in calendar_categories %}
+						<span class="badge me-1" style="background-color: {{ calendar_category.color }}; color: {{ calendar_category.text_color }};">
+							{{ calendar_category.name }}
+						</span>
+					{% endfor %}
+				</div>
+			</div>
+
+			{# Event list underneath #}
+			<div class="card mt-3">
+				<div class="card-header">
+					<div>
+						<h3 class="card-title">{% trans "Calendar events" %}</h3>
+						<div class="card-subtitle mt-1">{% trans "Shown on the members page and exported to member calendars." %}</div>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-vcenter card-table">
+						<thead>
+							<tr>
+								<th>{% trans "Title" %}</th>
+								<th>{% trans "Start" %}</th>
+								<th>{% trans "End" %}</th>
+								<th>{% trans "Category" %}</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for event in events %}
+								<tr>
+									<td>{{ event.title }}</td>
+									<td>{{ event.starts_label }}</td>
+									<td>{% if event.all_day %}<span class="badge bg-secondary-lt">{% trans "all day" %}</span>{% elseif event.ends_label is not empty %}{{ event.ends_label }}{% else %}<span class="text-secondary">—</span>{% endif %}</td>
+									<td>{% if event.category is not empty %}<span class="badge bg-blue-lt">{{ event.category }}</span>{% else %}<span class="text-secondary">{% trans "no category" %}</span>{% endif %}</td>
+									<td class="text-end">
+										<a class="btn btn-sm btn-outline-primary" href="/admin/calendar?action=edit&amp;id={{ event.id }}">
+											{{ tabler.icon('edit') }} {% trans "Edit" %}
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				{% if events|length == 0 %}
+					<div class="card-body text-center text-secondary">{% trans "No events yet." %}</div>
+				{% endif %}
+			</div>
+		</div>
+
+		{# Subscribing info right of the calendar #}
+		<div class="col-lg-4">
+			<div class="card">
+				<div class="card-header">
+					<div>
+						<h3 class="card-title">{% trans "Calendar in clients" %}</h3>
+						<div class="card-subtitle mt-1">{% trans "Links people paste into a calendar app so the club calendar shows up there. The first two stay up to date automatically; the ICS file is a one-time snapshot." %}</div>
+					</div>
+					<div class="card-actions">
+						<button type="button" class="btn btn-sm btn-outline-secondary" data-collapse="#club-calendar-subscribe">
+							<span class="collapse-label-open">
+								{{ tabler.icon('chevron-up') }} {% trans "Collapse" %}
+							</span>
+							<span class="collapse-label-closed d-none">
+								{{ tabler.icon('chevron-down') }} {% trans "Expand" %}
+							</span>
+						</button>
+					</div>
+				</div>
+				<div class="card-body" id="club-calendar-subscribe">
+					<div class="mb-3">
+						<label class="form-label">{% trans "1 · To VIEW the calendar (no credentials)" %}</label>
+						{{ tabler.copy_input(server_scheme ~ '://' ~ server_host ~ '/caldav/GSRedan/', 'caldav-view-url') }}
+						<small class="form-hint">{% trans "Read-only: anyone with this link can add the calendar to their app. No login needed." %}</small>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">{% trans "2 · To EDIT the calendar (secret-token URL)" %}</label>
+						{{ tabler.copy_input(server_scheme ~ '://' ~ server_host ~ '/caldav-edit/fD5D6A4Z/GSRedan/', 'caldav-edit-url') }}
+						<small class="form-hint">{% trans "Also lets someone create or change events from their app. The URL contains the password, so only share it with people allowed to edit." %}</small>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">{% trans "3 · One-shot ICS import" %}</label>
+						{{ tabler.copy_input(server_scheme ~ '://' ~ server_host ~ '/members/calendar.ics', 'ics-url') }}
+						<small class="form-hint">{% trans "Downloads the current events once. For apps that cannot subscribe; it does not update afterwards." %}</small>
+					</div>
+
+					{{ tabler.alert('warning', 'Keep the edit URL private'|trans, 'It carries the editing password (redan). Anyone with that URL can change the calendar.'|trans) }}
+					<a class="btn btn-secondary w-100" href="{{ server_scheme }}://{{ server_host }}/members/calendar.ics" target="_blank" rel="noopener">
+						{{ tabler.icon('external-link') }} {% trans "Preview ICS" %}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block footer_scripts %}
+	<script src="/fullcalendar/index.global.min.js"></script>
+{% endblock footer_scripts %}

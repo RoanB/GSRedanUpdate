@@ -1,0 +1,16 @@
+{% import "_default/macro.base.twig" as base %}
+
+{% if field_name in options.sort_permissions %}
+	<a href="{{ url }}" class="skeleton-pager-header-link">
+		{{ header }}
+		{% if pager.get_sort() == field_name %}
+			{% if pager.get_direction() == 'asc' %}
+				{{ base.icon('arrow-up') }}
+			{% else %}
+				{{ base.icon('arrow-down') }}
+			{% endif %}
+		{% endif %}
+	</a>
+{% else %}
+	{{ header }}
+{% endif %}

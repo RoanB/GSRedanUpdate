@@ -1,0 +1,14 @@
+{#
+	Footer
+
+	Rendered from settings; the year always reflects the current date and
+	never goes stale in a CMS. The footer is not a card: it is always the
+	same and lives at the bottom of the public layout directly.
+#}
+<footer class="footer bg-black small text-center text-white">
+	<div class="container px-4 px-lg-5">
+		{% trans  'Non-profit organisation' %} <br>
+		{% trans 'Company number' %} : {{ settings.footer_company_number }}<br>
+		<span class="current-year">{{ 'now'|date('Y') }}</span><br>
+	</div>
+</footer>

@@ -1,0 +1,262 @@
+{% extends "_default/layout.base.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% block header_title %}{% trans "Edit card" %}: {{ block.type }}{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item"><a href="/admin/block">{% trans "Cards" %}</a></li>
+	<li class="breadcrumb-item active">{{ block.type }}</li>
+{% endblock header_breadcrumb %}
+
+{% block header_css %}
+	<link rel="stylesheet" href="/vendor/codemirror/codemirror.min.css"/>
+{% endblock header_css %}
+
+{% block content %}
+	{% if errors is defined and errors|length > 0 %}
+		{{ tabler.alert('danger', 'Please fix the errors'|trans, tabler.show_errors(errors)) }}
+	{% endif %}
+	{% if env.get.error is defined %}
+		{{ tabler.alert('danger', 'Could not save this card'|trans) }}
+	{% endif %}
+	{% if env.get.image_failed is defined %}
+		{{ tabler.alert('danger', 'Image upload failed'|trans, 'Only real images (jpg, png, webp, gif) are accepted.'|trans) }}
+	{% endif %}
+	{% if env.get.image_saved is defined %}
+		{{ tabler.alert('success', 'Image saved'|trans) }}
+	{% endif %}
+	{% if env.get.pictures_saved is defined %}
+		{{ tabler.alert('success', 'Pictures added'|trans, 'Number uploaded'|trans ~ ': ' ~ env.get.pictures_saved) }}
+	{% endif %}
+	{% if env.get.pictures_deleted is defined %}
+		{{ tabler.alert('success', 'Picture deleted'|trans) }}
+	{% endif %}
+
+	{# Full-width horizontal preview, collapsible (base.js) #}
+	<div class="card mb-3" id="preview-card">
+		<div class="card-header">
+			<div>
+				<h3 class="card-title">{% trans "Preview" %}</h3>
+				{% if block.type == 'contact' %}
+					<div class="card-subtitle mt-1">{% trans "Preview of the contact card." %}</div>
+				{% else %}
+					<div class="card-subtitle mt-1">{% trans "Live preview of the card with the values below (not saved). Collapse it to work on the form." %}</div>
+				{% endif %}
+			</div>
+			<div class="card-actions">
+				<button type="button" class="btn btn-sm btn-secondary preview-collapse" data-preview-collapse="#preview-body">
+					{{ tabler.icon('chevron-up') }} {% trans "Collapse" %}
+				</button>
+			</div>
+		</div>
+		<div class="card-body p-0" id="preview-body">
+			<iframe class="w-100 border-0 rounded-bottom" style="min-height: 260px;" data-preview-url="/admin/block?action=preview&amp;id={{ block.id }}"{% if block.type == 'contact' %} src="/admin/block?action=preview&amp;id={{ block.id }}"{% endif %}></iframe>
+		</div>
+	</div>
+
+	{% if block.type == 'contact' %}
+		{# Settings-driven card: no inputs, the data lives in the settings #}
+		<div class="alert alert-info mb-0">
+			{% trans "The contact card is generated entirely from the club settings: both addresses, the e-mail address and the social links. There is nothing to edit here — change the values on the Settings screen. The card can be reordered and shown or hidden from the Cards list." %}
+		</div>
+	{% else %}
+	<form method="post" action="/admin/block?action=edit&amp;id={{ block.id }}" class="preview-source">
+		<div class="row">
+			<div class="col-lg-8">
+				{% set has_single_image = block.type in ['activities_light', 'activities_dark', 'monday_openings'] %}
+
+				{% if has_single_image and image is defined %}
+					<div class="card mb-3">
+						<div class="card-header">
+							<div>
+								<h3 class="card-title">{% trans "Card image" %}</h3>
+								<div class="card-subtitle mt-1">{% trans "Upload a jpeg/png/webp; a resized copy is generated automatically for the site." %}</div>
+							</div>
+						</div>
+						<div class="card-body">
+							{% if image %}
+								<img src="/picture?id={{ image.file_id }}&amp;size=400x300" alt="" class="img-thumbnail mb-3" style="max-height: 200px;"/>
+								<p class="form-hint">{{ image.width }} × {{ image.height }} px (original)</p>
+							{% else %}
+								<p class="text-secondary">{% trans "No image attached yet." %}</p>
+							{% endif %}
+							<div class="mb-0">
+								<label class="form-label">{% trans "Upload new image" %}</label>
+								<input type="file" name="file" class="form-control" id="block-image-file" accept="image/jpeg,image/png,image/webp,image/gif"/>
+							</div>
+						</div>
+						<div class="card-footer">
+							<button type="button" class="btn btn-secondary w-100 image-upload" data-upload-url="/admin/block?action=upload_image&amp;id={{ block.id }}" data-file-input="block-image-file" disabled>
+								{{ tabler.icon('upload') }} {% trans "Upload image" %}
+							</button>
+						</div>
+					</div>
+				{% endif %}
+
+				{% if block.is_pair %}
+					{% for slot, picture in { 1: image, 2: image_2 } %}
+						<div class="card mb-3">
+							<div class="card-header">
+								<div>
+									<h3 class="card-title">{% if loop.first %}{% trans "Image (top row)" %}{% else %}{% trans "Image (bottom row)" %}{% endif %}</h3>
+									<div class="card-subtitle mt-1">{% trans "Upload a jpeg/png/webp; a resized copy is generated automatically for the site." %}</div>
+								</div>
+							</div>
+							<div class="card-body">
+								{% if picture %}
+									<img src="/picture?id={{ picture.file_id }}&amp;size=400x300" alt="" class="img-thumbnail mb-3" style="max-height: 200px;"/>
+									<p class="form-hint">{{ picture.width }} × {{ picture.height }} px (original)</p>
+								{% else %}
+									<p class="text-secondary">{% trans "No image attached yet." %}</p>
+								{% endif %}
+								<div class="mb-0">
+									<label class="form-label">{% trans "Upload new image" %}</label>
+									<input type="file" name="file" class="form-control" id="block-image-file-{{ slot }}" accept="image/jpeg,image/png,image/webp,image/gif"/>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button type="button" class="btn btn-secondary w-100 image-upload" data-upload-url="/admin/block?action=upload_image&amp;id={{ block.id }}&amp;slot={{ slot }}" data-file-input="block-image-file-{{ slot }}" disabled>
+									{{ tabler.icon('upload') }} {% trans "Upload image" %}
+								</button>
+							</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+
+				{% if block.type in ['gallery'] %}
+					<div class="card mb-3">
+						<div class="card-header">
+							<div>
+								<h3 class="card-title">{% trans "Gallery pictures" %}</h3>
+								<div class="card-subtitle mt-1">{% trans "The amount of pictures is free; the site lays them out in rows of three. Drag rows to reorder (order is saved automatically). Home page shows each picture at 800×600." %}</div>
+							</div>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-vcenter card-table" id="gallery-pictures" data-sort-url="/admin/block?action=picture_order">
+								<thead>
+									<tr>
+										<th></th>
+										<th>{% trans "Preview" %}</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for picture in pictures %}
+										<tr data-id="{{ picture.id }}" class="sortable-row">
+											<td><span class="text-secondary cursor-grab">{{ tabler.icon('grip-vertical') }}</span></td>
+											<td><img src="/picture?id={{ picture.file_id }}&amp;size=160x160" style="max-height: 60px;" class="rounded" alt="{{ "Gallery picture"|trans }} {{ loop.index }}"/></td>
+											<td class="text-end">
+												<a class="btn btn-sm btn-outline-danger" href="/admin/block?action=delete_picture&amp;id={{ block.id }}&amp;picture_id={{ picture.id }}">
+													{{ tabler.icon('trash') }} {% trans "Delete" %}
+												</a>
+											</td>
+										</tr>
+									{% else %}
+										<tr><td colspan="3" class="text-secondary">{% trans "No pictures uploaded yet." %}</td></tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<div class="card-footer">
+							<h3 class="card-title">{% trans "Upload pictures" %}</h3>
+							<div class="row g-2 align-items-end">
+								<div class="col">
+									<input type="file" name="files[]" class="form-control" id="gallery-files" multiple accept="image/jpeg,image/png,image/webp,image/gif"/>
+								</div>
+								<div class="col-auto">
+									<button type="button" class="btn btn-secondary pictures-upload" data-upload-url="/admin/block?action=upload_picture&amp;id={{ block.id }}" data-file-input="gallery-files" disabled>{{ tabler.icon('upload') }} {% trans "Upload" %}</button>
+								</div>
+							</div>
+							<p class="form-hint mb-0">{% trans "All pictures are resized on demand; keep originals reasonable (max ~2000px wide recommended)." %}</p>
+						</div>
+					</div>
+				{% endif %}
+
+				{% for language in languages %}
+					<div class="card mb-3">
+						<div class="card-header">
+							<div>
+								<h3 class="card-title">{{ language.name }} ({{ language.name_short|upper }})</h3>
+								<div class="card-subtitle mt-1">{% trans "FR is the fallback language: when another language has no content, this card is shown." %}</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="mb-3">
+								<label class="form-label">{% trans "Menu label (title)" %}</label>
+								<input type="text" name="title[{{ language.id }}]" class="form-control" value="{{ translations[language.id].title }}">
+								<small class="form-hint">{% trans "Shown in the site menu when this card has an anchor. Leave empty to keep this card out of the menu." %}</small>
+							</div>
+
+							{% if block.type != 'gallery' %}
+								<div class="mb-3">
+									<label class="form-label">{% if block.is_pair %}{% trans "Content top row (HTML)" %}{% else %}{% trans "Content (HTML)" %}{% endif %}</label>
+									<textarea name="body[{{ language.id }}]" class="form-control code-editor" rows="{% if block.is_pair %}8{% else %}14{% endif %}" spellcheck="false">{% if block.is_pair and pair_split is defined %}{{ pair_split[language.id][0] }}{% else %}{{ translations[language.id].body }}{% endif %}</textarea>
+									{% if block.type == 'monday_openings' %}
+										<small class="form-hint">{% trans "The openings list is calendar-fed: put __OPENINGS__ where the dates go; they are taken from the visible upcoming events of the 'Ouverture de la salle' category, grouped per month, in this language." %}</small>
+									{% else %}
+										<small class="form-hint">{% trans "Raw HTML with syntax highlighting (CodeMirror). Use __CONTACT_EMAIL__ to auto-insert the contact e-mail at render time." %}</small>
+									{% endif %}
+								</div>
+								{% if block.is_pair %}
+									<div class="mb-3">
+										<label class="form-label">{% trans "Content bottom row (HTML)" %}</label>
+										<textarea name="body_pair[{{ language.id }}]" class="form-control code-editor" rows="8" spellcheck="false">{% if pair_split is defined %}{{ pair_split[language.id][1] }}{% endif %}</textarea>
+									</div>
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="col-lg-4">
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Card settings" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">{% trans "Type" %}</label>
+							<input type="text" class="form-control" value="{{ block.type_label ?? block.type }}" disabled>
+						</div>
+						{% if block.type == 'activities_light' or block.type == 'monday_openings' %}
+							<div class="mb-3">
+								<label class="form-label">{% trans "Image side" %}</label>
+								<select name="image_side" class="form-select">
+									<option value="left"{% if block.image_side == 'left' %} selected{% endif %}>{% trans "Left" %}</option>
+									<option value="right"{% if block.image_side == 'right' %} selected{% endif %}>{% trans "Right" %}</option>
+								</select>
+							</div>
+						{% endif %}
+						{% if block.type == 'monday_openings' %}
+							<p class="form-hint">{% trans "Locked card: the opening dates come from the calendar (category 'Ouverture de la salle'). The card can be moved and its image/title/text edited, but the date list is generated from the events." %}</p>
+						{% endif %}
+						<div class="mb-3">
+							<label class="form-label">{% trans "Anchor" %}</label>
+							<input type="text" name="anchor" class="form-control" value="{{ block.anchor }}">
+							<small class="form-hint">{% trans "HTML id of this card (e.g. 'salle'). When it is also linked in the menu it becomes '#anchor'. Leave empty for no in-page link." %}</small>
+						</div>
+						<label class="form-check">
+							<input type="checkbox" class="form-check-input" name="visible" value="1"{% if block.visible %} checked{% endif %}>
+							<span class="form-check-label">{% trans "Visible on site" %}</span>
+						</label>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary w-100">{{ tabler.icon('save') }} {% trans "Save card" %}</button>
+						<a class="btn btn-link w-100" href="/admin/block">{% trans "Cancel" %}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endif %}
+{% endblock content %}
+
+{% block footer_scripts %}
+	<script src="/vendor/codemirror/codemirror.min.js"></script>
+	<script src="/vendor/codemirror/mode/xml/xml.min.js"></script>
+	<script src="/vendor/codemirror/mode/javascript/javascript.min.js"></script>
+	<script src="/vendor/codemirror/mode/css/css.min.js"></script>
+	<script src="/vendor/codemirror/mode/htmlmixed/htmlmixed.min.js"></script>
+	<script src="/vendor/codemirror/addon/selection/active-line.min.js"></script>
+{% endblock footer_scripts %}

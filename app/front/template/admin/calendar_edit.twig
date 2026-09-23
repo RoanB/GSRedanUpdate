@@ -1,0 +1,94 @@
+{% extends "_default/layout.base.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% set is_edit = env.get.id is defined and env.get.id > 0 %}
+{% block header_title %}{% if is_edit %}{% trans "Edit event" %}{% else %}{% trans "Add event" %}{% endif %}{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item"><a href="/admin/calendar">{% trans "Calendar" %}</a></li>
+	<li class="breadcrumb-item active">{% if is_edit %}{% trans "Edit" %}{% else %}{% trans "New" %}{% endif %}</li>
+{% endblock header_breadcrumb %}
+
+{% block content %}
+	{% if errors is defined and errors|length > 0 %}
+		{{ tabler.alert('danger', 'Please fix the errors'|trans, tabler.show_errors(errors)) }}
+	{% endif %}
+
+	<form method="post" action="/admin/calendar?action={% if is_edit %}edit&amp;id={{ event.id }}{% else %}add{% endif %}">
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="card">
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label required">{% trans "Title" %}</label>
+							<input type="text" name="title" class="form-control" value="{{ event.title }}" required>
+							<small class="form-hint">{% trans "Shown in the members list and in calendar apps as the event name." %}</small>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{% trans "Location" %}</label>
+							<input type="text" name="location" class="form-control" value="{{ event.location }}">
+							<small class="form-hint">{% trans "Optional." %}</small>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{% trans "Category" %}</label>
+							<select name="calendar_category_id" class="form-select">
+								<option value="0"{% if event.calendar_category_id is empty %} selected{% endif %}>{% trans "No category" %}</option>
+								{% for calendar_category in calendar_categories %}
+									<option value="{{ calendar_category.id }}"{% if event.calendar_category_id == calendar_category.id %} selected{% endif %}>{{ calendar_category.name }}</option>
+								{% endfor %}
+							</select>
+							<small class="form-hint">{% trans "Colour-coded in the calendar; the legend below shows the palette." %}</small>
+						</div>
+						<div class="mb-3">
+							<label class="form-label required">{% trans "Starts at (Brussels time)" %}</label>
+							<input type="datetime-local" name="starts_at" class="form-control" value="{{ starts_at_display }}" required>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{% trans "Ends at (Brussels time)" %}</label>
+							<input type="datetime-local" name="ends_at" class="form-control" value="{{ ends_at_display }}">
+							<small class="form-hint">{% trans "Optional; only for timed (not all-day) events." %}</small>
+						</div>
+						<label class="form-check">
+							<input type="checkbox" class="form-check-input" name="all_day" value="1"{% if event.all_day %} checked{% endif %}>
+							<span class="form-check-label">{% trans "All day (dates only, no times in the calendar)" %}</span>
+						</label>
+						<div class="mb-0 mt-3">
+							<label class="form-label">{% trans "Description" %}</label>
+							<textarea name="description" class="form-control" rows="4">{{ event.description }}</textarea>
+							<small class="form-hint">{% trans "Plain text; appears in the exported calendar payload." %}</small>
+						</div>
+					</div>
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary">{{ tabler.icon('save') }} {% trans "Save event" %}</button>
+						<a class="btn btn-link" href="/admin/calendar">{% trans "Cancel" %}</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5">
+				<div class="card">
+					<div class="card-header">
+						<div>
+							<h3 class="card-title">{% trans "Visibility" %}</h3>
+							<div class="card-subtitle mt-1">{% trans "The event shows on the members page, in the ICS export and in CalDAV only when visible." %}</div>
+						</div>
+					</div>
+					<div class="card-body">
+						<label class="form-check">
+							<input type="checkbox" class="form-check-input" name="visible" value="1"{% if event.visible %} checked{% endif %}>
+							<span class="form-check-label">{% trans "Visible" %}</span>
+						</label>
+					</div>
+				</div>
+				{% if is_edit %}
+					<div class="card mt-3">
+						<div class="card-body">
+							<p class="text-secondary">{% trans "Deleting removes the event for everyone, including the calendars of subscribed members." %}</p>
+							<a class="btn btn-outline-danger w-100" href="/admin/calendar?action=delete&amp;id={{ event.id }}">
+								{{ tabler.icon('trash') }} {% trans "Delete event" %}
+							</a>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</form>
+{% endblock content %}

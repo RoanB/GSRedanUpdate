@@ -1,0 +1,103 @@
+{% extends "_default/layout.members.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% block header_title %}{% trans "Calendar" %} - GS Redan{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item"><a href="/members">{% trans "Members area" %}</a></li>
+	<li class="breadcrumb-item active">{% trans "Calendar" %}</li>
+{% endblock header_breadcrumb %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="card">
+				<div class="card-header">
+					<div>
+						<h3 class="card-title">{% trans "Calendar" %}</h3>
+						<div class="card-subtitle mt-1">{% trans "The club schedule. Hover an event to see the location and details." %}</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div id="members-calendar"></div>
+				</div>
+				{% if calendar_categories|length > 0 %}
+					<div class="card-footer">
+						<span class="text-secondary me-3">{% trans "Categories" %}:</span>
+						{% for calendar_category in calendar_categories %}
+							<span class="badge me-1" style="background-color: {{ calendar_category.color }}; color: {{ calendar_category.text_color }};">
+								{{ calendar_category.name }}
+							</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="card">
+				<div class="card-header">
+					<div>
+						<h3 class="card-title">{% trans "Subscribe" %}</h3>
+						<div class="card-subtitle mt-1">{% trans "Links to add the club calendar to your phone or computer. The live link stays up to date automatically; the ICS file is a one-time snapshot." %}</div>
+					</div>
+					<div class="card-actions">
+						<button type="button" class="btn btn-sm btn-outline-secondary" data-collapse="#members-subscribe">
+							<span class="collapse-label-open d-none">
+								{{ tabler.icon('chevron-up') }} {% trans "Collapse" %}
+							</span>
+							<span class="collapse-label-closed">
+								{{ tabler.icon('chevron-down') }} {% trans "Expand" %}
+							</span>
+						</button>
+					</div>
+				</div>
+				<div class="card-body d-none" id="members-subscribe">
+					<div class="mb-3">
+						<label class="form-label">{% trans "Calendar link (live)" %}</label>
+						{{ tabler.copy_input(caldav_url, 'members-caldav-url') }}
+						<small class="form-hint">{% trans "Live and read-only: it updates on its own whenever events change. No password or account needed." %}</small>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">{% trans "ICS file" %}</label>
+						{{ tabler.copy_input(ics_url, 'members-ics-url') }}
+						<small class="form-hint">{% trans "Downloads the current events once. For apps that cannot subscribe; it does not update afterwards." %}</small>
+					</div>
+
+					<a href="/members/calendar.ics" class="btn btn-secondary w-100">
+						{{ tabler.icon('download') }} {% trans "Download .ics" %}
+					</a>
+				</div>
+			</div>
+
+			<div class="card mt-3">
+				<div class="card-header">
+					<div>
+						<h3 class="card-title">{% trans "Upcoming events" %}</h3>
+					</div>
+				</div>
+				{% if events|length == 0 %}
+					<div class="card-body text-center text-secondary">
+						{% trans "No upcoming events." %}
+					</div>
+				{% else %}
+					<ul class="list-group list-group-flush">
+						{% for event in events %}
+							<li class="list-group-item">
+								{{ tabler.icon('calendar') }}
+								<span class="ms-2"><strong>{{ event.title }}</strong></span>
+								<small class="d-block text-secondary ms-4">
+									{{ event.starts_label }}{% if event.time_label is not empty %} • {{ event.time_label }}{% if event.ends_label is defined %}–{{ event.ends_label }}{% endif %} {% else %} • {% trans "all day" %}{% endif %}
+									{% if event.location is not empty %} — {{ event.location }}{% endif %}
+								</small>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block footer_scripts %}
+	<script src="/fullcalendar/index.global.min.js"></script>
+{% endblock footer_scripts %}

@@ -1,0 +1,129 @@
+{% import "_default/macro.tabler.twig" as tabler %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ title is defined ? title : 'GS Redan admin' }}</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Content-Language" content="en" />
+	<meta name="msapplication-TileColor" content="#2d89ef">
+	<meta name="theme-color" content="#4188c9">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+
+	<link rel="icon" href="/favicon.ico?v=20260918a" type="image/x-icon"/>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260918a" />
+	<link rel="icon" type="image/jpeg" href="/favicon.jpg?v=20260918a" />
+	<link rel="apple-touch-icon" href="/favicon.jpg?v=20260918a" />
+
+	<link rel="stylesheet" href="/tabler--core/dist/css/tabler.min.css" />
+	<link rel="stylesheet" href="/tabler--core/dist/css/tabler-flags.min.css" />
+	<link rel="stylesheet" href="/tabler--core/dist/css/tabler-payments.min.css" />
+	<link rel="stylesheet" href="/base.css?v=20260918e" />
+
+	{% block header_css %}{% endblock header_css %}
+</head>
+<body>
+	<div class="page">
+		{% if environment != 'production' %}
+			<div class="alert alert-warning text-center mb-0 rounded-0 text-center d-block" role="alert">
+				<strong>{% trans 'Notice' %}</strong>: {% trans 'You are currently working in a test environment.' %}
+			</div>
+		{% endif %}
+		<header class="navbar navbar-expand-md d-print-none">
+			<div class="container-xl">
+				<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+					<a href="/admin" class="d-flex align-items-center gap-2">
+						<img src="/logo.webp" alt="" class="navbar-brand-image" />
+						<span>GS Redan</span>
+					</a>
+				</div>
+				<div id="navbar-menu" class="collapse navbar-collapse">
+					<div class="ms-4">
+						{% include "_default/menu.admin.twig" %}
+					</div>
+				</div>
+				<ul class="navbar-nav flex-row order-md-last">
+					<li class="nav-item dropdown">
+						<button type="button" class="nav-link d-flex lh-1 p-0 px-2 bg-transparent border-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+							<span class="avatar avatar-sm">{{ tabler.icon('user') }}</span>
+							<div class="d-none d-xl-block ps-2">
+								<div>{{ user.firstname }} {{ user.lastname }}</div>
+								<div class="text-secondary">
+									<small>{{ user.email }}</small>
+								</div>
+							</div>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+							<a class="dropdown-item" href="/login?action=logout">
+								{{ tabler.icon('logout') }} {% trans "Log out" %}
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="page-wrapper">
+			<div class="page-header d-print-none">
+				<div class="container-xl">
+					<div class="row g-2 align-items-center">
+						<div class="col">
+							<h2 class="page-title">
+								{% block header_title %}{% endblock header_title %}
+							</h2>
+						</div>
+						<div class="d-none d-md-inline-block col-md-8">
+							<ol class="breadcrumb" aria-label="breadcrumbs">
+								<li class="breadcrumb-item ms-auto">
+									<a href="/">{% trans "Site" %}</a>
+								</li>
+								{% block header_breadcrumb %}{% endblock header_breadcrumb %}
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="page-body">
+				<div class="container-xl">
+					{% block content %}{% endblock content %}
+				</div>
+			</div>
+		</div>
+		<footer class="footer footer-transparent d-print-none">
+			<div class="container-xl">
+				<div class="row text-center align-items-center flex-row-reverse">
+					<div class="col-lg-auto ms-lg-auto">
+						<ul class="list-inline list-inline-dots mb-0">
+							<li class="list-inline-item">
+								{% for language in languages %}
+									{% if language.id == env.session.language.id %}
+										<strong>{{ language.name_short|upper }}</strong>
+									{% else %}
+										<a class="link-secondary" href="?language={{ language.name_short }}">{{ language.name_short|upper }}</a>
+									{% endif %}
+									{% if loop.last == false %} - {% endif %}
+								{% endfor %}
+							</li>
+						</ul>
+					</div>
+					<div class="col-12 col-lg-auto mt-3 mt-lg-0">
+						<ul class="list-inline list-inline-dots mb-0">
+							<li class="list-inline-item">
+								Copyright © {{ 'now'|date('Y') }} GS Redan.
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="/tabler--core/dist/js/tabler.min.js"></script>
+	{% block footer_scripts %}{% endblock footer_scripts %}
+	<script src="/base.js?v=20260918g"></script>
+</body>
+</html>

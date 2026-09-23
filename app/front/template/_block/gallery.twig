@@ -1,0 +1,18 @@
+{#
+	Gallery card
+
+	The pictures attached to the block (Block_Picture rows) render as a
+	responsive image row in column chunks of three, inside the same
+	projects-section as the activity cards. Width/height prevent layout
+	shift; clicking a picture opens the lightbox (base.js) with the
+	full-quality copy. No text is rendered on this card.
+#}
+<div class="row gx-4 gy-4 mb-4 mb-lg-5 justify-content-center" id="{{ block.anchor }}" data-gallery>
+	{% for picture in pictures %}
+		<div class="col-lg-4">
+			<a href="/picture?id={{ picture.file_id }}&amp;size=1600x1200" class="gallery-lightbox d-block" data-gallery-group="{{ block.id }}" data-gallery-index="{{ loop.index0 }}">
+				<img class="img-fluid rounded" src="/picture?id={{ picture.file_id }}&amp;size=800x600" width="{{ picture.width }}" height="{{ picture.height }}" alt="{{ (translation.title ~ ' ' ~ loop.index)|trim }}" loading="lazy" decoding="async"/>
+			</a>
+		</div>
+	{% endfor %}
+</div>

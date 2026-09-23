@@ -1,0 +1,17 @@
+{#
+	Announcement
+
+	Hidden by default (visible=0). Becomes an eye-catching light section once
+	an admin adds content and makes the block visible.
+#}
+{% if translation.body is not empty %}
+<section class="announcement-section bg-light text-center" id="{{ block.anchor }}">
+	<div class="container px-4 px-lg-5 py-4">
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+				{{ translation.body|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}

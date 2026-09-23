@@ -1,0 +1,47 @@
+{#
+	Activity card, dark background
+
+	Image + black text box inside the projects section (the former
+	`project` look). The parity alternates top/bottom corners across the
+	run of dark cards (computed in the Index module, like ../redan:
+	first row photo right, second row photo left).
+#}
+{% set parity = images[block.id].parity|default(0) %}
+
+{% if parity is even %}
+	{# Top half: ../redan's Entraînement row (photo right). #}
+	<div class="row gx-0 justify-content-center mb-4 mb-lg-5" id="{{ block.anchor }}">
+		<div class="col-lg-6">
+			{% if images[block.id] is defined %}
+				<img class="img-fluid rounded-top-end rounded-sm-top" src="/picture?id={{ images[block.id].file_id }}&amp;size=1200x900" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+			{% endif %}
+		</div>
+		<div class="col-lg-6 order-lg-first">
+			<div class="bg-black text-center h-100 project rounded-top-start rounded-sm-bottom">
+				<div class="d-flex h-100">
+					<div class="project-text w-100 my-auto text-center text-lg-right">
+						{{ translation.body|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% else %}
+	{# Bottom half: ../redan's Activités pour les jeunes row (photo left). #}
+	<div class="row gx-0 mb-5 mb-lg-0 justify-content-center" id="{{ block.anchor }}">
+		<div class="col-lg-6">
+			{% if images[block.id] is defined %}
+				<img class="img-fluid rounded-bottom-start rounded-sm-top mt-4 mt-md-0" src="/picture?id={{ images[block.id].file_id }}&amp;size=1200x900" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+			{% endif %}
+		</div>
+		<div class="col-lg-6">
+			<div class="bg-black text-center h-100 project rounded-bottom-end rounded-sm-bottom">
+				<div class="d-flex h-100">
+					<div class="project-text w-100 my-auto text-center text-lg-left">
+						{{ translation.body|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

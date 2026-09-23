@@ -1,0 +1,58 @@
+{% extends "_default/layout.public.twig" %}
+
+{% block page_title %}Downloads - GS Redan{% endblock page_title %}
+
+{% block content %}
+	{% if show_gate %}
+		<header class="masthead" id="main-content">
+			<div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+				<div class="d-flex justify-content-center">
+					<div class="text-center">
+						<h1 class="h1 mx-auto my-0 text-uppercase">Downloads</h1>
+						<p class="text-white mb-4">{% trans "This area is password protected. Enter the password to access the downloads." %}</p>
+						{% if env.get.failed is defined %}
+							<p class="text-danger mb-3">{% trans "Wrong password, try again." %}</p>
+						{% endif %}
+						<div class="col-md-8 col-lg-6 col-xl-5 mx-auto">
+							<form method="post" action="/download?action=gate">
+								<div class="input-group">
+									<input type="password" name="password" class="form-control" placeholder="{% trans "Password" %}" autocomplete="current-password" required>
+									<button type="submit" class="btn btn-primary">{% trans "Unlock" %}</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	{% else %}
+		<section class="projects-section bg-light" id="main-content">
+			<div class="container px-4 px-lg-5 py-5">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<h2 class="h3 mb-0">Downloads</h2>
+							<a class="small" href="/download?action=logout">{% trans "Log out" %}</a>
+						</div>
+						<div class="card">
+							{% if files|length == 0 %}
+								<div class="card-body text-center text-black-50">
+									{% trans "No files available." %}
+								</div>
+							{% else %}
+								<div class="list-group list-group-flush">
+									{% for file in files %}
+										<a class="list-group-item list-group-item-action d-flex align-items-center" href="/download?action=get&amp;id={{ file.id }}">
+											<span class="me-auto">{{ file.name }}</span>
+											<span class="badge bg-secondary">{{ file.size_label }}</span>
+										</a>
+									{% endfor %}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+{% endblock content %}

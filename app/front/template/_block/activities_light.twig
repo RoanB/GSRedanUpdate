@@ -1,0 +1,18 @@
+{#
+	Activity card, light background
+
+	Image + text on the projects-section light background (the former
+	`featured` look). image_side mirrors which column carries the photo.
+#}
+<div class="row gx-0 mb-4 mb-lg-5 align-items-center" id="{{ block.anchor }}">
+	<div class="col-xl-8 col-lg-7{% if block.image_side == 'right' %} order-lg-last{% endif %}">
+		{% if images[block.id] is defined %}
+			<img class="img-fluid mb-3 mb-lg-0 rounded" src="/picture?id={{ images[block.id].file_id }}&amp;size=1200x900" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+		{% endif %}
+	</div>
+	<div class="col-xl-4 col-lg-5{% if block.image_side == 'right' %} order-lg-first{% endif %}">
+		<div class="featured-text text-center text-lg-left">
+			{{ translation.body|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+{#
+	2-row activity card, dark background
+
+	The classic welded card from ../redan (Entraînement + Activités pour
+	les jeunes): row one photo right with the top corners, row two photo
+	left with the bottom corners, no vertical gap. Both images and both
+	texts (top / bottom, split by the pair marker) live on one block.
+#}
+{% set bodies = pair_bodies[block.id] ?? [ translation.body, '' ] %}
+{% set second_image = images[block.id ~ '_2'] is defined ? images[block.id ~ '_2'] : null %}
+
+<div class="activities-pair mb-4 mb-lg-5 shadow rounded overflow-hidden" id="{{ block.anchor }}">
+	<div class="row gx-0 justify-content-center">
+		<div class="col-lg-6{% if second_image is null %} col-lg-12{% endif %}">
+			{% if images[block.id] is defined %}
+				<img class="img-fluid w-100 h-100 object-fit-cover rounded-top-end" src="/picture?id={{ images[block.id].file_id }}&amp;size=1200x900" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+			{% endif %}
+		</div>
+		{% if second_image is not null %}
+			<div class="col-lg-6 order-lg-first">
+				<div class="bg-black text-center h-100 project rounded-top-start">
+					<div class="d-flex h-100">
+						<div class="project-text w-100 my-auto text-center text-lg-right">
+							{{ bodies[0]|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+
+	<div class="row gx-0 justify-content-center">
+		<div class="col-lg-6{% if second_image is null %} col-lg-12{% else %} order-lg-first{% endif %}">
+			{% if second_image is not null %}
+				<img class="img-fluid w-100 h-100 object-fit-cover rounded-bottom-start mt-4 mt-md-0" src="/picture?id={{ second_image.file_id }}&amp;size=1200x900" width="{{ second_image.width }}" height="{{ second_image.height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+			{% endif %}
+		</div>
+		<div class="col-lg-6">
+			<div class="bg-black text-center h-100 project rounded-bottom-end rounded-sm-top">
+				<div class="d-flex h-100">
+					<div class="project-text w-100 my-auto text-center text-lg-left">
+						{{ bodies[1]|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

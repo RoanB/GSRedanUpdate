@@ -1,0 +1,108 @@
+{% extends "_default/layout.base.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% block header_title %}{% trans "Dashboard" %}{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item active">{% trans "Dashboard" %}</li>
+{% endblock header_breadcrumb %}
+
+{% block content %}
+	{% if env.get.saved is defined %}
+		{{ tabler.alert('success', 'Saved'|trans) }}
+	{% endif %}
+	<div class="row row-cards">
+		<div class="col-sm-6 col-lg-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex align-items-center">
+						<div class="subheader">{% trans "Cards" %}</div>
+					</div>
+					<div class="h1 mb-3">{{ block_active_count }} / {{ block_count }}</div>
+					<a href="/admin/block" class="card-link">{% trans "Manage cards" %}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex align-items-center">
+						<div class="subheader">{% trans "Calendar" %}</div>
+					</div>
+					<div class="h1 mb-3">{{ calendar_count }}</div>
+					<a href="/admin/calendar" class="card-link">{% trans "Manage events" %}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex align-items-center">
+						<div class="subheader">{% trans "Files" %}</div>
+					</div>
+					<div class="h1 mb-3">{{ download_count }}</div>
+					<a href="/admin/download" class="card-link">{% trans "Manage files" %}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex align-items-center">
+						<div class="subheader">{% trans "Settings" %}</div>
+					</div>
+					<div class="h1 mb-3">{% trans "Contact & extras" %}</div>
+					<a href="/admin/settings" class="card-link">{% trans "Edit settings" %}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card mt-3">
+		<div class="card-header">
+			<div>
+				<h3 class="card-title">{% trans "Upcoming events" %}</h3>
+				<div class="card-subtitle mt-1">{% trans "The next ten scheduled events, hidden ones included and flagged." %}</div>
+			</div>
+			<div class="card-actions">
+				<a href="/admin/calendar" class="btn btn-sm btn-outline-primary">
+					{{ tabler.icon('calendar') }} {% trans "Manage events" %}
+				</a>
+			</div>
+		</div>
+		{% if calendar_upcoming|length == 0 %}
+			<div class="card-body text-center text-secondary">
+				{% trans "No upcoming events." %}
+			</div>
+		{% else %}
+			<ul class="list-group list-group-flush">
+				{% for event in calendar_upcoming %}
+					<li class="list-group-item d-flex align-items-center">
+						{% if event.category is not empty %}
+							<span class="badge me-3" style="background-color: {{ event.category_color }}; color: {{ event.category_text_color }};">{{ event.category }}</span>
+						{% else %}
+							<span class="badge bg-secondary-lt me-3">{% trans "No category" %}</span>
+						{% endif %}
+						<div class="me-auto">
+							<div>
+								<strong>{{ event.title }}</strong>
+								{% if event.visible == false %}
+									<span class="badge bg-secondary-lt ms-2">{% trans "Hidden" %}</span>
+								{% endif %}
+							</div>
+							<small class="text-secondary d-block">
+								{{ event.starts_label }}
+								{% if event.time_label is not empty %}
+									• {{ event.time_label }}{% if event.ends_label is defined %}–{{ event.ends_label }}{% endif %}
+								{% else %}
+									• {% trans "all day" %}
+								{% endif %}
+							</small>
+						</div>
+						<a class="btn btn-sm btn-outline-primary ms-3" href="/admin/calendar?action=edit&amp;id={{ event.id }}">
+							{{ tabler.icon('edit') }} {% trans "Edit" %}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+{% endblock content %}

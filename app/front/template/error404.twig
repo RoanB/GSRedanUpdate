@@ -1,0 +1,17 @@
+{% extends "_default/layout.public.twig" %}
+
+{% block page_title %}Page not found - GS Redan{% endblock page_title %}
+
+{% block content %}
+	<header class="masthead" id="main-content">
+		<div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+			<div class="d-flex justify-content-center">
+				<div class="text-center">
+					<h1 class="h1 mx-auto my-0 text-uppercase">404</h1>
+					<p class="text-white mb-4">{% trans "This page does not exist." %}</p>
+					<a class="btn btn-primary" href="/">{% trans "Back to the homepage" %}</a>
+				</div>
+			</div>
+		</div>
+	</header>
+{% endblock content %}

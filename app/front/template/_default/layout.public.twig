@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{{ env.session.language.name_short }}">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<meta name="description" content="Club de spéléologie situé à Bruxelles (Koekelberg) Belgique, disposant d'un local d'entraînement situé sous la Basilique - Ouvertures de la salle - Entraînement"/>
+	<meta name="keywords" content="Spéléo, Caving, Brussels, Bruxelles, Jeunes, Speleo, Club de spélé Belgique">
+	<meta name="author" content="GS Redan"/>
+	<meta name="robots" content="index, follow"/>
+	<meta name="theme-color" content="#000000"/>
+	<title>{% block page_title %}Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie{% endblock page_title %}</title>
+	<link rel="canonical" href="https://www.gsredan.be/"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:site_name" content="GS Redan"/>
+	<meta property="og:title" content="Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie"/>
+	<meta property="og:description" content="Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique. Le club dispose d'une salle d'entraînement située dans les caves de la Basilique de Koekelberg à Bruxelles."/>
+	<meta property="og:image" content="https://www.gsredan.be/caving-banner.webp"/>
+	<meta property="og:url" content="https://www.gsredan.be/"/>
+	<meta property="og:locale" content="fr_BE"/>
+	<meta property="og:locale:alternate" content="nl_BE"/>
+	<meta property="og:locale:alternate" content="en_GB"/>
+	<meta name="twitter:card" content="summary_large_image"/>
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"url": "https://www.gsredan.be",
+		"sameAs": [
+			"https://gsredan.be",
+			"https://www.facebook.com/GroupeSpeleoRedan/",
+			"https://www.instagram.com/gs_redan"
+		],
+		"logo": "/logo.webp",
+		"name": "GS Redan",
+		"description": "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique.",
+		"email": "contact@gsredan.be"
+	}
+	</script>
+	<link rel="icon" href="/favicon.ico?v=20260918a" type="image/x-icon"/>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260918a" />
+	<link rel="icon" type="image/jpeg" href="/favicon.jpg?v=20260918a" />
+	<link rel="apple-touch-icon" href="/favicon.jpg?v=20260918a" />
+	<link rel="preload" as="image" href="/caving-banner-tiny.webp" media="(max-width: 767.98px)" fetchpriority="high"/>
+	<link rel="preload" as="image" href="/caving-banner-mid.webp" media="(min-width: 768px)" fetchpriority="high"/>
+	<link rel="preload" as="image" href="/caving-banner.webp" media="(min-width: 1920px)" fetchpriority="high"/>
+	<link href="/styles.css?v=20260917b" rel="stylesheet"/>
+	<link rel="alternate" href="https://www.gsredan.be/nl/" hreflang="nl"/>
+	<link rel="alternate" href="https://www.gsredan.be/en/" hreflang="en"/>
+	<link rel="alternate" href="https://www.gsredan.be" hreflang="fr"/>
+</head>
+
+<body id="page-top">
+	<a class="skip-link" href="#main-content">Aller au contenu</a>
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand" href="#page-top"><img class="me-2" src="/logo.webp" width="30" height="40" alt="logo GS Redan">GS Redan</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+				Menu
+				<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ms-auto">
+					{% for nav_item in nav_items %}
+						<li class="nav-item"><a class="nav-link" href="#{{ nav_item.anchor }}">{{ nav_item.title }}</a></li>
+					{% endfor %}
+					<li class="nav-item dropdown pointer d-none d-lg-block">
+						<button type="button" id="language-selector" class="dropdown-toggle nav-link dropdown"
+							data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+							Langue
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="language-selector">
+							{% for language in languages %}
+								<li><a class="dropdown-item" href="?language={{ language.name_short }}" lang="{{ language.name_short }}">{{ language.name_short|upper }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+					<li class="nav-item d-lg-none row">
+						<span>
+							{% for language in languages %}
+								<a class="" href="?language={{ language.name_short }}" lang="{{ language.name_short }}">{{ language.name_short|upper }}</a>
+							{% endfor %}
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	{% block content %}{% endblock content %}
+
+	{# The footer is not a card: it is fixed page chrome rendered from the
+	   settings on every public page. #}
+	{% include "_block/footer.twig" with { 'settings': settings } %}
+
+	<script defer src="/bs5.js"></script>
+	<script defer src="/scripts.js"></script>
+</body>
+</html>

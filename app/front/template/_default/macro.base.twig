@@ -1,0 +1,26 @@
+{% macro pager_count(item_count) %}
+
+	{{ item_count }}
+	{% if item_count == 1 %}{% trans "result" %}
+	{% else %}{% trans "results" %}{% endif %}
+
+{% endmacro %}
+
+{% macro select_country(countries, name, id, selected, multiple = false) %}
+	<select name="{{ name }}" class="form-select" id="{{ id }}" data-live-search="true" {% if multiple %}multiple{% endif %}>
+		{% for group in countries|keys  %}
+			{% if group == 'european' %}
+				<optgroup label="{% trans "European" %}">
+			{% else %}
+				<optgroup label="{% trans "Rest of the world" %}">
+			{% endif %}
+
+			{% for country in countries[group] %}
+				<option value="{{ country.id }}" {% if (not multiple and selected == country.id) or (multiple and country.id in selected) %}selected{% endif %} data-country-vat="{{ country.code }}">
+					{{ country.name }}
+				</option>
+			{% endfor %}
+			</optgroup>
+		{% endfor %}
+	</select>
+{% endmacro %}

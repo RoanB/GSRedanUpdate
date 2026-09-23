@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+ini_set('memory_limit', '512M');
+ini_set('display_errors', 1);
+
+include __DIR__ . '/../../lib/base/Bootstrap.php';
+Bootstrap::boot();
+
+use \Skeleton\Database\Database;
+$db = Database::get();
+// Mailscanner
+$db->query('UPDATE transaction SET completed=1 WHERE id=1', []);
