@@ -1,3 +1,3 @@
-# vvsjongeren
-The new system GSREDAn
+# GSREDAN
+The new system for Gs Redan
 
