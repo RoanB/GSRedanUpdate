@@ -1,0 +1,884 @@
+# .po file for project "front" in English
+
+msgid ""
+msgstr ""
+"Project-Id-Version: front-en.1790854107\n"
+"PO-Revision-Date: 2026-10-01 11:28+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "(hidden: not published)"
+msgstr ""
+
+msgid "1 · To VIEW the calendar (no credentials)"
+msgstr ""
+
+msgid "2 · To EDIT the calendar (secret-token URL)"
+msgstr ""
+
+msgid "3 · One-shot ICS import"
+msgstr ""
+
+msgid "Add card"
+msgstr ""
+
+msgid "Add download"
+msgstr ""
+
+msgid "Add event"
+msgstr ""
+
+msgid "Add file"
+msgstr ""
+
+msgid "Add user"
+msgstr ""
+
+msgid "Address of the venue"
+msgstr ""
+
+msgid "Admin"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "All accounts are admins. Reset passwords by mail."
+msgstr ""
+
+msgid "all day"
+msgstr ""
+
+msgid "All day (dates only, no times in the calendar)"
+msgstr ""
+
+msgid "All pictures are resized on demand; keep originals reasonable (max ~2000px wide recommended)."
+msgstr ""
+
+msgid "Aller au contenu"
+msgstr ""
+
+msgid "Allows editing. Some tools also need the credentials below."
+msgstr ""
+
+msgid "Also the login and reset mail address."
+msgstr ""
+
+msgid "Anchor"
+msgstr ""
+
+msgid "Anchor (menu link)"
+msgstr ""
+
+msgid "Archive"
+msgstr ""
+
+msgid "At least 8 characters."
+msgstr ""
+
+msgid "Back to log in"
+msgstr ""
+
+msgid "Back to login"
+msgstr ""
+
+msgid "Back to the homepage"
+msgstr ""
+
+msgid "breadcrumbs"
+msgstr ""
+
+msgid "Calendar"
+msgstr ""
+
+msgid "Calendar events"
+msgstr ""
+
+msgid "Calendar failed to render"
+msgstr ""
+
+msgid "Calendar in clients"
+msgstr ""
+
+msgid "Calendar link (live)"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Cannot archive yourself"
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "Card could not be added"
+msgstr ""
+
+msgid "Card could not be deleted: fixed cards (masthead, club, contact, Monday openings) are part of the page structure."
+msgstr ""
+
+msgid "Card deleted"
+msgstr ""
+
+msgid "Card image"
+msgstr ""
+
+msgid "Card settings"
+msgstr ""
+
+msgid "Cards"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Category"
+msgstr ""
+
+msgid "Category:"
+msgstr ""
+
+msgid "Check the mail configuration and the contact_email setting, then try again."
+msgstr ""
+
+msgid "Choose a new password"
+msgstr ""
+
+msgid "choose a new password for your account."
+msgstr ""
+
+msgid "City"
+msgstr ""
+
+msgid "Click a row to download."
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "Club address"
+msgstr ""
+
+msgid "Club de spéléologie situé à Bruxelles (Koekelberg) Belgique, disposant d'un local d'entraînement situé sous la Basilique - Ouvertures de la salle - Entraînement"
+msgstr ""
+
+msgid "Collapse"
+msgstr ""
+
+msgid "Colour-coded. Legend below."
+msgstr ""
+
+msgid "Company number"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Contact & extras"
+msgstr ""
+
+msgid "Contains the shared password. Only send to trusted people."
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Content (HTML)"
+msgstr ""
+
+msgid "Content bottom row (HTML)"
+msgstr ""
+
+msgid "Content top row (HTML)"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Current file:"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete event"
+msgstr ""
+
+msgid "Delete this card (with its content, pictures and menu entry)?"
+msgstr ""
+
+msgid "Delete this file?"
+msgstr ""
+
+msgid "Deletes for everyone, including subscribed calendars."
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Display name"
+msgstr ""
+
+msgid "Download .ics"
+msgstr ""
+
+msgid "Download center password"
+msgstr ""
+
+msgid "Downloads"
+msgstr ""
+
+msgid "Drag to reorder. Hidden rows are skipped."
+msgstr ""
+
+msgid "Drag to reorder. The menu follows this order."
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit card"
+msgstr ""
+
+msgid "Edit download"
+msgstr ""
+
+msgid "Edit event"
+msgstr ""
+
+msgid "Edit settings"
+msgstr ""
+
+msgid "Edit user"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "End"
+msgstr ""
+
+msgid "Ends at (Brussels time)"
+msgstr ""
+
+msgid "Event could not be added"
+msgstr ""
+
+msgid "Event name in members list and calendar apps."
+msgstr ""
+
+msgid "Expand"
+msgstr ""
+
+msgid "Facebook de GS Redan"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "File grouping. Only empty categories can be deleted."
+msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid "Files of one category are grouped on the members page."
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "Footer & masthead"
+msgstr ""
+
+msgid "Forgot your password?"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+msgid "FR is the fallback."
+msgstr ""
+
+msgid "Full access link (files + calendar)."
+msgstr ""
+
+msgid "Fullcalendar script missing"
+msgstr ""
+
+msgid "Gallery picture"
+msgstr ""
+
+msgid "Gallery pictures"
+msgstr ""
+
+msgid "Generic card: create and reorder more of these."
+msgstr ""
+
+msgid "Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie"
+msgstr ""
+
+msgid "GS Redan"
+msgstr ""
+
+msgid "GS Redan admin"
+msgstr ""
+
+msgid "GS Redan: reset your password"
+msgstr ""
+
+msgid "Hello"
+msgstr ""
+
+msgid "Hidden"
+msgstr ""
+
+msgid "Homepage cards"
+msgstr ""
+
+msgid "Hover an event for details."
+msgstr ""
+
+msgid "HTML id (e.g. 'salle'). Leave empty for no in-page link."
+msgstr ""
+
+msgid "HTML with syntax highlighting. Use __CONTACT_EMAIL__ for the contact email."
+msgstr ""
+
+msgid "ICS file"
+msgstr ""
+
+msgid "If that address belongs to an admin account, a reset link is on its way. It is valid once, for 24 hours."
+msgstr ""
+
+msgid "If the button does not work, copy this address into your browser:"
+msgstr ""
+
+msgid "Image (bottom row)"
+msgstr ""
+
+msgid "Image (top row)"
+msgstr ""
+
+msgid "Image saved"
+msgstr ""
+
+msgid "Image side"
+msgstr ""
+
+msgid "Image upload failed"
+msgstr ""
+
+msgid "Instagram de GS Redan"
+msgstr ""
+
+msgid "Invalid credentials."
+msgstr ""
+
+msgid "It carries the editing password."
+msgstr ""
+
+msgid "jpeg/png/webp; resized automatically."
+msgstr ""
+
+msgid "Keep the edit URL private"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Language for the reset mail."
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique."
+msgstr ""
+
+msgid "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique. Le club dispose d'une salle d'entraînement située dans les caves de la Basilique de Koekelberg à Bruxelles."
+msgstr ""
+
+msgid "leave empty to keep it."
+msgstr ""
+
+msgid "Leave empty to keep the current password"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Link not valid"
+msgstr ""
+
+msgid "Links work once and expire after 24 hours."
+msgstr ""
+
+msgid "Live link auto-updates; ICS is a snapshot."
+msgstr ""
+
+msgid "Live links auto-update; ICS is a one-time snapshot."
+msgstr ""
+
+msgid "Live preview (not saved)."
+msgstr ""
+
+msgid "loaded but no Calendar export"
+msgstr ""
+
+msgid "Local address"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Location:"
+msgstr ""
+
+msgid "Locked: dates come from the calendar."
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "logo GS Redan"
+msgstr ""
+
+msgid "Manage cards"
+msgstr ""
+
+msgid "Manage events"
+msgstr ""
+
+msgid "Manage files"
+msgstr ""
+
+msgid "Manage users"
+msgstr ""
+
+msgid "Maps link"
+msgstr ""
+
+msgid "Masthead title"
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Members access link"
+msgstr ""
+
+msgid "Members area"
+msgstr ""
+
+msgid "Members files"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Menu label"
+msgstr ""
+
+msgid "Menu label (title)"
+msgstr ""
+
+msgid "Menu label. Leave empty to hide from menu."
+msgstr ""
+
+msgid "Min. 8 characters."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Name (files)"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "New card type"
+msgstr ""
+
+msgid "New cards start hidden at the bottom of the page."
+msgstr ""
+
+msgid "New category name"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "Next ten events."
+msgstr ""
+
+msgid "No category"
+msgstr ""
+
+msgid "no category"
+msgstr ""
+
+msgid "No events yet."
+msgstr ""
+
+msgid "No files available."
+msgstr ""
+
+msgid "No files yet."
+msgstr ""
+
+msgid "No image attached yet."
+msgstr ""
+
+msgid "No pictures uploaded yet."
+msgstr ""
+
+msgid "No upcoming events."
+msgstr ""
+
+msgid "No users yet."
+msgstr ""
+
+msgid "Non-profit organisation"
+msgstr ""
+
+msgid "none"
+msgstr ""
+
+msgid "not loaded"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Number uploaded"
+msgstr ""
+
+msgid "Off"
+msgstr ""
+
+msgid "Official Address"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+msgid "One-time download. Does not update."
+msgstr ""
+
+msgid "Only real images (jpg, png, webp, gif) are accepted."
+msgstr ""
+
+msgid "Open calendar"
+msgstr ""
+
+msgid "Open the link below to choose a new password. If you did not ask for this, you can ignore this email: your current password stays valid."
+msgstr ""
+
+msgid "Open user menu"
+msgstr ""
+
+msgid "Optional."
+msgstr ""
+
+msgid "Optional; timed events only."
+msgstr ""
+
+msgid "Ouvrir le menu de navigation"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password protected. Enter the shared password."
+msgstr ""
+
+msgid "Picture deleted"
+msgstr ""
+
+msgid "Pictures added"
+msgstr ""
+
+msgid "Plain text for the export."
+msgstr ""
+
+msgid "Please fix the errors"
+msgstr ""
+
+msgid "Pre-generics type that still renders; edit content as usual."
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Preview ICS"
+msgstr ""
+
+msgid "Preview of the contact card."
+msgstr ""
+
+msgid "Put __OPENINGS__ where dates go."
+msgstr ""
+
+msgid "Read-only. No login needed."
+msgstr ""
+
+msgid "Read-only. No password needed."
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Repeat new password"
+msgstr ""
+
+msgid "Reset mail not sent"
+msgstr ""
+
+msgid "Reset mail sent"
+msgstr ""
+
+msgid "Reset password"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Same answer whether or not the address is known."
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save card"
+msgstr ""
+
+msgid "Save event"
+msgstr ""
+
+msgid "Save new password"
+msgstr ""
+
+msgid "Save user"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
+
+msgid "Send reset link"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Show password"
+msgstr ""
+
+msgid "Shown on members page and exported to calendars."
+msgstr ""
+
+msgid "Site"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Social"
+msgstr ""
+
+msgid "Someone asked to reset the password of your GS Redan account."
+msgstr ""
+
+msgid "Something went wrong on our end. Please try again later."
+msgstr ""
+
+msgid "Spéléo, Caving, Brussels, Bruxelles, Jeunes, Speleo, Club de spélé Belgique"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "Starts at (Brussels time)"
+msgstr ""
+
+msgid "Street"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "The account can no longer log in."
+msgstr ""
+
+msgid "The amount of pictures is free; the site lays them out in rows of three. Drag rows to reorder (order is saved automatically). Home page shows each picture at 800×600."
+msgstr ""
+
+msgid "The contact card is generated entirely from the club settings: both addresses, the e-mail address and the social links. There is nothing to edit here — change the values on the Settings screen. The card can be reordered and shown or hidden from the Cards list."
+msgstr ""
+
+msgid "The link is only valid once, and expires 24 hours after this email was sent."
+msgstr ""
+
+msgid "The masthead is the fixed hero of the page and cannot be moved."
+msgstr ""
+
+msgid "The next ten scheduled events, hidden ones included and flagged."
+msgstr ""
+
+msgid "The user picks the new password from the link in the mail."
+msgstr ""
+
+msgid "This fixed singular card renders with its own layout and cannot be duplicated or deleted."
+msgstr ""
+
+msgid "This page does not exist."
+msgstr ""
+
+msgid "This reset link is no longer valid."
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Toggle navigation"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Unlock"
+msgstr ""
+
+msgid "Upcoming events"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "Upload image"
+msgstr ""
+
+msgid "Upload new image"
+msgstr ""
+
+msgid "Upload pictures"
+msgstr ""
+
+msgid "Use Reset password on the Users screen to mail a link."
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "User archived"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "View site"
+msgstr ""
+
+msgid "Visibility"
+msgstr ""
+
+msgid "Visible"
+msgstr ""
+
+msgid "Visible on members page, ICS export and CalDAV."
+msgstr ""
+
+msgid "Visible on site"
+msgstr ""
+
+msgid "Wrong password, try again."
+msgstr ""
+
+msgid "you"
+msgstr ""
+
+msgid "You are currently working in a test environment."
+msgstr ""
+
+msgid "You are logged out."
+msgstr ""
+
+msgid "You do not have permission to view this page."
+msgstr ""
+
+msgid "You would lock yourself out of the admin."
+msgstr ""
+
+msgid "Your new password is saved. Log in with it below."
+msgstr ""
+
+msgid "your@email.com"
+msgstr ""
+
+msgid "Zip"
+msgstr ""
+
+
+msgid "Masthead hero"
+msgstr ""
+
+msgid "Club text card"
+msgstr ""
+
+msgid "Contact card"
+msgstr ""
+
+msgid "Monday openings card (calendar-fed)"
+msgstr ""
+
+msgid "Activity card (light background)"
+msgstr ""
+
+msgid "Activity card (dark background)"
+msgstr ""
+
+msgid "Activity 2-row card (light background)"
+msgstr ""
+
+msgid "Activity 2-row card (dark background)"
+msgstr ""
+
+msgid "Gallery card (pictures row)"
+msgstr ""
+
+msgid "Announcement card"
+msgstr ""
+
+msgid "One image next to one text block, on a light background."
+msgstr ""
+
+msgid "One image next to one text block, on a dark background."
+msgstr ""
+
+msgid "Two images and two text blocks on one light card."
+msgstr ""
+
+msgid "Two images and two text blocks on one dark card."
+msgstr ""
+
+msgid "A row of pictures that open full size in a lightbox."
+msgstr ""
+
+msgid "A highlighted banner for news, without image."
+msgstr ""

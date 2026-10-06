@@ -1,0 +1,77 @@
+{% extends "_default/layout.base.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% block header_title %}{% if user.id > 0 %}{% trans "Edit user" %}{% else %}{% trans "Add user" %}{% endif %}{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item"><a href="/admin/user">{% trans "Users" %}</a></li>
+	<li class="breadcrumb-item active">
+		{% if user.id > 0 %}{% trans "Edit user" %}{% else %}{% trans "Add user" %}{% endif %}
+	</li>
+{% endblock header_breadcrumb %}
+
+{% block content %}
+	{% if errors is defined and errors|length > 0 %}
+		{{ tabler.alert('danger', 'Please fix the errors'|trans, tabler.show_errors(errors)) }}
+	{% endif %}
+	<form method="post" action="{% if user.id > 0 %}/admin/user?action=edit&amp;id={{ user.id }}{% else %}/admin/user?action=add{% endif %}">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "User" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label class="form-label">{% trans "Email" %}</label>
+							<input type="email" name="email" class="form-control" value="{{ user.email }}" required>
+							<small class="form-hint">{% trans "Also the login and reset mail address." %}</small>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="mb-3">
+									<label class="form-label">{% trans "First name" %}</label>
+									<input type="text" name="firstname" class="form-control" value="{{ user.firstname }}" required>
+								</div>
+							</div>
+							<div class="col">
+								<div class="mb-3">
+									<label class="form-label">{% trans "Last name" %}</label>
+									<input type="text" name="lastname" class="form-control" value="{{ user.lastname }}" required>
+								</div>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{% trans "Language" %}</label>
+							<select name="language_id" class="form-select">
+								{% for language in languages %}
+									<option value="{{ language.id }}"{% if user.language_id == language.id %} selected{% endif %}>{{ language.name }}</option>
+								{% endfor %}
+							</select>
+							<small class="form-hint">{% trans "Language for the reset mail." %}</small>
+						</div>
+						{% if user.id == 0 %}
+							<div class="mb-0">
+								<label class="form-label">{% trans "Password" %}</label>
+								<input type="password" name="password" class="form-control" autocomplete="new-password" minlength="8" required>
+								<small class="form-hint">{% trans "Min. 8 characters." %}</small>
+							</div>
+						{% else %}
+							<div class="alert alert-info mb-0">
+								{{ tabler.icon('info-circle') }}
+								{% trans "Use Reset password on the Users screen to mail a link." %}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="card">
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary w-100">{{ tabler.icon('save') }} {% trans "Save user" %}</button>
+						<a class="btn btn-link w-100" href="/admin/user">{% trans "Cancel" %}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock content %}

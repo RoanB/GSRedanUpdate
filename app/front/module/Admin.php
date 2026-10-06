@@ -5,32 +5,16 @@ declare(strict_types=1);
 /**
  * Admin
  *
- * Admin dashboard at /admin. Shows overview counts and quick links. All
- * Admin\* modules are gated by secure() which requires an admin session.
+ * Admin dashboard at /admin. Shows overview counts and quick links. The
+ * admin session check lives in Admin\Base, which every admin module
+ * extends.
  *
  * @author Roan Buysse <roan@tigron.be>
  */
 
 namespace App\Front\Module;
 
-class Admin extends \Skeleton\Application\Web\Module {
-	/**
-	 * Login required
-	 *
-	 * @var bool $login_required
-	 */
-	protected bool $login_required = true;
-
-	/**
-	 * Secure
-	 *
-	 * @access public
-	 * @return bool
-	 */
-	public function secure(): bool {
-		return isset($_SESSION['user']) && $_SESSION['user']->is_admin();
-	}
-
+class Admin extends Admin\Base {
 	/**
 	 * Display the dashboard
 	 *
@@ -43,8 +27,9 @@ class Admin extends \Skeleton\Application\Web\Module {
 
 		$template->assign('block_count', \Block::count_all());
 		$template->assign('block_active_count', \Block::count_active());
-		$template->assign('download_count', count(\Download_File::get_all_ordered()));
-		$template->assign('calendar_count', count(\Calendar_Event::get_all_ordered()));
+		$template->assign('download_count', \Download_File::count_all());
+		$template->assign('calendar_count', \Calendar_Event::count_all());
+		$template->assign('user_count', \User::count_all());
 		$template->assign('calendar_upcoming', $this->get_calendar_upcoming());
 	}
 

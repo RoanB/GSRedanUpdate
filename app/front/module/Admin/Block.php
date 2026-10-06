@@ -18,24 +18,7 @@ declare(strict_types=1);
 
 namespace App\Front\Module\Admin;
 
-class Block extends \Skeleton\Application\Web\Module {
-	/**
-	 * Login required
-	 *
-	 * @var bool $login_required
-	 */
-	protected bool $login_required = true;
-
-	/**
-	 * Secure
-	 *
-	 * @access public
-	 * @return bool
-	 */
-	public function secure(): bool {
-		return isset($_SESSION['user']) && $_SESSION['user']->is_admin();
-	}
-
+class Block extends Base {
 	/**
 	 * List the blocks
 	 *
@@ -64,7 +47,7 @@ class Block extends \Skeleton\Application\Web\Module {
 			$rows[] = [
 				'id' => $block->id,
 				'type' => $block->type,
-				'type_label' => \Block::TYPE_LABELS[$block->type] ?? $block->type,
+				'type_label' => \Block::get_type_label($block->type),
 				'kind' => $kind,
 				'anchor' => $block->anchor,
 				'title' => $title,
@@ -77,7 +60,8 @@ class Block extends \Skeleton\Application\Web\Module {
 		foreach (\Block::CREATABLE_TYPES as $type) {
 			$creatable_types[] = [
 				'key' => $type,
-				'label' => \Block::TYPE_LABELS[$type] ?? $type,
+				'label' => \Block::get_type_label($type),
+				'explanation' => \Block::get_type_explanation($type),
 			];
 		}
 
@@ -103,7 +87,7 @@ class Block extends \Skeleton\Application\Web\Module {
 		$type = $_POST['type'];
 
 		if (in_array($type, \Block::CREATABLE_TYPES, true) === false) {
-			\Skeleton\Core\Http\Session::redirect('/admin/block?add_failed=1');
+			$this->redirect_with_message('/admin/block', 'add_failed');
 		}
 
 		$block = new \Block();
@@ -113,7 +97,7 @@ class Block extends \Skeleton\Application\Web\Module {
 
 		$errors = [];
 		if ($block->validate($errors) === false) {
-			\Skeleton\Core\Http\Session::redirect('/admin/block?add_failed=1');
+			$this->redirect_with_message('/admin/block', 'add_failed');
 		}
 
 		$block->save();
@@ -202,7 +186,7 @@ class Block extends \Skeleton\Application\Web\Module {
 					$translation->save();
 				}
 
-				\Skeleton\Core\Http\Session::redirect('/admin/block?saved=1');
+				$this->redirect_with_message('/admin/block', 'saved');
 			}
 		}
 
@@ -220,7 +204,7 @@ class Block extends \Skeleton\Application\Web\Module {
 			$template->assign('pair_split', $pair_split);
 		}
 
-		if (in_array($block->type, [ 'monday_openings', 'activities_light', 'activities_dark' ], true) === true) {
+		if (in_array($block->type, [ 'monday_openings', 'activities_light', 'activities_dark', 'masthead' ], true) === true) {
 			$template->assign('image', $this->get_block_image($block));
 		}
 
@@ -264,6 +248,7 @@ class Block extends \Skeleton\Application\Web\Module {
 			$block->type === 'activities_light'
 			|| $block->type === 'activities_dark'
 			|| $block->type === 'monday_openings'
+			|| $block->type === 'masthead'
 			|| $block->is_pair() === true
 		);
 
@@ -278,7 +263,7 @@ class Block extends \Skeleton\Application\Web\Module {
 		try {
 			$uploaded = \File::upload($_FILES['file']);
 		} catch (\Exception $e) {
-			\Skeleton\Core\Http\Session::redirect('/admin/block?action=edit&id=' . $block->id . '&image_failed=1');
+			$this->redirect_with_message('/admin/block?action=edit&id=' . $block->id, 'image_failed');
 		}
 
 		// get_by_id resolves images to \Skeleton\File\Picture\Picture and
@@ -288,7 +273,7 @@ class Block extends \Skeleton\Application\Web\Module {
 		if ($file instanceof \Skeleton\File\Picture\Picture === false) {
 			// Not an image: the file row and stored bytes are dead weight.
 			$uploaded->delete();
-			\Skeleton\Core\Http\Session::redirect('/admin/block?action=edit&id=' . $block->id . '&image_failed=1');
+			$this->redirect_with_message('/admin/block?action=edit&id=' . $block->id, 'image_failed');
 		}
 
 		// Remove the old image (if any) to avoid dead files.
@@ -305,7 +290,7 @@ class Block extends \Skeleton\Application\Web\Module {
 		}
 		$block->save();
 
-		\Skeleton\Core\Http\Session::redirect('/admin/block?action=edit&id=' . $block->id . '&image_saved=1');
+		$this->redirect_with_message('/admin/block?action=edit&id=' . $block->id, 'image_saved');
 	}
 
 	/**
@@ -419,25 +404,6 @@ class Block extends \Skeleton\Application\Web\Module {
 	}
 
 	/**
-	 * Assign one image slot of a block (row 1 or row 2) for the preview
-	 *
-	 * @access private
-	 * @param \Skeleton\Application\Web\Template $template
-	 * @param \Block $block
-	 * @param int $slot
-	 */
-	private function assign_block_image($template, \Block $block, int $slot): void {
-		$file_id = $slot === 1 ? (int)$block->file_id : (int)$block->file_id_2;
-
-		try {
-			$picture = \Skeleton\File\Picture\Picture::get_by_id((int)$block->file_id);
-			$this->assign_image($template, $block, $slot === 2 ? $block->id . '_2' : $block->id, (int)$block->file_id, (int)$picture->width, (int)$picture->height);
-		} catch (\Exception $e) {
-			return;
-		}
-	}
-
-	/**
 	 * Upload a picture into a gallery card (multipart, multiple allowed)
 	 *
 	 * @access public
@@ -453,7 +419,7 @@ class Block extends \Skeleton\Application\Web\Module {
 		}
 
 		if (isset($_FILES['files']) === false) {
-			\Skeleton\Core\Http\Session::redirect('/admin/block?action=edit&id=' . $block->id . '&image_failed=1');
+			$this->redirect_with_message('/admin/block?action=edit&id=' . $block->id, 'image_failed');
 		}
 
 		$uploaded_count = 0;
@@ -485,7 +451,7 @@ class Block extends \Skeleton\Application\Web\Module {
 			$uploaded_count++;
 		}
 
-		\Skeleton\Core\Http\Session::redirect('/admin/block?action=edit&id=' . $block->id . '&pictures_saved=' . $uploaded_count);
+		$this->redirect_with_message('/admin/block?action=edit&id=' . $block->id, 'pictures_saved', $uploaded_count);
 	}
 
 	/**
@@ -502,7 +468,7 @@ class Block extends \Skeleton\Application\Web\Module {
 		try {
 			$block_picture = \Block_Picture::get_by_id($block_picture_id);
 		} catch (\Exception $e) {
-			\Skeleton\Core\Http\Session::redirect('/admin/block?action=edit&id=' . $block_id . '&image_failed=1');
+			$this->redirect_with_message('/admin/block?action=edit&id=' . $block_id, 'image_failed');
 		}
 
 		if ((int)$block_picture->block_id !== $block_id) {
@@ -511,7 +477,7 @@ class Block extends \Skeleton\Application\Web\Module {
 
 		$block_picture->delete();
 
-		\Skeleton\Core\Http\Session::redirect('/admin/block?action=edit&id=' . $block_id . '&pictures_deleted=1');
+		$this->redirect_with_message('/admin/block?action=edit&id=' . $block_id, 'pictures_deleted');
 	}
 
 	/**
@@ -615,10 +581,10 @@ class Block extends \Skeleton\Application\Web\Module {
 		try {
 			$block->delete();
 		} catch (\Exception $e) {
-			\Skeleton\Core\Http\Session::redirect('/admin/block?delete_failed=1');
+			$this->redirect_with_message('/admin/block', 'delete_failed');
 		}
 
-		\Skeleton\Core\Http\Session::redirect('/admin/block?deleted=1');
+		$this->redirect_with_message('/admin/block', 'deleted');
 	}
 
 	public function display_visibility(): void {

@@ -1,0 +1,20 @@
+{% extends "_default/layout.public.twig" %}
+
+{% block page_title %}Access denied - GS Redan{% endblock page_title %}
+
+{% block content %}
+	{# error-masthead: same geometry as the homepage masthead, but with the
+	   background photo swapped for a plain gradient. The art is decorative, so
+	   it is hidden from screen readers; the status and the message below carry
+	   the meaning. #}
+	<header class="masthead error-masthead" id="main-content">
+		<div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+			<div class="text-center error-content">
+				{% include "_default/error_art.twig" %}
+				<div class="error-code">403</div>
+				<p class="mb-4 error-message">{% trans "You do not have permission to view this page." %}</p>
+				<a class="btn btn-primary btn-lg" href="/">{% trans "Back to the homepage" %}</a>
+			</div>
+		</div>
+	</header>
+{% endblock content %}

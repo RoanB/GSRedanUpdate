@@ -7,8 +7,23 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if env.get.saved is defined %}
+	{% if sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
+	{% endif %}
+
+	{% if members_url %}
+		<div class="card mb-3">
+			<div class="card-header">
+				<div>
+					<h3 class="card-title">{% trans "Members access link" %}</h3>
+					<div class="card-subtitle mt-1">{% trans "Full access link (files + calendar)." %}</div>
+				</div>
+			</div>
+			<div class="card-body">
+				{{ tabler.copy_input(members_url, 'members-access-url') }}
+				<small class="form-hint text-danger">{% trans "Contains the shared password. Only send to trusted people." %}</small>
+			</div>
+		</div>
 	{% endif %}
 
 	<div class="row">
@@ -17,7 +32,7 @@
 				<div class="card-header">
 					<div>
 						<h3 class="card-title">{% trans "Members files" %}</h3>
-						<div class="card-subtitle mt-1">{% trans "Files of the members area. Drag to reorder inside the list; order is shared across categories (position counts the page as a whole). Hidden rows are skipped on the members page as well." %}</div>
+						<div class="card-subtitle mt-1">{% trans "Drag to reorder. Hidden rows are skipped." %}</div>
 					</div>
 					<div class="card-actions">
 						<a href="/admin/download?action=edit" class="btn btn-sm btn-primary">
@@ -41,7 +56,12 @@
 							{% for file in files %}
 								<tr data-id="{{ file.id }}" class="sortable-row">
 									<td><span class="text-secondary cursor-grab">{{ tabler.icon('grip-vertical') }}</span></td>
-									<td>{{ file.name }}</td>
+									<td>
+										{{ file.name }}
+										{% if file.share_url %}
+											{{ tabler.copy_input(file.share_url, 'share-url-' ~ file.id) }}
+										{% endif %}
+									</td>
 									<td>
 										{% set file_category_name = '' %}
 										{% for category in categories %}{% if category.id == file.category_id %}{% set file_category_name = category.name %}{% endif %}{% endfor %}
@@ -61,6 +81,9 @@
 										<a class="btn btn-sm btn-outline-primary" href="/admin/download?action=edit&amp;id={{ file.id }}">
 											{{ tabler.icon('edit') }} {% trans "Edit" %}
 										</a>
+										<a class="btn btn-sm btn-outline-danger" href="/admin/download?action=delete&amp;id={{ file.id }}" onclick="return confirm('{% trans "Delete this file?" %}');">
+											{{ tabler.icon('trash') }} {% trans "Delete" %}
+										</a>
 									</td>
 								</tr>
 							{% endfor %}
@@ -77,7 +100,7 @@
 				<div class="card-header">
 					<div>
 						<h3 class="card-title">{% trans "Categories" %}</h3>
-						<div class="card-subtitle mt-1">{% trans "Grouping of the members file list. A category without visible files is not shown on the members page; only empty ones (no files at all) can be deleted." %}</div>
+						<div class="card-subtitle mt-1">{% trans "File grouping. Only empty categories can be deleted." %}</div>
 					</div>
 				</div>
 				<div class="table-responsive">
@@ -89,10 +112,16 @@
 							{% for category in categories %}
 								<tr data-id="{{ category.id }}" class="sortable-row">
 									<td><span class="text-secondary cursor-grab">{{ tabler.icon('grip-vertical') }}</span></td>
-									<td>
-										{{ category.name }}
-										<span class="text-secondary small d-block">({{ category.file_count }})</span>
-									</td>
+								<td>
+									<form method="post" action="/admin/download?action=rename_category" class="d-flex gap-2 align-items-center">
+										<input type="hidden" name="id" value="{{ category.id }}">
+										<input type="text" name="name" class="form-control form-control-sm" value="{{ category.name }}" required>
+										<button type="submit" class="btn btn-sm btn-outline-primary" title="{% trans "Rename" %}">
+											{{ tabler.icon('edit') }}
+										</button>
+									</form>
+									<span class="text-secondary small d-block">({{ category.file_count }})</span>
+								</td>
 									<td>
 										<button type="button" class="btn btn-sm {% if category.visible %}btn-success{% else %}btn-outline-secondary{% endif %} visibility-toggle" data-visibility-url="/admin/download?action=category_visibility" data-id="{{ category.id }}" data-label-on="{% trans "On" %}" data-label-off="{% trans "Off" %}">
 											{% if category.visible %}{% trans "On" %}{% else %}{% trans "Off" %}{% endif %}

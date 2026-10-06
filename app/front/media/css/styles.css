@@ -10,7 +10,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@keyframes progress-bar-stripes{0%{background-position-x:1rem}}@keyframes spinner-border{to{transform:rotate(360deg)}}@keyframes spinner-grow{0%{transform:scale(0)}50%{opacity:1;transform:none}}@keyframes placeholder-glow{50%{opacity:.2}}@keyframes placeholder-wave{to{-webkit-mask-position:-200%0;mask-position:-200%0}}:root{--bs-blue:#043a8a;--bs-indigo:#4200ac;--bs-purple:#7464a1;--bs-pink:#a90155;--bs-red:#a16468;--bs-orange:#dc6402;--bs-yellow:#f0ba0a;--bs-green:#67c29c;--bs-teal:#6F8227;--bs-cyan:#1cabc4;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-gray-100:#f8f9fa;--bs-gray-200:#e9ecef;--bs-gray-300:#dee2e6;--bs-gray-400:#ced4da;--bs-gray-500:#adb5bd;--bs-gray-600:#6c757d;--bs-gray-700:#495057;--bs-gray-800:#343a40;--bs-gray-900:#212529;--bs-primary:#6F8227;--bs-secondary:#7464a1;--bs-success:#67c29c;--bs-info:#1cabc4;--bs-warning:#e4c662;--bs-danger:#a16468;--bs-light:#f8f9fa;--bs-dark:#212529;--bs-black:#000;--bs-white:#fff;--bs-primary-rgb:100, 161, 157;--bs-secondary-rgb:116, 100, 161;--bs-success-rgb:103, 194, 156;--bs-info-rgb:28, 171, 196;--bs-warning-rgb:228, 198, 98;--bs-danger-rgb:161, 100, 104;--bs-light-rgb:248, 249, 250;--bs-dark-rgb:33, 37, 41;--bs-white-rgb:255, 255, 255;--bs-black-rgb:0, 0, 0;--bs-body-color-rgb:33, 37, 41;--bs-body-bg-rgb:255, 255, 255;--bs-font-sans-serif:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--bs-font-monospace:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));--bs-body-font-family:Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#212529;--bs-body-bg:#fff;--bs-border-width:1px;--bs-border-style:solid;--bs-border-color:#dee2e6;--bs-border-color-translucent:rgba(0, 0, 0, 0.175);--bs-border-radius:0.375rem;--bs-border-radius-sm:0.25rem;--bs-border-radius-lg:0.5rem;--bs-border-radius-xl:1rem;--bs-border-radius-2xl:2rem;--bs-border-radius-pill:50rem;--bs-link-color:#6F8227;--bs-link-color-lightlight-link:#BEDB32;--bs-link-hover-color:#50817e;--bs-code-color:#d63384;--bs-highlight-bg:#faf4e0}*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}.tight-heading{letter-spacing:0!important;line-height:1.1!important;margin-bottom:0!important}.pointer{cursor:pointer}body{margin:0;font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);color:var(--bs-body-color);text-align:var(--bs-body-text-align);background-color:var(--bs-body-bg);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;letter-spacing:.02em}hr{margin:1rem 0;color:inherit;border:0;border-top:1px solid;opacity:.25}.h1,.h2,.h3,.h4,h1,h2,h3,h4{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}.h1,h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){.h1,h1{font-size:2.5rem}}.h2,h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){.h2,h2{font-size:2rem}}.h3,h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){.h3,h3{font-size:1.75rem}}.h4,h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){.h4,h4{font-size:1.5rem}}p{margin-top:0}address,p,ul{margin-bottom:1rem}address{font-style:normal;line-height:inherit}ul{padding-left:2rem;margin-top:0}ul ul{margin-bottom:0}strong{font-weight:bolder}.small,small{font-size:.875em}.light-link,a{color:var(--bs-link-color);text-decoration:underline}.light-link{color:var(--bs-link-color-light)!important}a:hover{color:var(--bs-link-hover-color)}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}img,svg{vertical-align:middle}button{border-radius:0;margin:0;font-family:inherit;font-size:inherit;line-height:inherit;text-transform:none}button:focus:not(:focus-visible){outline:0}[type=button],button{-webkit-appearance:button}[type=button]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit;-webkit-appearance:button}.img-fluid{max-width:100%;min-width:100%;height:auto}.container{--bs-gutter-x:1.5rem;--bs-gutter-y:0;width:100%;padding-right:calc(var(--bs-gutter-x)*.5);padding-left:calc(var(--bs-gutter-x)*.5);margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}@media (min-width:1400px){.container{max-width:1320px}}.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(-1*var(--bs-gutter-y));margin-right:calc(-.5*var(--bs-gutter-x));margin-left:calc(-.5*var(--bs-gutter-x))}.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)*.5);padding-left:calc(var(--bs-gutter-x)*.5);margin-top:var(--bs-gutter-y)}.gx-0{--bs-gutter-x:0}.gx-4{--bs-gutter-x:1.5rem}.gy-4{--bs-gutter-y:1.5rem}@media (min-width:768px){.col-md-4{flex:0 0 auto;width:33.33333333%}}@media (min-width:992px){.col-lg-4{flex:0 0 auto;width:33.33333333%}.col-lg-5,.col-lg-6{flex:0 0 auto;width:41.66666667%}.col-lg-6{width:50%}.col-lg-7,.col-lg-8{flex:0 0 auto;width:58.33333333%}.col-lg-8{width:66.66666667%}.gx-lg-5{--bs-gutter-x:3rem}}@media (min-width:1200px){.col-xl-4,.col-xl-8{flex:0 0 auto;width:33.33333333%}.col-xl-8{width:66.66666667%}}.fade{transition:opacity .15s linear}@media (prefers-reduced-motion:reduce){.fade{transition:none}}.fade:not(.show){opacity:0}.collapse:not(.show){display:none}.collapsing{height:0;overflow:hidden;transition:height .35s ease}@media (prefers-reduced-motion:reduce){.collapsing{transition:none}}.dropdown{position:relative}.dropdown-toggle{white-space:nowrap}.dropdown-toggle::after{display:inline-block;margin-left:.255em;vertical-align:.255em;content:"";border-top:.3em solid;border-right:.3em solid transparent;border-bottom:0;border-left:.3em solid transparent}.dropdown-toggle:empty::after{margin-left:0}.dropdown-menu{--bs-dropdown-zindex:1000;--bs-dropdown-min-width:10rem;--bs-dropdown-padding-x:0;--bs-dropdown-padding-y:0.5rem;--bs-dropdown-spacer:0.125rem;--bs-dropdown-font-size:1rem;--bs-dropdown-color:#212529;--bs-dropdown-bg:#fff;--bs-dropdown-border-color:var(--bs-border-color-translucent);--bs-dropdown-border-radius:0.375rem;--bs-dropdown-border-width:1px;--bs-dropdown-inner-border-radius:calc(0.375rem - 1px);--bs-dropdown-divider-bg:var(--bs-border-color-translucent);--bs-dropdown-divider-margin-y:0.5rem;--bs-dropdown-box-shadow:0 0.5rem 1rem rgba(0, 0, 0, 0.15);--bs-dropdown-link-color:#212529;--bs-dropdown-link-hover-color:#1e2125;--bs-dropdown-link-hover-bg:#e9ecef;--bs-dropdown-link-active-color:#fff;--bs-dropdown-link-active-bg:#6F8227;--bs-dropdown-link-disabled-color:#adb5bd;--bs-dropdown-item-padding-x:1rem;--bs-dropdown-item-padding-y:0.25rem;--bs-dropdown-header-color:#6c757d;--bs-dropdown-header-padding-x:1rem;--bs-dropdown-header-padding-y:0.5rem;position:absolute;z-index:var(--bs-dropdown-zindex);display:none;min-width:var(--bs-dropdown-min-width);padding:var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);margin:0;font-size:var(--bs-dropdown-font-size);color:var(--bs-dropdown-color);text-align:left;list-style:none;background-color:var(--bs-dropdown-bg);background-clip:padding-box;border:var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);border-radius:var(--bs-dropdown-border-radius)}.dropdown-item{display:block;width:100%;padding:var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);clear:both;font-weight:400;color:var(--bs-dropdown-link-color);text-align:inherit;text-decoration:none;white-space:nowrap;background-color:transparent;border:0}.dropdown-item:focus,.dropdown-item:hover{color:var(--bs-dropdown-link-hover-color);background-color:var(--bs-dropdown-link-hover-bg)}.dropdown-item.active,.dropdown-item:active{color:var(--bs-dropdown-link-active-color);text-decoration:none;background-color:var(--bs-dropdown-link-active-bg)}.dropdown-item:disabled{color:var(--bs-dropdown-link-disabled-color);pointer-events:none;background-color:transparent}.dropdown-menu.show{display:block}.nav{--bs-nav-link-padding-x:1rem;--bs-nav-link-padding-y:0.5rem;--bs-nav-link-color:var(--bs-link-color);--bs-nav-link-hover-color:var(--bs-link-hover-color);--bs-nav-link-disabled-color:#6c757d;display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);font-size:var(--bs-nav-link-font-size);font-weight:var(--bs-nav-link-font-weight);color:var(--bs-nav-link-color);text-decoration:none;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out}@media (prefers-reduced-motion:reduce){.nav-link{transition:none}}.nav-link:focus,.nav-link:hover{color:var(--bs-nav-link-hover-color)}.navbar,.navbar>.container{display:flex;align-items:center;justify-content:space-between}.navbar{--bs-navbar-padding-x:0;--bs-navbar-padding-y:0.5rem;--bs-navbar-color:rgba(0, 0, 0, 0.55);--bs-navbar-hover-color:rgba(0, 0, 0, 0.7);--bs-navbar-disabled-color:rgba(0, 0, 0, 0.3);--bs-navbar-active-color:rgba(0, 0, 0, 0.9);--bs-navbar-brand-padding-y:0.3125rem;--bs-navbar-brand-margin-end:1rem;--bs-navbar-brand-font-size:1.25rem;--bs-navbar-brand-color:rgba(0, 0, 0, 0.9);--bs-navbar-brand-hover-color:rgba(0, 0, 0, 0.9);--bs-navbar-nav-link-padding-x:0.5rem;--bs-navbar-toggler-padding-y:0.25rem;--bs-navbar-toggler-padding-x:0.75rem;--bs-navbar-toggler-font-size:1.25rem;--bs-navbar-toggler-icon-bg:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");--bs-navbar-toggler-border-color:rgba(0, 0, 0, 0.1);--bs-navbar-toggler-border-radius:0.375rem;--bs-navbar-toggler-focus-width:0.25rem;--bs-navbar-toggler-transition:box-shadow 0.15s ease-in-out;position:relative;flex-wrap:wrap;padding:var(--bs-navbar-padding-y) var(--bs-navbar-padding-x)}.navbar>.container{flex-wrap:inherit}.navbar-brand{padding-top:var(--bs-navbar-brand-padding-y);padding-bottom:var(--bs-navbar-brand-padding-y);margin-right:var(--bs-navbar-brand-margin-end);font-size:var(--bs-navbar-brand-font-size);color:var(--bs-navbar-brand-color);text-decoration:none;white-space:nowrap}.navbar-brand:focus,.navbar-brand:hover{color:var(--bs-navbar-brand-hover-color)}.navbar-nav{--bs-nav-link-padding-x:0;--bs-nav-link-padding-y:0.5rem;--bs-nav-link-font-weight: ;--bs-nav-link-color:var(--bs-navbar-color);--bs-nav-link-hover-color:var(--bs-navbar-hover-color);--bs-nav-link-disabled-color:var(--bs-navbar-disabled-color);display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link.active,.navbar-nav .show>.nav-link{color:var(--bs-navbar-active-color)}.navbar-nav .dropdown-menu{position:static}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);font-size:var(--bs-navbar-toggler-font-size);line-height:1;color:var(--bs-navbar-color);background-color:transparent;border:var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);border-radius:var(--bs-navbar-toggler-border-radius);transition:var(--bs-navbar-toggler-transition)}@media (prefers-reduced-motion:reduce){.navbar-toggler{transition:none}}.navbar-toggler:hover{text-decoration:none}.navbar-toggler:focus{text-decoration:none;outline:0;box-shadow:0 0 0 var(--bs-navbar-toggler-focus-width)}@media (min-width:992px){.navbar-expand-lg{flex-wrap:nowrap;justify-content:flex-start}.navbar-expand-lg .navbar-nav{flex-direction:row}.navbar-expand-lg .navbar-nav .dropdown-menu{position:absolute}.navbar-expand-lg .navbar-nav .nav-link{padding-right:var(--bs-navbar-nav-link-padding-x);padding-left:var(--bs-navbar-nav-link-padding-x)}.navbar-expand-lg .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-lg .navbar-toggler{display:none}}.card{--bs-card-spacer-y:1rem;--bs-card-spacer-x:1rem;--bs-card-title-spacer-y:0.5rem;--bs-card-border-width:1px;--bs-card-border-color:var(--bs-border-color-translucent);--bs-card-border-radius:0.375rem;--bs-card-box-shadow: ;--bs-card-inner-border-radius:calc(0.375rem - 1px);--bs-card-cap-padding-y:0.5rem;--bs-card-cap-padding-x:1rem;--bs-card-cap-bg:rgba(0, 0, 0, 0.03);--bs-card-cap-color: ;--bs-card-height: ;--bs-card-color: ;--bs-card-bg:#fff;--bs-card-img-overlay-padding:1rem;--bs-card-group-margin:0.75rem;position:relative;display:flex;flex-direction:column;min-width:0;height:var(--bs-card-height);word-wrap:break-word;background-color:var(--bs-card-bg);background-clip:border-box;border:var(--bs-card-border-width) solid var(--bs-card-border-color);border-radius:var(--bs-card-border-radius)}.card>hr{margin-right:0;margin-left:0}.card-body{flex:1 1 auto;padding:var(--bs-card-spacer-y) var(--bs-card-spacer-x);color:var(--bs-card-color)}.fixed-top{position:fixed;top:0;right:0;left:0;z-index:1030}.d-flex{display:flex!important}.d-none{display:none!important}.w-100{width:100%!important}.h-100{height:100%!important}.justify-content-center{justify-content:center!important}.align-items-center{align-items:center!important}.m-0{margin:0!important}.mx-2{margin-right:.5rem!important;margin-left:.5rem!important}.mx-auto{margin-right:auto!important;margin-left:auto!important}.my-0{margin-top:0!important;margin-bottom:0!important}.my-3{margin-top:1rem!important;margin-bottom:1rem!important}.my-4{margin-top:1.5rem!important;margin-bottom:1.5rem!important}.my-auto{margin-top:auto!important;margin-bottom:auto!important}.mt-2{margin-top:.5rem!important}.mt-4{margin-top:1.5rem!important}.me-2{margin-right:.5rem!important}.mb-0{margin-bottom:0!important}.mb-3{margin-bottom:1rem!important}.mb-4{margin-bottom:1.5rem!important}.mb-5{margin-bottom:3rem!important}.ms-auto{margin-left:auto!important}.px-4{padding-right:1.5rem!important;padding-left:1.5rem!important}.py-4{padding-top:1.5rem!important;padding-bottom:1.5rem!important}.text-center{text-align:center!important}.text-uppercase{text-transform:uppercase!important}.text-black,.text-white{--bs-text-opacity:1;color:rgba(var(--bs-black-rgb),var(--bs-text-opacity))!important}.text-white{color:rgba(var(--bs-white-rgb),var(--bs-text-opacity))!important}.text-black-50{--bs-text-opacity:1;color:rgba(0,0,0,.5)!important}.bg-black,.bg-light{--bs-bg-opacity:1;background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important}.bg-black{background-color:rgba(var(--bs-black-rgb),var(--bs-bg-opacity))!important}.rounded{border-radius:var(--bs-border-radius)!important}@media (min-width:992px){.rounded-top-end{border-top-right-radius:var(--bs-border-radius)!important}.rounded-top-start{border-top-left-radius:var(--bs-border-radius)!important}.rounded-bottom-start{border-bottom-left-radius:var(--bs-border-radius)!important}.rounded-bottom-end{border-bottom-right-radius:var(--bs-border-radius)!important}}@media (max-width:992px){.rounded-sm-top{border-top-left-radius:var(--bs-border-radius)!important;border-top-right-radius:var(--bs-border-radius)!important}.rounded-sm-bottom{border-bottom-right-radius:var(--bs-border-radius)!important;border-bottom-left-radius:var(--bs-border-radius)!important}}.visible{visibility:visible!important}@media (min-width:992px){.mt-md-0{margin-top:0!important}.mb-md-0{margin-bottom:0!important}.d-lg-block{display:block!important}.d-lg-none{display:none!important}.order-lg-first{order:-1!important}.mb-lg-0{margin-bottom:0!important}.mb-lg-5{margin-bottom:3rem!important}.px-lg-5{padding-right:3rem!important;padding-left:3rem!important}}html{scroll-padding-top:calc(4.5rem - 1px)}#mainNav{min-height:3.5rem;background-color:#fff}#mainNav .navbar-toggler{font-size:80%;padding:.75rem;color:#6f8227;border:1px solid #6f8227}#mainNav .navbar-toggler:focus{outline:0}#mainNav .navbar-brand{color:#000;font-weight:700;padding:.9rem 0}#mainNav .navbar-nav .nav-item:hover{color:fade(#fff,80%);outline:0;background-color:transparent}#mainNav .navbar-nav .nav-item:active,#mainNav .navbar-nav .nav-item:focus{outline:0;background-color:transparent}@media (min-width:992px){#mainNav{padding-top:0;padding-bottom:0;border-bottom:none;background-color:transparent;transition:background-color .3s ease-in-out}#mainNav .navbar-brand{padding:.5rem 0;color:#fff}#mainNav .nav-link{transition:none;padding:2rem 1.5rem;color:#fff}#mainNav .nav-link:hover{color:rgba(255,255,255,.75)}#mainNav .nav-link:active{color:#fff}#mainNav.navbar-shrink{background-color:#fff}#mainNav.navbar-shrink .navbar-brand{color:#000}#mainNav.navbar-shrink .nav-link{color:#000;padding:1.5rem 1.5rem 1.25rem;border-bottom:.25rem solid transparent}#mainNav.navbar-shrink .nav-link:hover{color:#6f8227}#mainNav.navbar-shrink .nav-link:active{color:#467370}#mainNav.navbar-shrink .nav-link.active{color:#6f8227;outline:0;border-bottom:.25rem solid #6f8227}}.masthead{position:relative;width:100%;height:auto;min-height:25rem;padding:4rem 0;background-color:#000;background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner-small.webp)}.contact-section .card .h4,.contact-section .card h4,.masthead .h1,.masthead h1{font-family:"Varela Round",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}.masthead .h1,.masthead h1{font-size:2.5rem;line-height:2.5rem;color:rgba(255,255,255);background:#fff;-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text}@media (max-width:991.98px){.masthead{padding:7rem 0 5rem}.masthead .h1,.masthead h1{font-size:2.25rem;line-height:1.15;letter-spacing:.25rem}.masthead .h2,.masthead h2{max-width:24rem}}.masthead .h2,.masthead h2{max-width:20rem;font-size:1rem}@media (min-width:768px){.masthead .h1,.masthead h1{font-size:4rem;line-height:4rem}}@media (min-width:992px){.masthead{height:calc(85vh - 12.5rem);min-height:26rem;padding:0}.masthead .h1,.masthead h1{font-size:4.5rem;line-height:4.5rem;letter-spacing:.4rem}.masthead .h2,.masthead h2{max-width:34rem;font-size:1.25rem}}.about-section{padding:1rem 0 10rem;background:#000}.about-section p{margin-bottom:4rem}.projects-section .featured-text{padding:2rem}@media (min-width:992px){.projects-section .featured-text{padding:0 0 0 2rem}}.projects-section .project-text{padding:2rem;font-size:90%}@media (min-width:992px){.projects-section .project-text{padding:2rem}}.contact-section{padding-top:5rem}.contact-section .card{border-bottom:.25rem solid #6f8227}.contact-section .card .h4,.contact-section .card h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.15rem}#rallye hr,.contact-section .card hr{opacity:1;border-color:#6f8227;border-width:.25rem;width:3rem}.contact-section .social{margin-top:5rem}.contact-section .social a{text-align:center;height:3rem;width:3rem;background:rgba(255,255,255,.1);border-radius:100%;line-height:3rem;color:rgba(255,255,255,.3)}.contact-section .social a:hover{color:rgba(255,255,255,.5)}.contact-section .social a:active{color:#fff}:root{--redan-accent:#6F8227;--redan-accent-light:#9ab03e;--redan-radius:1rem;--redan-shadow:0 0.75rem 2rem rgba(0, 0, 0, 0.18);--redan-shadow-hover:0 1.25rem 3rem rgba(0, 0, 0, 0.25);--redan-transition:0.25s ease}#mainNav{border-bottom:none}#mainNav button.nav-link{background-color:transparent;border:0;font-family:inherit;font-size:inherit;line-height:inherit;cursor:pointer;text-transform:none}#mainNav .nav-link{border-radius:2rem;transition:color var(--redan-transition),background-color var(--redan-transition)}@media (min-width:992px){#mainNav{background-color:transparent}#mainNav.navbar-shrink{background-color:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 .25rem 1rem rgba(0,0,0,.08)}#mainNav .nav-link{padding:1.25rem}#mainNav.navbar-shrink .nav-link{padding:.75rem 1.25rem;border-bottom:none}#mainNav.navbar-shrink .nav-link.active{border-bottom:none;background-color:rgba(111,130,39,.12);border-radius:2rem}#mainNav .dropdown-menu{border:0;border-radius:var(--redan-radius);box-shadow:var(--redan-shadow);padding:.5rem}#mainNav .dropdown-item{border-radius:.75rem;padding:.5rem 1rem;transition:background-color var(--redan-transition),color var(--redan-transition)}#mainNav .dropdown-item:hover{background-color:rgba(111,130,39,.12);color:#000}}.masthead{background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner-tiny.webp);background-position:center;background-size:cover}@media (min-width:768px){.masthead{background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner-mid.webp);background-position:center;background-size:cover}}@media (min-width:1920px){.masthead{background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner.webp);background-position:center;background-size:cover}}.masthead .h1,.masthead h1{letter-spacing:.4rem;text-shadow:0 .5rem 2.5rem rgba(0,0,0,.5);transition:letter-spacing var(--redan-transition)}.masthead .h2,.masthead h2{opacity:.9}.about-section .h2,.about-section h2{background:linear-gradient(90deg,var(--redan-accent-light),var(--redan-accent));-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text}.projects-section img{box-shadow:var(--redan-shadow)}.projects-section .bg-black.project{background:linear-gradient(160deg,#161616 0,#000 100%);box-shadow:var(--redan-shadow)}.projects-section .project:hover .bg-black.project,.projects-section .project:hover img{box-shadow:var(--redan-shadow-hover)}.projects-section .project{transition:box-shadow var(--redan-transition)}.projects-section{padding:8rem 0}.projects-section .row+.row{margin-top:11rem}.projects-section #projects+.row{margin-top:0}.projects-section #rallye+.row{margin-top:2rem}.accent-strong{color:var(--redan-accent)!important;font-weight:700}.salle-openings{font-weight:600;line-height:1.8;display:inline-block}.projects-section .project-text h3{color:#fff;display:inline-block;border-bottom:3px solid var(--redan-accent);padding-bottom:.5rem;margin-bottom:1.5rem}.contact-section .card{border-radius:var(--redan-radius);border:0;border-bottom:.25rem solid var(--redan-accent);box-shadow:var(--redan-shadow);transition:transform var(--redan-transition),box-shadow var(--redan-transition)}.contact-section .card:hover{transform:translateY(-.25rem);box-shadow:var(--redan-shadow-hover)}.contact-section .card .icon{color:var(--redan-accent);font-size:2rem}svg.icon{vertical-align:-.125em;display:inline-block}.contact-section .card a{color:inherit;text-decoration:none;transition:color var(--redan-transition)}.contact-section .card a:hover,.salle-openings{color:var(--redan-accent)}.contact-section .social a{border:1px solid rgba(255,255,255,.15);transition:color var(--redan-transition),border-color var(--redan-transition),transform var(--redan-transition)}.contact-section .social a:hover{color:#fff;border-color:rgba(255,255,255,.4);transform:translateY(-.2rem)}.footer{padding:4rem 0;border-top:1px solid rgba(255,255,255,.08)}.rallye-badge{display:inline-block;font-size:.8rem;letter-spacing:.15rem}.rallye-title{color:#000}.rallye-date{font-size:1.25rem;font-weight:700;letter-spacing:.1rem;color:#6f8227}.navbar-toggler:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--redan-accent-light);outline-offset:2px;border-radius:.25rem}.skip-link{position:absolute;left:-9999px;top:0;z-index:10000;padding:.75rem 1.5rem;background:var(--redan-accent);color:#fff;text-decoration:none;border-radius:0 0 .5rem 0}.skip-link:focus{left:0}.dropdown-menu[data-bs-popper]{top:100%;left:0;margin-top:var(--bs-dropdown-spacer)}/* Activities pair: one welded card */
+@keyframes progress-bar-stripes{0%{background-position-x:1rem}}@keyframes spinner-border{to{transform:rotate(360deg)}}@keyframes spinner-grow{0%{transform:scale(0)}50%{opacity:1;transform:none}}@keyframes placeholder-glow{50%{opacity:.2}}@keyframes placeholder-wave{to{-webkit-mask-position:-200%0;mask-position:-200%0}}:root{--bs-blue:#043a8a;--bs-indigo:#4200ac;--bs-purple:#7464a1;--bs-pink:#a90155;--bs-red:#a16468;--bs-orange:#dc6402;--bs-yellow:#f0b429;--bs-green:#67c29c;--bs-teal:#4d7c0f;--bs-cyan:#1cabc4;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-gray-100:#f8f9fa;--bs-gray-200:#e9ecef;--bs-gray-300:#dee2e6;--bs-gray-400:#ced4da;--bs-gray-500:#adb5bd;--bs-gray-600:#6c757d;--bs-gray-700:#495057;--bs-gray-800:#343a40;--bs-gray-900:#212529;--bs-primary:#4d7c0f;--bs-secondary:#7464a1;--bs-success:#67c29c;--bs-info:#1cabc4;--bs-warning:#e0a32e;--bs-danger:#a16468;--bs-light:#f8f9fa;--bs-dark:#212529;--bs-black:#000;--bs-white:#fff;--bs-primary-rgb:77, 124, 15;--bs-secondary-rgb:116, 100, 161;--bs-success-rgb:103, 194, 156;--bs-info-rgb:28, 171, 196;--bs-warning-rgb:224, 163, 46;--bs-danger-rgb:161, 100, 104;--bs-light-rgb:248, 249, 250;--bs-dark-rgb:33, 37, 41;--bs-white-rgb:255, 255, 255;--bs-black-rgb:0, 0, 0;--bs-body-color-rgb:33, 37, 41;--bs-body-bg-rgb:255, 255, 255;--bs-font-sans-serif:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--bs-font-monospace:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));--bs-body-font-family:Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#212529;--bs-body-bg:#fff;--bs-border-width:1px;--bs-border-style:solid;--bs-border-color:#dee2e6;--bs-border-color-translucent:rgba(0, 0, 0, 0.175);--bs-border-radius:0.375rem;--bs-border-radius-sm:0.25rem;--bs-border-radius-lg:0.5rem;--bs-border-radius-xl:1rem;--bs-border-radius-2xl:2rem;--bs-border-radius-pill:50rem;--bs-link-color:#4d7c0f;--bs-link-color-lightlight-link:#9ab03e;--bs-link-hover-color:#3f6212;--bs-code-color:#d63384;--bs-highlight-bg:#faf4e0}*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}.tight-heading{letter-spacing:0!important;line-height:1.1!important;margin-bottom:0!important}.pointer{cursor:pointer}body{margin:0;font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);color:var(--bs-body-color);text-align:var(--bs-body-text-align);background-color:var(--bs-body-bg);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;letter-spacing:.02em}hr{margin:1rem 0;color:inherit;border:0;border-top:1px solid;opacity:.25}.h1,.h2,.h3,.h4,h1,h2,h3,h4{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}.h1,h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){.h1,h1{font-size:2.5rem}}.h2,h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){.h2,h2{font-size:2rem}}.h3,h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){.h3,h3{font-size:1.75rem}}.h4,h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){.h4,h4{font-size:1.5rem}}p{margin-top:0}address,p,ul{margin-bottom:1rem}address{font-style:normal;line-height:inherit}ul{padding-left:2rem;margin-top:0}ul ul{margin-bottom:0}strong{font-weight:bolder}.small,small{font-size:.875em}.light-link,a{color:var(--bs-link-color);text-decoration:underline}.light-link{color:var(--bs-link-color-light)!important}a:hover{color:var(--bs-link-hover-color)}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}img,svg{vertical-align:middle}button{border-radius:0;margin:0;font-family:inherit;font-size:inherit;line-height:inherit;text-transform:none}button:focus:not(:focus-visible){outline:0}[type=button],button{-webkit-appearance:button}[type=button]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit;-webkit-appearance:button}.img-fluid{max-width:100%;min-width:100%;height:auto}.container{--bs-gutter-x:1.5rem;--bs-gutter-y:0;width:100%;padding-right:calc(var(--bs-gutter-x)*.5);padding-left:calc(var(--bs-gutter-x)*.5);margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}@media (min-width:1400px){.container{max-width:1320px}}.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(-1*var(--bs-gutter-y));margin-right:calc(-.5*var(--bs-gutter-x));margin-left:calc(-.5*var(--bs-gutter-x))}.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)*.5);padding-left:calc(var(--bs-gutter-x)*.5);margin-top:var(--bs-gutter-y)}.gx-0{--bs-gutter-x:0}.gx-4{--bs-gutter-x:1.5rem}.gy-4{--bs-gutter-y:1.5rem}@media (min-width:768px){.col-md-4{flex:0 0 auto;width:33.33333333%}}@media (min-width:992px){.col-lg-4{flex:0 0 auto;width:33.33333333%}.col-lg-5,.col-lg-6{flex:0 0 auto;width:41.66666667%}.col-lg-6{width:50%}.col-lg-7,.col-lg-8{flex:0 0 auto;width:58.33333333%}.col-lg-8{width:66.66666667%}.gx-lg-5{--bs-gutter-x:3rem}}@media (min-width:1200px){.col-xl-4,.col-xl-8{flex:0 0 auto;width:33.33333333%}.col-xl-8{width:66.66666667%}}.fade{transition:opacity .15s linear}@media (prefers-reduced-motion:reduce){.fade{transition:none}}.fade:not(.show){opacity:0}.collapse:not(.show){display:none}.collapsing{height:0;overflow:hidden;transition:height .35s ease}@media (prefers-reduced-motion:reduce){.collapsing{transition:none}}.dropdown{position:relative}.dropdown-toggle{white-space:nowrap}.dropdown-toggle::after{display:inline-block;margin-left:.255em;vertical-align:.255em;content:"";border-top:.3em solid;border-right:.3em solid transparent;border-bottom:0;border-left:.3em solid transparent}.dropdown-toggle:empty::after{margin-left:0}.dropdown-menu{--bs-dropdown-zindex:1000;--bs-dropdown-min-width:10rem;--bs-dropdown-padding-x:0;--bs-dropdown-padding-y:0.5rem;--bs-dropdown-spacer:0.125rem;--bs-dropdown-font-size:1rem;--bs-dropdown-color:#212529;--bs-dropdown-bg:#fff;--bs-dropdown-border-color:var(--bs-border-color-translucent);--bs-dropdown-border-radius:0.375rem;--bs-dropdown-border-width:1px;--bs-dropdown-inner-border-radius:calc(0.375rem - 1px);--bs-dropdown-divider-bg:var(--bs-border-color-translucent);--bs-dropdown-divider-margin-y:0.5rem;--bs-dropdown-box-shadow:0 0.5rem 1rem rgba(0, 0, 0, 0.15);--bs-dropdown-link-color:#212529;--bs-dropdown-link-hover-color:#1e2125;--bs-dropdown-link-hover-bg:#e9ecef;--bs-dropdown-link-active-color:#fff;--bs-dropdown-link-active-bg:#4d7c0f;--bs-dropdown-link-disabled-color:#adb5bd;--bs-dropdown-item-padding-x:1rem;--bs-dropdown-item-padding-y:0.25rem;--bs-dropdown-header-color:#6c757d;--bs-dropdown-header-padding-x:1rem;--bs-dropdown-header-padding-y:0.5rem;position:absolute;z-index:var(--bs-dropdown-zindex);display:none;min-width:var(--bs-dropdown-min-width);padding:var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);margin:0;font-size:var(--bs-dropdown-font-size);color:var(--bs-dropdown-color);text-align:left;list-style:none;background-color:var(--bs-dropdown-bg);background-clip:padding-box;border:var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);border-radius:var(--bs-dropdown-border-radius)}.dropdown-item{display:block;width:100%;padding:var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);clear:both;font-weight:400;color:var(--bs-dropdown-link-color);text-align:inherit;text-decoration:none;white-space:nowrap;background-color:transparent;border:0}.dropdown-item:focus,.dropdown-item:hover{color:var(--bs-dropdown-link-hover-color);background-color:var(--bs-dropdown-link-hover-bg)}.dropdown-item.active,.dropdown-item:active{color:var(--bs-dropdown-link-active-color);text-decoration:none;background-color:var(--bs-dropdown-link-active-bg)}.dropdown-item:disabled{color:var(--bs-dropdown-link-disabled-color);pointer-events:none;background-color:transparent}.dropdown-menu.show{display:block}.nav{--bs-nav-link-padding-x:1rem;--bs-nav-link-padding-y:0.5rem;--bs-nav-link-color:var(--bs-link-color);--bs-nav-link-hover-color:var(--bs-link-hover-color);--bs-nav-link-disabled-color:#6c757d;display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);font-size:var(--bs-nav-link-font-size);font-weight:var(--bs-nav-link-font-weight);color:var(--bs-nav-link-color);text-decoration:none;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out}@media (prefers-reduced-motion:reduce){.nav-link{transition:none}}.nav-link:focus,.nav-link:hover{color:var(--bs-nav-link-hover-color)}.navbar,.navbar>.container{display:flex;align-items:center;justify-content:space-between}.navbar{--bs-navbar-padding-x:0;--bs-navbar-padding-y:0.5rem;--bs-navbar-color:rgba(0, 0, 0, 0.55);--bs-navbar-hover-color:rgba(0, 0, 0, 0.7);--bs-navbar-disabled-color:rgba(0, 0, 0, 0.3);--bs-navbar-active-color:rgba(0, 0, 0, 0.9);--bs-navbar-brand-padding-y:0.3125rem;--bs-navbar-brand-margin-end:1rem;--bs-navbar-brand-font-size:1.25rem;--bs-navbar-brand-color:rgba(0, 0, 0, 0.9);--bs-navbar-brand-hover-color:rgba(0, 0, 0, 0.9);--bs-navbar-nav-link-padding-x:0.5rem;--bs-navbar-toggler-padding-y:0.25rem;--bs-navbar-toggler-padding-x:0.75rem;--bs-navbar-toggler-font-size:1.25rem;--bs-navbar-toggler-icon-bg:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");--bs-navbar-toggler-border-color:rgba(0, 0, 0, 0.1);--bs-navbar-toggler-border-radius:0.375rem;--bs-navbar-toggler-focus-width:0.25rem;--bs-navbar-toggler-transition:box-shadow 0.15s ease-in-out;position:relative;flex-wrap:wrap;padding:var(--bs-navbar-padding-y) var(--bs-navbar-padding-x)}.navbar>.container{flex-wrap:inherit}.navbar-brand{padding-top:var(--bs-navbar-brand-padding-y);padding-bottom:var(--bs-navbar-brand-padding-y);margin-right:var(--bs-navbar-brand-margin-end);font-size:var(--bs-navbar-brand-font-size);color:var(--bs-navbar-brand-color);text-decoration:none;white-space:nowrap}.navbar-brand:focus,.navbar-brand:hover{color:var(--bs-navbar-brand-hover-color)}.navbar-nav{--bs-nav-link-padding-x:0;--bs-nav-link-padding-y:0.5rem;--bs-nav-link-font-weight: ;--bs-nav-link-color:var(--bs-navbar-color);--bs-nav-link-hover-color:var(--bs-navbar-hover-color);--bs-nav-link-disabled-color:var(--bs-navbar-disabled-color);display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link.active,.navbar-nav .show>.nav-link{color:var(--bs-navbar-active-color)}.navbar-nav .dropdown-menu{position:static}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}.navbar-toggler{padding:var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);font-size:var(--bs-navbar-toggler-font-size);line-height:1;color:var(--bs-navbar-color);background-color:transparent;border:var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);border-radius:var(--bs-navbar-toggler-border-radius);transition:var(--bs-navbar-toggler-transition)}@media (prefers-reduced-motion:reduce){.navbar-toggler{transition:none}}.navbar-toggler:hover{text-decoration:none}.navbar-toggler:focus{text-decoration:none;outline:0;box-shadow:0 0 0 var(--bs-navbar-toggler-focus-width)}@media (min-width:992px){.navbar-expand-lg{flex-wrap:nowrap;justify-content:flex-start}.navbar-expand-lg .navbar-nav{flex-direction:row}.navbar-expand-lg .navbar-nav .dropdown-menu{position:absolute}.navbar-expand-lg .navbar-nav .nav-link{padding-right:var(--bs-navbar-nav-link-padding-x);padding-left:var(--bs-navbar-nav-link-padding-x)}.navbar-expand-lg .navbar-collapse{display:flex!important;flex-basis:auto}.navbar-expand-lg .navbar-toggler{display:none}}.card{--bs-card-spacer-y:1rem;--bs-card-spacer-x:1rem;--bs-card-title-spacer-y:0.5rem;--bs-card-border-width:1px;--bs-card-border-color:var(--bs-border-color-translucent);--bs-card-border-radius:0.375rem;--bs-card-box-shadow: ;--bs-card-inner-border-radius:calc(0.375rem - 1px);--bs-card-cap-padding-y:0.5rem;--bs-card-cap-padding-x:1rem;--bs-card-cap-bg:rgba(0, 0, 0, 0.03);--bs-card-cap-color: ;--bs-card-height: ;--bs-card-color: ;--bs-card-bg:#fff;--bs-card-img-overlay-padding:1rem;--bs-card-group-margin:0.75rem;position:relative;display:flex;flex-direction:column;min-width:0;height:var(--bs-card-height);word-wrap:break-word;background-color:var(--bs-card-bg);background-clip:border-box;border:var(--bs-card-border-width) solid var(--bs-card-border-color);border-radius:var(--bs-card-border-radius)}.card>hr{margin-right:0;margin-left:0}.card-body{flex:1 1 auto;padding:var(--bs-card-spacer-y) var(--bs-card-spacer-x);color:var(--bs-card-color)}.fixed-top{position:fixed;top:0;right:0;left:0;z-index:1030}.d-flex{display:flex!important}.d-none{display:none!important}.w-100{width:100%!important}.h-100{height:100%!important}.justify-content-center{justify-content:center!important}.align-items-center{align-items:center!important}.m-0{margin:0!important}.mx-2{margin-right:.5rem!important;margin-left:.5rem!important}.mx-auto{margin-right:auto!important;margin-left:auto!important}.my-0{margin-top:0!important;margin-bottom:0!important}.my-3{margin-top:1rem!important;margin-bottom:1rem!important}.my-4{margin-top:1.5rem!important;margin-bottom:1.5rem!important}.my-auto{margin-top:auto!important;margin-bottom:auto!important}.mt-2{margin-top:.5rem!important}.mt-4{margin-top:1.5rem!important}.me-2{margin-right:.5rem!important}.mb-0{margin-bottom:0!important}.mb-3{margin-bottom:1rem!important}.mb-4{margin-bottom:1.5rem!important}.mb-5{margin-bottom:3rem!important}.ms-auto{margin-left:auto!important}.px-4{padding-right:1.5rem!important;padding-left:1.5rem!important}.py-4{padding-top:1.5rem!important;padding-bottom:1.5rem!important}.text-center{text-align:center!important}.text-uppercase{text-transform:uppercase!important}.text-black,.text-white{--bs-text-opacity:1;color:rgba(var(--bs-black-rgb),var(--bs-text-opacity))!important}.text-white{color:rgba(var(--bs-white-rgb),var(--bs-text-opacity))!important}.text-black-50{--bs-text-opacity:1;color:rgba(0,0,0,.5)!important}.bg-black,.bg-light{--bs-bg-opacity:1;background-color:rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important}.bg-black{background-color:rgba(var(--bs-black-rgb),var(--bs-bg-opacity))!important}.rounded{border-radius:var(--bs-border-radius)!important}@media (min-width:992px){.rounded-top-end{border-top-right-radius:var(--bs-border-radius)!important}.rounded-top-start{border-top-left-radius:var(--bs-border-radius)!important}.rounded-bottom-start{border-bottom-left-radius:var(--bs-border-radius)!important}.rounded-bottom-end{border-bottom-right-radius:var(--bs-border-radius)!important}}@media (max-width:992px){.rounded-sm-top{border-top-left-radius:var(--bs-border-radius)!important;border-top-right-radius:var(--bs-border-radius)!important}.rounded-sm-bottom{border-bottom-right-radius:var(--bs-border-radius)!important;border-bottom-left-radius:var(--bs-border-radius)!important}}.visible{visibility:visible!important}@media (min-width:992px){.mt-md-0{margin-top:0!important}.mb-md-0{margin-bottom:0!important}.d-lg-block{display:block!important}.d-lg-none{display:none!important}.order-lg-first{order:-1!important}.mb-lg-0{margin-bottom:0!important}.mb-lg-5{margin-bottom:3rem!important}.px-lg-5{padding-right:3rem!important;padding-left:3rem!important}}html{scroll-padding-top:calc(4.5rem - 1px)}#mainNav{min-height:3.5rem;background-color:#fff}#mainNav .navbar-toggler{font-size:80%;padding:.75rem;color:var(--redan-accent);border:1px solid var(--redan-accent)}#mainNav .navbar-toggler:focus{outline:0}#mainNav .navbar-brand{color:#000;font-weight:700;padding:.9rem 0}#mainNav .navbar-nav .nav-item:hover{color:fade(#fff,80%);outline:0;background-color:transparent}#mainNav .navbar-nav .nav-item:active,#mainNav .navbar-nav .nav-item:focus{outline:0;background-color:transparent}@media (min-width:992px){#mainNav{padding-top:0;padding-bottom:0;border-bottom:none;background-color:transparent;transition:background-color .3s ease-in-out}#mainNav .navbar-brand{padding:.5rem 0;color:#fff}#mainNav .nav-link{transition:none;padding:2rem 1.5rem;color:#fff}#mainNav .nav-link:hover{color:rgba(255,255,255,.75)}#mainNav .nav-link:active{color:#fff}#mainNav.navbar-shrink{background-color:#fff}#mainNav.navbar-shrink .navbar-brand{color:#000}#mainNav.navbar-shrink .nav-link{color:#000;padding:1.5rem 1.5rem 1.25rem;border-bottom:.25rem solid transparent}#mainNav.navbar-shrink .nav-link:hover{color:var(--redan-accent)}#mainNav.navbar-shrink .nav-link:active{color:#467370}#mainNav.navbar-shrink .nav-link.active{color:var(--redan-accent);outline:0;border-bottom:.25rem solid var(--redan-lamp-500)}}.masthead{position:relative;width:100%;height:auto;min-height:25rem;padding:4rem 0;background-color:#000;background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner-tiny.webp)}.contact-section .card .h4,.contact-section .card h4,.masthead .h1,.masthead h1{font-family:"Varela Round",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}.masthead .h1,.masthead h1{font-size:2.5rem;line-height:2.5rem;color:rgba(255,255,255);background:#fff;-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text}@media (max-width:991.98px){.masthead{padding:7rem 0 5rem}.masthead .h1,.masthead h1{font-size:2.25rem;line-height:1.15;letter-spacing:.25rem}.masthead .h2,.masthead h2{max-width:24rem}}.masthead .h2,.masthead h2{max-width:20rem;font-size:1rem}@media (min-width:768px){.masthead .h1,.masthead h1{font-size:4rem;line-height:4rem}}@media (min-width:992px){.masthead{height:calc(85vh - 12.5rem);min-height:26rem;padding:0}.masthead .h1,.masthead h1{font-size:4.5rem;line-height:4.5rem;letter-spacing:.4rem}.masthead .h2,.masthead h2{max-width:34rem;font-size:1.25rem}}.about-section{padding:1rem 0 10rem;background:#000}.about-section p{margin-bottom:4rem}.projects-section .featured-text{padding:2rem}@media (min-width:992px){.projects-section .featured-text{padding:0 0 0 2rem}}.projects-section .project-text{padding:2rem;font-size:90%}@media (min-width:992px){.projects-section .project-text{padding:2rem}}.contact-section{padding-top:5rem}.contact-section .card{border-bottom:.25rem solid var(--redan-accent)}.contact-section .card .h4,.contact-section .card h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.15rem}#rallye hr,.contact-section .card hr{opacity:1;border-color:var(--redan-accent);border-width:.25rem;width:3rem}.contact-section .social{margin-top:5rem}.contact-section .social a{text-align:center;height:3rem;width:3rem;background:rgba(255,255,255,.1);border-radius:100%;line-height:3rem;color:rgba(255,255,255,.3)}.contact-section .social a:hover{color:rgba(255,255,255,.5)}.contact-section .social a:active{color:#fff}:root{--redan-accent:#4d7c0f;--redan-accent-light:#9ab03e;--redan-cave-900:#16210f;--redan-cave-800:#24401a;--redan-cave-700:#3f6212;--redan-cave-600:#365314;--redan-cave-500:#4d7c0f;--redan-moss-400:#9ab03e;--redan-lamp-600:#b45309;--redan-lamp-500:#e0a32e;--redan-lamp-400:#f0b429;--redan-lamp-200:#fcd34d;--redan-radius:1rem;--redan-shadow:0 0.75rem 2rem rgba(0, 0, 0, 0.18);--redan-shadow-hover:0 1.25rem 3rem rgba(0, 0, 0, 0.25);--redan-transition:0.25s ease}#mainNav{border-bottom:none}#mainNav button.nav-link{background-color:transparent;border:0;font-family:inherit;font-size:inherit;line-height:inherit;cursor:pointer;text-transform:none}#mainNav .nav-link{border-radius:2rem;transition:color var(--redan-transition),background-color var(--redan-transition)}@media (min-width:992px){#mainNav{background-color:transparent}#mainNav.navbar-shrink{background-color:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 .25rem 1rem rgba(0,0,0,.08)}#mainNav .nav-link{padding:1.25rem}#mainNav.navbar-shrink .nav-link{padding:.75rem 1.25rem;border-bottom:none}#mainNav.navbar-shrink .nav-link.active{border-bottom:none;background-color:rgba(77,124,15,.12);border-radius:2rem}#mainNav .dropdown-menu{border:0;border-radius:var(--redan-radius);box-shadow:var(--redan-shadow);padding:.5rem}#mainNav .dropdown-item{border-radius:.75rem;padding:.5rem 1rem;transition:background-color var(--redan-transition),color var(--redan-transition)}#mainNav .dropdown-item:hover{background-color:rgba(77,124,15,.12);color:#000}}.masthead{background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner-tiny.webp);background-position:center;background-size:cover}@media (min-width:768px){.masthead{background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner-mid.webp);background-position:center;background-size:cover}}@media (min-width:1920px){.masthead{background:linear-gradient(180deg,rgba(0,0,0,.35)0,rgba(0,0,0,.6) 55%,#000 100%),url(/caving-banner.webp);background-position:center;background-size:cover}}.masthead .h1,.masthead h1{letter-spacing:.4rem;text-shadow:0 .5rem 2.5rem rgba(0,0,0,.5);transition:letter-spacing var(--redan-transition)}.masthead .h2,.masthead h2{opacity:.9}.about-section .h2,.about-section h2{background:linear-gradient(90deg,var(--redan-accent-light),var(--redan-accent));-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text}.projects-section img{box-shadow:var(--redan-shadow)}.projects-section .bg-black.project{background:linear-gradient(160deg,#161616 0,#000 100%);box-shadow:var(--redan-shadow)}.projects-section .project:hover .bg-black.project,.projects-section .project:hover img{box-shadow:var(--redan-shadow-hover)}.projects-section .project{transition:box-shadow var(--redan-transition)}.projects-section{padding:8rem 0}.projects-section .row+.row{margin-top:11rem}.projects-section #projects+.row{margin-top:0}.projects-section #rallye+.row{margin-top:2rem}.accent-strong{color:var(--redan-accent)!important;font-weight:700}.salle-openings{font-weight:600;line-height:1.8;display:inline-block}.projects-section .project-text h3{color:#fff;display:inline-block;border-bottom:3px solid var(--redan-accent);padding-bottom:.5rem;margin-bottom:1.5rem}.contact-section .card{border-radius:var(--redan-radius);border:0;border-bottom:.25rem solid var(--redan-accent);box-shadow:var(--redan-shadow);transition:transform var(--redan-transition),box-shadow var(--redan-transition)}.contact-section .card:hover{transform:translateY(-.25rem);box-shadow:var(--redan-shadow-hover)}.contact-section .card .icon{color:var(--redan-accent);font-size:2rem}svg.icon{vertical-align:-.125em;display:inline-block}.contact-section .card a{color:inherit;text-decoration:none;transition:color var(--redan-transition)}.contact-section .card a:hover,.salle-openings{color:var(--redan-accent)}.contact-section .social a{border:1px solid rgba(255,255,255,.15);transition:color var(--redan-transition),border-color var(--redan-transition),transform var(--redan-transition)}.contact-section .social a:hover{color:#fff;border-color:rgba(255,255,255,.4);transform:translateY(-.2rem)}.footer{padding:4rem 0;border-top:1px solid rgba(255,255,255,.08)}.rallye-badge{display:inline-block;font-size:.8rem;letter-spacing:.15rem}.rallye-title{color:#000}.rallye-date{font-size:1.25rem;font-weight:700;letter-spacing:.1rem;color:var(--redan-accent)}.navbar-toggler:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--redan-accent-light);outline-offset:2px;border-radius:.25rem}.skip-link{position:absolute;left:-9999px;top:0;z-index:10000;padding:.75rem 1.5rem;background:var(--redan-accent);color:#fff;text-decoration:none;border-radius:0 0 .5rem 0}.skip-link:focus{left:0}.dropdown-menu[data-bs-popper]{top:100%;left:0;margin-top:var(--bs-dropdown-spacer)}/* Activities pair: one welded card */
 .activities-pair {
 	--bs-gutter-x: 0;
 }
@@ -31,8 +31,15 @@
 	object-fit: cover;
 }
 
-/* Gallery lightbox */
+/* Gallery lightbox
+
+   The template marks the anchor `d-block`, but that utility is absent from
+   this hand-minified Bootstrap, so the anchor was inline: `overflow: hidden`
+   and `border-radius` on an inline box clip nothing, and the hover scale
+   below had no box to grow inside. `display: block` is set here instead of
+   in the template so the intent survives without touching the markup. */
 .gallery-lightbox {
+	display: block;
 	cursor: zoom-in;
 }
 
@@ -62,6 +69,20 @@ body.gallery-lightbox-open {
 	max-width: 92vw;
 	max-height: 88vh;
 	box-shadow: var(--redan-shadow);
+	transition: opacity 0.2s ease;
+}
+
+.gallery-lightbox-loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 1rem;
+	letter-spacing: 0.05em;
+	display: none;
+	align-items: center;
+	justify-content: center;
 }
 
 .gallery-lightbox-close,
@@ -107,4 +128,861 @@ body.gallery-lightbox-open {
 	color: rgba(255, 255, 255, .75);
 	font-size: .9rem;
 	letter-spacing: .1rem;
+}
+
+/* Whitespace underneath the Monday openings card: without a follower of
+   its own type the card only carries its small bottom margin, while the
+   other project cards are separated by the 11rem sibling-row gap. The
+   margin-top below collapses with that bottom margin, never doubles. */
+.projects-section #salle + .row,
+.projects-section #salle + .activities-pair {
+	margin-top: 11rem;
+}
+
+/* --------------------------------------------------------------------------
+   Light page palette
+
+    The vendored sheet above is hand-minified and carries the club tokens in its
+    own :root; this is a second :root for the values only the authored rules use.
+    CSS merges them, so the tokens sit together where they can be read.
+
+      --redan-cave-deep  the ramp's first stop: near-black with green in it. Also
+                         the hero overlay's bottom stop, so photo and page meet
+                         without a seam, and the art plate's ink family.
+      --redan-moss-pale  the middle stop: a clearly green light, sitting between
+                         the cave and the surface.
+      --redan-page       the ramp's last stop, and the fallback body colour.
+      --redan-accent     the lamp, deep end (#b45309). The ONE accent for anything
+                         that has to work as ink or as a control: links, buttons,
+                         rules, icons, focus rings. 5.02:1 on a white card, 4.71:1
+                         on the page, 3.60:1 on a black card half — clears 3:1 on
+                         every surface it appears on, and white text on it is
+                         5.02:1, so the primary button passes too.
+      --redan-accent-light  the lamp, bright end (#f0b429). Only for surfaces that
+                         are already dark: 10.22:1 on cave-deep. It is 1.86:1 on
+                         white, so it must never be body text or a focus ring —
+                         the two vendored rules that used to read this token on a
+                         light surface are re-aimed below for exactly that reason.
+      --redan-lamp-700   a deeper amber for hover/active, where the ring needs to
+                         move against the resting colour rather than beside it.
+      --redan-hairline / --redan-tint  the light surface's border and plate tones.
+
+    Contrast is computed against whatever each element genuinely sits on, in the
+    section that uses it — a page-wide ramp means there is no single background to
+    test against, so a table of colours against one assumed surface would be a
+    fiction. The arithmetic that *is* worth pinning down here: no ink can serve a
+    full-height dark->white ramp, because clearing the dark end needs relative
+    luminance >= 0.198 while clearing the light end needs <= 0.169. That is why
+    text gets opaque surfaces instead. See "The descent: cave to surface".
+
+    The error pages keep their own pale ramp (--redan-limestone): they are one
+    screen of light with no photo, and the dark descent was never asked for there.
+   -------------------------------------------------------------------------- */
+:root {
+	--redan-limestone: linear-gradient(180deg, #f7f8f4 0%, #eef1e8 55%, #e6ecdc 100%);
+	--redan-limestone-mid: #eef1e8;
+	--redan-cave-deep: #0a1206;
+	--redan-moss-pale: #e7f1dc;
+	--redan-page: #f7f8f4;
+
+	/* The accent is the warm yellow of a carbide lamp, not the green of the rock.
+	   It is split across the two ends of the lamp scale that the vendored sheet
+	   already carried but never used for this, because a single yellow cannot do
+	   both jobs:
+
+	     --redan-accent        #b45309 (lamp-600). Deep enough to be *ink*: 4.71:1
+	                           on white cards (AA body text), 4.40:1 on the pale
+	                           error masthead, 4.71:1 against white button text.
+	                           This is what links, buttons, rules and icons get.
+	     --redan-accent-light  #f0b429 (lamp-400). The bright flame, for surfaces
+	                           that are already dark: 10.22:1 on cave-deep. It is
+	                           1.86:1 on white, so it must never be body text.
+
+	   Anything that was reading `--redan-accent` as a green inherits the amber
+	   automatically; the handful of places where the old colour was hardcoded
+	   instead of tokenised are corrected below, because those would otherwise stay
+	   green and the page would look like two themes wearing one hat. */
+	--redan-accent: var(--redan-lamp-600);
+	--redan-accent-light: var(--redan-lamp-400);
+	--redan-lamp-700: #7c2d12;
+
+	/* Bootstrap's own primary/link tokens point at the raw green, so they are
+	   retargeted here too: `.btn-primary` and every bare `<a>` come off these
+	   rather than off --redan-accent, and missing one would leave green buttons
+	   on an amber site. --bs-primary-rgb is the same colour in components form for
+	   anything that composes an alpha from it. */
+	--bs-primary: var(--redan-lamp-600);
+	--bs-primary-rgb: 180, 83, 9;
+	--bs-link-color: var(--redan-lamp-600);
+	--bs-link-hover-color: var(--redan-lamp-700);
+
+	--redan-hairline: rgba(36, 64, 26, 0.15);
+	--redan-tint: rgba(180, 83, 9, 0.07);
+}
+
+/* --------------------------------------------------------------------------
+   The descent: cave to surface, across the whole page
+
+   One ramp on the body, running the length of the document from `--redan-cave-deep`
+   (near-black with green in it) to `--redan-page` (practically white). Painted on
+   the body rather than per section so the ramp does not restart: the body's
+   background propagates to the canvas and spans the whole document, and each
+   section just reveals the slice of it where it happens to sit.
+
+   WHY THE CARDS NEED THEIR OWN SURFACES, AND WHY THAT IS NOT OPTIONAL.
+   A ramp this long puts everything sitting directly on it across the entire
+   luminance range. Measured at 1280x900: the club band lands at 13-23% of the
+   ramp (dark, white ink 10:1 -> safe), but the activity cards run from 23% to
+   84%, i.e. from #404638 to #d3d6d1. And there is no ink that survives that: to
+   clear the dark end an ink needs relative luminance >= 0.198, to clear the
+   light end <= 0.169. The ranges do not overlap, so this is arithmetic rather
+   than taste — a full-page dark->white ramp is only readable if text never sits
+   on it. Hence `.featured-text` gets an opaque card (see "Text surfaces"), and
+   the ramp is left visible exactly where there is no text: the club band, the
+   gutters between card rows, the padding of the sections.
+
+   The ramp's last few percent is hidden behind the footer, which paints itself
+   dark from its own markup, so the descent visually ends at the footer's top
+   edge on #ebeee8 — practically white. The footer is deliberately not part of
+   the gradient.
+
+   The hero photo's overlay also sinks to `--redan-cave-deep` at its bottom edge
+   (see the "Masthead hero image" block), so the page does not start with a seam:
+   the photo's black base and the ramp's first stop are the same colour.
+   -------------------------------------------------------------------------- */
+
+/* The page ramp, and the cutoff is deliberately abrupt.
+
+   The stops are in VIEWS, not document percentages, because the request is about
+   the first screen ("the initial full screen is mostly dark"). A percentage hold
+   cannot promise that: the dark hold would have to reach ~21% of the document at
+   a 900px viewport and ~27% at 1200px, because the hero is `85vh - 12.5rem` and
+   the document grows with the admin's cards. `100vh` is the thing actually being
+   asked for, and it stays true as cards are added or removed.
+
+   So: one full screen of near-black green, then it climbs hard — light green one
+   third of a screen later, white under two screens — leaving the lower half of
+   the page clean and bright above the dark footer. */
+/* The page ramp. Dark for exactly the first screen, then a HARD cut to light.
+
+   The cut is a hard stop, not a blend: two stops at the same `100vh` position, so
+   the browser paints no transition at all. The previous version eased from
+   cave-deep to pale across 35vh, and that stretch is where the mud lives — a
+   long enough run from near-black to near-white has to cross the mid tones, and
+   the mid point of those two stops measured #80857d, a flat greige that reads as
+   a rendering error rather than as coming up into daylight. Cutting hard removes
+   the mid tones from the page entirely.
+
+   Above the line: the cave. At the line: the surface. Below it: a slow climb from
+   the moss-pale light green up to the page white, which is a gentle move between
+   two pale colours and never passes through anything muddy. */
+body.public-page {
+	background-color: var(--redan-page);
+	background-image: linear-gradient(180deg, var(--redan-cave-deep) 0, var(--redan-cave-deep) 100vh, var(--redan-moss-pale) 100vh, var(--redan-page) 300vh);
+}
+
+/* The club band owns its dark background instead of borrowing it from the page
+   ramp, and that is what makes the hard cut safe.
+
+   The cut sits at `100vh` and therefore MOVES with the viewport, while the band's
+   white text ends at a fixed pixel driven by admin-editable copy. Measured, that
+   loses at small heights: at 390x667 the last paragraph line hung 43px *below*
+   the cut (white on light green, invisible), and 1024x640 cleared by only 3px. No
+   `vh` value can fix that, because the text position is not a function of the
+   viewport.
+
+   Painting the band `--redan-cave-deep` removes the dependency entirely: the text
+   rides on its own section's background, so it stays legible whatever the copy
+   length and whatever the viewport. It is also visually free, because the ramp's
+   first stop is the same colour and holds dark past this band at every size
+   measured — the band was already sitting on cave-deep, it now simply guarantees
+   it instead of hoping to.
+
+   The band's bottom `10rem` of padding (vendor `padding: 1rem 0 10rem`) is what
+   the cut line crosses, which is why the hard edge still reads as landing in the
+   band's empty space rather than through its words. */
+.about-section {
+	background-color: var(--redan-cave-deep);
+}
+
+/* Contact social buttons. The contact band lands at 84-94% of the ramp, i.e. at
+   the white end, so the vendored white-on-white treatment is invisible here: a
+   white 10% plate with a 30%-white glyph, and `:active` at full white.
+
+   They sit on the lamp rather than on the green ink tokens, because the 2rem card
+   icons immediately above them read `--redan-accent` and became amber with the
+   rest of the theme — two accent colours inside one section would look like a
+   half-finished retheme. The glyph is an icon, so the bar is 3:1: lamp-600 is
+   5.02:1 on white, the darker hover 9.37:1. `:active` must be restated rather
+   than dropped, since the vendor rule sends it to full white on a white plate. */
+.contact-section .social a {
+	background: var(--redan-tint);
+	border: 1px solid var(--redan-hairline);
+	color: var(--redan-accent);
+}
+
+.contact-section .social a:hover {
+	color: var(--redan-lamp-700);
+	border-color: var(--redan-hairline);
+}
+
+.contact-section .social a:active {
+	color: var(--redan-lamp-700);
+}
+
+/* --------------------------------------------------------------------------
+   Error pages
+
+   The error pages carry no cave photo — the club hero shot behind a "your page
+   is missing" message reads as advertising — so `.masthead.error-masthead`
+   paints the pale limestone ramp instead. These pages stay light and deliberately
+   do NOT get the homepage's dark descent.
+   ------------------------------------------------------------------------ */
+.error-code {
+	font-size: 8rem;
+	font-weight: 800;
+	line-height: 1;
+	margin-bottom: 1rem;
+	color: var(--redan-accent);
+	animation: error-bounce 2s ease-in-out infinite;
+}
+
+.error-message {
+	font-size: 1.25rem;
+	color: var(--redan-cave-900);
+}
+
+/* The error pages keep the homepage masthead geometry (padding, min-height,
+   vertical centring, the id="main-content" skip-link target) but drop its
+   background photo: `.masthead` paints the club hero shot in three breakpoint
+   steps, and a real advertising image behind "your page is missing" is the one
+   thing these pages exist to avoid. `background: none` resets the whole
+   shorthand, photo and `#000` base colour with it, so the page ramp on the body
+   shows through instead. Two classes beat the single `.masthead` selector, so
+   this wins even though those rules sit later in the file. */
+.masthead.error-masthead {
+	background-color: var(--redan-limestone-mid);
+	background-image: var(--redan-limestone);
+}
+
+/* The masthead's mobile padding is 7rem on top and 5rem at the bottom, and its
+   desktop height is calc(85vh - 12.5rem) — all of it reserved for the fixed
+   navbar. The error pages have no navbar, so on a phone that padding became
+   112px of empty gradient above the drawing. Drop it to a symmetric 2rem; the
+   content is vertically centred in the masthead either way.
+
+   The desktop height is left alone on purpose: at >=992px the masthead's padding
+   is 0 and the height only acts as the flex base, which flex-grow then expands
+   to reach the footer. Measured, the footer still lands exactly on the bottom
+   edge at 1280x900. */
+@media (max-width: 991.98px) {
+	.masthead.error-masthead {
+		padding: 2rem 0;
+	}
+}
+
+/* The ASCII passage. Monospace at a fixed size keeps the art's own column
+   count intact — a proportional font would shear it apart.
+
+   `text-align: left` is load-bearing, not cosmetic. The drawing is one grid:
+   every line's leading spaces place its glyphs at fixed columns, so the
+   stalactites, the drip, the stick figure and the floor have to share a left
+   edge. `.text-center` on the wrapper sets `text-align: center`, which inherits
+   into this <pre> and centres each line *independently* — measured, that put the
+   ceiling 4.6 columns right of the floor and the figure's head 18 columns left
+   of its own torso, tearing the drawing apart while every line stayed perfectly
+   "correct" in the HTML. Centring the <pre> box is the job of the wrapper's
+   `d-flex justify-content-center` plus this element's own `margin: 0 auto`; the
+   text inside must stay left.
+
+   The drawing is 60 columns at its widest (the last NOTE line), so the font
+   size is a ladder rather than a single value: 60 characters plus the padding
+   has to fit the container, and the container only has 480px - 3rem of usable
+   width on a phone. Below 480px that only works at 0.55rem, which is small
+   enough to be worth stating out loud — if the NOTE ever moves out of the
+   <pre> and into a wrapping paragraph, the widest line becomes the 51-column
+   ceiling and every step below can grow by about a fifth. */
+.error-art {
+	display: inline-block;
+	margin: 0 auto 1.5rem;
+	font-family: var(--bs-font-monospace);
+	font-size: 0.55rem;
+	line-height: 1.15;
+	color: var(--redan-cave-800);
+	background-color: var(--redan-tint);
+	border: 1px solid rgba(36, 64, 26, 0.15);
+	border-radius: var(--redan-radius);
+	padding: 0.75rem 0.5rem;
+	max-width: 100%;
+	overflow-x: auto;
+	text-align: left;
+}
+
+@media (min-width: 480px) {
+	.error-art {
+		font-size: 0.7rem;
+	}
+}
+
+@media (min-width: 576px) {
+	.error-art {
+		font-size: 0.8rem;
+		padding: 1rem;
+	}
+}
+
+/* Let the drawing's box actually shrink. A flex item's automatic minimum size
+   is its min-content width, and `white-space: pre` makes that the width of the
+   widest line. Left alone, the item refuses to shrink below it, the art's own
+   max-width: 100% then resolves against the oversized item instead of against
+   the space really available, and the left edge of the cave — the start of the
+   ceiling and the "this guy" label — hangs off the side of the screen with
+   nothing clipping it. Resetting the minimum lets overflow-x: auto on the art
+   do its job and scroll the drawing instead of losing it. */
+.error-content {
+	min-width: 0;
+}
+
+/* The error pages carry no navbar at all — layout.public.twig skips the whole
+   <nav> when error_page is set — so there is nothing here to recolour. The
+   block that used to pin the bar to its scrolled (translucent white, black
+   text) state was deleted with it. `html { scroll-padding-top }` is left alone
+   deliberately: it is a global anchor-offset for the pages that do have a
+   fixed navbar, and on an error page there are no anchors to jump to. */
+
+/* The page-wide descent lives in "The descent: cave to surface" above, next to
+   the sticky-footer rule it shares the body selector with. */
+
+/* Sticky footer: keep the footer on the bottom edge when the page above it is
+   shorter than the viewport. body is a flex column, the masthead takes the
+   leftover height, the footer keeps its own.
+
+   Scoped to the error pages on purpose. index.twig's content block emits one
+   <section> per card run as *siblings*, and making body a flex container
+   would turn those into flex items — losing the margin collapsing the section
+   spacing relies on, and giving them the default flex-shrink, which on the
+   homepage risks compressing cards that were tuned by eye. The homepage is far
+   longer than any viewport so it never needed this; if a short public page ever
+   does, wrap the content block in a single element first. */
+body.error-page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+body.error-page .masthead {
+	flex: 1 0 auto;
+}
+
+body.error-page .footer {
+	flex-shrink: 0;
+}
+
+@keyframes error-bounce {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Public site fun: subtle hover effects and animations
+   ------------------------------------------------------------------------ */
+
+/* Smooth scroll for anchor links */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Card hover lift */
+.card {
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar subtle shadow on scroll */
+.navbar-scrolled {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Masthead title subtle animation */
+.masthead h1 {
+	animation: fade-in-down 1s ease-out;
+}
+
+.masthead h2 {
+	animation: fade-in-up 1s ease-out 0.3s both;
+}
+
+@keyframes fade-in-down {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Gallery image hover zoom (in addition to the existing scale) */
+.gallery-lightbox {
+	overflow: hidden;
+	border-radius: 0.25rem;
+}
+
+.gallery-lightbox img {
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-lightbox:hover img {
+	transform: scale(1.05);
+}
+
+/* Buttons
+
+   Only the error pages (403/404/500) use a button on the public site, and
+   they asked for `btn btn-primary btn-lg` — none of which exist in this
+   hand-minified Bootstrap, so "Back to the homepage" rendered as a bare
+   underlined green link: no background, no padding, inline. The pieces are
+   added here rather than in the templates, same as the utilities above.
+
+   `.btn-lg` is Bootstrap 5's size step (1.25rem / .5rem 1rem padding), kept
+   as-is so the three error pages keep their current type scale. */
+.btn {
+	display: inline-block;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: var(--bs-border-radius);
+	transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.btn:hover {
+	transform: translateY(-1px);
+}
+
+.btn-primary {
+	color: var(--bs-white);
+	background-color: var(--bs-primary);
+	border-color: var(--bs-primary);
+	text-decoration: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+	color: var(--bs-white);
+	background-color: var(--redan-cave-700);
+	border-color: var(--redan-cave-700);
+}
+
+.btn-primary:focus-visible {
+	box-shadow: 0 0 0 0.25rem rgba(180, 83, 9, .4);
+}
+
+.btn-lg {
+	padding: 0.5rem 1rem;
+	font-size: 1.25rem;
+	border-radius: var(--bs-border-radius-lg);
+}
+
+/* Footer link hover */
+.footer a {
+	transition: opacity 0.2s ease;
+}
+
+.footer a:hover {
+	opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   Missing Bootstrap utilities the block templates already ask for
+
+   The vendored sheet in this file is a hand-minified Bootstrap 5.2.3 with the
+   utility set cut down to what the old static site used. Three utilities the
+   current `_block/*.twig` markup references were never re-added, so they were
+   inert and the block items rendered wrong:
+
+   - `object-fit-cover` (both pair templates): the halves are `w-100 h-100`, so
+     without it the photo is stretched to the row height instead of cropped.
+   - `bg-white` (activities_pair_light): the welded card had no white behind
+     its text halves.
+   `d-block` on the gallery anchor is handled on `.gallery-lightbox` itself
+   further up rather than as a bare `.d-block` utility: a global
+   `display: block !important` would apply to every element that ever picks
+   the class, which is wider than the one call site.
+
+   `text-lg-left` and `text-lg-right` are deliberately NOT re-added here, even
+   though the block templates carry them. They were inert before this work and
+   stay inert: the centred layout they fall back to is the design's own, and
+   giving them meaning would left/right-align every activity card at lg and up
+   — a layout change nobody asked for.
+   -------------------------------------------------------------------------- */
+
+.object-fit-cover {
+	object-fit: cover;
+}
+
+.bg-white {
+	background-color: var(--bs-white) !important;
+}
+
+/* Focus ring, re-aimed at the lamp.
+
+   Three vendored rules hardcode their colour instead of reading the accent
+   tokens, so the accent swap left them behind. They are re-declared here at equal
+   specificity and win on source order — line 13 is a hand-minified sheet shared
+   with the members and admin shells, and it is not where public-site colour
+   decisions belong.
+
+   The ring is the one that mattered. It is `outline: 2px solid
+   --redan-accent-light`, and retargeting that token to the bright flame (#f0b429,
+   **1.86:1** on white) made an already-weak ring weaker still — it was the pale
+   green #9ab03e at 2.43:1, and WCAG 1.4.11 wants 3:1 for a focus indicator. On
+   the deep amber it is 5.02:1 on a white card and 3.60:1 on a black card half, so
+   a single value now clears the bar on every surface a link can sit on.
+
+   The two 12% tints and the teal `:active` are kept inside the media query the
+   originals live in. Stated unconditionally they would also apply below 992px,
+   where the vendored sheet gives the navbar no pill at all — so hoisting them out
+   would have quietly introduced a mobile nav affordance that has never existed,
+   which is a layout change disguised as a colour one. The alpha is .12 rather
+   than the 7% `--redan-tint` used for plates: the pill's whole job is to be
+   visible against the white bar, and borrowing the plate token would have halved
+   it to make a point about token reuse. */
+.navbar-toggler:focus-visible,
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--redan-accent);
+}
+
+@media (min-width: 992px) {
+	#mainNav.navbar-shrink .nav-link.active {
+		background-color: rgba(180, 83, 9, .12);
+	}
+
+	#mainNav .dropdown-item:hover {
+		background-color: rgba(180, 83, 9, .12);
+	}
+
+	#mainNav.navbar-shrink .nav-link:active {
+		color: var(--redan-lamp-700);
+	}
+}
+
+/* --------------------------------------------------------------------------
+   Text surfaces: the price of a page-wide ramp
+
+   The activity cards' text column (`activities_light`, `monday_openings`) has no
+   background of its own — the vendored sheet gives it only padding — so without
+   this it would sit straight on the descent. Below the hard cut that means the
+   pale end of the ramp, but the card's own text is dark ink chosen for a white
+   surface, and the alternative was letting body copy ride on a gradient whose
+   colour depends on document length. So it gets an opaque surface.
+
+   The card is `--bs-white` with the club radius and shadow, which also makes it
+   consistent with the contact cards (already `.card`) and the dark activity
+   halves (already `.project` with their own background). `.featured-text` is the
+   only text on the homepage that had no surface at all.
+
+   PADDING: the vendored sheet sets `padding: 2rem` and then, at lg and up,
+   `0 0 0 2rem` — flush top and bottom, because the column used to butt against
+   the photo beside it. Once it is a card, that vertical collapse makes the text
+   touch the edge, so 2rem is pinned back at every breakpoint; the geometry
+   block below tunes the lg card down to 1.25rem as part of making its two
+   ends meet the photo's.
+
+   Ink inside it is the plain page ink and the plain `--redan-accent`: the deep
+   lamp amber is 5.02:1 on the white card, comfortably over AA, so no colour
+   retuning is needed here — and it is one reason the accent had to be the DEEP
+   end of the lamp scale. The bright end (#f0b429) is 1.86:1 on this white card,
+   so a single "lamp yellow" token could not both glow on the cave and carry text
+   in the daylight half of the page.
+   -------------------------------------------------------------------------- */
+/* The selector is `.projects-section .featured-text`, NOT a bare `.featured-text`.
+   The vendored sheet sets `padding: 0 0 0 2rem` at lg under that two-class
+   selector, so a single-class rule loses on specificity and the card silently
+   keeps zero top and bottom padding — text flush against the rounded corner. A
+   live geometry check caught exactly that: the first line of the card sat 0px
+   from the card's own top edge. Matching the vendor's specificity and sitting
+   later in the file is what makes the padding real.
+
+   The radius is `--bs-border-radius` (0.375rem), the photo's `.rounded` value —
+   not `--redan-radius` (1rem), which the `.card` elements use. Two radii side by
+   side read as a mistake rather than a system. */
+.projects-section .featured-text {
+	background-color: var(--bs-white);
+	border-radius: var(--bs-border-radius);
+	box-shadow: var(--redan-shadow);
+	padding: 2rem;
+}
+
+/* The card and its photo share BOTH ends — flush top line and flush bottom
+   line — at lg and up, where the card sits beside the photo. Below lg the
+   columns stack and each keeps its natural height.
+
+   The mechanism is the one the pair cards already use, applied at lg where
+   the horizontal layout starts: the row grows to whichever of its columns
+   wants more room (`align-items: stretch` beats the template's
+   `align-items-center` utility, `!important` on both sides, source order
+   decides), and BOTH columns then fill that height:
+
+   - text column: `display: flex` makes `.featured-text` a flex item, and
+     flex items stretch along the cross axis by default — in a row-direction
+     container that axis is vertical. (Stretching the column alone is NOT
+     enough; the first version of the old rule shipped that mistake and the
+     card stayed a 433px block inside a 465px column.)
+   - photo column: same flex mechanism, with the img itself as the flex item
+     (`flex: 1; min-width: 0`) so it fills the column width, and
+     `object-fit: cover` so it crops rather than distorts when the card is
+     the taller column.
+
+   WHAT THAT BUYS AND WHAT IT COSTS: the white card can no longer hang below
+   the photo — the measured overhangs of the earlier top-aligned layout
+   (Rally: 110px at xl, 237px at lg) now crop the photo instead. The
+   typography block below keeps that crop small: the body copy drops to
+   .9rem on the horizontal cards and the h3 to 1.45rem, which brings the xl
+   crop down to single-digit percent of the frame; the narrow lg text column
+   cannot be fully saved by type alone, and a landscape photo in it loses a
+   wider slice. That is the accepted price of always-straight edges (see
+   spec/02 "Text surfaces"). Admin content is safe either way: the photo
+   gives first, the text never clips.
+
+   Widening the text column to make the card fit was measured and cannot
+   work. A raster photo's height is its width divided by its aspect, so
+   moving width from photo to text shrinks the photo at the same time as the
+   card needs more height. Card height needed vs photo height, measured by
+   applying each split live (before the typography tuning below):
+
+     xl (container 1140):  8/4 = 574 vs 464 (over 110)  7/5 = 472 vs 406 (over 66)
+                           6/6 = 424 vs 348 (over 76)
+     lg (container 960):   8/4 = 726 vs 384 (over 342)  7/5 = 573 vs 336 (over 237)
+                           6/6 = 471 vs 288 (over 183)
+
+   Every ratio still overflows, and past 7/5 it gets worse again because the
+   photo shrinks faster than the text grows shorter.
+
+   The `:has()` selectors scope all of this to rows that carry a
+   `.featured-text` — the pair and gallery rows have their own geometry and
+   are not touched. */
+@media (min-width: 992px) {
+	.projects-section .row:has(> div > .featured-text) {
+		align-items: stretch !important;
+	}
+
+	.projects-section .row > div:has(> .featured-text) {
+		display: flex;
+	}
+
+	.projects-section .row:has(> div > .featured-text) > div:has(> img) {
+		display: flex;
+	}
+
+	.projects-section .row:has(> div > .featured-text) > div:has(> img) > img {
+		flex: 1;
+		min-width: 0;
+		object-fit: cover;
+	}
+
+	/* The junction corners. The photo and the card above share both ends, so
+	   they touch along one vertical seam; four rounded corners meeting there
+	   let the page ramp peek through as notches. Squaring the junction reads
+	   the pair as one welded card, the same shape the dark pair rows build
+	   with their corner utilities. The photo carries the vendored `.rounded`
+	   (`!important`), so the match needs !important too; the card's radius is
+	   the authored `.projects-section .featured-text` rule, which the longer
+	   selector simply outranks.
+
+	   image_side decides which side the photo lands on via order-lg-last /
+	   order-lg-first, and the :not() pair reads that same class, so the seam
+	   is found either way. Below lg the columns stack — the photo keeps its
+	   `mb-3` gap — and all four corners round again. */
+	.projects-section .row:has(> div > .featured-text) > div:has(> img):not(.order-lg-last) > img {
+		border-top-right-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+
+	.projects-section .row:has(> div > .featured-text) > div.order-lg-last:has(> img) > img {
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+	}
+
+	.projects-section .row:has(> div > .featured-text) > div:not(.order-lg-first) > .featured-text {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	.projects-section .row:has(> div > .featured-text) > div.order-lg-first > .featured-text {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	/* Typography of the horizontal cards. The vendored sheet drops the
+	   padding to `0 0 0 2rem` at lg (the column used to butt against the
+	   photo); the surface rule above re-pins 2rem and this block tunes it to
+	   1.25rem so the card fits its photo with as little crop as possible. The
+	   selector keeps the vendor's two-class specificity for the same reason
+	   the surface rule does. 14.4px is the floor for the body copy: smaller
+	   than that the amber links start losing their comfortable margin at
+	   this weight for a 250-word read. The margin utilities are retuned with
+	   !important because `.my-3`/`.mb-3`/`.mb-4` are themselves !important
+	   utilities; this is the card's interior, so owning those values is
+	   within its scope. */
+	.projects-section .featured-text {
+		padding: 1.25rem;
+		font-size: .9rem;
+		line-height: 1.4;
+	}
+
+	.projects-section .featured-text h3 {
+		font-size: 1.45rem;
+	}
+
+	.projects-section .featured-text .my-3 {
+		margin-top: .5rem !important;
+		margin-bottom: .5rem !important;
+	}
+
+	.projects-section .featured-text .mb-3 {
+		margin-bottom: .75rem !important;
+	}
+
+	.projects-section .featured-text .mb-4 {
+		margin-bottom: 1rem !important;
+	}
+
+	.projects-section .featured-text .rallye-date {
+		font-size: 1.1rem;
+	}
+
+	.projects-section .featured-text .salle-openings {
+		line-height: 1.5;
+	}
+}
+
+/* Links in the club band. The band sits in the ramp's dark zone and its body
+   text is white, so the link is the bright end of the lamp scale: 9.6:1 on
+   cave-deep, and it is the same colour the band's own heading gradient starts
+   with, so a link reads as part of the heading rather than as a light-page
+   colour dropped onto a dark band. The vendor `a` colour would be 3.77:1 here,
+   which is legible but flat. */
+.about-section a {
+	color: var(--redan-accent-light);
+}
+
+.about-section a:hover {
+	color: var(--redan-lamp-200);
+}
+
+/* --------------------------------------------------------------------------
+   Announcement band
+
+   The one block with no themed rule of its own: it has no background, so it
+   shows whatever the page behind it paints. Between the dark masthead photo and
+   the club band it read as an unstyled gap, so a green hairline top and bottom
+   picks it up as part of the page. It deliberately still has no background of
+   its own — the body is admin-editable HTML that may already carry its own
+   styling — which is why it now sits on the page ramp rather than on a plate of
+   its own. Its text is the inherited body colour, 12.78:1 on the palest stop.
+   WATCH THIS ONE: it is not currently on the homepage, and if it is ever placed
+   in the ramp's dark zone its near-black text would be unreadable. Give it an
+   opaque surface, like `.featured-text`, before using it.
+   -------------------------------------------------------------------------- */
+.announcement-section {
+	border-top: 1px solid var(--redan-accent);
+	border-bottom: 1px solid var(--redan-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Muted text on the light contact cards
+
+   `.text-black-50` is rgba(0, 0, 0, .5) on a white card, which resolves to
+   #808080 — 3.12:1, below the 4.5:1 WCAG AA wants for the small address and
+   email text it is used for. Overridden here to 70% body colour (#646669,
+   5.76:1) on the contact cards only. The utility class stays as the markup
+   contract; only the value is corrected.
+   -------------------------------------------------------------------------- */
+.contact-section .text-black-50 {
+	color: rgba(33, 37, 41, .7) !important;
+}
+
+/* Footer links are the markup's own `text-white` on the markup's own `bg-black`
+   (see _block/footer.twig); nothing here overrides them, which is why there is no
+   colour rule for them any more. Their history — cave-500 at 4.21:1, then
+   moss-400 at 8.65:1, both chosen for a dark plate — lives in
+   spec/02-public-site.md. */
+
+/* --------------------------------------------------------------------------
+   Masthead hero image
+
+   The hero photo is the image uploaded on the masthead card, which the layout
+   passes in as the --masthead-image-{small,medium,wide,large} custom
+   properties (see _default/hero_image.twig). Each rule below only picks the
+   right variant for its breakpoint, so a page without those properties keeps
+   painting the static banner: that is the fallback for a masthead without a
+   photo and the only background of the error pages.
+
+   THE BREAKPOINTS ARE THE VARIANT WIDTHS, and that is the whole point of this
+   block. `.masthead` is `width: 100%` with `background-size: cover`, so it has
+   to be handed at least one image pixel per viewport pixel or the browser
+   stretches the photo — and the hero is the largest thing on the page, so a
+   stretch there is the first thing anyone sees. Each boundary below is
+   therefore the width of the image it switches *away* from: 640, 1280, 1920.
+
+   The ladder used to break at 768 and 1920 instead, which handed a 1280px
+   image to every viewport from 1281 to 1919 — that is a 1366, 1440, 1512,
+   1536, 1600 or 1700px laptop, i.e. most desktops — upscaling by up to 1.5x.
+   It was worst right at the seam: 1919px got the 1280px file, 1920px got the
+   2560px one. The 1920 step is new: it is a genuine downscale of the 2560
+   master (1920x960, webp q80), so a 1440px laptop gets a 1920px image instead
+   of paying for the full 2560 one, and nothing upscales.
+
+   Sizes: 640 (21 KB) / 1280 (78 KB) / 1920 (167 KB) / 2560 (302 KB).
+
+   background-position and background-size are not repeated here: the rules
+   above this block already set both, and only background-image is switched.
+   -------------------------------------------------------------------------- */
+.masthead {
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, .35) 0, rgba(0, 0, 0, .6) 55%, var(--redan-cave-deep) 100%), var(--masthead-image-small, url(/caving-banner-tiny.webp));
+}
+
+@media (min-width: 640px) {
+	.masthead {
+		background-image: linear-gradient(180deg, rgba(0, 0, 0, .35) 0, rgba(0, 0, 0, .6) 55%, var(--redan-cave-deep) 100%), var(--masthead-image-medium, url(/caving-banner-mid.webp));
+	}
+}
+
+@media (min-width: 1280px) {
+	.masthead {
+		background-image: linear-gradient(180deg, rgba(0, 0, 0, .35) 0, rgba(0, 0, 0, .6) 55%, var(--redan-cave-deep) 100%), var(--masthead-image-wide, url(/caving-banner-wide.webp));
+	}
+}
+
+@media (min-width: 1920px) {
+	.masthead {
+		background-image: linear-gradient(180deg, rgba(0, 0, 0, .35) 0, rgba(0, 0, 0, .6) 55%, var(--redan-cave-deep) 100%), var(--masthead-image-large, url(/caving-banner.webp));
+	}
 }

@@ -64,9 +64,16 @@ function init_sortable_tables() {
 
 		// Thumbnails inside the rows are natively draggable and hijack the
 		// drag: the browser then drags the image instead of the row. Kill
-		// the native behaviour so the row always wins.
+		// the native behaviour so the row always wins. Form fields and
+		// buttons get the same treatment, or the inline rename input would
+		// drag its row instead of letting the admin select text in it, and a
+		// copy button in a row would drag the row on a sloppy click.
 		row.querySelectorAll('img').forEach(function (image) {
 			image.setAttribute('draggable', 'false');
+		});
+
+		row.querySelectorAll('input, select, textarea, button').forEach(function (field) {
+			field.setAttribute('draggable', 'false');
 		});
 
 			row.addEventListener('dragstart', function () {
@@ -114,6 +121,13 @@ function init_sortable_tables() {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: params.toString(),
+			}).then(function () {
+				// The edit screen previews the reordered table (gallery
+				// pictures): re-render it once the new order is persisted,
+				// otherwise the preview keeps the stale order.
+				if (typeof window.block_preview_refresh === 'function') {
+					window.block_preview_refresh();
+				}
 			});
 		});
 	});
@@ -157,6 +171,41 @@ function init_visibility_toggles() {
 }
 
 /**
+ * Explain the option a <select> currently has (data-explanation-for).
+ *
+ * A select cannot hold rich content, so every option carries its own one
+ * line explanation in a data-explanation attribute and the hint the option
+ * points at (the attribute's value is the hint's id) is refilled from it on
+ * every change. The texts travel from the template for the same reason the
+ * other JavaScript strings do: the i18n extractor does not scan JS files.
+ */
+function init_select_explanations() {
+	var selects = document.querySelectorAll('select[data-explanation-for]');
+
+	selects.forEach(function (select) {
+		var target = document.getElementById(select.getAttribute('data-explanation-for'));
+
+		if (target === null) {
+			return;
+		}
+
+		var show_selected_explanation = function () {
+			var explanation = select.options[select.selectedIndex].getAttribute('data-explanation');
+
+			if (explanation === null) {
+				return;
+			}
+
+			target.textContent = explanation;
+		};
+
+		select.addEventListener('change', show_selected_explanation);
+
+		show_selected_explanation();
+	});
+}
+
+/**
  * Show or hide a password field referenced by [data-toggle-password].
  */
 function init_password_toggles() {
@@ -177,6 +226,107 @@ function init_password_toggles() {
 			}
 		});
 	});
+}
+
+/**
+ * Format a HTML string with consistent spacing: one tag per line, four
+ * -tab indentation that follows the element nesting and collapsed bare
+ * text nodes, so the saved HTML reads the same everywhere it is edited.
+ *
+ * Void tags and self-closing tags never change the depth; <pre>, <script>
+ * and <style> bodies are copied verbatim.
+ *
+ * @param string code
+ * @return string formatted_code
+ */
+function format_html(code) {
+	var void_tags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
+	var verbatim_tags = ['pre', 'script', 'style', 'textarea'];
+	var tokens = code.match(/<!--[\s\S]*?-->|<[^>]+>|[^<]+/g) || [];
+	var indent = '';
+	var lines = [];
+	var verbatim = null;
+	var inline_run = [];
+
+	/**
+	 * Flush a run of text as a single line so words stay wrapped together.
+	 */
+	function flush_inline() {
+		var text = inline_run.join('').trim();
+
+		if (text !== '') {
+			lines.push(indent + text);
+		}
+
+		inline_run = [];
+	}
+
+	tokens.forEach(function (token) {
+		// Inside <pre>/<script>/<style>: copy the tokens untouched until the
+		// matching closing tag ends the block.
+		if (verbatim !== null) {
+			if (token.toLowerCase().replace(/\s+/g, '') === '</' + verbatim + '>') {
+				var verbatim_content = inline_run.join('');
+
+				if (verbatim_content !== '') {
+					lines.push(verbatim_content);
+				}
+
+				inline_run = [];
+				indent = indent.slice(1);
+				lines.push(indent + token);
+				verbatim = null;
+			} else {
+				inline_run.push(token);
+			}
+
+			return;
+		}
+
+		var match = token.match(/^<\s*(\/)?\s*([a-zA-Z0-9]+)/);
+
+		if (match === null) {
+			// Text or comment: comments emit on their own line.
+			if (token.indexOf('<!--') === 0) {
+				flush_inline();
+				lines.push(indent + token.trim());
+			} else {
+				inline_run.push(token);
+			}
+
+			return;
+		}
+
+		flush_inline();
+
+		var tag_name = match[2].toLowerCase();
+		var closing = match[1] !== undefined;
+		var self_closing = /\/\s*>$/.test(token) || void_tags.indexOf(tag_name) !== -1;
+
+		if (closing === true) {
+			indent = indent.slice(1);
+			lines.push(indent + token.trim());
+
+			return;
+		}
+
+		lines.push(indent + token.trim());
+
+		if (self_closing === false) {
+			if (verbatim_tags.indexOf(tag_name) !== -1) {
+				verbatim = tag_name;
+				indent = indent + '\t';
+
+				return;
+			}
+
+			indent = indent + '\t';
+		}
+	});
+
+	flush_inline();
+
+	return lines.join('\n');
 }
 
 /**
@@ -202,6 +352,20 @@ function init_code_editors() {
 			indentUnit: 4,
 			indentWithTabs: true,
 		});
+
+		var toolbar = document.createElement('div');
+		toolbar.className = 'code-editor-toolbar';
+		var format_button = document.createElement('button');
+		format_button.type = 'button';
+		format_button.className = 'btn btn-sm btn-outline-secondary';
+		format_button.textContent = textarea.getAttribute('data-format-title') ?? 'Format';
+		format_button.addEventListener('click', function () {
+			editor.setValue(format_html(editor.getValue()));
+		});
+
+		var wrapper = editor.getWrapperElement();
+		wrapper.parentNode.insertBefore(toolbar, wrapper);
+		toolbar.appendChild(format_button);
 
 		window.block_code_editors.push(editor);
 	});
@@ -302,6 +466,18 @@ function init_preview_refresh() {
 
 	window.block_code_editors.forEach(function (editor) {
 		editor.on('change', debounced_refresh);
+	});
+
+	// Exposed so other flows (e.g. the gallery picture reorder) can re-render
+	// the preview after the order has been persisted.
+	window.block_preview_refresh = refresh;
+
+	// Autoformat the HTML in every editor before the form is submitted so the
+	// stored body is always readable (one tag per line, consistent indent).
+	form.addEventListener('submit', function () {
+		window.block_code_editors.forEach(function (editor) {
+			editor.setValue(format_html(editor.getValue()));
+		});
 	});
 
 	refresh();
@@ -447,6 +623,54 @@ function calendar_build_time_label(event) {
 }
 
 /**
+ * Resolve the i18n labels for the calendar tooltip and error strings.
+ *
+ * The server renders the translations (po catalogs) into data-i18n-*
+ * attributes on the calendar container; JS strings cannot go through the
+ * po extractor, so the msgids travel as attributes. The English values are
+ * the fallbacks when the attributes are missing.
+ *
+ * @return {Object}
+ */
+var calendar_i18n_cache = null;
+
+function calendar_chip_labels() {
+	if (calendar_i18n_cache !== null) {
+		return calendar_i18n_cache;
+	}
+
+	var element = document.getElementById('admin-calendar');
+
+	if (element === null) {
+		element = document.getElementById('members-calendar');
+	}
+
+	function read(name, fallback) {
+		if (element !== null) {
+			var value = element.getAttribute('data-i18n-' + name);
+
+			if (value !== null && value !== '') {
+				return value;
+			}
+		}
+
+		return fallback;
+	}
+
+	calendar_i18n_cache = {
+		category: read('category', 'Category:'),
+		location: read('location', 'Location:'),
+		hidden: read('hidden', '(hidden: not published)'),
+		calendar_missing: read('calendar-missing', 'Fullcalendar script missing'),
+		not_loaded: read('calendar-missing-not-loaded', 'not loaded'),
+		no_export: read('calendar-missing-no-export', 'loaded but no Calendar export'),
+		calendar_failed: read('calendar-failed', 'Calendar failed to render'),
+	};
+
+	return calendar_i18n_cache;
+}
+
+/**
  * Build the chip content for a fullcalendar event (admin + members).
  *
  * Shared by both calendars so their day-grid chips always look the same:
@@ -497,6 +721,7 @@ function build_calendar_chip(arg) {
 	// Native tooltip: the title attribute shows the full info on hover
 	// without an extra library. "\n" renders as a line break in the major
 	// browsers.
+	var labels = calendar_chip_labels();
 	var hover_lines = [ event.title ];
 
 	var time_hover = calendar_build_time_label(event);
@@ -505,11 +730,11 @@ function build_calendar_chip(arg) {
 	}
 
 	if (category_name !== '') {
-		hover_lines.push('Category: ' + category_name);
+		hover_lines.push(labels.category + ' ' + category_name);
 	}
 
 	if (location !== '') {
-		hover_lines.push('Location: ' + location);
+		hover_lines.push(labels.location + ' ' + location);
 	}
 
 	if (description !== '') {
@@ -519,7 +744,7 @@ function build_calendar_chip(arg) {
 
 	if (visible_state !== '') {
 		hover_lines.push('');
-		hover_lines.push('(hidden: not published)');
+		hover_lines.push(labels.hidden);
 	}
 
 	title_element.title = hover_lines.join('\n');
@@ -545,8 +770,9 @@ function init_admin_calendar() {
 	}
 
 	if (typeof window.FullCalendar === 'undefined' || typeof window.FullCalendar.Calendar !== 'function') {
-		element.innerHTML = '<span class="text-danger">Fullcalendar script missing: ' +
-			(typeof window.FullCalendar === 'undefined' ? 'not loaded' : 'loaded but no Calendar export') + '</span>';
+		var labels = calendar_chip_labels();
+		var reason = typeof window.FullCalendar === 'undefined' ? labels.not_loaded : labels.no_export;
+		element.innerHTML = '<span class="text-danger">' + labels.calendar_missing + ': ' + reason + '</span>';
 		return;
 	}
 
@@ -612,7 +838,7 @@ function init_admin_calendar() {
 
 		window.admin_calendar = calendar;
 	} catch (error) {
-		element.innerHTML = '<span class="text-danger">Calendar failed to render: ' +
+		element.innerHTML = '<span class="text-danger">' + calendar_chip_labels().calendar_failed + ': ' +
 			String(error.message || error) + '</span>';
 	}
 }
@@ -633,142 +859,6 @@ function init_delete_confirms() {
 }
 
 /**
- * Lightbox for the gallery cards (.gallery-lightbox anchors).
- *
- * Clicking a picture opens an overlay with the full-quality copy; the
- * overlay supports arrows, keyboard navigation (Esc / arrows) and swiping
- * past the ends closes nothing — arrows wrap around. No dependency.
- */
-function init_gallery_lightbox() {
-	var links = document.querySelectorAll('a.gallery-lightbox');
-
-	if (links.length === 0) {
-		return;
-	}
-
-	var overlay = null;
-	var image = null;
-	var caption = null;
-	var group = '';
-	var group_links = [];
-	var current_index = 0;
-
-	function build_overlay() {
-		overlay = document.createElement('div');
-		overlay.setAttribute('class', 'gallery-lightbox-overlay');
-		overlay.setAttribute('role', 'dialog');
-		overlay.setAttribute('aria-modal', 'true');
-		overlay.setAttribute('aria-label', 'Image viewer');
-
-		var close = document.createElement('button');
-		close.setAttribute('class', 'gallery-lightbox-close');
-		close.setAttribute('type', 'button');
-		close.setAttribute('aria-label', 'Close');
-		close.textContent = '\u00d7';
-
-		var prev = document.createElement('button');
-		prev.setAttribute('class', 'gallery-lightbox-prev');
-		prev.setAttribute('type', 'button');
-		prev.setAttribute('aria-label', 'Previous');
-		prev.textContent = '\u2039';
-
-		var next = document.createElement('button');
-		next.setAttribute('class', 'gallery-lightbox-next');
-		next.setAttribute('type', 'button');
-		next.setAttribute('aria-label', 'Next');
-		next.textContent = '\u203a';
-
-		image = document.createElement('img');
-		image.setAttribute('alt', '');
-
-		caption = document.createElement('div');
-		caption.setAttribute('class', 'gallery-lightbox-caption');
-
-		overlay.appendChild(close);
-		overlay.appendChild(prev);
-		overlay.appendChild(image);
-		overlay.appendChild(next);
-		overlay.appendChild(caption);
-		document.body.appendChild(overlay);
-
-		close.addEventListener('click', close_overlay);
-		prev.addEventListener('click', function () {
-			show_index(current_index - 1);
-		});
-		next.addEventListener('click', function () {
-			show_index(current_index + 1);
-		});
-		overlay.addEventListener('click', function (event) {
-			if (event.target === overlay) {
-				close_overlay();
-			}
-		});
-
-		document.addEventListener('keydown', function (event) {
-			if (overlay === null || document.body.contains(overlay) === false) {
-				return;
-			}
-
-			if (document.body.classList.contains('gallery-lightbox-open') === false) {
-				return;
-			}
-
-			if (event.key === 'Escape') {
-				close_overlay();
-			} else if (event.key === 'ArrowLeft') {
-				show_index(current_index - 1);
-			} else if (event.key === 'ArrowRight') {
-				show_index(current_index + 1);
-			}
-		});
-	}
-
-	function show_index(index) {
-		var count = group_links.length;
-
-		if (count === 0) {
-			return;
-		}
-
-		// Wrap around: the user can flip through without dead ends.
-		current_index = ((index % count) + count) % count;
-
-		var link = group_links[current_index];
-
-		image.setAttribute('src', link.href);
-		image.setAttribute('alt', link.querySelector('img') !== null ? link.querySelector('img').alt : '');
-		caption.textContent = (current_index + 1) + ' / ' + count;
-		document.body.classList.add('gallery-lightbox-open');
-	}
-
-	function close_overlay() {
-		overlay.remove();
-		document.body.classList.remove('gallery-lightbox-open');
-	}
-
-	links.forEach(function (link) {
-		link.addEventListener('click', function (event) {
-			event.preventDefault();
-
-			group = link.getAttribute('data-gallery-group') || '';
-
-			group_links = [];
-			document.querySelectorAll('a.gallery-lightbox[data-gallery-group="' + group + '"]').forEach(function (group_link) {
-				group_links.push(group_link);
-			});
-
-			current_index = parseInt(link.getAttribute('data-gallery-index') || '0', 10);
-
-			if (overlay === null) {
-				build_overlay();
-			}
-
-			show_index(current_index);
-		});
-	});
-}
-
-/**
  * Read-only fullcalendar for the members area (#members-calendar).
  *
  * Same feed shape as the admin calendar but without navigation or edit
@@ -782,7 +872,7 @@ function init_members_calendar() {
 	}
 
 	if (typeof window.FullCalendar === 'undefined' || typeof window.FullCalendar.Calendar !== 'function') {
-		element.innerHTML = '<span class="text-danger">Fullcalendar script missing</span>';
+		element.innerHTML = '<span class="text-danger">' + calendar_chip_labels().calendar_missing + '</span>';
 		return;
 	}
 
@@ -827,7 +917,7 @@ function init_members_calendar() {
 
 		window.members_calendar = calendar;
 	} catch (error) {
-		element.innerHTML = '<span class="text-danger">Calendar failed to render: ' +
+		element.innerHTML = '<span class="text-danger">' + calendar_chip_labels().calendar_failed + ': ' +
 			String(error.message || error) + '</span>';
 	}
 }
@@ -930,11 +1020,11 @@ function init_collapse_toggles() {
 window.addEventListener('DOMContentLoaded', function () {
 	init_sortable_tables();
 	init_visibility_toggles();
+	init_select_explanations();
 	init_password_toggles();
 	init_code_editors();
 	init_picture_uploads();
 	init_delete_confirms();
-	init_gallery_lightbox();
 	init_preview_refresh();
 	init_preview_height();
 	init_collapse_toggles();

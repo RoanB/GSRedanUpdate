@@ -9,8 +9,9 @@ redirects to `/members` so existing links keep working.
 ## Gate (unchanged in mechanics)
 
 **2026-09-17: separate members layout.** The members page extends its own
-`_default/layout.members.twig` (a smaller tabler shell): same brand + logo,
-but the navbar holds the members links instead of the admin modules, plus the
+`_default/layout.members.twig` (a smaller tabler shell): same brand + logo
+(logo in its own colours, as in admin — see 03-admin.md), but the navbar holds
+the members links instead of the admin modules, plus the
 user `log out` pill only when an admin session exists. The breadcrumb header
 always says "Members area". *(Superseded 2026-09-17 by the calendar tab: the
 navbar is now *Files / Calendar / Admin* — see "Calendar tab" below.)*
@@ -27,7 +28,8 @@ title) is hidden on the gate screen too (`show_gate == false` guard around
 `download_password_hash` setting (`Members::grant_from_secret()`, shared
 with the POST form) and sets `members_authenticated`, then 302s to a clean
 `/members` so the secret drops out of the address bar. Wrong/missing token
-behaves like a wrong password (`?failed=1`). That means the shared password
+behaves like a wrong password (sticky `failed` key, set by the private
+`Members::redirect_with_message()`). That means the shared password
 doubles as a magic link — useful to seed the club board without them typing
 it — at the cost that the password now also travels in URLs (browser
 history, server access logs, bookmarks jumped on by hitting Enter). The
@@ -35,11 +37,43 @@ app's own `request.log` masks it (`Application::teardown()` rewrites
 `?access=<v>` to `?access=********`; `Util_Log::safe_url` also obfuscates
 the key); the residual exposure is outside the app (browser history, web
 server access logs, HTTP referrers).
+**2026-09-23: shared file link.** The admin file list (`Admin\Download`,
+`admin/download.twig`) renders a copyable, absolute URL under every file name:
+`https://<host>/members?action=get&id=<id>&access=<shared password>`.
+`Members::display_get()` accepts `access` exactly like the gate (verified with
+`password_verify` against `download_password_hash`), so the recipient downloads
+the file directly without entering the password — same risk profile and
+`request.log` masking as the token URL above. Because the hash cannot be read
+back, the password is mirrored in plaintext as the `download_password` setting
+(seed + admin change keep it in sync); the URL is only ever built on the admin
+screen. Contradicts the earlier "clear text never persisted" rule in 03 — see
+the note there.
+**2026-09-23: admin visibility.** Both `Admin\Download` (`admin/files`) and
+`Admin\Calendar` (`admin/calendar`) show a "Members access link" info card with
+the general copyable URL (`/members?access=<password>`, unlocks files AND
+calendar) plus a warning that the URL embeds the shared password and grants the
+whole gate.
+**2026-09-28: the two share links stated the same warning twice.** The card
+warned about the embedded password, and every file row repeated a red "Anyone
+with this URL can download this file without the password" under its name —
+once per file, for the same sentence. The row hint is gone; the card now
+covers both link kinds in one warning ("These URLs contain the shared members
+password…" and its subtitle names the per-file links). The per-file link stays
+(a dated feature, see above) and is now a `tabler.copy_input()` instead of a
+long text link, because its whole purpose is to be copied; the id is
+`share-url-<file id>`. `base.js` marks `button` next to the form fields as
+`draggable="false"` inside a sortable row, so clicking copy does not drag the
+row.
 
 - `GET /members` renders the gate or the content, flagged by the session.
 - `POST /members?action=gate` verifies the seeded setting
   `download_password_hash` (the setting name stays, it is referenced in
-  `config` seeds and the admin screen). Wrong password → `?failed=1`.
+  `config` seeds and the admin screen). Wrong password → sticky `failed`
+  key, read as `sticky_session.failed` in the gate card. The last query
+  flag in the project (`?failed=1`) is gone; the message now survives a
+  refresh on a clean `/members` URL. The module cannot extend
+  `Admin\Base` (that one demands an admin session), so it carries its own
+  two-line `redirect_with_message()`.
 - `GET /download` (module `Download::display()`) redirects to `/members` —
   the module class stays as a compat shim.
 - Session key renamed from `download_authenticated` to
@@ -278,6 +312,69 @@ tabs; the navbar links are *Files*, *Calendar* and *Admin* (the old
   visitor path is the calendar + list, not the subscription URLs), the
   admin card starts expanded. New `chevron-up` / `chevron-down` icons in
   the tabler macro; `base.js` cache-busting bumped to `20260918g`.
+
+- **2026-09-23 — credentials under the edit URL.** Block 2 on the admin
+  *Calendar in clients* card now shows the credentials clients ask for: the
+  URL, then Username (`caldav_user`) and Password (`caldav_password`) in
+  `tabler.copy_input` fields, with values from the
+  `calendar_caldav_user` / `calendar_caldav_password` config and the same
+  `redan` / `fD5D6A4Z` defaults the CalDAV backend accepts. The edit URL
+  keeps the secret token, so URL-only tools (Thunderbird: paste the URL on
+  its own) still need nothing else; the hint now spells out that split —
+  some tools fill in only the URL, others ask for the username/password
+  pair. Pure UI change: the credentials were already valid via
+  `Caldav::authenticate()`.
+
+- **2026-09-23 — language selector on the members pages.** The
+  `layout.members.twig` layout gets the same `?language=xx` switcher as the
+  admin footer: a `list-inline-dots` item in a `footer.footer-transparent`
+  bar, bottom-right (`col-lg-auto ms-lg-auto` inside the
+  `flex-row-reverse` grid, exactly like `layout.base.twig`). The current
+  language renders as `<strong>{{ name_short|upper }}</strong>`, every other
+  language as a `?language={{ name_short }}` link separated by ` - `. The
+  earlier navbar-dropdown variant (tabler dropdown in both the logged-in and
+  guest navbar branches) was removed in the same session; the empty `&nbsp;`
+  placeholder link that balanced that dropdown in the guest branch went with
+  it. The footer is outside the `show_gate` guard, so the selector stays
+  reachable on the password-gate screen too. The `languages` array is
+  assigned per request by the `App\Front\Event\Module` bootstrap
+  (`$template->assign('languages', \Language::get_all())`), so no extra
+  module code was needed. The language links use the language-**prefixed
+  paths** the router already defines (`/fr/members`, `/nl/members`,
+  `/fr/members/calendar`, ...), not the `?language=xx` query string: the
+  footer mirrors the current `REQUEST_URI` with the prefix logic copied from
+  the public navbar (`layout.public.twig`) — prefix present → swap it,
+  absent → prepend `/xx`. The `lang=` attribute names the target language
+  on every link. During review one requested URL shape `/fr/content` was
+  checked but there is **no `/content` route** (`/content` → 404; the
+  members pages are `/members` and `/members/calendar`), so the mirrored
+  paths above are the correct prefixed forms.
+- **2026-09-23 follow-up — the strip is sticky.** `footer-transparent` is
+  transparent, and the footer sits below the fold on long members pages, so
+  the selector scrolled out of sight. The footer gets a `footer-sticky`
+  class (new rule in `base.css`): `position: sticky; bottom: 0` keeps it
+  pinned to the viewport bottom on every scroll position (it is a direct
+  child of `body`, after `.page`, so the sticky against the document works),
+  plus a translucent white backdrop with a 4px blur so text scrolling
+  underneath doesn't collide with the links. The tabler `.footer` padding is
+  tightened to `.5rem` vertical for a slim strip; `base.css` cache-buster
+  bumped `20260923a` → `20260923b` in `layout.members.twig` only (the admin
+  and login layouts still serve the older hash they match).
+- **2026-09-25 — the calendar follows the session language.** FullCalendar
+  renders its month/day names and toolbar (Today, Month, Week) from its own
+  locale data, not from po. `layout.members.twig` and `layout.base.twig`
+  dropped the hardcoded `<html lang="en">` for
+  `env.session.language.name_short`, and both calendar pages now load the
+  matching locale script
+  (`/fullcalendar--core/locales/<lang>.global.min.js`, skipped for `en`)
+  right after the bundle — `base.js` already sets the FullCalendar `locale`
+  option from `document.documentElement.lang`. The English-only tooltip and
+  error strings in `base.js` (`Category:`, `Location:`, `(hidden: not
+  published)`, "Fullcalendar script missing", "Calendar failed to render")
+  were routed through `data-i18n-*` attributes on the two calendar
+  containers, rendered by `{% trans %}`; `calendar_chip_labels()` reads them
+  with English fallbacks. Cache-busters bumped: `base.js` everywhere to
+  `20260925a`. Full detail in [05](05-i18n.md).
 
 **2026-09-17 PUT conditional-sync fixes:** the PUT pathway adds ETag
 semantics — new resources answer `ETag` + `ETag: <new etag>` plus

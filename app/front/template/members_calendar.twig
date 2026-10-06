@@ -14,11 +14,18 @@
 				<div class="card-header">
 					<div>
 						<h3 class="card-title">{% trans "Calendar" %}</h3>
-						<div class="card-subtitle mt-1">{% trans "The club schedule. Hover an event to see the location and details." %}</div>
+						<div class="card-subtitle mt-1">{% trans "Hover an event for details." %}</div>
 					</div>
 				</div>
 				<div class="card-body">
-					<div id="members-calendar"></div>
+					<div id="members-calendar"
+						data-i18n-category="{% trans "Category:" %}"
+						data-i18n-location="{% trans "Location:" %}"
+						data-i18n-hidden="{% trans "(hidden: not published)" %}"
+						data-i18n-calendar-missing="{% trans "Fullcalendar script missing" %}"
+						data-i18n-calendar-missing-not-loaded="{% trans "not loaded" %}"
+						data-i18n-calendar-missing-no-export="{% trans "loaded but no Calendar export" %}"
+						data-i18n-calendar-failed="{% trans "Calendar failed to render" %}"></div>
 				</div>
 				{% if calendar_categories|length > 0 %}
 					<div class="card-footer">
@@ -37,7 +44,7 @@
 				<div class="card-header">
 					<div>
 						<h3 class="card-title">{% trans "Subscribe" %}</h3>
-						<div class="card-subtitle mt-1">{% trans "Links to add the club calendar to your phone or computer. The live link stays up to date automatically; the ICS file is a one-time snapshot." %}</div>
+						<div class="card-subtitle mt-1">{% trans "Live link auto-updates; ICS is a snapshot." %}</div>
 					</div>
 					<div class="card-actions">
 						<button type="button" class="btn btn-sm btn-outline-secondary" data-collapse="#members-subscribe">
@@ -54,13 +61,13 @@
 					<div class="mb-3">
 						<label class="form-label">{% trans "Calendar link (live)" %}</label>
 						{{ tabler.copy_input(caldav_url, 'members-caldav-url') }}
-						<small class="form-hint">{% trans "Live and read-only: it updates on its own whenever events change. No password or account needed." %}</small>
+						<small class="form-hint">{% trans "Read-only. No password needed." %}</small>
 					</div>
 
 					<div class="mb-3">
 						<label class="form-label">{% trans "ICS file" %}</label>
 						{{ tabler.copy_input(ics_url, 'members-ics-url') }}
-						<small class="form-hint">{% trans "Downloads the current events once. For apps that cannot subscribe; it does not update afterwards." %}</small>
+						<small class="form-hint">{% trans "One-time download. Does not update." %}</small>
 					</div>
 
 					<a href="/members/calendar.ics" class="btn btn-secondary w-100">
@@ -100,4 +107,7 @@
 
 {% block footer_scripts %}
 	<script src="/fullcalendar/index.global.min.js"></script>
+	{% if env.session.language.name_short != 'en' %}
+		<script src="/fullcalendar--core/locales/{{ env.session.language.name_short }}.global.min.js"></script>
+	{% endif %}
 {% endblock footer_scripts %}

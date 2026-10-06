@@ -13,7 +13,7 @@ declare(strict_types=1);
  *   no re-encode, no quality loss. (Picture::show() would re-encode with
  *   quality -1, which degrades webp to quality 9.)
  * - A real downsize re-encodes once with quality 85 in image/webp (jpeg for
- *   non-webp sources) and the copy is cached in tmp/picture/<size>/<id>.
+ *   non-webp sources) and the copy is cached in tmp/picture/<size>/<id>-<md5>.
  *
  * @author Roan Buysse <roan@tigron.be>
  */
@@ -116,6 +116,10 @@ class Picture extends \Skeleton\Application\Web\Module {
 	/**
 	 * Build (or reuse) the resized copy for this size
 	 *
+	 * The cache key includes the source md5: keys on the file id alone
+	 * served a stale derivative when a file id was reused (see spec/02
+	 * "Image quality").
+	 *
 	 * @access private
 	 * @param Picture_File $picture
 	 * @param array $configuration
@@ -124,7 +128,7 @@ class Picture extends \Skeleton\Application\Web\Module {
 	 */
 	private function build_resize(Picture_File $picture, array $configuration, string $format): string {
 		$directory = \Skeleton\File\Picture\Config::$tmp_path . $configuration['name'] . '/';
-		$path = $directory . $picture->id;
+		$path = $directory . $picture->id . '-' . substr((string)$picture->md5sum, 0, 8);
 
 		if (file_exists($path) === true) {
 			return $path;

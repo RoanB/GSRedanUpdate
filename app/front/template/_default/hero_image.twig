@@ -1,0 +1,57 @@
+{#
+	Hero image
+
+	The masthead is the largest contentful paint of every public page, so the
+	photo behind it is preloaded per breakpoint and handed to styles.css as the
+	--masthead-image-{small,medium,wide,large} custom properties. The media
+	queries here have to be the ones styles.css switches on, or the browser
+	preloads a picture it never paints.
+
+	Those boundaries are 640 / 1280 / 1920, which are the widths of the
+	variants themselves and not Bootstrap's breakpoints. `.masthead` is
+	`width: 100%` with `background-size: cover`, so a variant narrower than its
+	viewport range gets stretched by the browser; the boundaries therefore have
+	to be the variant widths. At 768/1920 as they used to be, a 1280px variant
+	served every viewport up to 1919px — every 1366 to 1536px laptop — and
+	upscaled it. Each query is a closed range here, because these are `media`
+	attributes on four separate links: an open-ended
+	`media="(min-width: 640px)"` would match three queries at once on a wide
+	screen and preload the whole ladder.
+
+	Without an uploaded photo (masthead_image is empty) this renders only the
+	preloads of the static banner, which is what styles.css falls back to: that
+	is also the background of the error pages.
+
+	`error_page` is set by not_found(). The error pages paint a plain
+	gradient (`.masthead.error-masthead`) and share the art in error_art.twig
+	instead of a photo, so both branches below would only preload an image
+	nobody paints — which costs the visitor the bytes without earning the
+	paint.
+
+	The |raw filters below are required, not sloppiness: <style> is a raw text
+	element, so the HTML parser hands its content to CSS undecoded. Without
+	them the escaped ampersand of the /picture query string would end up in the
+	css url() literally and the hero would 404. The href attributes above take
+	the escaped form, which is what an attribute value wants.
+#}
+{% if error_page is not defined %}
+	{% if masthead_image is defined and masthead_image is not empty %}
+		<link rel="preload" as="image" href="{{ masthead_image.small }}" media="(max-width: 639.98px)" fetchpriority="high"/>
+		<link rel="preload" as="image" href="{{ masthead_image.medium }}" media="(min-width: 640px) and (max-width: 1279.98px)" fetchpriority="high"/>
+		<link rel="preload" as="image" href="{{ masthead_image.wide }}" media="(min-width: 1280px) and (max-width: 1919.98px)" fetchpriority="high"/>
+		<link rel="preload" as="image" href="{{ masthead_image.large }}" media="(min-width: 1920px)" fetchpriority="high"/>
+		<style>
+			.masthead {
+				--masthead-image-small: url('{{ masthead_image.small|raw }}');
+				--masthead-image-medium: url('{{ masthead_image.medium|raw }}');
+				--masthead-image-wide: url('{{ masthead_image.wide|raw }}');
+				--masthead-image-large: url('{{ masthead_image.large|raw }}');
+			}
+		</style>
+	{% else %}
+		<link rel="preload" as="image" href="/caving-banner-tiny.webp" media="(max-width: 639.98px)" fetchpriority="high"/>
+		<link rel="preload" as="image" href="/caving-banner-mid.webp" media="(min-width: 640px) and (max-width: 1279.98px)" fetchpriority="high"/>
+		<link rel="preload" as="image" href="/caving-banner-wide.webp" media="(min-width: 1280px) and (max-width: 1919.98px)" fetchpriority="high"/>
+		<link rel="preload" as="image" href="/caving-banner.webp" media="(min-width: 1920px)" fetchpriority="high"/>
+	{% endif %}
+{% endif %}

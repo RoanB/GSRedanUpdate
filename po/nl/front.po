@@ -1,0 +1,884 @@
+# .po file for project "front" in Dutch
+
+msgid ""
+msgstr ""
+"Project-Id-Version: front-nl.1790854107\n"
+"PO-Revision-Date: 2026-10-01 11:28+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+
+msgid "(hidden: not published)"
+msgstr "(verborgen: niet gepubliceerd)"
+
+msgid "1 · To VIEW the calendar (no credentials)"
+msgstr "1 · Om de kalender te BEKIJKEN (zonder logingegevens)"
+
+msgid "2 · To EDIT the calendar (secret-token URL)"
+msgstr "2 · Om de kalender te WIJZIGEN (geheime token-URL)"
+
+msgid "3 · One-shot ICS import"
+msgstr "3 · Eenmalige ICS-import"
+
+msgid "Add card"
+msgstr "Kaart toevoegen"
+
+msgid "Add download"
+msgstr "Download toevoegen"
+
+msgid "Add event"
+msgstr "Evenement toevoegen"
+
+msgid "Add file"
+msgstr "Bestand toevoegen"
+
+msgid "Add user"
+msgstr "Gebruiker toevoegen"
+
+msgid "Address of the venue"
+msgstr "Adres van het lokaal"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Administration"
+msgstr "Beheer"
+
+msgid "All accounts are admins. Reset passwords by mail."
+msgstr "Alle accounts zijn beheerders. Herstel via mail."
+
+msgid "all day"
+msgstr "de hele dag"
+
+msgid "All day (dates only, no times in the calendar)"
+msgstr "Volledige dag (alleen datums, geen tijden in de kalender)"
+
+msgid "All pictures are resized on demand; keep originals reasonable (max ~2000px wide recommended)."
+msgstr "Alle afbeeldingen worden op aanvraag geschaald; houd de originelen redelijk (maximaal ~2000px breed aanbevolen)."
+
+msgid "Aller au contenu"
+msgstr "Naar de inhoud"
+
+msgid "Allows editing. Some tools also need the credentials below."
+msgstr "Maakt bewerking mogelijk. Sommige tools hebben ook de logingegevens nodig."
+
+msgid "Also the login and reset mail address."
+msgstr "Ook de login en het hersteladres."
+
+msgid "Anchor"
+msgstr "Anker"
+
+msgid "Anchor (menu link)"
+msgstr "Anker (menulink)"
+
+msgid "Archive"
+msgstr "Archiveren"
+
+msgid "At least 8 characters."
+msgstr "Minstens 8 tekens."
+
+msgid "Back to log in"
+msgstr "Terug naar het inloggen"
+
+msgid "Back to login"
+msgstr "Terug naar het inloggen"
+
+msgid "Back to the homepage"
+msgstr "Terug naar de homepage"
+
+msgid "breadcrumbs"
+msgstr "Kruimelpad"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Calendar events"
+msgstr "Kalenderevenementen"
+
+msgid "Calendar failed to render"
+msgstr "Kalender kon niet worden weergegeven"
+
+msgid "Calendar in clients"
+msgstr "De kalender in je apps"
+
+msgid "Calendar link (live)"
+msgstr "Kalenderlink (live)"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Cannot archive yourself"
+msgstr "Je kunt jezelf niet archiveren"
+
+msgid "Card"
+msgstr "Kaart"
+
+msgid "Card could not be added"
+msgstr "Kaart kon niet worden toegevoegd"
+
+msgid "Card could not be deleted: fixed cards (masthead, club, contact, Monday openings) are part of the page structure."
+msgstr "Kaart kon niet worden verwijderd: vaste kaarten (masthead, club, contact, openingsuren maandag) maken deel uit van de paginastructuur."
+
+msgid "Card deleted"
+msgstr "Kaart verwijderd"
+
+msgid "Card image"
+msgstr "Kaartafbeelding"
+
+msgid "Card settings"
+msgstr "Kaartinstellingen"
+
+msgid "Cards"
+msgstr "Kaarten"
+
+msgid "Categories"
+msgstr "Categorieën"
+
+msgid "Category"
+msgstr "Categorie"
+
+msgid "Category:"
+msgstr "Categorie:"
+
+msgid "Check the mail configuration and the contact_email setting, then try again."
+msgstr "Controleer de mailconfiguratie en de instelling contact_email en probeer het opnieuw."
+
+msgid "Choose a new password"
+msgstr "Kies een nieuw wachtwoord"
+
+msgid "choose a new password for your account."
+msgstr "kies een nieuw wachtwoord voor je account."
+
+msgid "City"
+msgstr "Stad"
+
+msgid "Click a row to download."
+msgstr "Klik een rij om te downloaden."
+
+msgid "close"
+msgstr "sluiten"
+
+msgid "Club address"
+msgstr "Adres van de club"
+
+msgid "Club de spéléologie situé à Bruxelles (Koekelberg) Belgique, disposant d'un local d'entraînement situé sous la Basilique - Ouvertures de la salle - Entraînement"
+msgstr "Speleoclub in Brussel (Koekelberg) België, met een trainingslokaal onder de Basiliek - Openstellingen van het lokaal - Training"
+
+msgid "Collapse"
+msgstr "Inklappen"
+
+msgid "Colour-coded. Legend below."
+msgstr "Met kleuren aangeduid. Legenda hieronder."
+
+msgid "Company number"
+msgstr "Ondernemingsnummer"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact & extras"
+msgstr "Contact & extra's"
+
+msgid "Contains the shared password. Only send to trusted people."
+msgstr "Bevat het gedeelde wachtwoord. Stuur alleen naar mensen die je vertrouwt."
+
+msgid "Content"
+msgstr "Inhoud"
+
+msgid "Content (HTML)"
+msgstr "Inhoud (HTML)"
+
+msgid "Content bottom row (HTML)"
+msgstr "Inhoud onderste rij (HTML)"
+
+msgid "Content top row (HTML)"
+msgstr "Inhoud bovenste rij (HTML)"
+
+msgid "Copy"
+msgstr "Kopiëren"
+
+msgid "Current file:"
+msgstr "Huidig bestand:"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Delete event"
+msgstr "Evenement verwijderen"
+
+msgid "Delete this card (with its content, pictures and menu entry)?"
+msgstr "Deze kaart verwijderen (samen met de inhoud, afbeeldingen en menu-item)?"
+
+msgid "Delete this file?"
+msgstr "Dit bestand verwijderen?"
+
+msgid "Deletes for everyone, including subscribed calendars."
+msgstr "Verwijdert voor iedereen, ook geabonneerde kalenders."
+
+msgid "Description"
+msgstr "Omschrijving"
+
+msgid "Display name"
+msgstr "Weergavenaam"
+
+msgid "Download .ics"
+msgstr ".ics downloaden"
+
+msgid "Download center password"
+msgstr "Wachtwoord downloadcentrum"
+
+msgid "Downloads"
+msgstr "Downloads"
+
+msgid "Drag to reorder. Hidden rows are skipped."
+msgstr "Sleep om te herschikken. Verborgen rijen worden overgeslagen."
+
+msgid "Drag to reorder. The menu follows this order."
+msgstr "Sleep om te herschikken. Het menu volgt deze volgorde."
+
+msgid "Edit"
+msgstr "Bewerken"
+
+msgid "Edit card"
+msgstr "Kaart bewerken"
+
+msgid "Edit download"
+msgstr "Download bewerken"
+
+msgid "Edit event"
+msgstr "Evenement bewerken"
+
+msgid "Edit settings"
+msgstr "Instellingen bewerken"
+
+msgid "Edit user"
+msgstr "Gebruiker bewerken"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "End"
+msgstr "Einde"
+
+msgid "Ends at (Brussels time)"
+msgstr "Eindigt om (Brusselse tijd)"
+
+msgid "Event could not be added"
+msgstr "Evenement kon niet worden toegevoegd"
+
+msgid "Event name in members list and calendar apps."
+msgstr "Naam van het evenement in de lijst en apps."
+
+msgid "Expand"
+msgstr "Uitklappen"
+
+msgid "Facebook de GS Redan"
+msgstr "Facebook van GS Redan"
+
+msgid "File"
+msgstr "Bestand"
+
+msgid "File grouping. Only empty categories can be deleted."
+msgstr "Bestandsgroepering. Alleen lege categorieën kunnen worden verwijderd."
+
+msgid "Files"
+msgstr "Bestanden"
+
+msgid "Files of one category are grouped on the members page."
+msgstr "Bestanden van één categorie worden op de ledenpagina gegroepeerd."
+
+msgid "First name"
+msgstr "Voornaam"
+
+msgid "Footer & masthead"
+msgstr "Voettekst & masthead"
+
+msgid "Forgot your password?"
+msgstr "Wachtwoord vergeten?"
+
+msgid "Format"
+msgstr "Formatteren"
+
+msgid "FR is the fallback."
+msgstr "FR is de terugvaltaal."
+
+msgid "Full access link (files + calendar)."
+msgstr "Volledige toegangslink (bestanden + kalender)."
+
+msgid "Fullcalendar script missing"
+msgstr "FullCalendar-script ontbreekt"
+
+msgid "Gallery picture"
+msgstr "Galerijafbeelding"
+
+msgid "Gallery pictures"
+msgstr "Galerijafbeeldingen"
+
+msgid "Generic card: create and reorder more of these."
+msgstr "Generieke kaart: maak er meer aan en herschik ze."
+
+msgid "Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie"
+msgstr "Groupe Spéléo Redan in Brussel (Koekelberg) België - Spelologie"
+
+msgid "GS Redan"
+msgstr "GS Redan"
+
+msgid "GS Redan admin"
+msgstr "GS Redan admin"
+
+msgid "GS Redan: reset your password"
+msgstr "GS Redan: herstel je wachtwoord"
+
+msgid "Hello"
+msgstr "Hallo"
+
+msgid "Hidden"
+msgstr "Verborgen"
+
+msgid "Homepage cards"
+msgstr "Kaarten van de homepage"
+
+msgid "Hover an event for details."
+msgstr "Beweeg over een evenement voor details."
+
+msgid "HTML id (e.g. 'salle'). Leave empty for no in-page link."
+msgstr "HTML-id (bv. 'salle'). Laat leeg voor geen link."
+
+msgid "HTML with syntax highlighting. Use __CONTACT_EMAIL__ for the contact email."
+msgstr "HTML met syntaxiskleuring. Gebruik __CONTACT_EMAIL__ voor het e-mailadres."
+
+msgid "ICS file"
+msgstr "ICS-bestand"
+
+msgid "If that address belongs to an admin account, a reset link is on its way. It is valid once, for 24 hours."
+msgstr "Als dat adres bij een beheerdersaccount hoort, is er een herstellink onderweg. Die is één keer geldig, voor 24 uur."
+
+msgid "If the button does not work, copy this address into your browser:"
+msgstr "Werkt de knop niet, kopieer dan dit adres in je browser:"
+
+msgid "Image (bottom row)"
+msgstr "Afbeelding (onderste rij)"
+
+msgid "Image (top row)"
+msgstr "Afbeelding (bovenste rij)"
+
+msgid "Image saved"
+msgstr "Afbeelding opgeslagen"
+
+msgid "Image side"
+msgstr "Zijde van de afbeelding"
+
+msgid "Image upload failed"
+msgstr "Afbeelding uploaden mislukt"
+
+msgid "Instagram de GS Redan"
+msgstr "Instagram van GS Redan"
+
+msgid "Invalid credentials."
+msgstr "Ongeldige logingegevens."
+
+msgid "It carries the editing password."
+msgstr "Het bevat het bewerkingswachtwoord."
+
+msgid "jpeg/png/webp; resized automatically."
+msgstr "jpeg/png/webp; automatisch geschaald."
+
+msgid "Keep the edit URL private"
+msgstr "Houd de bewerkings-URL geheim"
+
+msgid "Language"
+msgstr "Taal"
+
+msgid "Language for the reset mail."
+msgstr "Taal voor de herstelmail."
+
+msgid "Last name"
+msgstr "Achternaam"
+
+msgid "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique."
+msgstr "Le Groupe Spéléo du Redan is een van de grote speloclubs van België."
+
+msgid "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique. Le club dispose d'une salle d'entraînement située dans les caves de la Basilique de Koekelberg à Bruxelles."
+msgstr "Le Groupe Spéléo du Redan is een van de grote speloclubs van België. De club beschikt over een trainingslokaal in de kelders van de Basiliek van Koekelberg in Brussel."
+
+msgid "leave empty to keep it."
+msgstr "laat leeg om te behouden."
+
+msgid "Leave empty to keep the current password"
+msgstr "Laat leeg om het huidige wachtwoord te behouden"
+
+msgid "Left"
+msgstr "Links"
+
+msgid "Link not valid"
+msgstr "Link ongeldig"
+
+msgid "Links work once and expire after 24 hours."
+msgstr "Links werken één keer en vervallen na 24 uur."
+
+msgid "Live link auto-updates; ICS is a snapshot."
+msgstr "Live link actualiseert automatisch; ICS is een momentopname."
+
+msgid "Live links auto-update; ICS is a one-time snapshot."
+msgstr "Live links actualiseren automatisch; ICS is een eenmalige momentopname."
+
+msgid "Live preview (not saved)."
+msgstr "Live voorbeeld (niet opgeslagen)."
+
+msgid "loaded but no Calendar export"
+msgstr "geladen maar geen Calendar-export"
+
+msgid "Local address"
+msgstr "Adres van het lokaal"
+
+msgid "Location"
+msgstr "Locatie"
+
+msgid "Location:"
+msgstr "Locatie:"
+
+msgid "Locked: dates come from the calendar."
+msgstr "Vast: datums komen uit de kalender."
+
+msgid "Log in"
+msgstr "Inloggen"
+
+msgid "Log out"
+msgstr "Uitloggen"
+
+msgid "logo GS Redan"
+msgstr "logo GS Redan"
+
+msgid "Manage cards"
+msgstr "Kaarten beheren"
+
+msgid "Manage events"
+msgstr "Evenementen beheren"
+
+msgid "Manage files"
+msgstr "Bestanden beheren"
+
+msgid "Manage users"
+msgstr "Gebruikers beheren"
+
+msgid "Maps link"
+msgstr "Maps-link"
+
+msgid "Masthead title"
+msgstr "Masthead-titel"
+
+msgid "Members"
+msgstr "Leden"
+
+msgid "Members access link"
+msgstr "Toegangslink leden"
+
+msgid "Members area"
+msgstr "Ledenzone"
+
+msgid "Members files"
+msgstr "Ledenbestanden"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Menu label"
+msgstr "Menulabel"
+
+msgid "Menu label (title)"
+msgstr "Menulabel (titel)"
+
+msgid "Menu label. Leave empty to hide from menu."
+msgstr "Menulabel. Laat leeg om te verbergen."
+
+msgid "Min. 8 characters."
+msgstr "Min. 8 tekens."
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Name (files)"
+msgstr "Naam (bestanden)"
+
+msgid "New"
+msgstr "Nieuw"
+
+msgid "New card type"
+msgstr "Nieuw kaarttype"
+
+msgid "New cards start hidden at the bottom of the page."
+msgstr "Nieuwe kaarten starten verborgen onderaan de pagina."
+
+msgid "New category name"
+msgstr "Nieuwe categorienaam"
+
+msgid "New password"
+msgstr "Nieuw wachtwoord"
+
+msgid "Next ten events."
+msgstr "De volgende tien evenementen."
+
+msgid "No category"
+msgstr "Geen categorie"
+
+msgid "no category"
+msgstr "geen categorie"
+
+msgid "No events yet."
+msgstr "Nog geen evenementen."
+
+msgid "No files available."
+msgstr "Geen bestanden beschikbaar."
+
+msgid "No files yet."
+msgstr "Nog geen bestanden."
+
+msgid "No image attached yet."
+msgstr "Nog geen afbeelding gekoppeld."
+
+msgid "No pictures uploaded yet."
+msgstr "Nog geen afbeeldingen geüpload."
+
+msgid "No upcoming events."
+msgstr "Geen aankomende evenementen."
+
+msgid "No users yet."
+msgstr "Nog geen gebruikers."
+
+msgid "Non-profit organisation"
+msgstr "vzw"
+
+msgid "none"
+msgstr "geen"
+
+msgid "not loaded"
+msgstr "niet geladen"
+
+msgid "Notice"
+msgstr "Melding"
+
+msgid "Number uploaded"
+msgstr "Aantal geüpload"
+
+msgid "Off"
+msgstr "Uit"
+
+msgid "Official Address"
+msgstr "Adres van de club"
+
+msgid "On"
+msgstr "Aan"
+
+msgid "One-time download. Does not update."
+msgstr "Eenmalige download. Geen updates."
+
+msgid "Only real images (jpg, png, webp, gif) are accepted."
+msgstr "Alleen echte afbeeldingen (jpg, png, webp, gif) worden aanvaard."
+
+msgid "Open calendar"
+msgstr "Kalender openen"
+
+msgid "Open the link below to choose a new password. If you did not ask for this, you can ignore this email: your current password stays valid."
+msgstr "Open de link hieronder om een nieuw wachtwoord te kiezen. Als je hier niet om hebt gevraagd, kun je deze mail negeren: je huidige wachtwoord blijft geldig."
+
+msgid "Open user menu"
+msgstr "Gebruikersmenu openen"
+
+msgid "Optional."
+msgstr "Optioneel."
+
+msgid "Optional; timed events only."
+msgstr "Optioneel; alleen evenementen met tijden."
+
+msgid "Ouvrir le menu de navigation"
+msgstr "Navigatiemenu openen"
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgid "Password protected. Enter the shared password."
+msgstr "Wachtwoordbeveiligd. Vul het gedeelde wachtwoord in."
+
+msgid "Picture deleted"
+msgstr "Afbeelding verwijderd"
+
+msgid "Pictures added"
+msgstr "Afbeeldingen toegevoegd"
+
+msgid "Plain text for the export."
+msgstr "Platte tekst voor de export."
+
+msgid "Please fix the errors"
+msgstr "Gelieve de fouten te corrigeren"
+
+msgid "Pre-generics type that still renders; edit content as usual."
+msgstr "Voormalig generiek type dat nog rendert; bewerk de inhoud zoals gebruikelijk."
+
+msgid "Preview"
+msgstr "Voorbeeld"
+
+msgid "Preview ICS"
+msgstr "ICS-voorbeeld"
+
+msgid "Preview of the contact card."
+msgstr "Voorbeeld van de contactkaart."
+
+msgid "Put __OPENINGS__ where dates go."
+msgstr "Plaats __OPENINGS__ bij de datums."
+
+msgid "Read-only. No login needed."
+msgstr "Alleen-lezen. Geen login nodig."
+
+msgid "Read-only. No password needed."
+msgstr "Alleen-lezen. Geen wachtwoord nodig."
+
+msgid "Rename"
+msgstr "Hernoemen"
+
+msgid "Repeat new password"
+msgstr "Nieuw wachtwoord herhalen"
+
+msgid "Reset mail not sent"
+msgstr "Herstellingsmail niet verzonden"
+
+msgid "Reset mail sent"
+msgstr "Herstellingsmail verzonden"
+
+msgid "Reset password"
+msgstr "Wachtwoord herstellen"
+
+msgid "Reset your password"
+msgstr "Herstel je wachtwoord"
+
+msgid "Right"
+msgstr "Rechts"
+
+msgid "Same answer whether or not the address is known."
+msgstr "Zelfde antwoord of het adres bekend is of niet."
+
+msgid "Save"
+msgstr "Opslaan"
+
+msgid "Save card"
+msgstr "Kaart opslaan"
+
+msgid "Save event"
+msgstr "Evenement opslaan"
+
+msgid "Save new password"
+msgstr "Nieuw wachtwoord opslaan"
+
+msgid "Save user"
+msgstr "Gebruiker opslaan"
+
+msgid "Saved"
+msgstr "Opgeslagen"
+
+msgid "Send reset link"
+msgstr "Herstellink versturen"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Show password"
+msgstr "Wachtwoord tonen"
+
+msgid "Shown on members page and exported to calendars."
+msgstr "Getoond op ledenpagina en geëxporteerd naar kalenders."
+
+msgid "Site"
+msgstr "Site"
+
+msgid "Size"
+msgstr "Grootte"
+
+msgid "Social"
+msgstr "Sociaal"
+
+msgid "Someone asked to reset the password of your GS Redan account."
+msgstr "Iemand heeft het herstellen van het wachtwoord van je GS Redan-account aangevraagd."
+
+msgid "Something went wrong on our end. Please try again later."
+msgstr "Er ging iets mis. Probeer het later opnieuw."
+
+msgid "Spéléo, Caving, Brussels, Bruxelles, Jeunes, Speleo, Club de spélé Belgique"
+msgstr "Spéléo, Caving, Brussel, Brussels, Jeugd, Speleo, Speloclub België"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Starts at (Brussels time)"
+msgstr "Begint om (Brusselse tijd)"
+
+msgid "Street"
+msgstr "Straat"
+
+msgid "Subscribe"
+msgstr "Abonneren"
+
+msgid "The account can no longer log in."
+msgstr "Het account kan niet meer inloggen."
+
+msgid "The amount of pictures is free; the site lays them out in rows of three. Drag rows to reorder (order is saved automatically). Home page shows each picture at 800×600."
+msgstr "Het aantal afbeeldingen is vrij; de site zet ze in rijen van drie. Sleep rijen om te herschikken (de volgorde wordt automatisch opgeslagen). De homepage toont elke afbeelding op 800×600."
+
+msgid "The contact card is generated entirely from the club settings: both addresses, the e-mail address and the social links. There is nothing to edit here — change the values on the Settings screen. The card can be reordered and shown or hidden from the Cards list."
+msgstr "De contactkaart wordt volledig gegenereerd uit de clubinstellingen: beide adressen, het e-mailadres en de sociale links. Hier valt niets te bewerken — pas de waarden op het Instellingen-scherm aan. De kaart kan worden herschikt en via de lijst Kaarten getoond of verborgen."
+
+msgid "The link is only valid once, and expires 24 hours after this email was sent."
+msgstr "De link is maar één keer geldig en vervalt 24 uur nadat deze mail is verzonden."
+
+msgid "The masthead is the fixed hero of the page and cannot be moved."
+msgstr "De masthead is de vaste banner bovenaan de pagina en kan niet worden verplaatst."
+
+msgid "The next ten scheduled events, hidden ones included and flagged."
+msgstr "De volgende tien geplande evenementen, verborgen inbegrepen en gemarkeerd."
+
+msgid "The user picks the new password from the link in the mail."
+msgstr "De gebruiker kiest het nieuwe wachtwoord via de link in de mail."
+
+msgid "This fixed singular card renders with its own layout and cannot be duplicated or deleted."
+msgstr "Deze vaste unieke kaart rendert met een eigen layout en kan niet worden gedupliceerd of verwijderd."
+
+msgid "This page does not exist."
+msgstr "Deze pagina bestaat niet."
+
+msgid "This reset link is no longer valid."
+msgstr "Deze herstellink is niet meer geldig."
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Toggle navigation"
+msgstr "Navigatie openen of sluiten"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Unlock"
+msgstr "Ontgrendelen"
+
+msgid "Upcoming events"
+msgstr "Aankomende evenementen"
+
+msgid "Upload"
+msgstr "Uploaden"
+
+msgid "Upload image"
+msgstr "Afbeelding uploaden"
+
+msgid "Upload new image"
+msgstr "Nieuwe afbeelding uploaden"
+
+msgid "Upload pictures"
+msgstr "Afbeeldingen uploaden"
+
+msgid "Use Reset password on the Users screen to mail a link."
+msgstr "Gebruik Wachtwoord herstellen op het scherm Gebruikers."
+
+msgid "User"
+msgstr "Gebruiker"
+
+msgid "User archived"
+msgstr "Gebruiker gearchiveerd"
+
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+msgid "Users"
+msgstr "Gebruikers"
+
+msgid "View site"
+msgstr "Site bekijken"
+
+msgid "Visibility"
+msgstr "Zichtbaarheid"
+
+msgid "Visible"
+msgstr "Zichtbaar"
+
+msgid "Visible on members page, ICS export and CalDAV."
+msgstr "Zichtbaar op ledenpagina, ICS-export en CalDAV."
+
+msgid "Visible on site"
+msgstr "Zichtbaar op de site"
+
+msgid "Wrong password, try again."
+msgstr "Verkeerd wachtwoord, probeer opnieuw."
+
+msgid "you"
+msgstr "jij"
+
+msgid "You are currently working in a test environment."
+msgstr "Je werkt momenteel in een testomgeving."
+
+msgid "You are logged out."
+msgstr "Je bent uitgelogd."
+
+msgid "You do not have permission to view this page."
+msgstr "U heeft geen toestemming om deze pagina te bekijken."
+
+msgid "You would lock yourself out of the admin."
+msgstr "Je zou jezelf buiten het beheer sluiten."
+
+msgid "Your new password is saved. Log in with it below."
+msgstr "Je nieuwe wachtwoord is opgeslagen. Log hieronder in met dat wachtwoord."
+
+msgid "your@email.com"
+msgstr "jouw@email.com"
+
+msgid "Zip"
+msgstr "Postcode"
+
+
+msgid "Masthead hero"
+msgstr "Bovenbalk"
+
+msgid "Club text card"
+msgstr "Tekstkaart van de club"
+
+msgid "Contact card"
+msgstr "Contactkaart"
+
+msgid "Monday openings card (calendar-fed)"
+msgstr "Kaart met maandagopeningen (uit de kalender)"
+
+msgid "Activity card (light background)"
+msgstr "Activiteitenkaart (lichte achtergrond)"
+
+msgid "Activity card (dark background)"
+msgstr "Activiteitenkaart (donkere achtergrond)"
+
+msgid "Activity 2-row card (light background)"
+msgstr "Activiteitenkaart 2 rijen (lichte achtergrond)"
+
+msgid "Activity 2-row card (dark background)"
+msgstr "Activiteitenkaart 2 rijen (donkere achtergrond)"
+
+msgid "Gallery card (pictures row)"
+msgstr "Galerijkaart (rij afbeeldingen)"
+
+msgid "Announcement card"
+msgstr "Aankondigingskaart"
+
+msgid "One image next to one text block, on a light background."
+msgstr "Eén afbeelding naast één tekstblok, op een lichte achtergrond."
+
+msgid "One image next to one text block, on a dark background."
+msgstr "Eén afbeelding naast één tekstblok, op een donkere achtergrond."
+
+msgid "Two images and two text blocks on one light card."
+msgstr "Twee afbeeldingen en twee tekstblokken op één lichte kaart."
+
+msgid "Two images and two text blocks on one dark card."
+msgstr "Twee afbeeldingen en twee tekstblokken op één donkere kaart."
+
+msgid "A row of pictures that open full size in a lightbox."
+msgstr "Een rij afbeeldingen die groot in een lightbox opent."
+
+msgid "A highlighted banner for news, without image."
+msgstr "Een uitgelichte banner voor nieuws, zonder afbeelding."

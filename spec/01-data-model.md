@@ -15,6 +15,8 @@ Existing (created by earlier migrations / packages, keep as is):
   registration. No country_id or address fields — this project's user is
   simpler than vvsjongeren's. The skeleton-core base `user` table (no
   uuid/admin/verified) is dropped and recreated in the 20260916 init migration.
+  `email` is UNIQUE, which is why the duplicate-email check on save must see
+  archived rows too (an archived user keeps owning its address).
 
 The existing `migration/20251017_170550_init.php` was a broken copy-paste from
 another project (tries to ALTER user with non-existent columns, inserts
@@ -150,6 +152,7 @@ Seeded keys:
 | `social_facebook` | `https://www.facebook.com/GroupeSpeleoRedan/` |
 | `footer_company_number` | `0474.156.883` |
 | `download_password_hash` | `password_hash('OuEstLaCorde', PASSWORD_DEFAULT)` |
+| `download_password` | `OuEstLaCorde` (plaintext mirror, added 2026-09-23) |
 
 ### `download_file`
 Files shown in the download center.
@@ -168,6 +171,43 @@ CREATE TABLE `download_file` (
 	FOREIGN KEY (`file_id`) REFERENCES `file` (`id`)
 );
 ```
+
+### `user_password_reset_token`
+One row per reset link handed out to a user (2026-09-28).
+
+```sql
+CREATE TABLE `user_password_reset_token` (
+	`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`uuid` varchar(36) NULL,
+	`user_id` int NOT NULL,
+	`token` varchar(64) NOT NULL,          -- SHA-256 of the raw token, never the raw token
+	`expires_at` datetime NOT NULL,
+	`used` tinyint NOT NULL DEFAULT '0',
+	`created` datetime NOT NULL,
+	`updated` datetime NULL,
+	`archived` datetime NULL,
+	UNIQUE KEY `token` (`token`),
+	FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+);
+```
+
+The table is `user_password_reset_token` while the class is
+`Password_Reset_Token`: the autoloader derives `password_reset_token` from the
+class name, so the model sets `database_table` explicitly.
+
+The raw token is `bin2hex(random_bytes(32))` and only exists in the mail. The
+row holds its SHA-256 hash, so a database dump cannot be replayed against
+`/login?action=reset_password`. Issuing a new link marks every earlier one
+`used`, and setting a new password does the same — at most one live link per
+user at any time. Validity is 24 hours
+(`Password_Reset_Token::VALIDITY_SECONDS`).
+
+`created` does double duty as the throttle for the self-service reset form
+(`is_in_resend_cooldown()`, `RESEND_COOLDOWN_SECONDS = 600`): an account with a
+live token younger than ten minutes gets no second mail. It counts rows in this
+table rather than a session counter, so clearing cookies or a private window
+does not reset it. No index is needed for it — the table holds one live row per
+user by the invariant above.
 
 ## Models (`lib/model/`)
 
@@ -200,6 +240,27 @@ Following skeleton object style (traits `Model`, `Uuid`, `Get`, `Save`,
   `Bootstrap::boot()` sets `\Skeleton\File\Config::$file_interface = 'File'`
   and the admin calls `\File::upload()`. It is an empty subclass of
   `\Skeleton\File\File` (no behaviour of its own).
+- `lib/model/Password/Reset/Token.php` (`Password_Reset_Token`, table
+  `user_password_reset_token`)
+  - `create_for_user(User $user, string $raw_token): self` — invalidates the
+    user's open tokens, stores the SHA-256 hash of `$raw_token`.
+  - `get_by_raw_token(string $raw_token): ?self` — only a row that is unused,
+    unarchived and unexpired; `null` otherwise.
+  - `invalidate_all_for_user(User $user): void` — spends every open token.
+  - `is_in_resend_cooldown(User $user): bool` — true when the user already has
+    a live token younger than `RESEND_COOLDOWN_SECONDS`. Added with the
+    self-service reset form on the login screen; see the table notes above.
+  - `get_user(): User`, `mark_used(): void`, `is_valid(): bool`.
+  - `hash_token()` is private: hashing is the only way in and out.
+- `lib/model/Country.php` — **removed** 2026-09-28. The model queried a
+  `country` table that no migration in this project creates, and its only
+  caller was the `select_country` macro in the deleted `macro.base.twig`.
+- Validation error vocabulary: `required`, `duplicate`, `invalid`, plus the
+  one-offs `before_start` (calendar) and `type_must_be_gallery` (pictures).
+  `required` was normalised from the earlier `mandatory` spelling (User,
+  Download_File) on 2026-09-28, matching the majority of the models and the
+  `required` HTML attribute on the form inputs. The values are shown as-is by
+  `tabler.show_errors()` (`key: value`), they are not translated msgids.
 
 `lib/model/User.php` already exists: strip its Organization-specific parts
 (`get_organizations`, `has_organization`, `get_organization_user`,
@@ -207,9 +268,32 @@ Following skeleton object style (traits `Model`, `Uuid`, `Get`, `Save`,
 `Login`; keep `authenticate`, `set_password`, `validate` (reduce mandatories to
 `email`, `password`, `firstname`, `lastname`).
 
+User additions for the admin user management (2026-09-28):
+
+- `get_all_ordered(): array` — active users, `lastname, firstname, email`.
+  Archived users are left out: the admin list works on usable accounts.
+- `count_all(): int` — active count for the dashboard tile.
+- `get_active_by_email(string $email): self` — login lookup. `get_by_email()`
+  stays the unfiltered one because the duplicate-email check on save has to see
+  archived rows: `user.email` is unique, so an archived user still owns its
+  address.
+- `authenticate()` goes through `get_active_by_email()`, so archiving an account
+  takes effect on the next login attempt instead of at session expiry.
+- `issue_password_reset_token(): string` — returns the **raw** token for the
+  mail; only the hash is stored (see `user_password_reset_token`).
+- `set_new_password(string $password): void` — hashes, saves, and spends every
+  open reset token of that user.
+- `get_name(): string` — `firstname lastname`, falling back to the email.
+- `MINIMUM_PASSWORD_LENGTH = 8` and
+  `validate_password_strength(string $password): ?string` — returns `too_short`
+  or `null`. Shared by the admin add form and the reset form, so both entry
+  points enforce the same rule.
+
 ## Migration list
 
-All new migrations in `migration/`, timestamped `20260916_HHMMSS_*`:
+All new migrations in `migration/`: the 2026-09-16 batch is `20260916_*`, the
+2026-09-23 additions are `20260923_*`, and the reset-token table is
+`20260928_100000_password_reset_token.php`.
 
 1. `20260916_*_init.php` — drops the skeleton-core `user` table and recreates
    with `uuid`, `admin`, `verified`, `language_id` FK + unique email; alters
@@ -220,9 +304,16 @@ All new migrations in `migration/`, timestamped `20260916_HHMMSS_*`:
    (gitignored; `email,firstname,lastname,password`). Mirrors
    `vvsjongeren/migration/20260814_000002_seed.php` approach.
 3. `20260916_*_seed_settings.php` — setting rows from the table above.
-4. `20260916_*_seed_blocks.php` — the 10 blocks in the order of `../redan` and
+4. `20260923_*_seed_download_password.php` (2026-09-23) — seeds the plaintext
+   mirror `download_password` for the admin share links (the hash cannot be
+   read back; see 07).
+5. `20260916_*_seed_blocks.php` — the 10 blocks in the order of `../redan` and
    their FR/NL/EN `block_translation` rows, **prefilled with the existing HTML
    content** (see 01 note below).
+6. `20260928_100000_password_reset_token.php` (2026-09-28) — `CREATE TABLE
+   user_password_reset_token`; `down()` drops it. A rollback intentionally
+   kills every outstanding reset link rather than leaving usable credentials
+   behind. Not yet run against a database (see 03-admin.md, reset flow).
 
 Content prefill rule: block `body` for FR = the section's inner HTML from
 `../redan/index.html`; NL from `nl/index.html`; EN from `en/index.html`, with

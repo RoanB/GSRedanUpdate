@@ -7,16 +7,16 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if env.get.saved is defined %}
+	{% if sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
-	{% if env.get.add_failed is defined %}
+	{% if sticky_session.add_failed is defined %}
 		{{ tabler.alert('danger', 'Card could not be added'|trans) }}
 	{% endif %}
-	{% if env.get.deleted is defined %}
+	{% if sticky_session.deleted is defined %}
 		{{ tabler.alert('success', 'Card deleted'|trans) }}
 	{% endif %}
-	{% if env.get.delete_failed is defined %}
+	{% if sticky_session.delete_failed is defined %}
 		{{ tabler.alert('danger', 'Card could not be deleted: fixed cards (masthead, club, contact, Monday openings) are part of the page structure.'|trans) }}
 	{% endif %}
 
@@ -25,7 +25,7 @@
 			<div>
 				<h3 class="card-title">{% trans "Homepage cards" %}</h3>
 				<div class="card-subtitle mt-1">
-					{% trans "Every row is one section of the one-pager. Drag a row by the handle to reorder; the site menu (only blocks with an anchor and a menu label in the current language) follows this order. The footer is fixed page chrome and no longer appears here." %}
+					{% trans "Drag to reorder. The menu follows this order." %}
 				</div>
 			</div>
 		</div>
@@ -86,10 +86,10 @@
 		<div class="card-footer">
 			<form method="post" action="/admin/block?action=add" class="row g-3 align-items-end">
 				<div class="col-auto">
-					<label class="form-label mb-0">{% trans "New card type" %}</label>
-					<select name="type" class="form-select">
+					<label class="form-label mb-0" for="new-card-type">{% trans "New card type" %}</label>
+					<select name="type" id="new-card-type" class="form-select" style="min-width: 20rem;" data-explanation-for="new-card-type-explanation">
 						{% for type in creatable_types %}
-							<option value="{{ type.key }}">{{ type.label }}</option>
+							<option value="{{ type.key }}" data-explanation="{{ type.explanation }}">{{ type.label }}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -97,7 +97,9 @@
 					<button type="submit" class="btn btn-primary">{{ tabler.icon('plus') }} {% trans "Add card" %}</button>
 				</div>
 				<div class="col">
-					<span class="form-hint d-block">{% trans "Activity card → one image + text section (light or dark background). 2-row card → two welded image + text sections on a single card. Gallery card → a free amount of pictures with a lightbox. Announcement card → highlighted news banner. New cards start hidden at the bottom of the page." %}</span>
+					{# The explanation of the selected type: rendered server-side for the first option, then swapped by base.js on change. #}
+					<span class="form-hint d-block" id="new-card-type-explanation">{{ creatable_types[0].explanation }}</span>
+					<span class="form-hint d-block">{% trans "New cards start hidden at the bottom of the page." %}</span>
 				</div>
 			</form>
 		</div>

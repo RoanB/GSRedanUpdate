@@ -14,24 +14,7 @@ declare(strict_types=1);
 
 namespace App\Front\Module\Admin;
 
-class Calendar extends \Skeleton\Application\Web\Module {
-	/**
-	 * Login required
-	 *
-	 * @var bool $login_required
-	 */
-	protected bool $login_required = true;
-
-	/**
-	 * Secure
-	 *
-	 * @access public
-	 * @return bool
-	 */
-	public function secure(): bool {
-		return isset($_SESSION['user']) && $_SESSION['user']->is_admin();
-	}
-
+class Calendar extends Base {
 	/**
 	 * List the events
 	 *
@@ -44,6 +27,20 @@ class Calendar extends \Skeleton\Application\Web\Module {
 
 		$template->assign('server_scheme', $_SERVER['REQUEST_SCHEME'] ?? 'https');
 		$template->assign('server_host', $_SERVER['HTTP_HOST'] ?? '');
+
+		// General members-area link (files + calendar): the shared password
+		// in the query unlocks the whole area, no typing required. Same plain
+		// mirror as the admin file list share links (spec/07).
+		$members_access_token = (string)\Setting::get_by_name('download_password');
+		$template->assign('members_url', $members_access_token === '' ? '' : ($_SERVER['REQUEST_SCHEME'] ?? 'https') . '://' . ($_SERVER['HTTP_HOST'] ?? '') . '/members?access=' . rawurlencode($members_access_token));
+
+		// The editing credentials some calendar clients require next to the
+		// URL: HTTP Basic user/password, matching the CalDAV backend
+		// (app/front/module/Caldav.php); defaults match the secret token in
+		// the edit URL.
+		$config = \Skeleton\Core\Config::get();
+		$template->assign('caldav_user', $config->calendar_caldav_user ?? 'redan');
+		$template->assign('caldav_password', $config->calendar_caldav_password ?? 'fD5D6A4Z');
 
 		$rows = [];
 		foreach (\Calendar_Event::get_all_ordered() as $event) {
@@ -87,10 +84,10 @@ class Calendar extends \Skeleton\Application\Web\Module {
 
 		if (count($errors) === 0 && $event->validate($errors) === true) {
 			$event->save();
-			\Skeleton\Core\Http\Session::redirect('/admin/calendar?saved=1');
+			$this->redirect_with_message('/admin/calendar', 'saved');
 		}
 
-		\Skeleton\Core\Http\Session::redirect('/admin/calendar?add_failed=1');
+		$this->redirect_with_message('/admin/calendar', 'add_failed');
 	}
 
 	/**
@@ -107,8 +104,11 @@ class Calendar extends \Skeleton\Application\Web\Module {
 		$event = null;
 
 		if ($event_id === 0) {
-			// "Add event": blank form, saved through ?action=add.
+			// "Add event": blank form, saved through ?action=add. Published by
+			// default, so the visibility checkbox starts ticked (the column
+			// default is not in play until the row is saved).
 			$event = new \Calendar_Event();
+			$event->visible = 1;
 		} else {
 			$event = \Calendar_Event::get_by_id($event_id);
 		}
@@ -142,7 +142,7 @@ class Calendar extends \Skeleton\Application\Web\Module {
 
 			if (count($errors) === 0 && $event->validate($errors) === true) {
 				$event->save();
-				\Skeleton\Core\Http\Session::redirect('/admin/calendar?saved=1');
+				$this->redirect_with_message('/admin/calendar', 'saved');
 			}
 
 			$template->assign('errors', $errors);
@@ -165,7 +165,7 @@ class Calendar extends \Skeleton\Application\Web\Module {
 
 		$event->delete();
 
-		\Skeleton\Core\Http\Session::redirect('/admin/calendar?saved=1');
+		$this->redirect_with_message('/admin/calendar', 'saved');
 	}
 
 	/**
@@ -317,11 +317,13 @@ class Calendar extends \Skeleton\Application\Web\Module {
 		$start_post = str_replace('T', ' ', (string)($_POST['starts_at'] ?? ''));
 		$end_post = str_replace('T', ' ', trim((string)($_POST['ends_at'] ?? '')));
 		$all_day = ((int)($_POST['all_day'] ?? 0) === 1);
+		$visible = ((int)($_POST['visible'] ?? 0) === 1);
 
 		$event->title = $title;
 		$event->description = $description;
 		$event->location = $location;
 		$event->all_day = $all_day;
+		$event->visible = $visible ? 1 : 0;
 
 		$calendar_category_id = (int)($_POST['calendar_category_id'] ?? 0);
 

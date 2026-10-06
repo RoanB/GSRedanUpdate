@@ -11,8 +11,8 @@
 		<div class="card card-md mx-auto mt-5" style="max-width: 28rem;">
 			<div class="card-body">
 				<h2 class="h2 text-center mb-3">{% trans "Members area" %}</h2>
-				<p class="text-secondary text-center mb-4">{% trans "This area (files and the club calendar) is password protected. Enter the shared password." %}</p>
-				{% if env.get.failed is defined %}
+				<p class="text-secondary text-center mb-4">{% trans "Password protected. Enter the shared password." %}</p>
+				{% if sticky_session.failed is defined %}
 					<div class="alert alert-danger mb-3">{% trans "Wrong password, try again." %}</div>
 				{% endif %}
 				<form method="post" action="/members?action=gate">
@@ -39,7 +39,7 @@
 					<div class="card-header">
 						<div>
 							<h3 class="card-title">{% trans "Files" %}</h3>
-							<div class="card-subtitle mt-1">{% trans "Downloadable documents, sorted per category. Click a row to download." %}</div>
+							<div class="card-subtitle mt-1">{% trans "Click a row to download." %}</div>
 						</div>
 						<div class="card-actions">
 							<a href="/members?action=logout" class="btn btn-sm btn-outline-secondary">
@@ -77,7 +77,7 @@
 					<div class="card-header">
 						<div>
 							<h3 class="card-title">{% trans "Upcoming events" %}</h3>
-							<div class="card-subtitle mt-1">{% trans "The next ten club events on the schedule." %}</div>
+							<div class="card-subtitle mt-1">{% trans "Next ten events." %}</div>
 						</div>
 					</div>
 					{% if upcoming_events|length == 0 %}

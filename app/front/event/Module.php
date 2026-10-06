@@ -84,6 +84,7 @@ class Module extends \Skeleton\Application\Web\Event\Module {
 		}
 		$template->assign('nav_items', $nav_items);
 		$template->assign('settings', \Setting::get_all());
+		$this->assign_masthead_image();
 	}
 
 	/**
@@ -94,8 +95,16 @@ class Module extends \Skeleton\Application\Web\Event\Module {
 	 * @access public
 	 */
 	public function not_found(): void {
-		// Non-exiting variant: the template below must still render.
-		\Skeleton\Core\Http\Status::code_404('module', false);
+		// Status::code_404() cannot be used here, not even in its non-exiting
+		// variant. That variant only skips the exit: it still echoes
+		// "404 Not Found (module)" into the response body, which lands in
+		// front of the HTML the template renders further down and turns the
+		// friendly page into stray text followed by markup. The response body
+		// belongs to the template, so set the status code directly and let
+		// the template own everything else. The "(module)" suffix only ever
+		// reached the status line, which browsers do not display, so nothing
+		// useful is lost.
+		http_response_code(404);
 
 		$template = \Skeleton\Application\Web\Template::get();
 		$template->assign('title', 'Not found');
@@ -138,6 +147,44 @@ class Module extends \Skeleton\Application\Web\Event\Module {
 		$template->assign('nav_items', $nav_items);
 		$template->assign('settings', \Setting::get_all());
 
-		$template->render('error404.twig');
+		// The error pages carry no photo, so the masthead photo is not resolved
+		// here. Two consequences, both wanted: the 404 does not spend the three
+		// extra /picture requests the homepage makes, and hero_image.twig skips
+		// its <link rel="preload"> block, which would otherwise pull a caving
+		// banner nobody paints. The same flag puts `error-page` on <body> in
+		// layout.public.twig, which is what forces the navbar into its solid
+		// state: the pages are light, and the navbar's own default is white
+		// text meant for a dark photo behind it.
+		$template->assign('error_page', true);
+
+		// display(), not render(): render() returns the HTML as a string and
+		// this is the only place in the app that calls it directly, so the
+		// return value was thrown away and the response went out with an empty
+		// body (content-length: 0). display() is what the framework itself
+		// uses for every normal page, via Module::handle_request().
+		$template->display('error404.twig');
+	}
+
+	/**
+	 * Assign the masthead hero image to the template
+	 *
+	 * Not every page carries the masthead block (the members area and the
+	 * error pages have their own hero markup), but the photo behind the hero
+	 * is the same on all of them. Resolving it here keeps one copy of that
+	 * decision: the layout hands the three variants to styles.css, and
+	 * og:image points at the largest one.
+	 *
+	 * Called from not_found() as well, because the 404 page goes through the
+	 * public layout without ever reaching bootstrap().
+	 *
+	 * @access private
+	 */
+	private function assign_masthead_image(): void {
+		$template = \Skeleton\Application\Web\Template::get();
+
+		$masthead_image = \Masthead_Image::get_urls();
+
+		$template->assign('masthead_image', $masthead_image);
+		$template->assign('masthead_image_share', \Masthead_Image::get_absolute_url($masthead_image));
 	}
 }

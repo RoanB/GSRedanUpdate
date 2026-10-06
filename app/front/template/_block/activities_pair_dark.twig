@@ -13,12 +13,12 @@
 	<div class="row gx-0 justify-content-center">
 		<div class="col-lg-6{% if second_image is null %} col-lg-12{% endif %}">
 			{% if images[block.id] is defined %}
-				<img class="img-fluid w-100 h-100 object-fit-cover rounded-top-end" src="/picture?id={{ images[block.id].file_id }}&amp;size=1200x900" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+				<img class="img-fluid w-100 h-100 object-fit-cover rounded-top-end rounded-sm-top" src="/picture?id={{ images[block.id].file_id }}&amp;size=1600x1200" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
 			{% endif %}
 		</div>
 		{% if second_image is not null %}
 			<div class="col-lg-6 order-lg-first">
-				<div class="bg-black text-center h-100 project rounded-top-start">
+				<div class="bg-black text-center h-100 project rounded-top-start rounded-sm-bottom">
 					<div class="d-flex h-100">
 						<div class="project-text w-100 my-auto text-center text-lg-right">
 							{{ bodies[0]|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}
@@ -32,11 +32,11 @@
 	<div class="row gx-0 justify-content-center">
 		<div class="col-lg-6{% if second_image is null %} col-lg-12{% else %} order-lg-first{% endif %}">
 			{% if second_image is not null %}
-				<img class="img-fluid w-100 h-100 object-fit-cover rounded-bottom-start mt-4 mt-md-0" src="/picture?id={{ second_image.file_id }}&amp;size=1200x900" width="{{ second_image.width }}" height="{{ second_image.height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+				<img class="img-fluid w-100 h-100 object-fit-cover rounded-bottom-start rounded-sm-top mt-4 mt-md-0" src="/picture?id={{ second_image.file_id }}&amp;size=1600x1200" width="{{ second_image.width }}" height="{{ second_image.height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
 			{% endif %}
 		</div>
 		<div class="col-lg-6">
-			<div class="bg-black text-center h-100 project rounded-bottom-end rounded-sm-top">
+			<div class="bg-black text-center h-100 project rounded-bottom-end rounded-sm-bottom">
 				<div class="d-flex h-100">
 					<div class="project-text w-100 my-auto text-center text-lg-left">
 						{{ bodies[1]|replace({'__CONTACT_EMAIL__': settings.contact_email})|raw }}

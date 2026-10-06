@@ -1,0 +1,88 @@
+{% extends "_default/layout.base.twig" %}
+{% import "_default/macro.tabler.twig" as tabler %}
+
+{% block header_title %}{% trans "Users" %}{% endblock header_title %}
+{% block header_breadcrumb %}
+	<li class="breadcrumb-item active">{% trans "Users" %}</li>
+{% endblock header_breadcrumb %}
+
+{% block content %}
+	{% if sticky_session.archived is defined %}
+		{{ tabler.alert('success', 'User archived'|trans, 'The account can no longer log in.'|trans) }}
+	{% endif %}
+	{% if sticky_session.reset_sent is defined %}
+		{{ tabler.alert('success', 'Reset mail sent'|trans, 'The user picks the new password from the link in the mail.'|trans) }}
+	{% endif %}
+	{% if sticky_session.reset_failed is defined %}
+		{{ tabler.alert('danger', 'Reset mail not sent'|trans, 'Check the mail configuration and the contact_email setting, then try again.'|trans) }}
+	{% endif %}
+	{% if sticky_session.self_archive is defined %}
+		{{ tabler.alert('danger', 'Cannot archive yourself'|trans, 'You would lock yourself out of the admin.'|trans) }}
+	{% endif %}
+	{% if sticky_session.saved is defined %}
+		{{ tabler.alert('success', 'Saved'|trans) }}
+	{% endif %}
+	<div class="card">
+		<div class="card-header">
+			<div>
+				<h3 class="card-title">{% trans "Users" %}</h3>
+				<div class="card-subtitle mt-1">{% trans "All accounts are admins. Reset passwords by mail." %}</div>
+			</div>
+			<div class="card-actions">
+				<a href="/admin/user?action=add" class="btn btn-sm btn-primary">
+					{{ tabler.icon('plus') }} {% trans "Add user" %}
+				</a>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-vcenter card-table">
+				<thead>
+					<tr>
+						<th>{% trans "Name" %}</th>
+						<th>{% trans "Email" %}</th>
+						<th>{% trans "Language" %}</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>
+								{{ user.name }}
+								{% if user.is_current %}
+									<span class="badge bg-green-lt ms-2">{% trans "you" %}</span>
+								{% endif %}
+							</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.language }}</td>
+							<td class="text-end">
+								<a class="btn btn-sm btn-outline-primary" href="/admin/user?action=edit&amp;id={{ user.id }}">
+									{{ tabler.icon('edit') }} {% trans "Edit" %}
+								</a>
+								{# POST, not a link: a GET would let a link prefetcher or a
+								   mail client send the reset mail on its own. #}
+								<form method="post" action="/admin/user?action=reset" class="d-inline">
+									<input type="hidden" name="id" value="{{ user.id }}">
+									<button type="submit" class="btn btn-sm btn-outline-secondary">
+										{{ tabler.icon('mail') }} {% trans "Reset password" %}
+									</button>
+								</form>
+								{% if user.is_current == false %}
+									<form method="post" action="/admin/user?action=archive" class="d-inline">
+										<input type="hidden" name="id" value="{{ user.id }}">
+										<button type="submit" class="btn btn-sm btn-outline-danger">
+											{{ tabler.icon('trash') }} {% trans "Archive" %}
+										</button>
+									</form>
+								{% endif %}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% if users|length == 0 %}
+			<div class="card-body text-center text-secondary">{% trans "No users yet." %}</div>
+		{% endif %}
+	</div>
+{% endblock content %}

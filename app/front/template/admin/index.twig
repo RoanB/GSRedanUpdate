@@ -7,7 +7,7 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if env.get.saved is defined %}
+	{% if sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
 	<div class="row row-cards">
@@ -41,6 +41,17 @@
 					</div>
 					<div class="h1 mb-3">{{ download_count }}</div>
 					<a href="/admin/download" class="card-link">{% trans "Manage files" %}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex align-items-center">
+						<div class="subheader">{% trans "Users" %}</div>
+					</div>
+					<div class="h1 mb-3">{{ user_count }}</div>
+					<a href="/admin/user" class="card-link">{% trans "Manage users" %}</a>
 				</div>
 			</div>
 		</div>

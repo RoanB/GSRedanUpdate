@@ -15,6 +15,16 @@ window.addEventListener('DOMContentLoaded', event => {
         el.textContent = currentYear;
     });
 
+    // Print the error page's ASCII cave to the devtools console. It is read
+    // back out of the .error-art element instead of being kept as a second
+    // copy here, so _default/error_art.twig stays the single source: change
+    // the drawing there and the console follows. No guard needed, the element
+    // only exists on the error pages.
+    const errorArt = document.querySelector('.error-art');
+    if (errorArt) {
+        console.log('%c' + errorArt.textContent, 'font-family: monospace; color: #4d7c0f;');
+    }
+
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');

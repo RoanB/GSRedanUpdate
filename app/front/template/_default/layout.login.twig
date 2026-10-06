@@ -1,6 +1,6 @@
 {% import "_default/macro.tabler.twig" as tabler %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ env.session.language.name_short }}">
 <head>
 	<title>{% trans "Log in" %} - GS Redan</title>
 
@@ -13,7 +13,7 @@
 	<link rel="apple-touch-icon" href="/favicon.jpg?v=20260918a" />
 
 	<link rel="stylesheet" href="/tabler--core/dist/css/tabler.min.css" />
-	<link rel="stylesheet" href="/base.css?v=20260916" />
+	<link rel="stylesheet" href="/base.css?v=20261001h" />
 
 	{% block header_css %}{% endblock header_css %}
 </head>
@@ -35,6 +35,6 @@
 		</div>
 	</div>
 	<script src="/tabler--core/dist/js/tabler.min.js"></script>
-	<script src="/base.js?v=20260916"></script>
+	<script src="/base.js?v=20260925a"></script>
 </body>
 </html>

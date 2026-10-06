@@ -30,11 +30,11 @@ class Download_File {
 		$errors = [];
 
 		if (empty($this->name)) {
-			$errors['name'] = 'mandatory';
+			$errors['name'] = 'required';
 		}
 
 		if (empty($this->file_id)) {
-			$errors['file_id'] = 'mandatory';
+			$errors['file_id'] = 'required';
 		}
 
 		return count($errors) === 0;
@@ -78,6 +78,20 @@ class Download_File {
 	}
 
 	/**
+	 * Number of download files (admin dashboard counter)
+	 *
+	 * @access public
+	 * @return int $count
+	 */
+	public static function count_all(): int {
+		$count = Database::get()->get_one(
+			'SELECT COUNT(*) FROM download_file WHERE archived IS NULL'
+		);
+
+		return (int)$count;
+	}
+
+	/**
 	 * Get visible download files ordered by sort_order
 	 *
 	 * @access public
@@ -108,6 +122,32 @@ class Download_File {
 	 */
 	public function get_file(): \Skeleton\File\File {
 		return \File::get_by_id($this->file_id);
+	}
+
+	/**
+	 * Replace the attached file
+	 *
+	 * Swaps the reference, saves, and only then deletes the file that was
+	 * replaced: the download_file.file_id foreign key has to point at the new
+	 * file before the old row can go. Without this the old file stays in the
+	 * `file` table and on disk with nothing referencing it.
+	 *
+	 * @access public
+	 * @param \Skeleton\File\File $file
+	 */
+	public function replace_file(\Skeleton\File\File $file): void {
+		$old_file_id = (int)$this->file_id;
+
+		$this->file_id = $file->id;
+		$this->save();
+
+		if ($old_file_id > 0 && $old_file_id !== (int)$file->id) {
+			try {
+				\File::get_by_id($old_file_id)->delete();
+			} catch (\Exception $e) {
+				// The old file row was already gone; nothing to clean up.
+			}
+		}
 	}
 
 	/**

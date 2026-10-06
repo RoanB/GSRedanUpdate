@@ -15,19 +15,16 @@
 	{% if errors is defined and errors|length > 0 %}
 		{{ tabler.alert('danger', 'Please fix the errors'|trans, tabler.show_errors(errors)) }}
 	{% endif %}
-	{% if env.get.error is defined %}
-		{{ tabler.alert('danger', 'Could not save this card'|trans) }}
-	{% endif %}
-	{% if env.get.image_failed is defined %}
+	{% if sticky_session.image_failed is defined %}
 		{{ tabler.alert('danger', 'Image upload failed'|trans, 'Only real images (jpg, png, webp, gif) are accepted.'|trans) }}
 	{% endif %}
-	{% if env.get.image_saved is defined %}
+	{% if sticky_session.image_saved is defined %}
 		{{ tabler.alert('success', 'Image saved'|trans) }}
 	{% endif %}
-	{% if env.get.pictures_saved is defined %}
-		{{ tabler.alert('success', 'Pictures added'|trans, 'Number uploaded'|trans ~ ': ' ~ env.get.pictures_saved) }}
+	{% if sticky_session.pictures_saved is defined %}
+		{{ tabler.alert('success', 'Pictures added'|trans, 'Number uploaded'|trans ~ ': ' ~ sticky_session.pictures_saved) }}
 	{% endif %}
-	{% if env.get.pictures_deleted is defined %}
+	{% if sticky_session.pictures_deleted is defined %}
 		{{ tabler.alert('success', 'Picture deleted'|trans) }}
 	{% endif %}
 
@@ -39,7 +36,7 @@
 				{% if block.type == 'contact' %}
 					<div class="card-subtitle mt-1">{% trans "Preview of the contact card." %}</div>
 				{% else %}
-					<div class="card-subtitle mt-1">{% trans "Live preview of the card with the values below (not saved). Collapse it to work on the form." %}</div>
+					<div class="card-subtitle mt-1">{% trans "Live preview (not saved)." %}</div>
 				{% endif %}
 			</div>
 			<div class="card-actions">
@@ -62,14 +59,14 @@
 	<form method="post" action="/admin/block?action=edit&amp;id={{ block.id }}" class="preview-source">
 		<div class="row">
 			<div class="col-lg-8">
-				{% set has_single_image = block.type in ['activities_light', 'activities_dark', 'monday_openings'] %}
+				{% set has_single_image = block.type in ['activities_light', 'activities_dark', 'monday_openings', 'masthead'] %}
 
 				{% if has_single_image and image is defined %}
 					<div class="card mb-3">
 						<div class="card-header">
 							<div>
 								<h3 class="card-title">{% trans "Card image" %}</h3>
-								<div class="card-subtitle mt-1">{% trans "Upload a jpeg/png/webp; a resized copy is generated automatically for the site." %}</div>
+								<div class="card-subtitle mt-1">{% trans "jpeg/png/webp; resized automatically." %}</div>
 							</div>
 						</div>
 						<div class="card-body">
@@ -98,7 +95,7 @@
 							<div class="card-header">
 								<div>
 									<h3 class="card-title">{% if loop.first %}{% trans "Image (top row)" %}{% else %}{% trans "Image (bottom row)" %}{% endif %}</h3>
-									<div class="card-subtitle mt-1">{% trans "Upload a jpeg/png/webp; a resized copy is generated automatically for the site." %}</div>
+									<div class="card-subtitle mt-1">{% trans "jpeg/png/webp; resized automatically." %}</div>
 								</div>
 							</div>
 							<div class="card-body">
@@ -176,30 +173,30 @@
 						<div class="card-header">
 							<div>
 								<h3 class="card-title">{{ language.name }} ({{ language.name_short|upper }})</h3>
-								<div class="card-subtitle mt-1">{% trans "FR is the fallback language: when another language has no content, this card is shown." %}</div>
+								<div class="card-subtitle mt-1">{% trans "FR is the fallback." %}</div>
 							</div>
 						</div>
 						<div class="card-body">
 							<div class="mb-3">
 								<label class="form-label">{% trans "Menu label (title)" %}</label>
 								<input type="text" name="title[{{ language.id }}]" class="form-control" value="{{ translations[language.id].title }}">
-								<small class="form-hint">{% trans "Shown in the site menu when this card has an anchor. Leave empty to keep this card out of the menu." %}</small>
+								<small class="form-hint">{% trans "Menu label. Leave empty to hide from menu." %}</small>
 							</div>
 
 							{% if block.type != 'gallery' %}
 								<div class="mb-3">
 									<label class="form-label">{% if block.is_pair %}{% trans "Content top row (HTML)" %}{% else %}{% trans "Content (HTML)" %}{% endif %}</label>
-									<textarea name="body[{{ language.id }}]" class="form-control code-editor" rows="{% if block.is_pair %}8{% else %}14{% endif %}" spellcheck="false">{% if block.is_pair and pair_split is defined %}{{ pair_split[language.id][0] }}{% else %}{{ translations[language.id].body }}{% endif %}</textarea>
+									<textarea name="body[{{ language.id }}]" class="form-control code-editor" rows="{% if block.is_pair %}8{% else %}14{% endif %}" spellcheck="false" data-format-title="{{ 'Format'|trans }}">{% if block.is_pair and pair_split is defined %}{{ pair_split[language.id][0] }}{% else %}{{ translations[language.id].body }}{% endif %}</textarea>
 									{% if block.type == 'monday_openings' %}
-										<small class="form-hint">{% trans "The openings list is calendar-fed: put __OPENINGS__ where the dates go; they are taken from the visible upcoming events of the 'Ouverture de la salle' category, grouped per month, in this language." %}</small>
+										<small class="form-hint">{% trans "Put __OPENINGS__ where dates go." %}</small>
 									{% else %}
-										<small class="form-hint">{% trans "Raw HTML with syntax highlighting (CodeMirror). Use __CONTACT_EMAIL__ to auto-insert the contact e-mail at render time." %}</small>
+										<small class="form-hint">{% trans "HTML with syntax highlighting. Use __CONTACT_EMAIL__ for the contact email." %}</small>
 									{% endif %}
 								</div>
 								{% if block.is_pair %}
 									<div class="mb-3">
 										<label class="form-label">{% trans "Content bottom row (HTML)" %}</label>
-										<textarea name="body_pair[{{ language.id }}]" class="form-control code-editor" rows="8" spellcheck="false">{% if pair_split is defined %}{{ pair_split[language.id][1] }}{% endif %}</textarea>
+										<textarea name="body_pair[{{ language.id }}]" class="form-control code-editor" rows="8" spellcheck="false" data-format-title="{{ 'Format'|trans }}">{% if pair_split is defined %}{{ pair_split[language.id][1] }}{% endif %}</textarea>
 									</div>
 								{% endif %}
 							{% endif %}
@@ -215,7 +212,7 @@
 					<div class="card-body">
 						<div class="mb-3">
 							<label class="form-label">{% trans "Type" %}</label>
-							<input type="text" class="form-control" value="{{ block.type_label ?? block.type }}" disabled>
+							<input type="text" class="form-control" value="{{ block.type_label }}" disabled>
 						</div>
 						{% if block.type == 'activities_light' or block.type == 'monday_openings' %}
 							<div class="mb-3">
@@ -227,12 +224,12 @@
 							</div>
 						{% endif %}
 						{% if block.type == 'monday_openings' %}
-							<p class="form-hint">{% trans "Locked card: the opening dates come from the calendar (category 'Ouverture de la salle'). The card can be moved and its image/title/text edited, but the date list is generated from the events." %}</p>
+							<p class="form-hint">{% trans "Locked: dates come from the calendar." %}</p>
 						{% endif %}
 						<div class="mb-3">
 							<label class="form-label">{% trans "Anchor" %}</label>
 							<input type="text" name="anchor" class="form-control" value="{{ block.anchor }}">
-							<small class="form-hint">{% trans "HTML id of this card (e.g. 'salle'). When it is also linked in the menu it becomes '#anchor'. Leave empty for no in-page link." %}</small>
+							<small class="form-hint">{% trans "HTML id (e.g. 'salle'). Leave empty for no in-page link." %}</small>
 						</div>
 						<label class="form-check">
 							<input type="checkbox" class="form-check-input" name="visible" value="1"{% if block.visible %} checked{% endif %}>

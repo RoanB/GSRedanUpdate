@@ -3,18 +3,20 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-	<meta name="description" content="Club de spéléologie situé à Bruxelles (Koekelberg) Belgique, disposant d'un local d'entraînement situé sous la Basilique - Ouvertures de la salle - Entraînement"/>
-	<meta name="keywords" content="Spéléo, Caving, Brussels, Bruxelles, Jeunes, Speleo, Club de spélé Belgique">
+	<meta name="description" content="{% trans 'Club de spéléologie situé à Bruxelles (Koekelberg) Belgique, disposant d\'un local d\'entraînement situé sous la Basilique - Ouvertures de la salle - Entraînement' %}"/>
+	<meta name="keywords" content="{% trans 'Spéléo, Caving, Brussels, Bruxelles, Jeunes, Speleo, Club de spélé Belgique' %}">
 	<meta name="author" content="GS Redan"/>
 	<meta name="robots" content="index, follow"/>
-	<meta name="theme-color" content="#000000"/>
-	<title>{% block page_title %}Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie{% endblock page_title %}</title>
+	<meta name="theme-color" content="#16210f"/>
+	<title>{% block page_title %}{% trans 'Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie' %}{% endblock page_title %}</title>
 	<link rel="canonical" href="https://www.gsredan.be/"/>
 	<meta property="og:type" content="website"/>
 	<meta property="og:site_name" content="GS Redan"/>
-	<meta property="og:title" content="Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie"/>
-	<meta property="og:description" content="Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique. Le club dispose d'une salle d'entraînement située dans les caves de la Basilique de Koekelberg à Bruxelles."/>
-	<meta property="og:image" content="https://www.gsredan.be/caving-banner.webp"/>
+	<meta property="og:title" content="{% trans 'Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie' %}"/>
+	<meta property="og:description" content="{% trans 'Le Groupe Spéléo du Redan est l\'un des grands clubs de spéléologie de Belgique. Le club dispose d\'une salle d\'entraînement située dans les caves de la Basilique de Koekelberg à Bruxelles.' %}"/>
+	{# The hero photo follows the masthead card; the static banner is the
+	   fallback when the card has no photo attached. #}
+	<meta property="og:image" content="{% if masthead_image_share is defined and masthead_image_share is not empty %}{{ masthead_image_share }}{% else %}https://www.gsredan.be/caving-banner.webp{% endif %}"/>
 	<meta property="og:url" content="https://www.gsredan.be/"/>
 	<meta property="og:locale" content="fr_BE"/>
 	<meta property="og:locale:alternate" content="nl_BE"/>
@@ -32,7 +34,7 @@
 		],
 		"logo": "/logo.webp",
 		"name": "GS Redan",
-		"description": "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique.",
+		"description": "{% trans 'Le Groupe Spéléo du Redan est l\'un des grands clubs de spéléologie de Belgique.' %}",
 		"email": "contact@gsredan.be"
 	}
 	</script>
@@ -40,25 +42,52 @@
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260918a" />
 	<link rel="icon" type="image/jpeg" href="/favicon.jpg?v=20260918a" />
 	<link rel="apple-touch-icon" href="/favicon.jpg?v=20260918a" />
-	<link rel="preload" as="image" href="/caving-banner-tiny.webp" media="(max-width: 767.98px)" fetchpriority="high"/>
-	<link rel="preload" as="image" href="/caving-banner-mid.webp" media="(min-width: 768px)" fetchpriority="high"/>
-	<link rel="preload" as="image" href="/caving-banner.webp" media="(min-width: 1920px)" fetchpriority="high"/>
-	<link href="/styles.css?v=20260917b" rel="stylesheet"/>
+	<link href="/styles.css?v=20261002a" rel="stylesheet"/>
+	{% include "_default/hero_image.twig" %}
 	<link rel="alternate" href="https://www.gsredan.be/nl/" hreflang="nl"/>
 	<link rel="alternate" href="https://www.gsredan.be/en/" hreflang="en"/>
 	<link rel="alternate" href="https://www.gsredan.be" hreflang="fr"/>
 </head>
 
-<body id="page-top">
-	<a class="skip-link" href="#main-content">Aller au contenu</a>
+{# public-page: styles.css uses it to fill leftover height with black instead of
+   white. error_page is set by not_found(); the error pages are light where the
+   rest of the public site is dark, so styles.css needs the extra hook to force
+   the navbar into its solid state — its default is white text meant to sit on
+   the dark masthead photo. #}
+<body id="page-top" class="public-page{% if error_page is defined %} error-page{% endif %}">
+	<a class="skip-link" href="#main-content">{% trans 'Aller au contenu' %}</a>
+
+	{# No menu on the error pages: a 404 that offers the full navigation reads
+	   as a working page, and every link on it is a second way to get it wrong.
+	   The skip link above stays — it is the one keyboard affordance that still
+	   has to reach the content. #}
+	{% if error_page is not defined %}
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#page-top"><img class="me-2" src="/logo.webp" width="30" height="40" alt="logo GS Redan">GS Redan</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
-				Menu
+			<a class="navbar-brand" href="#page-top"><img class="me-2" src="/logo.webp" width="30" height="40" alt="{% trans 'logo GS Redan' %}">{% trans 'GS Redan' %}</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="{% trans 'Ouvrir le menu de navigation' %}">
+				{% trans 'Menu' %}
 				<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
+				{# Language URLs mirror the current path with a language prefix
+				   (/fr/members -> /nl/members). An unprefixed path gets the
+				   prefix appended. #}
+				{% set request_segments = (env.server.REQUEST_URI|split('?')|first)|split('/') %}
+				{% set language_shorts = [] %}
+				{% for language in languages %}
+					{% set language_shorts = language_shorts|merge([ language.name_short ]) %}
+				{% endfor %}
+				{% if request_segments[1] in language_shorts %}
+					{% set base_segments = request_segments|slice(2) %}
+				{% else %}
+					{% set base_segments = request_segments|slice(1) %}
+				{% endif %}
+				{% set language_urls = {} %}
+				{% for language in languages %}
+					{% set language_segments = [ '', language.name_short ]|merge(base_segments) %}
+					{% set language_urls = language_urls|merge({ (language.name_short): language_segments|join('/') }) %}
+				{% endfor %}
 				<ul class="navbar-nav ms-auto">
 					{% for nav_item in nav_items %}
 						<li class="nav-item"><a class="nav-link" href="#{{ nav_item.anchor }}">{{ nav_item.title }}</a></li>
@@ -66,18 +95,18 @@
 					<li class="nav-item dropdown pointer d-none d-lg-block">
 						<button type="button" id="language-selector" class="dropdown-toggle nav-link dropdown"
 							data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-							Langue
+							{% trans 'Language' %}
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="language-selector">
 							{% for language in languages %}
-								<li><a class="dropdown-item" href="?language={{ language.name_short }}" lang="{{ language.name_short }}">{{ language.name_short|upper }}</a></li>
+								<li><a class="dropdown-item" href="{{ language_urls[language.name_short] }}" lang="{{ language.name_short }}">{{ language.name_short|upper }}</a></li>
 							{% endfor %}
 						</ul>
 					</li>
 					<li class="nav-item d-lg-none row">
 						<span>
 							{% for language in languages %}
-								<a class="" href="?language={{ language.name_short }}" lang="{{ language.name_short }}">{{ language.name_short|upper }}</a>
+								<a class="" href="{{ language_urls[language.name_short] }}" lang="{{ language.name_short }}">{{ language.name_short|upper }}</a>
 							{% endfor %}
 						</span>
 					</li>
@@ -85,6 +114,7 @@
 			</div>
 		</div>
 	</nav>
+	{% endif %}
 
 	{% block content %}{% endblock content %}
 
@@ -93,6 +123,7 @@
 	{% include "_block/footer.twig" with { 'settings': settings } %}
 
 	<script defer src="/bs5.js"></script>
-	<script defer src="/scripts.js"></script>
+	<script defer src="/scripts.js?v=20261001a"></script>
+	<script defer src="/lightbox.js?v=20260923a"></script>
 </body>
 </html>

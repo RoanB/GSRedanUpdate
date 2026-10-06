@@ -1,3 +1,107 @@
+/* --------------------------------------------------------------------------
+   Caving theme: lamp amber in the deep green of a cave
+   --------------------------------------------------------------------------
+   Tabler 1.4 (npm-asset/tabler--core) reads no --bs-* variable whatsoever —
+   `grep -c 'var(--bs-' dist/css/tabler.min.css` returns 0 — it themes
+   entirely through --tblr-*, so that is what has to be overridden here. The
+   stock primary is blue #066fd1, which is why the whole admin/members/login
+   chrome used to come out blue while the rules further down this file painted
+   purple gradients over it.
+
+   Two derived colours in the vendor sheet are hardcoded rgb() triplets and do
+   NOT recompute from --tblr-primary: --tblr-primary-rgb (focus rings,
+   .text-primary, .link-underline-primary) and --tblr-primary-lt-rgb. Both are
+   set explicitly below. --tblr-primary-darken / -lt / -200 are color-mix()
+   expressions in the vendor sheet and follow --tblr-primary on their own.
+
+   --tblr-warning is lamp-600 rather than the brighter lamp-500. Tabler
+   renders an alert as a colour-mix of its alert colour (10% background, 20%
+   border), so the amber reads correctly there either way; the reason is
+   .text-warning, which paints `--tblr-warning-rgb` as text: lamp-600 gives
+   5.05:1 on white, lamp-500 only 2.22:1. Note that .alert does not set a
+   colour of its own, so alert *text* stays at the body colour.
+   ------------------------------------------------------------------------ */
+:root {
+	/* The palette. Also mirrored in styles.css (public site) and base.js. */
+	--redan-cave-900: #16210f;
+	--redan-cave-800: #24401a;
+	--redan-cave-700: #3f6212;
+	--redan-cave-600: #365314;
+	--redan-cave-500: #4d7c0f;
+	--redan-moss-400: #9ab03e;
+	--redan-lamp-600: #b45309;
+	--redan-lamp-500: #e0a32e;
+	--redan-lamp-400: #f0b429;
+	--redan-lamp-200: #fcd34d;
+	--redan-lamp-100: #fef3c7;
+
+	/* Green drives every action: buttons, links, form focus, checked inputs. */
+	--tblr-brand: var(--redan-cave-700);
+	--tblr-primary: var(--redan-cave-700);
+	--tblr-primary-rgb: 63, 98, 18;
+	--tblr-primary-fg: #ffffff;
+	--tblr-primary-lt-rgb: 236, 239, 231;
+
+	/* Warm yellow stays an accent: the current page, focus rings, warnings. */
+	--tblr-warning: var(--redan-lamp-600);
+	--tblr-warning-rgb: 180, 83, 9;
+}
+
+/* Navbar: deep cave green gradient, light text, lamp-amber accents.
+
+   --tblr-navbar-active-color defaults to var(--tblr-body-color), i.e. near
+   black. On a dark navbar that renders the current page as unreadable dark
+   grey-on-dark-green, so it is repointed at the lamp accent here. */
+.navbar {
+	--tblr-navbar-color: rgba(255, 255, 255, .82);
+	--tblr-navbar-hover-color: #fff;
+	--tblr-navbar-active-color: var(--redan-lamp-400);
+	--tblr-navbar-brand-color: #fff;
+	--tblr-navbar-brand-hover-color: var(--redan-lamp-400);
+	background: linear-gradient(135deg, var(--redan-cave-900) 0%, var(--redan-cave-800) 55%, #2d5218 100%) !important;
+	border-bottom: 1px solid rgba(224, 163, 46, .35);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .18);
+}
+
+/* The light hamburger strokes, drawn inline so they stay visible on green */
+.navbar .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar .navbar-toggler {
+	border-color: rgba(255, 255, 255, .3);
+}
+
+/* Brand text: white, in both layouts.
+
+   The brand is an <a> inside .navbar-brand (layout.base.twig,
+   layout.members.twig), so the visible text takes the *anchor* colour —
+   `a { color: rgba(var(--tblr-link-color-rgb), …) }` — not the
+   --tblr-navbar-brand-color on the wrapper. With --tblr-link-color set to
+   the primary green that painted dark green on the dark green navbar.
+   --tblr-navbar-brand-color alone cannot fix this: it does not reach the
+   child. */
+.navbar .navbar-brand,
+.navbar .navbar-brand a {
+	color: #fff;
+}
+
+/* Beaten against `a:hover` (0,1,1) and `.navbar-brand:hover` (0,2,0), so the
+   amber hover survives. */
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus,
+.navbar .navbar-brand a:hover,
+.navbar .navbar-brand a:focus {
+	color: var(--redan-lamp-400);
+}
+
+/* The current page: lamp-amber text plus an underline on the nav item. A bare
+   colour change gets lost against the dark gradient, the rule does not. */
+.navbar .nav-link.active {
+	color: var(--redan-lamp-400);
+	border-bottom: 2px solid var(--redan-lamp-500);
+}
+
 /* Fullcalendar safety net: even when the runtime CSS injection is stripped
    (some browser extensions strip injected <style> tags), the month grid
    stays visible and structured with these minimal rules. */
@@ -24,7 +128,7 @@
 	--fc-border-color: rgba(0, 0, 0, .08);
 	--fc-page-bg-color: transparent;
 	--fc-event-border-color: transparent;
-	--fc-today-bg-color: rgba(111, 130, 39, .07);
+	--fc-today-bg-color: rgba(224, 163, 46, .10);
 	font-size: .82rem;
 }
 
@@ -148,10 +252,11 @@
 	background-color: rgba(0, 0, 0, .015);
 }
 
+/* Today reads as lamplight: the warm amber accent against the green month */
 #admin-calendar .fc-day-today .fc-daygrid-day-frame,
 #members-calendar .fc-day-today .fc-daygrid-day-frame {
-	background-color: rgba(154, 176, 62, .10);
-	box-shadow: inset 0 0 0 1px rgba(154, 176, 62, .35);
+	background-color: rgba(224, 163, 46, .12);
+	box-shadow: inset 0 0 0 1px rgba(224, 163, 46, .40);
 }
 
 /* Hover: lift the chip, show full content via native tooltip + subtle bg */
@@ -159,4 +264,84 @@
 #members-calendar .fc .fc-event:hover {
 	filter: brightness(1.06);
 	box-shadow: 0 .15rem .5rem rgba(0, 0, 0, .18);
+}
+
+/* Code editor toolbar: Format button injected above every CodeMirror */
+.code-editor-toolbar {
+	display: flex;
+	justify-content: flex-end;
+	padding-bottom: .5rem;
+}
+
+/* Members footer: pinned to the viewport bottom on every scroll position */
+.footer-sticky {
+	position: sticky;
+	bottom: 0;
+	z-index: 1020;
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+	background-color: rgba(255, 255, 255, .85);
+	backdrop-filter: blur(4px);
+}
+
+/* --------------------------------------------------------------------------
+   Fancy admin + member area: page header, card accents, button glow
+
+   The navbar itself lives at the top of this file, next to the palette it is
+   built from. It used to be duplicated here as a purple gradient; the two
+   rules fought and this one won, so the green/amber navbar above never showed.
+   ------------------------------------------------------------------------ */
+
+/* Page header accent bar */
+.page-header {
+	border-bottom: 3px solid var(--tblr-primary);
+	padding-bottom: .75rem;
+}
+
+.page-header .page-title {
+	font-weight: 700;
+	color: var(--tblr-primary);
+}
+
+/* Card header accent */
+.card-header {
+	background: linear-gradient(135deg, rgba(63, 98, 18, .06) 0%, rgba(54, 83, 20, .03) 100%);
+}
+
+.card-header .card-title {
+	font-weight: 600;
+}
+
+/* Primary button glow, tinted to the green it now actually is */
+.btn-primary {
+	box-shadow: 0 2px 8px rgba(63, 98, 18, .35);
+}
+
+.btn-primary:hover {
+	box-shadow: 0 4px 14px rgba(63, 98, 18, .45);
+}
+
+/* Navbar brand logo: keeps its own colours.
+
+   Deliberately NOT filtered to white, even though the brand text beside it is.
+   Whitening was applied on 2026-10-01 (`filter: brightness(0) invert(1)` — the
+   rule Tabler ships for .navbar-brand-autodark, but gated on
+   `[data-bs-theme=dark]` while this site runs the light theme, so it never
+   fired) and reverted the same day: it flattens the mark to a featureless
+   silhouette, and the logo is the club's identity, not an ornament.
+
+   The mark reads as a tan (opaque pixels average #94795b, about 2.8:1 against
+   the cave-800 navbar), which is under the 3:1 WCAG asks of meaningful
+   non-text graphics. That is an accepted trade, and the same contrast the logo
+   had on the old purple navbar. If a future mark is genuinely illegible here,
+   recolour the source at app/front/media/image/logo.webp rather than filtering
+   at render time: a filter cannot add contrast, it can only flatten. */
+.navbar-brand-image {
+	height: 2rem;
+	width: auto;
+}
+
+/* Members area specific: subtle background tint */
+.page-wrapper {
+	background: linear-gradient(180deg, rgba(63, 98, 18, .02) 0%, transparent 300px);
 }

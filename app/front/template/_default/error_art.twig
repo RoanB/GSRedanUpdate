@@ -1,0 +1,46 @@
+{#
+	Error page art
+
+	The fun element on the 404/403/500 pages, shared by all three so the joke is
+	identical everywhere: a cave in ASCII — stalactites, a drip, a stick figure
+	standing in the water, a stalagmite, and the author's commentary. The status
+	code is deliberately *not* in the art, because this file is shared with the
+	403 and the 500; each template renders its own as the bouncing
+	`.error-code`.
+
+	Why not a picture: the error pages deliberately carry no photo. The club
+	masthead photo and the static caving banner are both real cave shots, and
+	hanging one behind "your page is missing" turns the joke into advertising.
+	`error-masthead` (styles.css) replaces the background image with a plain
+	gradient.
+
+	The same drawing is printed to the devtools console by scripts.js, which
+	reads it back out of this element rather than keeping a second copy — so
+	this file is the only place the art exists. Change it here and both places
+	change at once.
+
+	Spacing: spaces only, never tabs — a tab in a <pre> renders at the font's tab
+	width rather than 8 and shears the drawing apart. Trailing whitespace has
+	been stripped; it is invisible and it only makes the next edit's diff lie
+	about what changed.
+#}
+<pre class="error-art" aria-hidden="true"> ##################################################
+ ####\      /########\      /########\      /#####
+ #####\    /##########\    /##########\    /######
+ ######\  /############\  /############\  /#######
+ #######\/##############\/##############\/########
+ ########V################V##############V########
+                          .
+                          |
+                          .
+ this guy                                /\
+    |                                   /  \
+    v                                  /    \
+        O/                            /      \
+       /|
+       / \          ~~~~~~~~
+ ##########################~~~~~~~~###########
+
+   NOTE: This is a cave. Yes, really.
+   The pointy things are rocks. The wet thing is wet.
+   The stick figure is you, regretting your choice of shoes.</pre>

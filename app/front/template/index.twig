@@ -14,7 +14,7 @@
 		{# Open the section when this is the first card of a section run. #}
 		{% if is_section_block %}
 			{% if previous is null or previous.type not in section_types %}
-				<section class="projects-section bg-light">
+				<section class="projects-section">
 					<div class="container px-4 px-lg-5">
 			{% endif %}
 

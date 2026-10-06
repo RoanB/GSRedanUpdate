@@ -1,30 +1,58 @@
 {% import "_default/macro.tabler.twig" as tabler %}
+{#
+	Admin menu
+
+	Six screens in one row stopped being scannable, so they are grouped by
+	what they change: Content (the pages and the schedule) and Administration
+	(the accounts and the site settings). Dashboard stays on its own, and the
+	two links that leave the admin area stay at the end, marked with an
+	external icon rather than hidden in a group.
+
+	The group toggle carries `active` when any of its screens is the current
+	one, so the admin keeps their place in the menu on a nested page.
+#}
+{% set module_path = env.module.get_module_path() %}
+{% set content_modules = ['/admin/block', '/admin/calendar', '/admin/download'] %}
+{% set administration_modules = ['/admin/user', '/admin/settings'] %}
+
 <ul class="navbar-nav">
 	<li class="nav-item">
-		<a class="nav-link{% if env.module.get_module_path() == '/admin' %} active{% endif %}" href="/admin">
+		<a class="nav-link{% if module_path == '/admin' %} active{% endif %}" href="/admin">
 			<span class="nav-link-title">{{ tabler.icon('home') }} {% trans "Dashboard" %}</span>
 		</a>
 	</li>
-	<li class="nav-item">
-		<a class="nav-link{% if env.module.get_module_path() == '/admin/block' %} active{% endif %}" href="/admin/block">
-			<span class="nav-link-title">{{ tabler.icon('layout-grid') }} {% trans "Cards" %}</span>
-		</a>
+
+	<li class="nav-item dropdown">
+		<button type="button" class="nav-link dropdown-toggle bg-transparent border-0{% if module_path in content_modules %} active{% endif %}" data-bs-toggle="dropdown" aria-expanded="false">
+			{{ tabler.icon('layout-grid') }} {% trans "Content" %}
+		</button>
+		<div class="dropdown-menu">
+			<a class="dropdown-item{% if module_path == '/admin/block' %} active{% endif %}" href="/admin/block">
+				{{ tabler.icon('layout-grid') }} {% trans "Cards" %}
+			</a>
+			<a class="dropdown-item{% if module_path == '/admin/calendar' %} active{% endif %}" href="/admin/calendar">
+				{{ tabler.icon('calendar') }} {% trans "Calendar" %}
+			</a>
+			<a class="dropdown-item{% if module_path == '/admin/download' %} active{% endif %}" href="/admin/download">
+				{{ tabler.icon('download') }} {% trans "Files" %}
+			</a>
+		</div>
 	</li>
-	<li class="nav-item">
-		<a class="nav-link{% if env.module.get_module_path() == '/admin/calendar' %} active{% endif %}" href="/admin/calendar">
-			<span class="nav-link-title">{{ tabler.icon('calendar') }} {% trans "Calendar" %}</span>
-		</a>
+
+	<li class="nav-item dropdown">
+		<button type="button" class="nav-link dropdown-toggle bg-transparent border-0{% if module_path in administration_modules %} active{% endif %}" data-bs-toggle="dropdown" aria-expanded="false">
+			{{ tabler.icon('settings') }} {% trans "Administration" %}
+		</button>
+		<div class="dropdown-menu">
+			<a class="dropdown-item{% if module_path == '/admin/user' %} active{% endif %}" href="/admin/user">
+				{{ tabler.icon('user') }} {% trans "Users" %}
+			</a>
+			<a class="dropdown-item{% if module_path == '/admin/settings' %} active{% endif %}" href="/admin/settings">
+				{{ tabler.icon('settings') }} {% trans "Settings" %}
+			</a>
+		</div>
 	</li>
-	<li class="nav-item">
-		<a class="nav-link{% if env.module.get_module_path() == '/admin/download' %} active{% endif %}" href="/admin/download">
-			<span class="nav-link-title">{{ tabler.icon('download') }} {% trans "Files" %}</span>
-		</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link{% if env.module.get_module_path() == '/admin/settings' %} active{% endif %}" href="/admin/settings">
-			<span class="nav-link-title">{{ tabler.icon('settings') }} {% trans "Settings" %}</span>
-		</a>
-	</li>
+
 	<li class="nav-item">
 		<a class="nav-link" href="/members" target="_blank">
 			<span class="nav-link-title">{{ tabler.icon('eye') }} {% trans "Members area" %}</span>

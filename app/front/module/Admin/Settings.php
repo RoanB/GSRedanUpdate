@@ -15,24 +15,7 @@ declare(strict_types=1);
 
 namespace App\Front\Module\Admin;
 
-class Settings extends \Skeleton\Application\Web\Module {
-	/**
-	 * Login required
-	 *
-	 * @var bool $login_required
-	 */
-	protected bool $login_required = true;
-
-	/**
-	 * Secure
-	 *
-	 * @access public
-	 * @return bool
-	 */
-	public function secure(): bool {
-		return isset($_SESSION['user']) && $_SESSION['user']->is_admin();
-	}
-
+class Settings extends Base {
 	/**
 	 * Display and process the settings form
 	 *
@@ -56,14 +39,18 @@ class Settings extends \Skeleton\Application\Web\Module {
 			\Setting::set_value('social_instagram', $_POST['social_instagram']);
 			\Setting::set_value('social_facebook', $_POST['social_facebook']);
 			\Setting::set_value('footer_company_number', $_POST['footer_company_number']);
-			\Setting::set_value('footer_legal_entity', $_POST['footer_legal_entity']);
 			\Setting::set_value('masthead_title', $_POST['masthead_title']);
 
 			if (isset($_POST['download_password']) && $_POST['download_password'] !== '') {
-				\Setting::set_value('download_password_hash', password_hash($_POST['download_password'], PASSWORD_DEFAULT));
+				$download_password = (string)$_POST['download_password'];
+				\Setting::set_value('download_password_hash', password_hash($download_password, PASSWORD_DEFAULT));
+				// Plaintext mirror for the admin share links (spec/07):
+				// the bcrypt hash cannot be read back, but the share URL
+				// embeds the password to skip the gate.
+				\Setting::set_value('download_password', $download_password);
 			}
 
-			\Skeleton\Core\Http\Session::redirect('/admin/settings?saved=1');
+			$this->redirect_with_message('/admin/settings', 'saved');
 		}
 
 		$template->assign('settings', \Setting::get_all());

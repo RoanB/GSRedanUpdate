@@ -13,24 +13,7 @@ declare(strict_types=1);
 
 namespace App\Front\Module\Admin;
 
-class Download extends \Skeleton\Application\Web\Module {
-	/**
-	 * Login required
-	 *
-	 * @var bool $login_required
-	 */
-	protected bool $login_required = true;
-
-	/**
-	 * Secure
-	 *
-	 * @access public
-	 * @return bool
-	 */
-	public function secure(): bool {
-		return isset($_SESSION['user']) && $_SESSION['user']->is_admin();
-	}
-
+class Download extends Base {
 	/**
 	 * List the download files
 	 *
@@ -42,6 +25,19 @@ class Download extends \Skeleton\Application\Web\Module {
 		$template = \Skeleton\Application\Web\Template::get();
 
 		$download_files = \Download_File::get_all_ordered();
+
+		// Plaintext mirror of the members password: the only way to build
+		// the per-file share URL (the hash cannot be read back). Empty when
+		// the seed migration has not run; the template hides the link then.
+		$members_access_token = (string)\Setting::get_by_name('download_password');
+
+		// Absolute URL so the admin can copy it and share it as-is.
+		$base_url = $this->get_base_url();
+
+		// General members-area link (files + calendar): the shared password
+		// in the query unlocks the whole area, no typing required.
+		$template->assign('members_url', $members_access_token === '' ? '' : $base_url . '/members?access=' . rawurlencode($members_access_token));
+
 		$files = [];
 		foreach ($download_files as $download_file) {
 			$file = $download_file->get_file();
@@ -54,6 +50,7 @@ class Download extends \Skeleton\Application\Web\Module {
 				'size' => $file->size,
 				'size_label' => self::format_bytes((int)$file->size),
 				'category_id' => $category !== null ? (int)$category->id : 0,
+				'share_url' => $members_access_token === '' ? '' : $base_url . '/members?action=get&id=' . $download_file->id . '&access=' . rawurlencode($members_access_token),
 			];
 		}
 
@@ -92,7 +89,7 @@ class Download extends \Skeleton\Application\Web\Module {
 			}
 		}
 
-		\Skeleton\Core\Http\Session::redirect('/admin/download?saved=1');
+		$this->redirect_with_message('/admin/download', 'saved');
 	}
 
 	/**
@@ -118,7 +115,7 @@ class Download extends \Skeleton\Application\Web\Module {
 			$category->save();
 		}
 
-		\Skeleton\Core\Http\Session::redirect('/admin/download?saved=1');
+		$this->redirect_with_message('/admin/download', 'saved');
 	}
 
 	/**
@@ -139,7 +136,7 @@ class Download extends \Skeleton\Application\Web\Module {
 			$category->delete();
 		}
 
-		\Skeleton\Core\Http\Session::redirect('/admin/download?saved=1');
+		$this->redirect_with_message('/admin/download', 'saved');
 	}
 
 	/**
@@ -218,10 +215,10 @@ class Download extends \Skeleton\Application\Web\Module {
 
 			$errors = [];
 			if (empty($_POST['name'])) {
-				$errors['name'] = 'mandatory';
+				$errors['name'] = 'required';
 			}
 			if ($download_file === null && !$has_new_file) {
-				$errors['file'] = 'mandatory';
+				$errors['file'] = 'required';
 			}
 
 			if (count($errors) === 0) {
@@ -233,27 +230,65 @@ class Download extends \Skeleton\Application\Web\Module {
 					}
 				}
 
-				if (!isset($errors['file'])) {
-					if ($download_file === null) {
-						$download_file = new \Download_File();
-						$download_file->sort_order = count(\Download_File::get_all_ordered());
-					}
+			if (!isset($errors['file'])) {
+				if ($download_file === null) {
+					$download_file = new \Download_File();
+					$download_file->sort_order = \Download_File::count_all();
+				}
 
+				$download_file->name = $_POST['name'];
+				$download_file->visible = isset($_POST['visible']) ? 1 : 0;
+				$download_file->download_category_id = ((int)($_POST['download_category_id'] ?? 0) > 0) ? (int)$_POST['download_category_id'] : null;
+
+				if ($has_new_file && isset($download_file->id)) {
+					// Replaces the reference and deletes the file it replaced,
+					// so no orphan file is left behind.
+					$download_file->replace_file($file);
+				} else {
 					if ($has_new_file) {
 						$download_file->file_id = $file->id;
 					}
 
-					$download_file->name = $_POST['name'];
-					$download_file->visible = isset($_POST['visible']) ? 1 : 0;
-					$download_file->download_category_id = ((int)($_POST['download_category_id'] ?? 0) > 0) ? (int)$_POST['download_category_id'] : null;
 					$download_file->save();
-
-					\Skeleton\Core\Http\Session::redirect('/admin/download?saved=1');
 				}
+
+				$this->redirect_with_message('/admin/download', 'saved');
+			}
 			}
 
 			$template->assign('errors', $errors);
 		}
+	}
+
+	/**
+	 * Delete a download file
+	 *
+	 * Removes the Download_File row and the underlying File (and its stored
+	 * bytes) so no orphan file is left behind.
+	 *
+	 * @access public
+	 */
+	public function display_delete(): void {
+		$download_id = (int)($_GET['id'] ?? 0);
+
+		try {
+			$download_file = \Download_File::get_by_id($download_id);
+		} catch (\Exception $e) {
+			\Skeleton\Core\Http\Session::redirect('/admin/download');
+		}
+
+		$file_id = (int)$download_file->file_id;
+		$download_file->delete();
+
+		if ($file_id > 0) {
+			try {
+				\File::get_by_id($file_id)->delete();
+			} catch (\Exception $e) {
+				// The file row was already gone; nothing to clean up.
+			}
+		}
+
+		$this->redirect_with_message('/admin/download', 'deleted');
 	}
 
 	/**

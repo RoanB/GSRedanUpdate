@@ -7,7 +7,7 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if env.get.saved is defined %}
+	{% if sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
 	<form method="post" action="/admin/settings">

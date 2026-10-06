@@ -7,11 +7,26 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if env.get.saved is defined %}
+	{% if sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
-	{% if env.get.add_failed is defined %}
+	{% if sticky_session.add_failed is defined %}
 		{{ tabler.alert('danger', 'Event could not be added'|trans) }}
+	{% endif %}
+
+	{% if members_url %}
+		<div class="card mb-3">
+			<div class="card-header">
+				<div>
+					<h3 class="card-title">{% trans "Members access link" %}</h3>
+					<div class="card-subtitle mt-1">{% trans "Full access link (files + calendar)." %}</div>
+				</div>
+			</div>
+			<div class="card-body">
+				{{ tabler.copy_input(members_url, 'members-access-url') }}
+				<small class="form-hint text-danger">{% trans "Contains the shared password. Only send to trusted people." %}</small>
+			</div>
+		</div>
 	{% endif %}
 
 	<div class="row row-cards">
@@ -29,7 +44,14 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<div id="admin-calendar"></div>
+					<div id="admin-calendar"
+						data-i18n-category="{% trans "Category:" %}"
+						data-i18n-location="{% trans "Location:" %}"
+						data-i18n-hidden="{% trans "(hidden: not published)" %}"
+						data-i18n-calendar-missing="{% trans "Fullcalendar script missing" %}"
+						data-i18n-calendar-missing-not-loaded="{% trans "not loaded" %}"
+						data-i18n-calendar-missing-no-export="{% trans "loaded but no Calendar export" %}"
+						data-i18n-calendar-failed="{% trans "Calendar failed to render" %}"></div>
 				</div>
 				<div class="card-footer">
 					<span class="text-secondary me-3">{% trans "Categories" %}:</span>
@@ -46,7 +68,7 @@
 				<div class="card-header">
 					<div>
 						<h3 class="card-title">{% trans "Calendar events" %}</h3>
-						<div class="card-subtitle mt-1">{% trans "Shown on the members page and exported to member calendars." %}</div>
+						<div class="card-subtitle mt-1">{% trans "Shown on members page and exported to calendars." %}</div>
 					</div>
 				</div>
 				<div class="table-responsive">
@@ -89,7 +111,7 @@
 				<div class="card-header">
 					<div>
 						<h3 class="card-title">{% trans "Calendar in clients" %}</h3>
-						<div class="card-subtitle mt-1">{% trans "Links people paste into a calendar app so the club calendar shows up there. The first two stay up to date automatically; the ICS file is a one-time snapshot." %}</div>
+						<div class="card-subtitle mt-1">{% trans "Live links auto-update; ICS is a one-time snapshot." %}</div>
 					</div>
 					<div class="card-actions">
 						<button type="button" class="btn btn-sm btn-outline-secondary" data-collapse="#club-calendar-subscribe">
@@ -106,22 +128,32 @@
 					<div class="mb-3">
 						<label class="form-label">{% trans "1 · To VIEW the calendar (no credentials)" %}</label>
 						{{ tabler.copy_input(server_scheme ~ '://' ~ server_host ~ '/caldav/GSRedan/', 'caldav-view-url') }}
-						<small class="form-hint">{% trans "Read-only: anyone with this link can add the calendar to their app. No login needed." %}</small>
+						<small class="form-hint">{% trans "Read-only. No login needed." %}</small>
 					</div>
 
 					<div class="mb-3">
 						<label class="form-label">{% trans "2 · To EDIT the calendar (secret-token URL)" %}</label>
 						{{ tabler.copy_input(server_scheme ~ '://' ~ server_host ~ '/caldav-edit/fD5D6A4Z/GSRedan/', 'caldav-edit-url') }}
-						<small class="form-hint">{% trans "Also lets someone create or change events from their app. The URL contains the password, so only share it with people allowed to edit." %}</small>
+						<small class="form-hint">{% trans "Allows editing. Some tools also need the credentials below." %}</small>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<label class="form-label">{% trans "Username" %}</label>
+							{{ tabler.copy_input(caldav_user, 'caldav-user') }}
+						</div>
+						<div class="col-lg-6">
+							<label class="form-label">{% trans "Password" %}</label>
+							{{ tabler.copy_input(caldav_password, 'caldav-password') }}
+						</div>
 					</div>
 
-					<div class="mb-3">
+					<div class="mb-3 mt-3">
 						<label class="form-label">{% trans "3 · One-shot ICS import" %}</label>
 						{{ tabler.copy_input(server_scheme ~ '://' ~ server_host ~ '/members/calendar.ics', 'ics-url') }}
-						<small class="form-hint">{% trans "Downloads the current events once. For apps that cannot subscribe; it does not update afterwards." %}</small>
+						<small class="form-hint">{% trans "One-time download. Does not update." %}</small>
 					</div>
 
-					{{ tabler.alert('warning', 'Keep the edit URL private'|trans, 'It carries the editing password (redan). Anyone with that URL can change the calendar.'|trans) }}
+					{{ tabler.alert('warning', 'Keep the edit URL private'|trans, 'It carries the editing password.'|trans) }}
 					<a class="btn btn-secondary w-100" href="{{ server_scheme }}://{{ server_host }}/members/calendar.ics" target="_blank" rel="noopener">
 						{{ tabler.icon('external-link') }} {% trans "Preview ICS" %}
 					</a>
@@ -133,4 +165,7 @@
 
 {% block footer_scripts %}
 	<script src="/fullcalendar/index.global.min.js"></script>
+	{% if env.session.language.name_short != 'en' %}
+		<script src="/fullcalendar--core/locales/{{ env.session.language.name_short }}.global.min.js"></script>
+	{% endif %}
 {% endblock footer_scripts %}

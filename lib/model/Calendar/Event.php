@@ -68,6 +68,20 @@ class Calendar_Event {
 	}
 
 	/**
+	 * Number of events (admin dashboard counter)
+	 *
+	 * @access public
+	 * @return int $count
+	 */
+	public static function count_all(): int {
+		$count = Database::get()->get_one(
+			'SELECT COUNT(*) FROM calendar_event WHERE archived IS NULL'
+		);
+
+		return (int)$count;
+	}
+
+	/**
 	 * Visible upcoming events for the members page, earliest first
 	 *
 	 * @access public

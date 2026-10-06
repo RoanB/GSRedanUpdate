@@ -1,15 +1,15 @@
 {% import "_default/macro.tabler.twig" as tabler %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ env.session.language.name_short }}">
 <head>
-	<title>{{ title is defined ? title : 'GS Redan admin' }}</title>
+	<title>{{ title is defined ? title : 'GS Redan admin'|trans }}</title>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta http-equiv="Content-Language" content="en" />
-	<meta name="msapplication-TileColor" content="#2d89ef">
-	<meta name="theme-color" content="#4188c9">
+	<meta http-equiv="Content-Language" content="{{ env.session.language.name_short }}" />
+	<meta name="msapplication-TileColor" content="#16210f">
+	<meta name="theme-color" content="#24401a">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 
@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="/tabler--core/dist/css/tabler.min.css" />
 	<link rel="stylesheet" href="/tabler--core/dist/css/tabler-flags.min.css" />
 	<link rel="stylesheet" href="/tabler--core/dist/css/tabler-payments.min.css" />
-	<link rel="stylesheet" href="/base.css?v=20260918e" />
+	<link rel="stylesheet" href="/base.css?v=20261001h" />
 
 	{% block header_css %}{% endblock header_css %}
 </head>
@@ -34,7 +34,7 @@
 		{% endif %}
 		<header class="navbar navbar-expand-md d-print-none">
 			<div class="container-xl">
-				<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
@@ -50,7 +50,7 @@
 				</div>
 				<ul class="navbar-nav flex-row order-md-last">
 					<li class="nav-item dropdown">
-						<button type="button" class="nav-link d-flex lh-1 p-0 px-2 bg-transparent border-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+						<button type="button" class="nav-link d-flex lh-1 p-0 px-2 bg-transparent border-0" data-bs-toggle="dropdown" aria-label="{% trans "Open user menu" %}">
 							<span class="avatar avatar-sm">{{ tabler.icon('user') }}</span>
 							<div class="d-none d-xl-block ps-2">
 								<div>{{ user.firstname }} {{ user.lastname }}</div>
@@ -58,7 +58,7 @@
 									<small>{{ user.email }}</small>
 								</div>
 							</div>
-						</a>
+						</button>
 						<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 							<a class="dropdown-item" href="/login?action=logout">
 								{{ tabler.icon('logout') }} {% trans "Log out" %}
@@ -78,7 +78,7 @@
 							</h2>
 						</div>
 						<div class="d-none d-md-inline-block col-md-8">
-							<ol class="breadcrumb" aria-label="breadcrumbs">
+							<ol class="breadcrumb" aria-label="{% trans "breadcrumbs" %}">
 								<li class="breadcrumb-item ms-auto">
 									<a href="/">{% trans "Site" %}</a>
 								</li>
@@ -124,6 +124,6 @@
 	</div>
 	<script src="/tabler--core/dist/js/tabler.min.js"></script>
 	{% block footer_scripts %}{% endblock footer_scripts %}
-	<script src="/base.js?v=20260918g"></script>
+	<script src="/base.js?v=20261001b"></script>
 </body>
 </html>

@@ -4,8 +4,12 @@
 	<title>{% block header_title %}{% endblock header_title %}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preload" as="image" href="/caving-banner-tiny.webp"/>
-	<link href="/styles.css?v=20260917b" rel="stylesheet"/>
+	<link rel="stylesheet" href="/styles.css?v=20261002a"/>
+	{# Only the masthead preview has a hero background; for the other cards
+	   the preloads would be downloads of a picture that card never paints. #}
+	{% if block.type == 'masthead' %}
+		{% include "_default/hero_image.twig" %}
+	{% endif %}
 </head>
 <body>
 	{% include "_block/" ~ block.type ~ ".twig" with {
@@ -16,4 +20,5 @@
 		'images': images ?? []
 	} %}
 </body>
+	<script defer src="/lightbox.js?v=20260923a"></script>
 </html>

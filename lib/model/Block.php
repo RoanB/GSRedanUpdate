@@ -92,6 +92,58 @@ class Block {
 	];
 
 	/**
+	 * One-line explanation per card type (admin + i18n keys)
+	 *
+	 * The type name says what a card is called, not what it looks like, so
+	 * the "New card type" picker shows the explanation of the type that is
+	 * currently selected. Types without an explanation (the fixed singular
+	 * ones, which cannot be added) are simply absent.
+	 *
+	 * @var array $type_explanations
+	 */
+	const TYPE_EXPLANATIONS = [
+		'activities_light' => 'One image next to one text block, on a light background.',
+		'activities_dark' => 'One image next to one text block, on a dark background.',
+		'activities_pair_light' => 'Two images and two text blocks on one light card.',
+		'activities_pair_dark' => 'Two images and two text blocks on one dark card.',
+		'gallery' => 'A row of pictures that open full size in a lightbox.',
+		'announcement' => 'A highlighted banner for news, without image.',
+	];
+
+	/**
+	 * Get the translated label for a block type
+	 *
+	 * @access public
+	 * @param string $type
+	 * @return string
+	 */
+	public static function get_type_label(string $type): string {
+		$label = self::TYPE_LABELS[$type] ?? $type;
+
+		return self::translate($label);
+	}
+
+	/**
+	 * Get the translated explanation for a block type
+	 *
+	 * Empty for a type without explanation (or an unknown one): the type
+	 * name alone has to stay enough.
+	 *
+	 * @access public
+	 * @param string $type
+	 * @return string
+	 */
+	public static function get_type_explanation(string $type): string {
+		$explanation = self::TYPE_EXPLANATIONS[$type] ?? '';
+
+		if ($explanation === '') {
+			return '';
+		}
+
+		return self::translate($explanation);
+	}
+
+	/**
 	 * Marker stitched between the two texts of a pair card
 	 *
 	 * The migration carrier adds the archived second block id, which the
@@ -183,6 +235,30 @@ class Block {
 		}
 
 		return Block_Picture::get_by_block($this);
+	}
+
+	/**
+	 * Get the masthead block (null when it was archived)
+	 *
+	 * A singular type: exactly one exists, but its visibility is a separate
+	 * concern (an admin may hide the hero without detaching its photo), so it
+	 * is fetched by type instead of through the visible ordered list.
+	 *
+	 * @access public
+	 * @return ?Block
+	 */
+	public static function get_masthead(): ?Block {
+		$db = Database::get();
+		$ids = $db->get_column(
+			'SELECT id FROM block WHERE type = ? AND archived IS NULL ORDER BY id ASC',
+			[ 'masthead' ]
+		);
+
+		if (count($ids) === 0) {
+			return null;
+		}
+
+		return self::get_by_id((int)$ids[0]);
 	}
 
 	/**
@@ -389,5 +465,31 @@ class Block {
 	public static function count_all(): int {
 		$db = Database::get();
 		return (int)$db->get_one('SELECT COUNT(*) FROM block WHERE archived IS NULL');
+	}
+
+	/**
+	 * Translate a UI string in the language the admin is browsing in
+	 *
+	 * Everything around these labels is translated by Twig through the
+	 * session language, so translating them through the *default* language
+	 * showed a Dutch admin the French labels next to Dutch chrome (and, for
+	 * the four singular types that had no translation at all, plain
+	 * English). The default language is only the fallback for the moments
+	 * no session language is set (console, tests).
+	 *
+	 * @access private
+	 * @param string $string
+	 * @return string
+	 */
+	private static function translate(string $string): string {
+		try {
+			$language = \Language::get();
+		} catch (\Exception $e) {
+			$language = \Language::get_default();
+		}
+
+		$translation = \Skeleton\I18n\Translation::get($language, 'front');
+
+		return $translation->translate($string);
 	}
 }

@@ -107,17 +107,47 @@ class Members extends \Skeleton\Application\Web\Module {
 			Session::redirect('/members');
 		}
 
-		Session::redirect('/members?failed=1');
+		$this->redirect_with_message('/members', 'failed');
+	}
+
+	/**
+	 * Redirect with a sticky message and a clean URL
+	 *
+	 * The same trick the admin modules use: the message travels through the
+	 * session instead of the query string, so /members?failed=1 does not
+	 * survive a refresh as a URL the visitor can copy or bookmark. The
+	 * Members module cannot extend Admin\Base (that one requires an admin
+	 * session), so the two lines live here.
+	 *
+	 * @access private
+	 * @param string $url
+	 * @param string $key
+	 * @param mixed $value
+	 */
+	private function redirect_with_message(string $url, string $key, mixed $value = true): void {
+		$sticky_session = \Skeleton\Core\Http\Session\Sticky::get();
+		$sticky_session->$key = $value;
+
+		Session::redirect($url);
 	}
 
 	/**
 	 * Stream a single file
 	 *
+	 * Requires the members gate — or the shared password supplied in the
+	 * `access` query parameter (the admin share link builds that URL, so a
+	 * file can be shared without the recipient entering the password).
+	 *
 	 * @access public
 	 */
 	public function display_get(): void {
 		if ($this->is_authenticated() === false) {
-			Session::redirect('/members');
+			$access = (string)($_GET['access'] ?? '');
+			$expected_hash = \Setting::get_by_name('download_password_hash');
+
+			if ($access === '' || $expected_hash === null || password_verify($access, $expected_hash) === false) {
+				Session::redirect('/members');
+			}
 		}
 
 		$file_id = (int)($_GET['id'] ?? 0);

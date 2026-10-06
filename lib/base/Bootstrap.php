@@ -88,19 +88,26 @@ class Bootstrap {
 		\Skeleton\I18n\Translator\Storage\Po::set_default_configuration(['storage_path' => $root_path . '/po/']);
 		\Skeleton\I18n\Config::$cache_path = $root_path . '/tmp/languages/';
 
-		// Email Translator
-		$storage = new \Skeleton\I18n\Translator\Storage\Po();
-		$translator = new \Skeleton\I18n\Translator('email');
-		$translator->set_translator_storage($storage);
-		$translator_extractor_twig = new \Skeleton\I18n\Translator\Extractor\Twig();
-		$translator_extractor_twig->set_template_path($root_path . '/store/email');
-		$translator->set_translator_extractor($translator_extractor_twig);
-		$translator->save();
-
 		/**
 		 * Emails
+		 *
+		 * The template path is fixed: store/email/template/{type}/{html,text,
+		 * subject}.twig. The transport comes from the (gitignored) environment
+		 * config, so no credentials end up in version control. Without an
+		 * explicit 'email_transport' the local sendmail binary is used, which
+		 * is what the host provides; 'email_transport' => 'smtp' then expects
+		 * 'email_smtp' => [ host, port, encryption, username, password ].
 		 */
-		// \Skeleton\Email\Config::$email_directory = $root_path . '/store/email/';
+		\Skeleton\Email\Config::$email_path = $root_path . '/store/email/';
+
+		if (($config->email_transport ?? '') === 'smtp') {
+			\Skeleton\Email\Config::$transport_type = 'smtp';
+			\Skeleton\Email\Config::$transport_smtp_config = $config->email_smtp;
+		}
+
+		if (($config->email_sendmail_command ?? '') !== '') {
+			\Skeleton\Email\Config::$transport_sendmail_command = $config->email_sendmail_command;
+		}
 
 		/**
 		 * Skeleton-File
@@ -122,6 +129,22 @@ class Bootstrap {
 		\Skeleton\File\Picture\Config::add_resize_configuration('1200x900', 1200, 900, 'auto');
 		\Skeleton\File\Picture\Config::add_resize_configuration('800x600', 800, 600, 'auto');
 		\Skeleton\File\Picture\Config::add_resize_configuration('400x300', 400, 300, 'auto');
+
+		// Masthead hero sizes: one full-width banner variant per breakpoint
+		// (Masthead_Image::SIZES). Separate from the card sizes above,
+		// because the hero is a full-bleed banner and not a card in a column.
+		//
+		// The variant is the viewport range it serves, and the masthead is
+		// `width: 100%` with `background-size: cover`, so every one of these
+		// has to be at least as wide as the widest viewport in its range or
+		// the browser upscales the hero. That is why the steps are 640/1280/
+		// 1920/2560 and not Bootstrap's 768/992/1200/1400: the breakpoints in
+		// styles.css have to be these numbers. Keep the two in step — the
+		// matching preloads live in _default/hero_image.twig.
+		\Skeleton\File\Picture\Config::add_resize_configuration('2560x1280', 2560, 1280, 'auto');
+		\Skeleton\File\Picture\Config::add_resize_configuration('1920x960', 1920, 960, 'auto');
+		\Skeleton\File\Picture\Config::add_resize_configuration('1280x640', 1280, 640, 'auto');
+		\Skeleton\File\Picture\Config::add_resize_configuration('640x320', 640, 320, 'auto');
 
 		/**
 		 * Initialize the pager

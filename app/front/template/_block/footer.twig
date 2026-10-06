@@ -5,10 +5,18 @@
 	never goes stale in a CMS. The footer is not a card: it is always the
 	same and lives at the bottom of the public layout directly.
 #}
-<footer class="footer bg-black small text-center text-white">
+{# The footer paints itself dark from its own markup: bg-black + text-white are
+   both !important utilities, so the plate and the white ink are the markup's
+   doing, not the stylesheet's. styles.css only adds the padding and hairline. #}
+<footer class="footer small text-center bg-black text-white">
 	<div class="container px-4 px-lg-5">
 		{% trans  'Non-profit organisation' %} <br>
 		{% trans 'Company number' %} : {{ settings.footer_company_number }}<br>
 		<span class="current-year">{{ 'now'|date('Y') }}</span><br>
+		<div class="footer-links mt-2">
+			<a class="link-secondary text-white" href="/members">{% trans 'Members' %}</a>
+			·
+			<a class="link-secondary text-white" href="/admin">{% trans 'Admin' %}</a>
+		</div>
 	</div>
 </footer>

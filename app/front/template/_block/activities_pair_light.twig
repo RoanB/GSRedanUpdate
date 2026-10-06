@@ -13,7 +13,7 @@
 	<div class="row gx-0 align-items-center">
 		<div class="col-lg-6{% if second_image is null %} col-lg-12{% endif %}">
 			{% if images[block.id] is defined %}
-				<img class="img-fluid w-100 h-100 object-fit-cover" src="/picture?id={{ images[block.id].file_id }}&amp;size=1200x900" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+				<img class="img-fluid w-100 h-100 object-fit-cover" src="/picture?id={{ images[block.id].file_id }}&amp;size=1600x1200" width="{{ images[block.id].width }}" height="{{ images[block.id].height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
 			{% endif %}
 		</div>
 		{% if second_image is not null %}
@@ -32,7 +32,7 @@
 	<div class="row gx-0 align-items-center">
 		<div class="col-lg-6{% if second_image is null %} col-lg-12{% else %} order-lg-first{% endif %}">
 			{% if second_image is not null %}
-				<img class="img-fluid w-100 h-100 object-fit-cover" src="/picture?id={{ second_image.file_id }}&amp;size=1200x900" width="{{ second_image.width }}" height="{{ second_image.height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
+				<img class="img-fluid w-100 h-100 object-fit-cover" src="/picture?id={{ second_image.file_id }}&amp;size=1600x1200" width="{{ second_image.width }}" height="{{ second_image.height }}" loading="lazy" decoding="async" alt="{{ translation.title }}"/>
 			{% endif %}
 		</div>
 		<div class="col-lg-6">
