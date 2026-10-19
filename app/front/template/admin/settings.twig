@@ -7,7 +7,7 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if sticky_session.saved is defined %}
+	{% if env.sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
 	<form method="post" action="/admin/settings">
@@ -105,6 +105,32 @@
 						<div class="mb-3">
 							<label class="form-label">{% trans "Company number" %}</label>
 							<input type="text" name="footer_company_number" class="form-control" value="{{ settings.footer_company_number }}">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{% trans "Legal entity" %}</label>
+							<input type="text" name="footer_legal_entity" class="form-control" value="{{ settings.footer_legal_entity }}">
+							<small class="form-hint">{% trans "Shown in the footer and on the 404 page, before the company number." %}</small>
+						</div>
+					</div>
+				</div>
+
+				<div class="card mb-3">
+					<div class="card-header">
+						<h3 class="card-title">{% trans "Rally" %}</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-check form-switch mb-3">
+							<input class="form-check-input" type="checkbox" id="rally_enabled" name="rally_enabled" value="1"{% if settings.rally_enabled %} checked{% endif %}>
+							<label class="form-check-label" for="rally_enabled">{% trans "Show the Rally countdown on the site" %}</label>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{% trans "Start date" %}</label>
+							<input type="datetime-local" name="rally_start_date" class="form-control" value="{{ settings.rally_start_date|replace({' ': 'T'})|slice(0, 16) }}">
+							<small class="form-hint">{% trans "The countdown on the site counts to this date and time." %}</small>
+						</div>
+						<div>
+							<label class="form-label">{% trans "End date" %}</label>
+							<input type="datetime-local" name="rally_end_date" class="form-control" value="{{ settings.rally_end_date|replace({' ': 'T'})|slice(0, 16) }}">
 						</div>
 					</div>
 				</div>

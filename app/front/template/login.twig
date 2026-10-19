@@ -3,17 +3,17 @@
 	<div class="card card-md">
 		<div class="card-body">
 			<h2 class="h2 text-center mb-4">{% trans "Log in" %}</h2>
-			{% if sticky_session.password_changed is defined %}
+			{% if env.sticky_session.password_changed is defined %}
 				<div class="alert alert-success" role="alert">
 					{% trans "Your new password is saved. Log in with it below." %}
 				</div>
 			{% endif %}
-			{% if sticky_session.logged_out is defined %}
+			{% if env.sticky_session.logged_out is defined %}
 				<div class="alert alert-success" role="alert">
 					{% trans "You are logged out." %}
 				</div>
 			{% endif %}
-			{% if sticky_session.reset_request_sent is defined %}
+			{% if env.sticky_session.reset_request_sent is defined %}
 				<div class="alert alert-success" role="alert">
 					{% trans "If that address belongs to an admin account, a reset link is on its way. It is valid once, for 24 hours." %}
 				</div>

@@ -2,44 +2,308 @@
 
 ## Goal
 
-`/` renders the GS Redan one-pager from the DB blocks, looking exactly like the
-current static site, with FR/NL/EN switchable and menu order driven by the
-admin.
+`/` renders the GS Redan public site as the static design from
+`../gsredanupdate` (the deployed site at https://gsredanupdate.buysse.io/),
+looking exactly like it, with FR/NL/EN switchable.
+
+**2026-10-19 — the blocks-based public page was replaced by the static
+design, and the block system was removed entirely.** The public pages no
+longer render anything from the database *except what the club edits in
+Settings* (see "Settings-driven content" below — the same day's later
+decision): the markup lives in the templates, the words in the po catalogs
+(see 05), and the images in `media/image/`.
+The same day the block feature was deleted outright: the `Block`,
+`Block\Translation` and `Block\Picture` models, the `Masthead_Image`
+component, the `Admin\Block` module with its three screens, the `_block/`
+partials, `_default/hero_image.twig`, and the database tables (migration
+`20261019_120000_drop_blocks`; `down()` recreates the empty schema, the
+rows are gone). The admin dashboard and menu no longer mention cards.
+
+## Pages and modules (`app/front/`)
+
+One module per public page, each just setting `$this->template` in
+`display()` — no data assignment, nothing dynamic:
+
+| module | routes (`config/routes.php`) | template |
+|---|---|---|
+| `Module\Index`  | `/`, `/$language[en,fr,nl]`            | `index.twig`  |
+| `Module\About`  | `/about`, `/$language[en,fr,nl]/about`  | `about.twig`  |
+| `Module\Rallye` | `/rallye`, `/$language[en,fr,nl]/rallye`| `rallye.twig` |
+| `Module\Legal`  | `/legal`, `/$language[en,fr,nl]/legal`  | `legal.twig`  |
+
+The trailing-slash forms (`/about/`, the way the static site links) are
+normalised by `handler.php` and the router strips trailing slashes, so both
+work. `Module\Legal` deliberately shadows nothing: there is no `/legal` media
+or admin path.
+
+`event/Module.php` no longer builds `nav_items` from the blocks (the navbar
+is part of `layout.public.twig`); it keeps assigning `settings` and the
+masthead image, because the admin block preview still renders the `_block`
+partials, which read them.
+
+## Layout (`_default/layout.public.twig`)
+
+The layout is the shared chrome of the four pages plus the three error
+pages, ported from `../gsredanupdate`:
+
+- **Head**: the inline Google Fonts `@font-face` block (verbatim: the
+  static site inlines the subset CSS instead of linking `fonts.googleapis
+  .com/css2`), the two font preloads, Bootstrap 5.3.3 CSS from jsDelivr and
+  `/styles.css`. Per-page bits (canonical, Open Graph/Twitter, JSON-LD, LCP
+  hero preloads) are the page templates' `page_head` block; title,
+  description, robots and theme-color are blocks with the homepage's
+  defaults.
+- **Navbar**: the source markup with the source's four links (Accueil, Le
+  club, Rallye 2027, Contact). The language dropdown and the mobile
+  lang-pills are server-rendered `<a>` links to the language-prefixed mirror
+  of the current path (`language_urls`, built from `REQUEST_URI` — logic kept
+  from the previous layout), not the client-side buttons of the static site.
+  `aria-current="page"` on the active page and the `navbar-solid` state on
+  the two cream-hero pages (about, legal) are derived in the layout from the
+  first path segment after an optional language prefix.
+- **Footer**: inline in the layout (it is page chrome, not a block partial —
+  the `_block/footer.twig` of the blocks design is no longer included). The
+  `.current-year` span renders `{{ "now"|date("Y") }}` server-side, as before.
+  One deliberate deviation from `../gsredanupdate`: the brand column carries
+  two button links under the tagline — `Members` (btn-yellow, the primary
+  accent) and `Admin` (btn-ghost-light, secondary) — the entries the old
+  footer had as plain links. The static reference site has no members area,
+  the skeleton one does. `/members` is routed language-prefixed (the Rewrite
+  event emits `/nl/members` etc.), `/admin` is unprefixed by design.
+- **Scripts**: Bootstrap 5.3.3 bundle from jsDelivr and `/main.js`. The
+  static site's `i18n.js` is deliberately NOT ported — translations are
+  server-side (po). `/bs5.js` (5.2.3) stays what the members/admin shells
+  load; the public pages do not use it.
+
+**The framework language-prefixes internal links.** The core `Rewrite` event
+reverse-rewrites every root-relative `href`/`src`/`action` through the route
+table, filling `$language` with the current session language: the
+`/about/` links written in the templates go out as `/fr/about`,
+`/nl/about#join`, etc. Only routable paths are rewritten — media URLs
+(`/salle.webp`, `/styles.css`, ...) and `/#contact` (which resolves to no
+module) pass through untouched. Do not hand-prefix hrefs in the templates;
+the written form is the source site's.
+
+## Settings-driven content (2026-10-19)
+
+The contact addresses, the maps links, the social URLs, the mail
+recipient, the footer entity line and the rally dates are read from the
+`setting` key/value store (the same keys the old blocks design already
+seeded; see 01). `event/Module.php::bootstrap()` assigns `settings` on
+every page (`not_found()` too — the 404 renders socials); the templates
+render them raw. Where a sentence used to embed an address (the rallye
+venue lead), the prose is a trans string and the address lines below it
+come from settings. The footer-legal line is
+`{{ settings.footer_legal_entity }} · {{ 'Company number:'|trans }}
+{{ settings.footer_company_number }}`.
+
+**Every social link on the public site comes from the settings** —
+footer, contact section, the rallye registration card, the 404 socials,
+and the `sameAs` entries of the home JSON-LD. No instagram/facebook URL
+is hardcoded in any template (grep-verified).
+
+**Rally year labels are dynamic too.** `event/Module.php::bootstrap()`
+assigns `rally_year` (the year of `rally_start_date`; empty when unset —
+the year then simply disappears from the labels). The templates render
+it as a separate variable next to a trans'd word — `Rally {{ year }}`,
+`The Rally {{ year }}`, `Edition {{ year }}`, the countdown label, the
+contact topic and the JSON-LD event name — because the Tigron trans
+pipeline has no placeholder form: the extractor throws on the block
+form and chained `|trans|replace(...)` filters are not extracted
+(msgids with `%year%` would never reach the catalog). The word order is
+therefore fixed around one variable position, which works for all three
+languages here. Where a prose sentence embedded the year ("train with
+us before 2027", "(topic: Rally 2027)"), the year was dropped from the
+sentence instead — the copy stays true in every edition year. The
+countdown aria label is year-free for the same reason.
+
+Changed msgids with it: the four address strings, the venue sentence, and
+the combined footer-legal line dropped from the templates; `Company
+number:` (with colon) is a separate msgid so French can carry the espace
+before the colon.
+
+Limitation: `footer_legal_entity` is one value rendered in every
+language (the seed stores the French wording). Addresses are inherently
+language-neutral; if the entity line ever needs per-language values,
+that is a schema change to `setting` (per-language rows), not a
+template fix.
+
+## Rally settings
+
+Three keys, initially seeded by migration `20261019_130000_seed_rally_settings`
+and converted to datetimes by `20261019_140000_rally_datetimes` (`1` /
+`2027-09-10 12:00:00` / `2027-09-12 18:00:00`), editable in the admin's
+Rally card:
+
+- `rally_enabled` — the toggle, and it hides **everything** rally: when
+  falsy, the site carries no rally traces at all — the layout links
+  (navbar + footer), the home hero CTA, the teaser band, the countdown,
+  the 404 button and the `rally` topic option in the contact form are
+  all conditioned on it server-side, `/rallye/` redirects to the
+  homepage (the page must not be a straggler behind hidden links), and
+  `Seo_Sitemap` stops publishing `/rallye`.
+- `rally_start_date` — a **datetime** (`Y-m-d H:i:s`), the countdown
+  target, rendered as
+  `data-countdown-target="{{ settings.rally_start_date|replace({' ': 'T'}) }}"`
+  — no time is added by the template any more, the stored time is the
+  target. No timezone offset in the attribute: the JS reads it as
+  **local** wall time on that date, which for the Belgian audience
+  equals the +02:00 target the static site hardcoded (the seed kept the
+  12:00 midday the site had by then). `main.js` guards an unparsable
+  target with `isNaN` and skips the box.
+- `rally_end_date` — a datetime, stored and editable.
+- **All rendered rally dates come from these settings** via
+  `Date_Label::format_range()` (lib/component/Date/Label.php), assigned
+  as `rally_date_label` in `event/Module.php::bootstrap()`: the home
+  rally band and the rallye hero both render it and hide the date line
+  when it is empty. Same month: every day of the span joined with " / "
+  before the month and year ("10 / 11 / 12 septembre 2027" — the shape
+  the static site hardcoded); single day: one date; wider spans (or a
+  span over a week): "10 septembre 2027 – 12 octobre 2027". A start
+  after the end is normalized (swapped). Month names live in
+  `Date_Label::MONTHS` (no intl dependency — see below); the datetimes
+  are read as Brussels wall time (`Calendar_Event::DISPLAY_TIMEZONE`),
+  the same reading the countdown gives them.
+
+### Date_Label and the openings formatter (no intl)
+
+`Calendar_Event::format_opening_dates()` no longer uses
+`IntlDateFormatter` (absent on some hosts this project runs on — the
+CLI here has neither mysqli nor intl): month names come from
+`Date_Label::get_month_names()`, and the method now returns an **array**
+of labels, one per month group ("9 et 23 novembre" / "7 décembre"),
+instead of a `<br>`-joined string. The old block was its only caller;
+the contract change is free.
+
+The admin card uses `datetime-local` inputs;
+`Admin\Settings::normalize_rally_datetime()` converts the `T`-format
+posts back to the `Y-m-d H:i:s` storage format (empty stays empty).
+
+## Monday openings (calendar-fed)
+
+The dates chip on the home "Odd Mondays" card is fetched from the
+calendar, category **'Ouverture de la salle'**
+(`Calendar_Category::get_opening_category()` →
+`Calendar_Event::get_visible_upcoming_by_category(id, 24)` →
+`format_opening_dates(...)`), the same feed the old monday_openings
+block used. `Index::display()` assigns it as `openings` (an array of
+labels, one per month group, chronological); the template renders one
+date-chip per label and hides the whole dates block when there are no
+upcoming events. The card's other texts (intro, fee, insurance warning,
+door directions) stay translated static strings.
+
+## Contact form: POST /contact (2026-10-19)
+
+The mailto form became a server flow:
+
+- **Endpoint** `App\Front\Module\Contact` at `/contact` and
+  `/$language[en,fr,nl]/contact`, POST only — a GET redirects to
+  `/#contact` so a stray link or a bot probing the path composes
+  nothing.
+- **Honeypot** — a `website` field, visually hidden (`d-none`,
+  `tabindex="-1"`, not translated on purpose). A human never fills it.
+  Filled → the same silent redirect as a success, **no mail**: the bot
+  learns nothing. Mirrors the client rules otherwise.
+- **Validation** — the client rules in `main.js` are mirrored
+  server-side (name ≥ 2, RFC-ish e-mail regex, topic against
+  `Contact::TOPICS`, message ≥ 10, consent required). A failed check
+  sets the sticky `contact_error` and redirects.
+- **Sending** — `Contact_Mail` (`lib/component/Contact/Mail.php`),
+  modelled on `Password_Reset_Mail`, **two mails per submission**:
+  the club's copy (recipient = the `contact_email` setting,
+  **Reply-To the visitor**) and the visitor's copy (recipient = the
+  visitor's address, Reply-To the club mailbox, subject "Your message
+  to GS Redan", intro + closing varied by an assigned `copy` flag).
+  The visible sender on both is the **noreply address from the config
+  files** (`email_noreply` in config/core.php, overridable per
+  environment in the gitignored environment.php; falls back to the
+  `contact_email` setting when absent). The mails are written in the
+  **visitor's session language**; the topic label is resolved in the
+  mail template per key (`club/youth/rally/other`). Templates:
+  `store/email/template/contact/{subject,html,text}.twig`. Transport
+  and credentials come from the gitignored environment config, same as
+  the reset mail.
+- **Feedback** — the success alert on `/#contact` after the redirect
+  (sticky `contact_sent`) is the visitor's on-page confirmation, next
+  to the e-mail copy; a validation miss (`contact_error`) and a
+  transport throw (`contact_failed`) render the red alert instead — the
+  transport one says the failure is on the site's side and points at
+  the socials. Both belong to that submission only and are forgotten on
+  the next navigation. A transport failure is logged via
+  `Util::log_request` before the redirect.
+- **Found while testing this (2026-10-19): the sticky reads were broken
+  project-wide.** `add_environment('sticky_session', …)` lands the
+  object inside the template's **`env`** global (`Twig::render()`
+  merges it into the `env` array, next to `env.session`,
+  `env.server`, …), so every template read a non-existent top-level
+  `$context['sticky_session']` — always null, `is defined` always
+  false. The admin "Saved" flashes never showed either. All reads are
+  `env.sticky_session.<key>` now (17 fixes across 8 templates).
+- **Anti-bot hardening after a false negative**: the honeypot field was
+  named `website` — a browser-autofill token — and an autofilled
+  honeypot silently swallowed a real submission with no message at
+  all. It is now `cf_website` (no autofill token), and a **time trap**
+  joined it: a hidden `form_ts` (server-rendered unix time); a POST
+  under three seconds after render (or claiming a future time) is
+  treated as a bot and answered with the same silent redirect.
+- **Client JS** — `main.js` keeps the validation + the data-topic
+  preselect; a valid form is simply allowed to post (no mailto, no
+  mail-app hop).
+
+The privacy and cookies copies on `/legal/` were rewritten at the same
+time (the old text claimed the form "opens your mail app" and that
+nothing leaves the browser): the mail goes through the club's server
+and nothing is stored; the only cookie is the anonymous session one.
+
+## Assets
+
+Flat media URLs (unchanged decision, see below): the static site's
+`/assets/img/x.webp` paths are rewritten to `/x.webp` in both the templates
+and the four `url()` references in `styles.css`. All images were copied from
+`../gsredanupdate/assets/` (overwriting the previously committed webp set so
+the pixels match the reference exactly); `img-fallback.svg` is new.
+`/main.js` is the port of `../gsredanupdate/js/main.js` with the i18n.js
+dependency removed: the strings it needs (navbar toggler close label, map
+popup titles/addresses/Maps link) arrive as server-rendered `data-i18n-*`
+attributes following the calendar-chips convention of 05; the countdown unit
+labels, the form field labels and the topic names are read from the page DOM
+itself, where the templates have already rendered them translated. The
+`gsredan:lang` re-render event is gone — a language switch is a page load.
+
+`scripts.js`, `lightbox.js` and `bs5.js` remain in `media/javascript/` for
+the members/admin shells and the block preview.
 
 ## Templates (`app/front/template/`)
 
 ```text
 _default/
-	layout.public.twig      — Grayscale shell (head, navbar, footer; the
-	                          footer partial is included directly, it is not
-	                          a block any more)
+	layout.public.twig      — shared chrome of the public pages (head,
+	                          navbar, footer, scripts); skipped on error pages
+	index.twig              — home page (hero, club, activities, rally band,
+	                          contact + mailto form + Leaflet map)
+	about.twig              — /about/ (page hero, values, weekly schedule,
+	                          youth, camps, join CTA, FAQ)
+	rallye.twig             — /rallye/ (photo hero, facts, event, audience,
+	                          programme, registration, gallery, venue)
+	legal.twig              — /legal/ (publisher, privacy, cookies, third
+	                          parties, disclaimer)
+ Block-era partials kept only for the admin preview:
 _block/
-	masthead.twig           — header.masthead: the hero. Title + per-language
-	                          caption only; the background photo comes from the
-	                          card image through the CSS custom properties in
-	                          styles.css (see "Masthead hero image")
-	club.twig               — section "Le Club"
-	activities_light.twig   — image + text card, light background (was the
-	                          'featured' layout)
-	activities_dark.twig    — image + black text box (was 'project'); corner
-	                          parity alternates across the run of dark cards
-	activities_pair_light.twig — 2-row welded card, light background
-	activities_pair_dark.twig  — 2-row card, dark background (the classic
-	                          Entraînement + Activités jeunes weld; one block
-	                          carries both images and both texts, split by
-	                          the pair marker)
-	monday_openings.twig    — calendar-fed fixed card: image + auto list of
-	                          the upcoming events of the calendar category
-	                          'Ouverture de la salle' (date · time)
-	gallery.twig            — one pictures row from block_picture rows,
-	                          served through /picture; clicking opens the
-	                          no-dependency lightbox (lightbox.js)
-	announcement.twig       — announcement block
-	contact.twig            — contact cards (addresses + email) + social icons
-	footer.twig             — footer (included from the layout, not a block)
-index.twig               — loops blocks, includes the matching partial
-members.twig             — members area (see 07)
+	...                     — the blocks design partials, unchanged, no
+	                          longer included by any public page
 ```
+
+The old blocks-based rendering flow (visible blocks → `_block/{type}.twig`
+includes) is gone from the public site — and, as of 2026-10-19, from the
+codebase: the `_block/` partials, the admin block screens and their models
+were deleted, and the `block`/`block_translation`/`block_picture` tables
+dropped (see the 2026-10-19 note at the top). The sections about the cards
+further down are historical.
+
+## Picture serving (`/picture`, `App\Front\Module\Picture`)
+
+*(unchanged — still used by the members area and the admin; the public pages
+no longer call it)*
 
 `app/front/module/Download.php` is the compat shim for the old `/download`
 URLs: it redirects to `/members` and has no template. It never had a template
@@ -190,6 +454,17 @@ month anyway.
 
 ### The sitemap
 
+**2026-10-19:** the sitemap lists the four public pages (home, `/about`,
+`/rallye`, `/legal`) in every routable language — 12 `<url>` entries, each
+carrying the full hreflang set and an `x-default` pointing at the unprefixed
+page. `<lastmod>` was dropped: the pages are static templates now, so no
+database row tracks when they changed, and a made-up date is worse than none.
+The page list is `Seo_Sitemap::PAGES`; adding a public page means adding it
+there (and the route in `app/front/config/routes.php`).
+
+*(Historical, 2026-09-29 — the blocks-era reasoning, kept because the
+hreflang argument still applies:)*
+
 One `<url>` per language, not one per section. The public site is a single
 page: the blocks are sections of the homepage (`#rallye`, `#salle`, ...). A
 fragment is not a URL, so `/#rallye` is not listable and there is nothing else
@@ -269,6 +544,12 @@ hand-writing the groups into a static file.
 
 ## Rendering flow
 
+**Superseded 2026-10-19:** the public pages render straight from templates —
+no DB reads. `App\Front\Module\Index::display()` (and the About/Rallye/Legal
+modules) only set `$this->template`; the strings are trans-tagged in the
+templates and served from the po catalogs. The flow below describes the
+blocks-based homepage this replaced.
+
 `App\Front\Module\Index` (public, `login_required = false`):
 
 1. Load `\Block::get_visible_ordered()`.
@@ -295,6 +576,11 @@ from the HTML so the admin setting takes over. Everything else (formulas,
 styling classes like `accent-strong`, `rallye-badge`) stays inside `body` HTML.
 
 ## Menu
+
+**Superseded 2026-10-19:** the navbar is part of `layout.public.twig` with
+the static design's four links (Accueil, Le club, Rallye 2027, Contact) —
+not built from block anchors any more. `nav_items` is gone. The
+drag & drop ordering below only affects the admin's own blocks screen.
 
 The navbar (`layout.public.twig`) shows one `<li>` per visible block whose
 `anchor` is non-empty **and** whose translated `title` is non-empty, ordered by
@@ -628,6 +914,19 @@ reports its parsed stops) and pixel sampling:
 
 
 ## Error pages: no photo, light background
+
+**Superseded 2026-10-19 by the static-design port** — the error pages now
+render the `error-hero` design of `../gsredanupdate/404.html` (dark brown
+hero, `error-code` in lamp yellow, sticker, error-card, three buttons), with
+no navbar and no footer, exactly like the source 404. The 403/500 keep the
+same design with their own wording; like before, no code path renders them
+yet. The pale limestone gradient, the ASCII art in `_default/error_art.twig`
+and the solid-navbar forcing below are history (the art file is still there,
+unused). `not_found()` itself is unchanged in what it does: status 404 via
+`http_response_code`, language handling, and the `error_page` flag that now
+suppresses navbar + footer in `layout.public.twig`.
+
+*(Historical design notes, kept for the reasoning they contain:)*
 
 **Decision:** the 404/403/500 pages show no cave photo *and* sit on a light
 background — a pale limestone gradient (`#f7f8f4` → `#e6ecdc`), with dark ink.

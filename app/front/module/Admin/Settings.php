@@ -39,7 +39,17 @@ class Settings extends Base {
 			\Setting::set_value('social_instagram', $_POST['social_instagram']);
 			\Setting::set_value('social_facebook', $_POST['social_facebook']);
 			\Setting::set_value('footer_company_number', $_POST['footer_company_number']);
+			\Setting::set_value('footer_legal_entity', $_POST['footer_legal_entity']);
 			\Setting::set_value('masthead_title', $_POST['masthead_title']);
+
+			// Rally: the checkbox posts nothing when unchecked, so the
+			// switch is on only when the request carries it. The dates are
+			// datetimes: datetime-local posts YYYY-MM-DDTHH(:MM(:SS)),
+			// normalised to the Y-m-d H:i(:s) storage format. The
+			// countdown guards an unparsable value in JS.
+			\Setting::set_value('rally_enabled', isset($_POST['rally_enabled']) ? '1' : '0');
+			\Setting::set_value('rally_start_date', self::normalize_rally_datetime($_POST['rally_start_date']));
+			\Setting::set_value('rally_end_date', self::normalize_rally_datetime($_POST['rally_end_date']));
 
 			if (isset($_POST['download_password']) && $_POST['download_password'] !== '') {
 				$download_password = (string)$_POST['download_password'];
@@ -54,5 +64,30 @@ class Settings extends Base {
 		}
 
 		$template->assign('settings', \Setting::get_all());
+	}
+
+	/**
+	 * Normalize a datetime-local value to the storage format
+	 *
+	 * datetime-local posts `YYYY-MM-DDTHH:MM` (or with `:SS` depending on
+	 * the browser); the setting keeps the DB format `Y-m-d H:i(:s)`.
+	 * Empty stays empty.
+	 *
+	 * @access public
+	 * @param ?string $value
+	 * @return string
+	 */
+	public static function normalize_rally_datetime(?string $value): string {
+		$value = (string)str_replace('T', ' ', (string)$value);
+
+		if ($value === '') {
+			return '';
+		}
+
+		if (preg_match('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/', $value) === 1) {
+			return $value . ':00';
+		}
+
+		return $value;
 	}
 }

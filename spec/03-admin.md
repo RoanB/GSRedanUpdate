@@ -5,6 +5,22 @@ Pattern copied from `../vvsjongeren`: tabler layout, `layout.base.twig`,
 modules under `App\Front\Module\Admin` with `secure()` returning true only for
 `$_SESSION['user']->admin === true`.
 
+**2026-10-19 — the cards admin was removed** with the block system
+(`Admin\Block`, the block.twig / block_edit.twig / block_preview.twig
+screens, and the "Cards" entries in the dashboard and the admin menu). The
+public site no longer renders DB blocks (spec/02), so there was nothing
+left for those screens to edit. What remains: Dashboard, Calendar, Files
+(downloads), Users and Settings.
+
+**2026-10-19, later — the Settings screen grew:** a **Rally** card
+(a checkbox controlling *all* rally visibility on the public site — see
+spec/02 "Rally settings" — plus `datetime-local` start/start- and end
+inputs, stored as `Y-m-d H:i:s` and normalised by
+`normalize_rally_datetime()`) and a **Legal entity** field
+(footer_legal_entity, rendered before the company number in the footer
+and on the 404). The values travel through the same POST as every other
+setting; the checkbox absent means off.
+
 **2026-09-28 — `Admin\Base`:** that `secure()` check (plus the
 `$login_required = true` flag) lived in every admin module. It now lives once
 in `App\Front\Module\Admin\Base` (`app/front/module/Admin/Base.php`),

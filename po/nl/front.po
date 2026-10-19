@@ -2,8 +2,8 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: front-nl.1790854107\n"
-"PO-Revision-Date: 2026-10-01 11:28+0000\n"
+"Project-Id-Version: front-nl.1792420713\n"
+"PO-Revision-Date: 2026-10-19 14:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,17 +12,65 @@ msgstr ""
 msgid "(hidden: not published)"
 msgstr "(verborgen: niet gepubliceerd)"
 
+msgid "* with a UBS, VVS or CAB membership card"
+msgstr "* met een UBS-, VVS- of CAB-lidkaart"
+
+msgid "0474.156.883"
+msgstr "0474.156.883"
+
 msgid "1 · To VIEW the calendar (no credentials)"
 msgstr "1 · Om de kalender te BEKIJKEN (zonder logingegevens)"
 
 msgid "2 · To EDIT the calendar (secret-token URL)"
 msgstr "2 · Om de kalender te WIJZIGEN (geheime token-URL)"
 
+msgid "2 × a year"
+msgstr "2 × per jaar"
+
+msgid "3 routes of increasing difficulty"
+msgstr "3 parcours met toenemende moeilijkheidsgraad"
+
 msgid "3 · One-shot ICS import"
 msgstr "3 · Eenmalige ICS-import"
 
-msgid "Add card"
-msgstr "Kaart toevoegen"
+msgid "A caver seen from the bottom of a brick shaft, silhouetted against the light"
+msgstr "Een speleo gezien van onderin een bakstenen schacht, silhouet tegen het licht"
+
+msgid "A club, a basilica, a lot of rope"
+msgstr "Een club, een basiliek, veel touw"
+
+msgid "A question about this page?"
+msgstr "Een vraag over deze pagina?"
+
+msgid "A stone fell on our head: the server ran into an error. Our crews are restoring the passage."
+msgstr "Er viel een steen op ons hoofd: de server kreeg een fout. Onze teams herstellen de doorgang."
+
+msgid "A unique event, on and inside the Basilica. All details, the programme and registration live on the Rally page."
+msgstr "Een uniek evenement, op en in de Basiliek. Alle details, het programma en de inschrijvingen vind je op de Rally-pagina."
+
+msgid "a view all the way to the Atomium"
+msgstr "zicht tot aan het Atomium"
+
+msgid "A visitor wrote through the contact form on gsredan.be:"
+msgstr "Een bezoeker schreef via het contactformulier op gsredan.be:"
+
+msgid "About us"
+msgstr "Over ons"
+
+msgid "About us — GS Redan, caving in Brussels"
+msgstr "Over ons — GS Redan, speleologie in Brussel"
+
+msgid "Abseil into the page"
+msgstr "Abseil naar beneden"
+
+msgid "Abseiling down one of the Basilica’s towers"
+msgstr "Afdaling langs een toren van de Basiliek"
+
+msgid "Abseiling down one of the Basilica’s towers."
+msgstr "Afdaling langs een toren van de Basiliek."
+
+msgid "Access denied (403) — GS Redan"
+msgstr "Toegang geweigerd (403) — GS Redan"
 
 msgid "Add download"
 msgstr "Download toevoegen"
@@ -35,9 +83,6 @@ msgstr "Bestand toevoegen"
 
 msgid "Add user"
 msgstr "Gebruiker toevoegen"
-
-msgid "Address of the venue"
-msgstr "Adres van het lokaal"
 
 msgid "Admin"
 msgstr "Admin"
@@ -54,11 +99,11 @@ msgstr "de hele dag"
 msgid "All day (dates only, no times in the calendar)"
 msgstr "Volledige dag (alleen datums, geen tijden in de kalender)"
 
-msgid "All pictures are resized on demand; keep originals reasonable (max ~2000px wide recommended)."
-msgstr "Alle afbeeldingen worden op aanvraag geschaald; houd de originelen redelijk (maximaal ~2000px breed aanbevolen)."
+msgid "All rights reserved."
+msgstr "Alle rechten voorbehouden."
 
-msgid "Aller au contenu"
-msgstr "Naar de inhoud"
+msgid "All the Rally details"
+msgstr "Alle Rally-info"
 
 msgid "Allows editing. Some tools also need the credentials below."
 msgstr "Maakt bewerking mogelijk. Sommige tools hebben ook de logingegevens nodig."
@@ -66,17 +111,23 @@ msgstr "Maakt bewerking mogelijk. Sommige tools hebben ook de logingegevens nodi
 msgid "Also the login and reset mail address."
 msgstr "Ook de login en het hersteladres."
 
-msgid "Anchor"
-msgstr "Anker"
-
-msgid "Anchor (menu link)"
-msgstr "Anker (menulink)"
-
 msgid "Archive"
 msgstr "Archiveren"
 
+msgid "Ask a question"
+msgstr "Stel een vraag"
+
 msgid "At least 8 characters."
 msgstr "Minstens 8 tekens."
+
+msgid "ATTENTION! You must present your UBS, VVS or CAB membership card, which guarantees insurance coverage for this activity."
+msgstr "OPGELET! Verplichte vertoning van uw UBS-, VVS- of CAB-lidkaart zo zijn we zeker dat u verzekerd bent voor deze activiteit."
+
+msgid "Autumn and Spring holidays (French-speaking)"
+msgstr "Franstalige herfst- en lentevakantie"
+
+msgid "Back to daylight"
+msgstr "Terug naar het daglicht"
 
 msgid "Back to log in"
 msgstr "Terug naar het inloggen"
@@ -84,8 +135,23 @@ msgstr "Terug naar het inloggen"
 msgid "Back to login"
 msgstr "Terug naar het inloggen"
 
-msgid "Back to the homepage"
-msgstr "Terug naar de homepage"
+msgid "Basilica caving rally"
+msgstr "Speleorallye in de Basiliek"
+
+msgid "Basilica caving rally: 3 routes, 2,000+ metres of rope on the Koekelberg Basilica and a view all the way to the Atomium."
+msgstr "Speleorallye in de Basiliek: 3 parcours, meer dan 2 000 meter touw op de Basiliek van Koekelberg en zicht tot aan het Atomium."
+
+msgid "basilica to climb, right in Brussels"
+msgstr "basiliek om te beklimmen, in Brussel"
+
+msgid "Basilique Nationale du Sacré-Cœur — the club’s training hall is right underneath, literally."
+msgstr "Nationale Basiliek van het Heilig Hart — de trainingszaal van de club zit er net onder, letterlijk."
+
+msgid "Bd de Smet de Naeyer 21, 1090 Jette, Belgium"
+msgstr "Bd de Smet de Naeyer 21, 1090 Jette, België"
+
+msgid "Big ropes, a big basilica"
+msgstr "Groot touw, een grote basiliek"
 
 msgid "breadcrumbs"
 msgstr "Kruimelpad"
@@ -105,32 +171,20 @@ msgstr "De kalender in je apps"
 msgid "Calendar link (live)"
 msgstr "Kalenderlink (live)"
 
+msgid "Camps"
+msgstr "De kampen"
+
+msgid "camps a year, autumn and spring"
+msgstr "kampen per jaar, herfst en lente"
+
+msgid "Can I watch the Rally without descending?"
+msgstr "Kan ik de Rally bekijken zonder te dalen?"
+
 msgid "Cancel"
 msgstr "Annuleren"
 
 msgid "Cannot archive yourself"
 msgstr "Je kunt jezelf niet archiveren"
-
-msgid "Card"
-msgstr "Kaart"
-
-msgid "Card could not be added"
-msgstr "Kaart kon niet worden toegevoegd"
-
-msgid "Card could not be deleted: fixed cards (masthead, club, contact, Monday openings) are part of the page structure."
-msgstr "Kaart kon niet worden verwijderd: vaste kaarten (masthead, club, contact, openingsuren maandag) maken deel uit van de paginastructuur."
-
-msgid "Card deleted"
-msgstr "Kaart verwijderd"
-
-msgid "Card image"
-msgstr "Kaartafbeelding"
-
-msgid "Card settings"
-msgstr "Kaartinstellingen"
-
-msgid "Cards"
-msgstr "Kaarten"
 
 msgid "Categories"
 msgstr "Categorieën"
@@ -141,6 +195,21 @@ msgstr "Categorie"
 msgid "Category:"
 msgstr "Categorie:"
 
+msgid "Cavers on the Basilica’s facade, Belgian flag in the foreground"
+msgstr "Speleologen op de gevel van de Basiliek, met de Belgische vlag op de voorgrond"
+
+msgid "Caving club located in Brussels, with a training facility underneath the Basilica."
+msgstr "Speleoclub in Brussel, met een trainingsruimte onder de basiliek."
+
+msgid "Caving club · Brussels"
+msgstr "Speleoclub · Brussel"
+
+msgid "caving lessons for youth, during the school year"
+msgstr "speleolessen voor jongeren, tijdens het schooljaar"
+
+msgid "Caving lessons for youth, focus on SRT"
+msgstr "Speleolessen voor jongeren, focus op SRT"
+
 msgid "Check the mail configuration and the contact_email setting, then try again."
 msgstr "Controleer de mailconfiguratie en de instelling contact_email en probeer het opnieuw."
 
@@ -149,6 +218,9 @@ msgstr "Kies een nieuw wachtwoord"
 
 msgid "choose a new password for your account."
 msgstr "kies een nieuw wachtwoord voor je account."
+
+msgid "Choose a topic"
+msgstr "Kies een onderwerp"
 
 msgid "City"
 msgstr "Stad"
@@ -159,11 +231,23 @@ msgstr "Klik een rij om te downloaden."
 msgid "close"
 msgstr "sluiten"
 
+msgid "Close menu"
+msgstr "Menu sluiten"
+
 msgid "Club address"
 msgstr "Adres van de club"
 
-msgid "Club de spéléologie situé à Bruxelles (Koekelberg) Belgique, disposant d'un local d'entraînement situé sous la Basilique - Ouvertures de la salle - Entraînement"
-msgstr "Speleoclub in Brussel (Koekelberg) België, met een trainingslokaal onder de Basiliek - Openstellingen van het lokaal - Training"
+msgid "Club camps"
+msgstr "Kampen van de club"
+
+msgid "Club members can train every Tuesday evening from 8:00 PM in the training facility beneath the basilica. In addition, two camps are organised each year during the Autumn and Spring holidays (French-speaking school terms). For more information or to become a member, please use the contact form."
+msgstr "Leden van de club kunnen elke dinsdagavond vanaf 20.00 uur trainen in de zaal onder de basiliek. Daarnaast worden er twee kampen per jaar georganiseerd, tijdens de Franstalige herfst- en lentevakantie. Voor meer informatie of om lid te worden van de club, gebruik het contactformulier."
+
+msgid "Club members training on ropes in the hall beneath the Basilica"
+msgstr "Leden van de club aan het trainen op touw in de zaal onder de Basiliek"
+
+msgid "Club training"
+msgstr "Clubtraining"
 
 msgid "Collapse"
 msgstr "Inklappen"
@@ -174,11 +258,20 @@ msgstr "Met kleuren aangeduid. Legenda hieronder."
 msgid "Company number"
 msgstr "Ondernemingsnummer"
 
+msgid "Company number:"
+msgstr "Ondernemingsnummer:"
+
 msgid "Contact"
 msgstr "Contact"
 
 msgid "Contact & extras"
 msgstr "Contact & extra's"
+
+msgid "Contact form"
+msgstr "Contactformulier"
+
+msgid "Contact us through the form and come over on a Tuesday evening: you’ll discover the hall and the basics with us. On odd Mondays, training is self-led — everyone progresses on their own, we don’t provide assistance."
+msgstr "Contacteer ons via het formulier en kom langs op een dinsdagavond: zo ontdek je de zaal en de basis samen met ons. Op de oneven maandagen train je op eigen houtje — iedereen gaat voor zich, wij begeleiden niet."
 
 msgid "Contains the shared password. Only send to trusted people."
 msgstr "Bevat het gedeelde wachtwoord. Stuur alleen naar mensen die je vertrouwt."
@@ -186,17 +279,14 @@ msgstr "Bevat het gedeelde wachtwoord. Stuur alleen naar mensen die je vertrouwt
 msgid "Content"
 msgstr "Inhoud"
 
-msgid "Content (HTML)"
-msgstr "Inhoud (HTML)"
-
-msgid "Content bottom row (HTML)"
-msgstr "Inhoud onderste rij (HTML)"
-
-msgid "Content top row (HTML)"
-msgstr "Inhoud bovenste rij (HTML)"
+msgid "Cookies & local storage"
+msgstr "Cookies & lokale opslag"
 
 msgid "Copy"
 msgstr "Kopiëren"
+
+msgid "Countdown to the Rally"
+msgstr "Aftellen tot de Rally"
 
 msgid "Current file:"
 msgstr "Huidig bestand:"
@@ -204,14 +294,14 @@ msgstr "Huidig bestand:"
 msgid "Dashboard"
 msgstr "Dashboard"
 
+msgid "days"
+msgstr "dagen"
+
 msgid "Delete"
 msgstr "Verwijderen"
 
 msgid "Delete event"
 msgstr "Evenement verwijderen"
-
-msgid "Delete this card (with its content, pictures and menu entry)?"
-msgstr "Deze kaart verwijderen (samen met de inhoud, afbeeldingen en menu-item)?"
 
 msgid "Delete this file?"
 msgstr "Dit bestand verwijderen?"
@@ -222,8 +312,17 @@ msgstr "Verwijdert voor iedereen, ook geabonneerde kalenders."
 msgid "Description"
 msgstr "Omschrijving"
 
+msgid "Disclaimer"
+msgstr "Disclaimer"
+
 msgid "Display name"
 msgstr "Weergavenaam"
+
+msgid "Do I need experience to join the club?"
+msgstr "Heb je ervaring nodig om lid te worden?"
+
+msgid "Door 7, then the blue door, down the stairs — follow the ropes."
+msgstr "Poort 7, dan de blauwe deur, de trappen af — volg de touwen."
 
 msgid "Download .ics"
 msgstr ".ics downloaden"
@@ -237,14 +336,11 @@ msgstr "Downloads"
 msgid "Drag to reorder. Hidden rows are skipped."
 msgstr "Sleep om te herschikken. Verborgen rijen worden overgeslagen."
 
-msgid "Drag to reorder. The menu follows this order."
-msgstr "Sleep om te herschikken. Het menu volgt deze volgorde."
+msgid "Dug, knotted and coded in Brussels."
+msgstr "Gegraven, geknoopt en gecodeerd in Brussel."
 
 msgid "Edit"
 msgstr "Bewerken"
-
-msgid "Edit card"
-msgstr "Kaart bewerken"
 
 msgid "Edit download"
 msgstr "Download bewerken"
@@ -258,14 +354,32 @@ msgstr "Instellingen bewerken"
 msgid "Edit user"
 msgstr "Gebruiker bewerken"
 
+msgid "Edition"
+msgstr "Editie"
+
 msgid "Email"
 msgstr "E-mail"
 
 msgid "End"
 msgstr "Einde"
 
+msgid "End date"
+msgstr "Einddatum"
+
 msgid "Ends at (Brussels time)"
 msgstr "Eindigt om (Brusselse tijd)"
+
+msgid "English"
+msgstr "English"
+
+msgid "Error 403"
+msgstr "Fout 403"
+
+msgid "Error 404"
+msgstr "Fout 404"
+
+msgid "Error 500"
+msgstr "Fout 500"
 
 msgid "Event could not be added"
 msgstr "Evenement kon niet worden toegevoegd"
@@ -273,11 +387,32 @@ msgstr "Evenement kon niet worden toegevoegd"
 msgid "Event name in members list and calendar apps."
 msgstr "Naam van het evenement in de lijst en apps."
 
+msgid "Every 3–4 years"
+msgstr "Elke 3-4 jaar"
+
+msgid "Every three or four years, GS Redan turns the Koekelberg Basilica into Belgium’s biggest caving site. Hold on tight: the next edition is coming."
+msgstr "Om de drie à vier jaar verandert GS Redan de Basiliek van Koekelberg in de grootste speleosite van België. Hang je vast: de volgende editie komt eraan."
+
+msgid "Every Tuesday evening, from 8:00 PM"
+msgstr "Elke dinsdagavond vanaf 20.00 uur"
+
+msgid "Everything happens under (or around) the Koekelberg Basilica. Find your slot:"
+msgstr "Alles gebeurt onder (of rond) de Basiliek van Koekelberg. Zoek jouw moment:"
+
+msgid "Everything the club has to say honestly about itself and your data. Promise, it’s shorter than a 40-metre ascent."
+msgstr "Alles wat de club eerlijk moet zeggen over zichzelf en je gegevens. Beloofd: het is korter dan een beklimming van 40 meter."
+
 msgid "Expand"
 msgstr "Uitklappen"
 
-msgid "Facebook de GS Redan"
-msgstr "Facebook van GS Redan"
+msgid "Experienced cavers"
+msgstr "Ervaren speleologen"
+
+msgid "Explore"
+msgstr "Ontdekken"
+
+msgid "Fancy coming down with us?"
+msgstr "Lust je om met ons af te dalen?"
 
 msgid "File"
 msgstr "Bestand"
@@ -294,17 +429,26 @@ msgstr "Bestanden van één categorie worden op de ledenpagina gegroepeerd."
 msgid "First name"
 msgstr "Voornaam"
 
+msgid "Follow our adventures"
+msgstr "Volg onze avonturen"
+
 msgid "Footer & masthead"
 msgstr "Voettekst & masthead"
 
 msgid "Forgot your password?"
 msgstr "Wachtwoord vergeten?"
 
-msgid "Format"
-msgstr "Formatteren"
+msgid "Four ways to end up upside down"
+msgstr "Vier manieren om ondersteboven te eindigen"
 
-msgid "FR is the fallback."
-msgstr "FR is de terugvaltaal."
+msgid "Français"
+msgstr "Français"
+
+msgid "Frequently asked questions"
+msgstr "Veelgestelde vragen"
+
+msgid "From the hall under the Basilica to the walls of the Rally: something for every level — and every head (helmet included)."
+msgstr "Van de zaal onder de Basiliek tot de wanden van de Rally: voor elk niveau iets — en voor elk hoofd (helm inbegrepen)."
 
 msgid "Full access link (files + calendar)."
 msgstr "Volledige toegangslink (bestanden + kalender)."
@@ -312,17 +456,23 @@ msgstr "Volledige toegangslink (bestanden + kalender)."
 msgid "Fullcalendar script missing"
 msgstr "FullCalendar-script ontbreekt"
 
-msgid "Gallery picture"
-msgstr "Galerijafbeelding"
+msgid "Get extra information"
+msgstr "Meer informatie vragen"
 
-msgid "Gallery pictures"
-msgstr "Galerijafbeeldingen"
+msgid "Go climb the Basilica"
+msgstr "Ga de Basiliek beklimmen"
 
-msgid "Generic card: create and reorder more of these."
-msgstr "Generieke kaart: maak er meer aan en herschik ze."
+msgid "Groupe Spéléo du Redan ASBL"
+msgstr "Groupe Spéléo du Redan vzw"
 
-msgid "Groupe Spéléo Redan à Bruxelles (Koekelberg) Belgique - Spéléologie"
-msgstr "Groupe Spéléo Redan in Brussel (Koekelberg) België - Spelologie"
+msgid "Groupe Spéléo du Redan is one of the largest caving clubs in Belgium. The club has a training facility located in the basement of the Koekelberg Basilica and also runs an active youth program. And sometimes, the entire basilica becomes our playground — see below."
+msgstr "Groupe Spéléo du Redan is één van de grootste speleologieclubs van België. De club beschikt over een trainingszaal onder de Basiliek van Koekelberg en heeft ook een actieve jongerenwerking. En soms wordt de hele basiliek onze speeltuin — zie hieronder."
+
+msgid "Groupe Spéléo du Redan offers caving lessons with an emphasis on SRT for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar)."
+msgstr "Elke woensdagnamiddag tijdens het schooljaar organiseert Groupe Spéléo du Redan speleolessen die specifiek gericht zijn op jongeren. Jongeren die de technieken voldoende beheersen, kunnen deelnemen aan de kampen tijdens de Franstalige herfst- en lentevakantie."
+
+msgid "Groupe Spéléo du Redan offers caving lessons with an emphasis on SRT for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar). For more information or to register for the youth program, please use the contact form."
+msgstr "Elke woensdagnamiddag tijdens het schooljaar organiseert Groupe Spéléo du Redan speleolessen die specifiek gericht zijn op jongeren. Jongeren die de technieken voldoende beheersen, kunnen deelnemen aan de kampen tijdens de Franstalige herfst- en lentevakantie. Voor meer informatie of om in te schrijven voor de jongerenwerking, gebruik het contactformulier."
 
 msgid "GS Redan"
 msgstr "GS Redan"
@@ -330,26 +480,53 @@ msgstr "GS Redan"
 msgid "GS Redan admin"
 msgstr "GS Redan admin"
 
+msgid "GS Redan is one of the largest caving clubs in Belgium, based in Brussels. Our training hall hides in the basement of the Koekelberg Basilica — yes, the big one with the green dome. During the week it’s a place of worship. On Tuesday nights, it’s our own personal cave."
+msgstr "GS Redan is één van de grootste speleoclubs van België, gevestigd in Brussel. Onze trainingszaal schuilt in de kelders van de Basiliek van Koekelberg — ja, de grote, met de groene koepel. Tijdens de week is het een gebedshuis. Op dinsdagavond is het onze persoonlijke grot."
+
+msgid "GS Redan on Facebook"
+msgstr "GS Redan op Facebook"
+
+msgid "GS Redan on Instagram"
+msgstr "GS Redan op Instagram"
+
+msgid "GS Redan — Caving club in Brussels, training under the Basilica"
+msgstr "GS Redan — Speleoclub in Brussel, training onder de Basiliek"
+
+msgid "GS Redan — message from the contact form"
+msgstr "GS Redan — bericht via het contactformulier"
+
+msgid "GS Redan, one of Belgium’s largest caving clubs: training beneath the Koekelberg Basilica, a youth programme, camps and the famous Rally."
+msgstr "GS Redan, één van de grootste speleoclubs van België: training onder de Basiliek van Koekelberg, jongerenwerking, kampen en de befaamde Rally."
+
+msgid "GS Redan, one of Belgium’s largest caving clubs: training beneath the Koekelberg Basilica, a youth programme, camps and the famous Rally. Join us!"
+msgstr "GS Redan, één van de grootste speleoclubs van België: training onder de Basiliek van Koekelberg, jongerenwerking, kampen en de befaamde Rally. Word lid!"
+
 msgid "GS Redan: reset your password"
 msgstr "GS Redan: herstel je wachtwoord"
 
 msgid "Hello"
 msgstr "Hallo"
 
+msgid "Here is a copy of the message you sent through gsredan.be:"
+msgstr "Hier is een kopie van het bericht dat je via gsredan.be verstuurd hebt:"
+
 msgid "Hidden"
 msgstr "Verborgen"
 
-msgid "Homepage cards"
-msgstr "Kaarten van de homepage"
+msgid "Hmm, that email address looks invalid."
+msgstr "Hmm, dit e-mailadres lijkt niet te kloppen."
+
+msgid "Home"
+msgstr "Home"
+
+msgid "hours"
+msgstr "uur"
 
 msgid "Hover an event for details."
 msgstr "Beweeg over een evenement voor details."
 
-msgid "HTML id (e.g. 'salle'). Leave empty for no in-page link."
-msgstr "HTML-id (bv. 'salle'). Laat leeg voor geen link."
-
-msgid "HTML with syntax highlighting. Use __CONTACT_EMAIL__ for the contact email."
-msgstr "HTML met syntaxiskleuring. Gebruik __CONTACT_EMAIL__ voor het e-mailadres."
+msgid "I agree that my message and email address may be used only to answer my request (see the <a href=\"/legal/\">privacy policy</a>)."
+msgstr "Ik ga ermee akkoord dat mijn bericht en e-mailadres enkel gebruikt worden om op mijn vraag te antwoorden (zie het <a href=\"/legal/\">privacybeleid</a>)."
 
 msgid "ICS file"
 msgstr "ICS-bestand"
@@ -360,23 +537,17 @@ msgstr "Als dat adres bij een beheerdersaccount hoort, is er een herstellink ond
 msgid "If the button does not work, copy this address into your browser:"
 msgstr "Werkt de knop niet, kopieer dan dit adres in je browser:"
 
-msgid "Image (bottom row)"
-msgstr "Afbeelding (onderste rij)"
+msgid "If you email us, we use your address only to reply and handle your request (membership, youth programme, Rally). We never sell or share your data with third parties."
+msgstr "Als je ons mailt, gebruiken we je adres enkel om te antwoorden en je vraag te behandelen (lidmaatschap, jongerenwerking, Rally). We verkopen of delen je gegevens nooit met derden."
 
-msgid "Image (top row)"
-msgstr "Afbeelding (bovenste rij)"
+msgid "in"
+msgstr "over"
 
-msgid "Image saved"
-msgstr "Afbeelding opgeslagen"
+msgid "In the meantime, send your questions through the contact form — and keep an eye on our socials."
+msgstr "Ondertussen kun je je vragen stellen via het contactformulier — en hou onze sociale media in de gaten."
 
-msgid "Image side"
-msgstr "Zijde van de afbeelding"
-
-msgid "Image upload failed"
-msgstr "Afbeelding uploaden mislukt"
-
-msgid "Instagram de GS Redan"
-msgstr "Instagram van GS Redan"
+msgid "Information (times, openings, dates) is provided in good faith and may change. When in doubt, check our social media or write to us before travelling."
+msgstr "Informatie (uren, openingsdagen, data) wordt te goeder trouw gegeven en kan wijzigen. Bij twijfel: check onze sociale media of mail ons voor je vertrekt."
 
 msgid "Invalid credentials."
 msgstr "Ongeldige logingegevens."
@@ -384,14 +555,29 @@ msgstr "Ongeldige logingegevens."
 msgid "It carries the editing password."
 msgstr "Het bevat het bewerkingswachtwoord."
 
-msgid "jpeg/png/webp; resized automatically."
-msgstr "jpeg/png/webp; automatisch geschaald."
+msgid "It’s happening — see you at the Basilica!"
+msgstr "Het is zover — tot in de Basiliek!"
+
+msgid "I’m not a member: how can I try caving?"
+msgstr "Ik ben geen lid: hoe kan ik speleologie uitproberen?"
+
+msgid "Join the club"
+msgstr "Word lid van de club"
 
 msgid "Keep the edit URL private"
 msgstr "Houd de bewerkings-URL geheim"
 
+msgid "Key figures"
+msgstr "Kerncijfers"
+
+msgid "Knots, SRT, rigging: we take technique seriously so the underground stays fun — and safe."
+msgstr "Knopen, SRT, installaties: we nemen techniek ernstig zodat het ondergrondse plezier blijft — en veilig."
+
 msgid "Language"
 msgstr "Taal"
+
+msgid "Language choice"
+msgstr "Taalkeuze"
 
 msgid "Language for the reset mail."
 msgstr "Taal voor de herstelmail."
@@ -399,20 +585,23 @@ msgstr "Taal voor de herstelmail."
 msgid "Last name"
 msgstr "Achternaam"
 
-msgid "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique."
-msgstr "Le Groupe Spéléo du Redan is een van de grote speloclubs van België."
-
-msgid "Le Groupe Spéléo du Redan est l'un des grands clubs de spéléologie de Belgique. Le club dispose d'une salle d'entraînement située dans les caves de la Basilique de Koekelberg à Bruxelles."
-msgstr "Le Groupe Spéléo du Redan is een van de grote speloclubs van België. De club beschikt over een trainingslokaal in de kelders van de Basiliek van Koekelberg in Brussel."
-
 msgid "leave empty to keep it."
 msgstr "laat leeg om te behouden."
 
 msgid "Leave empty to keep the current password"
 msgstr "Laat leeg om het huidige wachtwoord te behouden"
 
-msgid "Left"
-msgstr "Links"
+msgid "Legal & privacy"
+msgstr "Juridisch & privacy"
+
+msgid "Legal & privacy — GS Redan"
+msgstr "Juridisch & privacy — GS Redan"
+
+msgid "Legal entity"
+msgstr "Rechtsvorm"
+
+msgid "Legal notice, privacy, cookies and photo credits of the Groupe Spéléo du Redan website (non-profit 0474.156.883, Brussels)."
+msgstr "Juridische info, privacy, cookies en fotocredits van de website van Groupe Spéléo du Redan (vzw 0474.156.883, Brussel)."
 
 msgid "Link not valid"
 msgstr "Link ongeldig"
@@ -426,9 +615,6 @@ msgstr "Live link actualiseert automatisch; ICS is een momentopname."
 msgid "Live links auto-update; ICS is a one-time snapshot."
 msgstr "Live links actualiseren automatisch; ICS is een eenmalige momentopname."
 
-msgid "Live preview (not saved)."
-msgstr "Live voorbeeld (niet opgeslagen)."
-
 msgid "loaded but no Calendar export"
 msgstr "geladen maar geen Calendar-export"
 
@@ -441,9 +627,6 @@ msgstr "Locatie"
 msgid "Location:"
 msgstr "Locatie:"
 
-msgid "Locked: dates come from the calendar."
-msgstr "Vast: datums komen uit de kalender."
-
 msgid "Log in"
 msgstr "Inloggen"
 
@@ -453,8 +636,11 @@ msgstr "Uitloggen"
 msgid "logo GS Redan"
 msgstr "logo GS Redan"
 
-msgid "Manage cards"
-msgstr "Kaarten beheren"
+msgid "Lost under the Basilica…"
+msgstr "Verdwaald onder de Basiliek…"
+
+msgid "Main navigation"
+msgstr "Hoofdnavigatie"
 
 msgid "Manage events"
 msgstr "Evenementen beheren"
@@ -471,6 +657,9 @@ msgstr "Maps-link"
 msgid "Masthead title"
 msgstr "Masthead-titel"
 
+msgid "Meet Groupe Spéléo du Redan: the club, the hall beneath the Basilica, Tuesday trainings, the youth programme, camps — and every practical answer."
+msgstr "Maak kennis met Groupe Spéléo du Redan: de club, de zaal onder de Basiliek, de dinsdagtraining, de jongerenwerking, de kampen — en alle praktische antwoorden."
+
 msgid "Members"
 msgstr "Leden"
 
@@ -483,20 +672,23 @@ msgstr "Ledenzone"
 msgid "Members files"
 msgstr "Ledenbestanden"
 
-msgid "Menu"
-msgstr "Menu"
+msgid "Members’ training"
+msgstr "Training voor leden"
 
-msgid "Menu label"
-msgstr "Menulabel"
+msgid "members’ training, under the Basilica"
+msgstr "training voor leden, onder de Basiliek"
 
-msgid "Menu label (title)"
-msgstr "Menulabel (titel)"
+msgid "Message"
+msgstr "Bericht"
 
-msgid "Menu label. Leave empty to hide from menu."
-msgstr "Menulabel. Laat leeg om te verbergen."
+msgid "min"
+msgstr "min"
 
 msgid "Min. 8 characters."
 msgstr "Min. 8 tekens."
+
+msgid "more than 2,000 metres of rope"
+msgstr "meer dan 2 000 meter touw"
 
 msgid "Name"
 msgstr "Naam"
@@ -504,17 +696,17 @@ msgstr "Naam"
 msgid "Name (files)"
 msgstr "Naam (bestanden)"
 
+msgid "Nederlands"
+msgstr "Nederlands"
+
 msgid "New"
 msgstr "Nieuw"
 
-msgid "New card type"
-msgstr "Nieuw kaarttype"
-
-msgid "New cards start hidden at the bottom of the page."
-msgstr "Nieuwe kaarten starten verborgen onderaan de pagina."
-
 msgid "New category name"
 msgstr "Nieuwe categorienaam"
+
+msgid "New message from the contact form"
+msgstr "Nieuw bericht via het contactformulier"
 
 msgid "New password"
 msgstr "Nieuw wachtwoord"
@@ -531,17 +723,14 @@ msgstr "geen categorie"
 msgid "No events yet."
 msgstr "Nog geen evenementen."
 
+msgid "No experience needed to start: we’ll teach you everything, from your first knot to your first descent. Contact us and come try a session — Wednesdays for the youth, a Tuesday for your first evening with us. On odd Mondays, training is self-led."
+msgstr "Geen ervaring nodig om te beginnen: we leren je alles, van je eerste knoop tot je eerste afdaling. Contacteer ons en kom een sessie uitproberen — woensdag voor de jongeren, dinsdag voor een eerste avond mee. Op de oneven maandagen train je op eigen houtje."
+
 msgid "No files available."
 msgstr "Geen bestanden beschikbaar."
 
 msgid "No files yet."
 msgstr "Nog geen bestanden."
-
-msgid "No image attached yet."
-msgstr "Nog geen afbeelding gekoppeld."
-
-msgid "No pictures uploaded yet."
-msgstr "Nog geen afbeeldingen geüpload."
 
 msgid "No upcoming events."
 msgstr "Geen aankomende evenementen."
@@ -549,41 +738,59 @@ msgstr "Geen aankomende evenementen."
 msgid "No users yet."
 msgstr "Nog geen gebruikers."
 
-msgid "Non-profit organisation"
-msgstr "vzw"
+msgid "No — beginners are welcome. Tuesday training exists exactly for that: learning knots, technique and caution, in the hall under the Basilica."
+msgstr "Nee — beginners zijn welkom. De dinsdagtraining bestaat net daarvoor: knopen, techniek en voorzichtigheid leren, in de zaal onder de Basiliek."
 
-msgid "none"
-msgstr "geen"
+msgid "Non-profit organisation (ASBL)"
+msgstr "Vereniging zonder winstoogmerk (vzw)"
 
 msgid "not loaded"
 msgstr "niet geladen"
 
+msgid "Not open yet"
+msgstr "Nog niet geopend"
+
 msgid "Notice"
 msgstr "Melding"
 
-msgid "Number uploaded"
-msgstr "Aantal geüpload"
+msgid "Odd Mondays"
+msgstr "Oneven maandagen"
+
+msgid "Odd Mondays, 7:30 pm – 10:30 pm"
+msgstr "Oneven maandagen, 19u30 – 22u30"
 
 msgid "Off"
 msgstr "Uit"
 
-msgid "Official Address"
-msgstr "Adres van de club"
-
 msgid "On"
 msgstr "Aan"
+
+msgid "Once every three or four years, GS Redan rigs rope courses on and inside the Basilica: three routes of increasing difficulty, more than 2,000 metres of rope and a spectacular view all the way to the Atomium. Around 250 participants from across Europe took part in the last edition. The event is open to experienced cavers; spectators are welcome to come and watch. Registration will open as soon as everything has been finalised."
+msgstr "Om de drie à vier jaar bouwt GS Redan touwparcours op in en rond de Basiliek: drie parcours met toenemende moeilijkheidsgraad, meer dan 2 000 meter touw en een spectaculair zicht tot aan het Atomium. Zo’n 250 deelnemers uit heel Europa namen deel aan de vorige editie. Het evenement is bedoeld voor ervaren speleologen; toeschouwers zijn van harte welkom. De inschrijvingen openen zodra alles definitief geregeld is."
 
 msgid "One-time download. Does not update."
 msgstr "Eenmalige download. Geen updates."
 
-msgid "Only real images (jpg, png, webp, gif) are accepted."
-msgstr "Alleen echte afbeeldingen (jpg, png, webp, gif) worden aanvaard."
-
 msgid "Open calendar"
 msgstr "Kalender openen"
 
+msgid "Open in Google Maps"
+msgstr "Openen in Google Maps"
+
+msgid "Open menu"
+msgstr "Menu openen"
+
+msgid "Open the contact form"
+msgstr "Open het contactformulier"
+
 msgid "Open the link below to choose a new password. If you did not ask for this, you can ignore this email: your current password stays valid."
 msgstr "Open de link hieronder om een nieuw wachtwoord te kiezen. Als je hier niet om hebt gevraagd, kun je deze mail negeren: je huidige wachtwoord blijft geldig."
+
+msgid "Open to all*"
+msgstr "Open voor iedereen*"
+
+msgid "Open to the motivated"
+msgstr "Open voor gemotiveerden"
 
 msgid "Open user menu"
 msgstr "Gebruikersmenu openen"
@@ -594,8 +801,11 @@ msgstr "Optioneel."
 msgid "Optional; timed events only."
 msgstr "Optioneel; alleen evenementen met tijden."
 
-msgid "Ouvrir le menu de navigation"
-msgstr "Navigatiemenu openen"
+msgid "Page not found (404) — GS Redan"
+msgstr "Pagina niet gevonden (404) — GS Redan"
+
+msgid "Participation fee: €5"
+msgstr "Kost: € 5"
 
 msgid "Password"
 msgstr "Wachtwoord"
@@ -603,11 +813,8 @@ msgstr "Wachtwoord"
 msgid "Password protected. Enter the shared password."
 msgstr "Wachtwoordbeveiligd. Vul het gedeelde wachtwoord in."
 
-msgid "Picture deleted"
-msgstr "Afbeelding verwijderd"
-
-msgid "Pictures added"
-msgstr "Afbeeldingen toegevoegd"
+msgid "Past editions"
+msgstr "Vorige edities"
 
 msgid "Plain text for the export."
 msgstr "Platte tekst voor de export."
@@ -615,20 +822,29 @@ msgstr "Platte tekst voor de export."
 msgid "Please fix the errors"
 msgstr "Gelieve de fouten te corrigeren"
 
-msgid "Pre-generics type that still renders; edit content as usual."
-msgstr "Voormalig generiek type dat nog rendert; bewerk de inhoud zoals gebruikelijk."
-
-msgid "Preview"
-msgstr "Voorbeeld"
-
 msgid "Preview ICS"
 msgstr "ICS-voorbeeld"
 
-msgid "Preview of the contact card."
-msgstr "Voorbeeld van de contactkaart."
+msgid "Privacy"
+msgstr "Privacy"
 
-msgid "Put __OPENINGS__ where dates go."
-msgstr "Plaats __OPENINGS__ bij de datums."
+msgid "Provisional programme"
+msgstr "Voorlopig programma"
+
+msgid "Public openings of the training hall"
+msgstr "Open deuren van de trainingszaal"
+
+msgid "Publisher"
+msgstr "Uitgever"
+
+msgid "Questions? Write to us"
+msgstr "Vragen? Mail ons"
+
+msgid "Rally"
+msgstr "Rally"
+
+msgid "Read the FAQ"
+msgstr "FAQ lezen"
 
 msgid "Read-only. No login needed."
 msgstr "Alleen-lezen. Geen login nodig."
@@ -636,11 +852,26 @@ msgstr "Alleen-lezen. Geen login nodig."
 msgid "Read-only. No password needed."
 msgstr "Alleen-lezen. Geen wachtwoord nodig."
 
+msgid "Ready to join us?"
+msgstr "Klaar om bij ons te komen?"
+
+msgid "Registration"
+msgstr "Inschrijvingen"
+
+msgid "Registration will open as soon as everything has been finalised."
+msgstr "De inschrijvingen openen zodra alles definitief geregeld is."
+
 msgid "Rename"
 msgstr "Hernoemen"
 
 msgid "Repeat new password"
 msgstr "Nieuw wachtwoord herhalen"
+
+msgid "Reply to this mail to answer the visitor directly."
+msgstr "Antwoord op deze mail om de bezoeker rechtstreeks te beantwoorden."
+
+msgid "Report the missing page"
+msgstr "Meld de verdwenen pagina"
 
 msgid "Reset mail not sent"
 msgstr "Herstellingsmail niet verzonden"
@@ -654,17 +885,20 @@ msgstr "Wachtwoord herstellen"
 msgid "Reset your password"
 msgstr "Herstel je wachtwoord"
 
-msgid "Right"
-msgstr "Rechts"
+msgid "Rockfall in the gallery…"
+msgstr "Rotsverschuiving in de galerij…"
+
+msgid "Rope course on the facade, Belgian flag included."
+msgstr "Touwparcours op de gevel, met de Belgische vlag."
+
+msgid "Rope courses rigged between the Basilica’s towers"
+msgstr "Touwparcours gespannen tussen de torens van de Basiliek"
 
 msgid "Same answer whether or not the address is known."
 msgstr "Zelfde antwoord of het adres bekend is of niet."
 
 msgid "Save"
 msgstr "Opslaan"
-
-msgid "Save card"
-msgstr "Kaart opslaan"
 
 msgid "Save event"
 msgstr "Evenement opslaan"
@@ -678,17 +912,41 @@ msgstr "Gebruiker opslaan"
 msgid "Saved"
 msgstr "Opgeslagen"
 
+msgid "Scroll zoom is off — drag the map to explore."
+msgstr "Scroll-zoom staat uit — sleep de kaart om te verkennen."
+
+msgid "sec"
+msgstr "sec"
+
 msgid "Send reset link"
 msgstr "Herstellink versturen"
+
+msgid "Send the message"
+msgstr "Verstuur het bericht"
+
+msgid "Server error (500) — GS Redan"
+msgstr "Serverfout (500) — GS Redan"
 
 msgid "Settings"
 msgstr "Instellingen"
 
+msgid "Sharing the underground"
+msgstr "De ondergrond delen"
+
 msgid "Show password"
 msgstr "Wachtwoord tonen"
 
+msgid "Show the Rally countdown on the site"
+msgstr "Toon de aftelklok van de Rally op de site"
+
+msgid "Shown in the footer and on the 404 page, before the company number."
+msgstr "Getoond in de footer en op de 404-pagina, vóór het ondernemingsnummer."
+
 msgid "Shown on members page and exported to calendars."
 msgstr "Getoond op ledenpagina en geëxporteerd naar kalenders."
+
+msgid "Single Rope Technique: moving along a single rope with ascenders and a descender — the foundation of vertical caving. It’s the core of our trainings, especially for the youth."
+msgstr "Single Rope Technique: je voortbewegen aan één touw met stijgers en een afdaler — de basis van verticale speleologie. Het is de kern van onze trainingen, zeker voor de jongeren."
 
 msgid "Site"
 msgstr "Site"
@@ -696,68 +954,182 @@ msgstr "Site"
 msgid "Size"
 msgstr "Grootte"
 
+msgid "Skip to content"
+msgstr "Naar de inhoud"
+
 msgid "Social"
 msgstr "Sociaal"
 
 msgid "Someone asked to reset the password of your GS Redan account."
 msgstr "Iemand heeft het herstellen van het wachtwoord van je GS Redan-account aangevraagd."
 
-msgid "Something went wrong on our end. Please try again later."
-msgstr "Er ging iets mis. Probeer het later opnieuw."
+msgid "Something broke on our side. Try again in a moment."
+msgstr "Er is iets stukgegaan aan onze kant. Probeer het zo meteen opnieuw."
 
-msgid "Spéléo, Caving, Brussels, Bruxelles, Jeunes, Speleo, Club de spélé Belgique"
-msgstr "Spéléo, Caving, Brussel, Brussels, Jeugd, Speleo, Speloclub België"
+msgid "Something else"
+msgstr "Iets anders"
+
+msgid "Something went wrong while sending your message. Check the fields and try again."
+msgstr "Er ging iets mis bij het verzenden van je bericht. Controleer de velden en probeer opnieuw."
+
+msgid "Spectators"
+msgstr "Toeschouwers"
+
+msgid "Spectators are welcome to come and watch — 2,000 metres of rope on a basilica isn’t something you see every day."
+msgstr "Toeschouwers zijn van harte welkom — 2 000 meter touw op een basiliek zie je niet elke dag."
 
 msgid "Start"
 msgstr "Start"
 
+msgid "Start date"
+msgstr "Startdatum"
+
 msgid "Starts at (Brussels time)"
 msgstr "Begint om (Brusselse tijd)"
+
+msgid "Status"
+msgstr "Statuut"
+
+msgid "Still provisional: the organisation isn’t finalised, the programme may change."
+msgstr "Nog voorlopig: de organisatie is niet af, het programma kan wijzigen."
 
 msgid "Street"
 msgstr "Straat"
 
+msgid "Students, climbers, outdoor sports people or just the curious: if ropes and darkness appeal to you, you’ll feel at home."
+msgstr "Studenten, klimmers, outdoor-sporters of gewoon nieuwsgierigen: hou je van touw en duisternis, dan voel je je hier meteen thuis."
+
 msgid "Subscribe"
 msgstr "Abonneren"
+
+msgid "Technique first"
+msgstr "Techniek eerst"
+
+msgid "Tell us everything (who you are, what you’d like to learn…)"
+msgstr "Vertel ons alles (wie je bent, wat je wil leren…)"
+
+msgid "Thanks! Your message is on its way — we answer as soon as we surface."
+msgstr "Bedankt! Je bericht is onderweg — we antwoorden zodra we bovenkomen."
 
 msgid "The account can no longer log in."
 msgstr "Het account kan niet meer inloggen."
 
-msgid "The amount of pictures is free; the site lays them out in rows of three. Drag rows to reorder (order is saved automatically). Home page shows each picture at 800×600."
-msgstr "Het aantal afbeeldingen is vrij; de site zet ze in rijen van drie. Sleep rijen om te herschikken (de volgorde wordt automatisch opgeslagen). De homepage toont elke afbeelding op 800×600."
+msgid "The Basilica at sunset, between rope sessions."
+msgstr "De Basiliek bij zonsondergang, tussen de touwsessies door."
 
-msgid "The contact card is generated entirely from the club settings: both addresses, the e-mail address and the social links. There is nothing to edit here — change the values on the Settings screen. The card can be reordered and shown or hidden from the Cards list."
-msgstr "De contactkaart wordt volledig gegenereerd uit de clubinstellingen: beide adressen, het e-mailadres en de sociale links. Hier valt niets te bewerken — pas de waarden op het Instellingen-scherm aan. De kaart kan worden herschikt en via de lijst Kaarten getoond of verborgen."
+msgid "The club"
+msgstr "De club"
+
+msgid "The club address"
+msgstr "De clubzetel"
+
+msgid "The contact form sends your message through our server to the club mailbox. Nothing is stored: the message is only forwarded by e-mail, and your address is used only to reply."
+msgstr "Het contactformulier stuurt je bericht via onze server naar de brievenbus van de club. Er wordt niets bewaard: het bericht wordt enkel per e-mail doorgestuurd en je adres wordt enkel gebruikt om te antwoorden."
+
+msgid "The countdown on the site counts to this date and time."
+msgstr "De aftelklok op de site stopt op deze datum en tijd."
+
+msgid "The emphasis is on SRT (Single Rope Technique): moving up and down a single rope, just like in real caves. Youngsters who master the basics then join us at camp."
+msgstr "De focus ligt op SRT (Single Rope Technique): op en neer aan één touw, net als in echte grotten. Jongeren die de basis beheersen, gaan daarna met ons op kamp."
+
+msgid "The event"
+msgstr "Het evenement"
+
+msgid "The event is open to experienced cavers. Not rope-hardened yet? There’s still time: join the club and train with us. A test course on site will let you check your skills before heading up."
+msgstr "Het evenement is bedoeld voor ervaren speleologen. Nog niet touwgewend? Er is nog tijd: word lid en train met ons mee. Een testparcours ter plaatse laat je toe je vaardigheden te checken vooraleer je vertrekt."
+
+msgid "The form below sends your message straight to the club — no spam, promise."
+msgstr "Het formulier hieronder stuurt je bericht rechtstreeks naar de club — geen spam, beloofd."
+
+msgid "The Koekelberg Basilica at sunset"
+msgstr "De Basiliek van Koekelberg bij zonsondergang"
 
 msgid "The link is only valid once, and expires 24 hours after this email was sent."
 msgstr "De link is maar één keer geldig en vervalt 24 uur nadat deze mail is verzonden."
 
-msgid "The masthead is the fixed hero of the page and cannot be moved."
-msgstr "De masthead is de vaste banner bovenaan de pagina en kan niet worden verplaatst."
-
 msgid "The next ten scheduled events, hidden ones included and flagged."
 msgstr "De volgende tien geplande evenementen, verborgen inbegrepen en gemarkeerd."
+
+msgid "The Rally"
+msgstr "De Rally"
+
+msgid "The rope stops here: this page is restricted. You have to be roped up with us to enter."
+msgstr "Het touw stopt hier: deze pagina is voorbehouden. Je moet met ons mee getraind hebben om binnen te geraken."
+
+msgid "The routes start on Friday and end on Sunday."
+msgstr "De parcours starten op vrijdag en eindigen op zondag."
+
+msgid "The serious bit (we promise)"
+msgstr "Het serieuze deel (echt)"
+
+msgid "The training facility"
+msgstr "De trainingszaal"
 
 msgid "The user picks the new password from the link in the mail."
 msgstr "De gebruiker kiest het nieuwe wachtwoord via de link in de mail."
 
-msgid "This fixed singular card renders with its own layout and cannot be duplicated or deleted."
-msgstr "Deze vaste unieke kaart rendert met een eigen layout en kan niet worden gedupliceerd of verwijderd."
+msgid "The venue"
+msgstr "De locatie"
 
-msgid "This page does not exist."
-msgstr "Deze pagina bestaat niet."
+msgid "The view from the Basilica’s heights — all the way to the Atomium."
+msgstr "Het zicht vanaf de Basiliek — tot aan het Atomium."
+
+msgid "The weekly rhythm"
+msgstr "Het weekritme"
+
+msgid "Third-party services"
+msgstr "Diensten van derden"
+
+msgid "This field is required."
+msgstr "Dit veld is verplicht."
+
+msgid "This gallery is closed…"
+msgstr "Deze galerij is gesloten…"
+
+msgid "This page does not exist (or is gone). Come back to the light: home, club, Rally and contact of GS Redan."
+msgstr "Deze pagina bestaat niet (of niet meer). Kom terug naar het licht: home, club, Rally en contact van GS Redan."
+
+msgid "This page has snuck off into the galleries beneath the Basilica. Even our best rope team couldn’t find it. These pages, however, very much exist:"
+msgstr "Deze pagina is weggekropen in de galerijen onder de Basiliek. Zelfs ons beste touwteam vond haar niet. Deze pagina’s bestaan wél echt:"
+
+msgid "This page is closed to the public."
+msgstr "Deze pagina is niet openbaar."
 
 msgid "This reset link is no longer valid."
 msgstr "Deze herstellink is niet meer geldig."
 
+msgid "This site sets no tracking cookies. The only cookie is the anonymous session cookie that carries your language choice between pages. Nothing else is stored on your device."
+msgstr "Deze site plaatst geen trackingcookies. De enige cookie is de anonieme sessiecookie die je taalkeuze van pagina tot pagina bewaart. Verder wordt er niets op je apparaat opgeslagen."
+
+msgid "Through the contact form"
+msgstr "Via het contactformulier"
+
 msgid "Title"
 msgstr "Titel"
+
+msgid "To work, the site loads resources from third parties: styles and scripts (jsDelivr), fonts (Google Fonts), icons (Tabler), map and tiles (Leaflet, OpenStreetMap). Those services see your IP address when loaded; their own privacy policies apply. Links to Google Maps and Instagram/Facebook also take you off this site."
+msgstr "Om te werken laadt de site bronnen van derden: stijlen en scripts (jsDelivr), lettertypen (Google Fonts), iconen (Tabler), kaart en tegels (Leaflet, OpenStreetMap). Deze diensten zien je IP-adres bij het laden; hun eigen privacybeleid geldt. Links naar Google Maps en Instagram/Facebook brengen je eveneens weg van deze site."
 
 msgid "Toggle navigation"
 msgstr "Navigatie openen of sluiten"
 
-msgid "Type"
-msgstr "Type"
+msgid "Topic"
+msgstr "Onderwerp"
+
+msgid "Training facility address"
+msgstr "Adres van het lokaal"
+
+msgid "Training sessions on odd Mondays, from 7.30 pm to 10.30 pm."
+msgstr "Trainingsessies op oneven maandagen, van 19u30 tot 22u30."
+
+msgid "Trouble with the form? Try again, or reach us on Instagram or Facebook."
+msgstr "Problemen met het formulier? Probeer opnieuw, of bereik ons via Instagram of Facebook."
+
+msgid "Tuesday · 8 pm"
+msgstr "Dinsdag · 20u"
+
+msgid "Two camps a year, during the French-speaking autumn and spring holidays: real caves, real mud and a schedule only cavers understand."
+msgstr "Twee kampen per jaar, tijdens de Franstalige herfst- en lentevakantie: echte grotten, echte modder en een planning die alleen speleologen snappen."
 
 msgid "Unlock"
 msgstr "Ontgrendelen"
@@ -765,17 +1137,8 @@ msgstr "Ontgrendelen"
 msgid "Upcoming events"
 msgstr "Aankomende evenementen"
 
-msgid "Upload"
-msgstr "Uploaden"
-
-msgid "Upload image"
-msgstr "Afbeelding uploaden"
-
-msgid "Upload new image"
-msgstr "Nieuwe afbeelding uploaden"
-
-msgid "Upload pictures"
-msgstr "Afbeeldingen uploaden"
+msgid "Upcoming openings:"
+msgstr "Komende open deuren:"
 
 msgid "Use Reset password on the Users screen to mail a link."
 msgstr "Gebruik Wachtwoord herstellen op het scherm Gebruikers."
@@ -792,6 +1155,9 @@ msgstr "Gebruikersnaam"
 msgid "Users"
 msgstr "Gebruikers"
 
+msgid "View over Brussels from the Basilica’s dome"
+msgstr "Zicht op Brussel vanaf de koepel van de Basiliek"
+
 msgid "View site"
 msgstr "Site bekijken"
 
@@ -804,11 +1170,53 @@ msgstr "Zichtbaar"
 msgid "Visible on members page, ICS export and CalDAV."
 msgstr "Zichtbaar op ledenpagina, ICS-export en CalDAV."
 
-msgid "Visible on site"
-msgstr "Zichtbaar op de site"
+msgid "We can’t reply without it — please tick the box."
+msgstr "Zonder deze toestemming kunnen we niet antwoorden — vink het vakje aan."
+
+msgid "Website"
+msgstr "Website"
+
+msgid "Wednesday"
+msgstr "Woensdag"
+
+msgid "Wednesday afternoon (school year)"
+msgstr "Woensdagnamiddag (schooljaar)"
+
+msgid "What"
+msgstr "Wat"
+
+msgid "What is SRT?"
+msgstr "Wat is SRT?"
+
+msgid "What we do"
+msgstr "Op het programma"
+
+msgid "What we stand for"
+msgstr "Waar wij voor staan"
+
+msgid "When"
+msgstr "Wanneer"
+
+msgid "Where to find us"
+msgstr "Waar vind je ons"
+
+msgid "Who can take part?"
+msgstr "Wie kan deelnemen?"
+
+msgid "Write at least a few words."
+msgstr "Schrijf minstens een paar woorden."
+
+msgid "Write to the club"
+msgstr "Mail de club"
+
+msgid "Write to us"
+msgstr "Mail ons"
 
 msgid "Wrong password, try again."
 msgstr "Verkeerd wachtwoord, probeer opnieuw."
+
+msgid "Yes! The Rally is for experienced cavers, but spectators are very welcome. Honestly: 2,000 metres of rope on a basilica is worth the trip."
+msgstr "Ja! De Rally is voor ervaren speleologen, maar toeschouwers zijn meer dan welkom. Eerlijk: 2 000 meter touw op een basiliek is de moeite van het bezoek waard."
 
 msgid "you"
 msgstr "jij"
@@ -819,11 +1227,32 @@ msgstr "Je werkt momenteel in een testomgeving."
 msgid "You are logged out."
 msgstr "Je bent uitgelogd."
 
-msgid "You do not have permission to view this page."
-msgstr "U heeft geen toestemming om deze pagina te bekijken."
+msgid "You can ask for access, correction or deletion of your data at any time: use the contact form."
+msgstr "Je kunt op elk moment toegang, correctie of verwijdering van je gegevens vragen: gebruik het contactformulier."
+
+msgid "You receive this copy because you filled in the contact form on gsredan.be."
+msgstr "Je ontvangt deze kopie omdat je het contactformulier op gsredan.be hebt ingevuld."
 
 msgid "You would lock yourself out of the admin."
 msgstr "Je zou jezelf buiten het beheer sluiten."
+
+msgid "you@example.com"
+msgstr "jij@voorbeeld.be"
+
+msgid "Young cavers"
+msgstr "Jongeren"
+
+msgid "Youngsters who master the basic techniques join in — the reward after all those Wednesday trainings."
+msgstr "Jongeren die de basistechnieken beheersen doen mee — de beloning na alle woensdagtrainingsuren."
+
+msgid "Your message could not be sent — something went wrong on our side. Please try again later, or reach us on Instagram or Facebook."
+msgstr "Je bericht kon niet worden verzonden — er ging iets mis aan onze kant. Probeer het later opnieuw, of bereik ons via Instagram of Facebook."
+
+msgid "Your message to GS Redan"
+msgstr "Je bericht aan GS Redan"
+
+msgid "Your name"
+msgstr "Je naam"
 
 msgid "Your new password is saved. Log in with it below."
 msgstr "Je nieuwe wachtwoord is opgeslagen. Log hieronder in met dat wachtwoord."
@@ -831,54 +1260,15 @@ msgstr "Je nieuwe wachtwoord is opgeslagen. Log hieronder in met dat wachtwoord.
 msgid "your@email.com"
 msgstr "jouw@email.com"
 
+msgid "Youth lessons, public openings, camps: what we learn under the Basilica, we pass on."
+msgstr "Lessen voor jongeren, open deurdagen, kampen: wat we onder de Basiliek leren, geven we door."
+
+msgid "Youth program"
+msgstr "Jongerenwerking"
+
 msgid "Zip"
 msgstr "Postcode"
 
+msgid "≈ 250 participants from across Europe"
+msgstr "± 250 deelnemers uit heel Europa"
 
-msgid "Masthead hero"
-msgstr "Bovenbalk"
-
-msgid "Club text card"
-msgstr "Tekstkaart van de club"
-
-msgid "Contact card"
-msgstr "Contactkaart"
-
-msgid "Monday openings card (calendar-fed)"
-msgstr "Kaart met maandagopeningen (uit de kalender)"
-
-msgid "Activity card (light background)"
-msgstr "Activiteitenkaart (lichte achtergrond)"
-
-msgid "Activity card (dark background)"
-msgstr "Activiteitenkaart (donkere achtergrond)"
-
-msgid "Activity 2-row card (light background)"
-msgstr "Activiteitenkaart 2 rijen (lichte achtergrond)"
-
-msgid "Activity 2-row card (dark background)"
-msgstr "Activiteitenkaart 2 rijen (donkere achtergrond)"
-
-msgid "Gallery card (pictures row)"
-msgstr "Galerijkaart (rij afbeeldingen)"
-
-msgid "Announcement card"
-msgstr "Aankondigingskaart"
-
-msgid "One image next to one text block, on a light background."
-msgstr "Eén afbeelding naast één tekstblok, op een lichte achtergrond."
-
-msgid "One image next to one text block, on a dark background."
-msgstr "Eén afbeelding naast één tekstblok, op een donkere achtergrond."
-
-msgid "Two images and two text blocks on one light card."
-msgstr "Twee afbeeldingen en twee tekstblokken op één lichte kaart."
-
-msgid "Two images and two text blocks on one dark card."
-msgstr "Twee afbeeldingen en twee tekstblokken op één donkere kaart."
-
-msgid "A row of pictures that open full size in a lightbox."
-msgstr "Een rij afbeeldingen die groot in een lightbox opent."
-
-msgid "A highlighted banner for news, without image."
-msgstr "Een uitgelichte banner voor nieuws, zonder afbeelding."

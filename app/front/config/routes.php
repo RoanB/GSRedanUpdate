@@ -13,6 +13,24 @@ return [
 		// working with the session language. /admin and the CalDAV endpoints
 		// stay unprefixed by design (see spec/05-i18n.md).
 		'\\App\\Front\\Module\\Index' => [ '/$language[en,fr,nl]' ],
+		'\\App\\Front\\Module\\About' => [
+			'/about',
+			'/$language[en,fr,nl]/about',
+		],
+		'\\App\\Front\\Module\\Rallye' => [
+			'/rallye',
+			'/$language[en,fr,nl]/rallye',
+		],
+		'\\App\\Front\\Module\\Legal' => [
+			'/legal',
+			'/$language[en,fr,nl]/legal',
+		],
+		// The contact form endpoint: POST /contact mails to the club. GET
+		// requests are bounced back to the form (module Contact).
+		'\\App\\Front\\Module\\Contact' => [
+			'/contact',
+			'/$language[en,fr,nl]/contact',
+		],
 		'\\App\\Front\\Module\\Login' => [ '/$language[en,fr,nl]/login' ],
 		'\\App\\Front\\Module\\Download' => [ '/$language[en,fr,nl]/download' ],
 		'\\App\\Front\\Module\\Picture' => [ '/$language[en,fr,nl]/picture' ],

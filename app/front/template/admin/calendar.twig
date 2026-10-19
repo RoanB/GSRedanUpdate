@@ -7,10 +7,10 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if sticky_session.saved is defined %}
+	{% if env.sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
-	{% if sticky_session.add_failed is defined %}
+	{% if env.sticky_session.add_failed is defined %}
 		{{ tabler.alert('danger', 'Event could not be added'|trans) }}
 	{% endif %}
 

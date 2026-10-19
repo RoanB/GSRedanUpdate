@@ -7,19 +7,18 @@ declare(strict_types=1);
  *
  * Builds the sitemap of the public site (spec/02, "Sitemap and robots.txt").
  *
- * The public site is a single page: the visible blocks are sections of the
- * homepage, reachable as fragments (#rallye, #salle, ...), not as separate
- * URLs. A fragment is not a URL, so there is exactly one addressable page per
- * language: /, /en, /fr, /nl. That is still worth publishing, because the
- * language-prefixed pages are not reachable from each other by links the
- * crawler can follow — the switcher is a session/language selector, and no
- * page links to the French homepage as a page. Without hreflang, a search
- * engine only ever discovers the one variant that happened to be its
- * Accept-Language, and treats the other two as duplicates of nothing.
+ * The public site is the static design from ../gsredanupdate: four pages
+ * (home, /about/, /rallye/, /legal/), each addressable in every routable
+ * language. They are worth publishing, because the language-prefixed pages
+ * are not reachable from each other by links the crawler can follow — the
+ * switcher mirrors the current path, and no page links to the French page as
+ * a page. Without hreflang, a search engine only ever discovers the one
+ * variant that happened to be its Accept-Language, and treats the other two
+ * as duplicates of nothing.
  *
- * So: one <url> per routable language, each one carrying the full set of
- * alternates (including itself and x-default), which is the shape Google
- * documents for a language-prefixed site.
+ * So: one <url> per page per routable language, each one carrying the full
+ * set of alternates (including itself and x-default), which is the shape
+ * Google documents for a language-prefixed site.
  *
  * @author Roan Buysse <roan@tigron.be>
  */
@@ -33,14 +32,37 @@ class Seo_Sitemap {
 	const INDEX_MODULE = '\\App\\Front\\Module\\Index';
 
 	/**
+	 * The public pages, as the path segment after the language prefix
+	 *
+	 * The homepage is the empty path: /, /fr, /nl. The others are the static
+	 * page routes of app/front/config/routes.php. The rally page is listed
+	 * only while the `rally_enabled` setting is on (an off page redirects
+	 * home — publishing it would put a redirect in the sitemap).
+	 *
+	 * @access private
+	 * @return array
+	 */
+	private static function get_pages(): array {
+		$pages = [ '' ];
+
+		if (\Setting::get_by_name('rally_enabled') === '1') {
+			$pages[] = 'rallye';
+		}
+
+		$pages[] = 'about';
+		$pages[] = 'legal';
+
+		return $pages;
+	}
+
+	/**
 	 * Build the sitemap document
 	 *
 	 * <changefreq> and <priority> are deliberately absent: Google has ignored
 	 * both since 2015, and inventing a crawl frequency is a number that looks
-	 * authoritative while meaning nothing. <lastmod> is kept, and it is a real
-	 * timestamp rather than a constant: the newest of the visible blocks and
-	 * of the visible upcoming calendar events (the Monday-openings card is fed
-	 * by the calendar), which is everything the homepage renders from.
+	 * authoritative while meaning nothing. There is no <lastmod> either: the
+	 * pages are static templates, so no database row tracks when they last
+	 * changed, and a made-up date is worse than none.
 	 *
 	 * @access public
 	 * @return string $xml
@@ -48,28 +70,26 @@ class Seo_Sitemap {
 	public static function get_xml(): string {
 		$base_url = Http_Base_Url::get();
 		$languages = self::get_languages();
-		$lastmod = self::get_lastmod();
 
 		$lines = [];
 		$lines[] = '<?xml version="1.0" encoding="UTF-8"?>';
 		$lines[] = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
 			. ' xmlns:xhtml="http://www.w3.org/1999/xhtml">';
 
-		foreach ($languages as $language) {
-			$lines[] = "\t<url>";
-			$lines[] = "\t\t<loc>" . self::escape(self::get_language_url($base_url, $language)) . '</loc>';
+		foreach (self::get_pages() as $page) {
+			$page_url = rtrim($base_url . '/' . $page, '/');
 
-			if ($lastmod !== null) {
-				$lines[] = "\t\t<lastmod>" . $lastmod . '</lastmod>';
+			foreach ($languages as $language) {
+				$lines[] = "\t<url>";
+				$lines[] = "\t\t<loc>" . self::escape(self::get_language_url($base_url, $page, $language)) . '</loc>';
+				$lines[] = "\t\t" . self::get_alternate_link($page_url, 'x-default');
+
+				foreach ($languages as $alternate) {
+					$lines[] = "\t\t" . self::get_alternate_link(self::get_language_url($base_url, $page, $alternate), $alternate->name_short);
+				}
+
+				$lines[] = "\t</url>";
 			}
-
-			$lines[] = "\t\t" . self::get_alternate_link($base_url . '/', 'x-default');
-
-			foreach ($languages as $alternate) {
-				$lines[] = "\t\t" . self::get_alternate_link(self::get_language_url($base_url, $alternate), $alternate->name_short);
-			}
-
-			$lines[] = "\t</url>";
 		}
 
 		$lines[] = '</urlset>';
@@ -78,18 +98,19 @@ class Seo_Sitemap {
 	}
 
 	/**
-	 * Get the URL of the homepage in one language
+	 * Get the URL of one page in one language
 	 *
-	 * No trailing slash, the way the site itself links: the rewrite of
-	 * /{language} produces /fr, not /fr/.
+	 * No trailing slash: the router drops it, so /fr/about is the canonical
+	 * form of what the site links as /fr/about/.
 	 *
 	 * @access private
 	 * @param string $base_url
+	 * @param string $page
 	 * @param \Language $language
 	 * @return string $url
 	 */
-	private static function get_language_url(string $base_url, \Language $language): string {
-		return $base_url . '/' . $language->name_short;
+	private static function get_language_url(string $base_url, string $page, \Language $language): string {
+		return rtrim($base_url . '/' . $language->name_short . '/' . $page, '/');
 	}
 
 	/**
@@ -106,7 +127,7 @@ class Seo_Sitemap {
 	}
 
 	/**
-	 * Get the languages the homepage is actually routable in
+	 * Get the languages the public pages are actually routable in
 	 *
 	 * The list is read out of the Index route in
 	 * `app/front/config/routes.php` instead of being repeated here: a
@@ -158,46 +179,6 @@ class Seo_Sitemap {
 		}
 
 		return $codes;
-	}
-
-	/**
-	 * Get the date the homepage content last changed
-	 *
-	 * A date, not a timestamp: the columns are local datetimes and the site
-	 * publishes no timezone, so claiming a time would be a guess. A date is
-	 * a valid, useful <lastmod>.
-	 *
-	 * @access private
-	 * @return string|null $lastmod
-	 */
-	private static function get_lastmod(): ?string {
-		$timestamps = [];
-
-		foreach (\Block::get_visible_ordered() as $block) {
-			$timestamps[] = (string)$block->updated;
-		}
-
-		// The Monday-openings card renders upcoming events, so an event that
-		// was edited or created changes the page too.
-		foreach (\Calendar_Event::get_visible_upcoming(24) as $event) {
-			$timestamps[] = (string)$event->updated;
-		}
-
-		$known = [];
-		foreach ($timestamps as $timestamp) {
-			if ($timestamp === '') {
-				continue;
-			}
-
-			$known[] = $timestamp;
-		}
-
-		if (count($known) === 0) {
-			return null;
-		}
-
-		// The column is a 'Y-m-d H:i:s' string, so the newest is the largest.
-		return substr(max($known), 0, 10);
 	}
 
 	/**

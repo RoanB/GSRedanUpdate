@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img"
+	aria-label="GS Redan">
+	<rect width="800" height="500" fill="#FFF9EF"/>
+	<rect x="22" y="22" width="756" height="456" rx="28" fill="none" stroke="#5C4033" stroke-width="5"
+		stroke-dasharray="2 16" stroke-linecap="round"/>
+	<!-- Carabiner -->
+	<g transform="translate(368 130) scale(2.6)">
+		<path d="M17 6 h4.5 c6.5 0 10.5 4.5 10.5 10.5 v6.5 c0 6-4 10.5-10.5 10.5 h-1.5 c-6.5 0-10.5-4.5-10.5-10.5 v-8"
+			fill="none" stroke="#3E2B21" stroke-width="3.4" stroke-linecap="round"/>
+		<path d="M15.5 7.5 v6" fill="none" stroke="#3E2B21" stroke-width="3.4" stroke-linecap="round"/>
+		<circle cx="29" cy="5" r="3" fill="none" stroke="#2F855A" stroke-width="2.2"/>
+	</g>
+	<text x="400" y="330" text-anchor="middle" font-family="Nunito, Arial, sans-serif" font-weight="800"
+		font-size="46" letter-spacing="6" fill="#3E2B21">GS REDAN</text>
+	<text x="400" y="382" text-anchor="middle" font-family="Nunito, Arial, sans-serif" font-weight="700"
+		font-size="24" letter-spacing="1" fill="#5C4033">gsredan.be</text>
+</svg>

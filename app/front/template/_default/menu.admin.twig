@@ -12,7 +12,7 @@
 	one, so the admin keeps their place in the menu on a nested page.
 #}
 {% set module_path = env.module.get_module_path() %}
-{% set content_modules = ['/admin/block', '/admin/calendar', '/admin/download'] %}
+{% set content_modules = ['/admin/calendar', '/admin/download'] %}
 {% set administration_modules = ['/admin/user', '/admin/settings'] %}
 
 <ul class="navbar-nav">
@@ -27,9 +27,6 @@
 			{{ tabler.icon('layout-grid') }} {% trans "Content" %}
 		</button>
 		<div class="dropdown-menu">
-			<a class="dropdown-item{% if module_path == '/admin/block' %} active{% endif %}" href="/admin/block">
-				{{ tabler.icon('layout-grid') }} {% trans "Cards" %}
-			</a>
 			<a class="dropdown-item{% if module_path == '/admin/calendar' %} active{% endif %}" href="/admin/calendar">
 				{{ tabler.icon('calendar') }} {% trans "Calendar" %}
 			</a>

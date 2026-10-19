@@ -31,7 +31,8 @@
 				"npm-asset/tabler--core": "^1.4",
 				"tigron/skeleton-file-picture": "^0.2.21",
 				"npm-asset/fullcalendar": "^6.1",
-				"tigron/skeleton-email": "^0.4"
+				"tigron/skeleton-email": "^0.4",
+				"sentry/sentry": "^4.34"
 		},
     "license": "MIT",
     "authors": [

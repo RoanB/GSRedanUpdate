@@ -208,38 +208,41 @@ class Calendar_Event {
 	 * Renders the openings like the original salle card: dates grouped
 	 * per month ("7th and 21st of September", FR "7 et 21 Septembre"),
 	 * multiple dates per group joined with the language's "and", always
-	 * ascending, pre-formatted as <br> unsigned list markup.
+	 * ascending. One label per month group — the home page renders one
+	 * date-chip per label.
+	 *
+	 * Month names come from Date_Label: the month lists are a closed set
+	 * and the intl extension is not available on every host this project
+	 * runs on.
 	 *
 	 * @access public
 	 * @param array $events Calendar_Event objects (all_day also fine)
 	 * @param string $language_short fr/nl/en
-	 * @return string html fragment joined with <br> (may be an empty string)
+	 * @return array labels, chronological, one per month group
 	 */
-	public static function format_opening_dates(array $events, string $language_short): string {
+	public static function format_opening_dates(array $events, string $language_short): array {
 		if (count($events) === 0) {
-			return '';
+			return [];
 		}
 
 		$settings = [
-			'fr' => [ 'locale' => 'fr_FR', 'connective' => 'et' ],
-			'nl' => [ 'locale' => 'nl_BE', 'connective' => 'en' ],
-			'en' => [ 'locale' => 'en_GB', 'connective' => 'and' ],
+			'fr' => [ 'connective' => 'et' ],
+			'nl' => [ 'connective' => 'en' ],
+			'en' => [ 'connective' => 'and' ],
 		];
 		$config = $settings[$language_short] ?? $settings['fr'];
 
 		$timezone = new \DateTimeZone(\Calendar_Event::DISPLAY_TIMEZONE);
+		$months = \Date_Label::get_month_names($language_short);
 
 		// Group per (month number, month label), keeping chronological order.
-		$formatter = new \IntlDateFormatter($config['locale'], \IntlDateFormatter::NONE, \IntlDateFormatter::NONE, $timezone, \IntlDateFormatter::GREGORIAN, 'MMMM');
-
 		$groups = [];
 		foreach ($events as $event) {
 			$starts = new \DateTime((string)$event->starts_at, new \DateTimeZone('UTC'));
 			$starts->setTimezone($timezone);
 
 			$month_key = $starts->format('Y-m');
-			$month_name = (string)$formatter->format($starts);
-			$month_name = mb_strtoupper(mb_substr($month_name, 0, 1)) . mb_substr($month_name, 1);
+			$month_name = $months[(int)$starts->format('n')];
 
 			$day = (int)$starts->format('j');
 			if ($language_short === 'en') {
@@ -274,12 +277,7 @@ class Calendar_Event {
 			$labels[] = $grouped . ' ' . $group['name'];
 		}
 
-		$out = '';
-		foreach ($labels as $label) {
-			$out = $out === '' ? $label : $out . '<br>' . $label;
-		}
-
-		return $out;
+		return $labels;
 	}
 
 	/**

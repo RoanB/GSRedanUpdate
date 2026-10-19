@@ -1,0 +1,252 @@
+{% extends "_default/layout.public.twig" %}
+
+{% block page_title %}{% trans 'About us — GS Redan, caving in Brussels' %}{% endblock page_title %}
+{% block page_description %}{% trans 'Meet Groupe Spéléo du Redan: the club, the hall beneath the Basilica, Tuesday trainings, the youth programme, camps — and every practical answer.' %}{% endblock page_description %}
+
+{% block page_head %}
+	<link rel="canonical" href="https://www.gsredan.be/about/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="GS Redan">
+	<meta property="og:title" content="{% trans 'About us — GS Redan, caving in Brussels' %}">
+	<meta property="og:description"
+		content="{% trans 'Meet Groupe Spéléo du Redan: the club, the hall beneath the Basilica, Tuesday trainings, the youth programme, camps — and every practical answer.' %}">
+	<meta property="og:image" content="https://www.gsredan.be/salle.webp">
+	<meta property="og:url" content="https://www.gsredan.be/about/">
+	<meta property="og:locale" content="fr_BE">
+	<meta property="og:locale:alternate" content="nl_BE">
+	<meta property="og:locale:alternate" content="en_GB">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{% trans 'About us — GS Redan, caving in Brussels' %}">
+	<meta name="twitter:description"
+		content="{% trans 'Meet Groupe Spéléo du Redan: the club, the hall beneath the Basilica, Tuesday trainings, the youth programme, camps — and every practical answer.' %}">
+	<meta name="twitter:image" content="https://www.gsredan.be/salle.webp">
+{% endblock page_head %}
+
+{% block body_page %}about{% endblock body_page %}
+
+{% block content %}
+
+		<!-- Page hero -->
+		<section class="page-hero" aria-labelledby="about-title">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-9 text-center">
+						<p class="sticker sticker-lg">{% trans 'The club' %}</p>
+						<h1 id="about-title">{% trans 'A club, a basilica, a lot of rope' %}</h1>
+						<p class="sec-lead mx-auto mt-3">{% trans 'GS Redan is one of the largest caving clubs in Belgium, based in Brussels. Our training hall hides in the basement of the Koekelberg Basilica — yes, the big one with the green dome. During the week it’s a place of worship. On Tuesday nights, it’s our own personal cave.' %}</p>
+					</div>
+				</div>
+				<div class="row g-3 g-md-4 mt-4 photo-strip">
+					<div class="col-4 reveal">
+						<img class="rounded-3" src="/salle.webp" width="800" height="534" loading="lazy"
+							decoding="async" alt="{% trans 'Club members training on ropes in the hall beneath the Basilica' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+					</div>
+					<div class="col-4 reveal reveal-d1">
+						<img class="rounded-3" src="/rally.webp" width="650" height="488" loading="lazy"
+							decoding="async" alt="{% trans 'Rope courses rigged between the Basilica’s towers' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+					</div>
+					<div class="col-4 reveal reveal-d2">
+						<img class="rounded-3" src="/rallye-3.webp" width="800" height="534" loading="lazy"
+							decoding="async" alt="{% trans 'The Koekelberg Basilica at sunset' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Values -->
+		<section class="section section-paper" id="values" aria-labelledby="values-title">
+			<div class="container">
+				<div class="text-center mb-5">
+					<h2 class="sec-title mx-auto" id="values-title">{% trans 'What we stand for' %}</h2>
+				</div>
+				<div class="row g-4">
+					<article class="col-md-4 reveal">
+						<div class="value-card">
+							<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06" /> <path d="M15 19l2 2l4 -4" /></svg>
+							<h3>{% trans 'Technique first' %}</h3>
+							<p>{% trans 'Knots, SRT, rigging: we take technique seriously so the underground stays fun — and safe.' %}</p>
+						</div>
+					</article>
+					<article class="col-md-4 reveal reveal-d1">
+						<div class="value-card orange">
+							<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /> <path d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25" /> <path d="M12.5 15.5l2 2" /> <path d="M15 13l2 2" /></svg>
+							<h3>{% trans 'Open to the motivated' %}</h3>
+							<p>{% trans 'Students, climbers, outdoor sports people or just the curious: if ropes and darkness appeal to you, you’ll feel at home.' %}</p>
+						</div>
+					</article>
+					<article class="col-md-4 reveal reveal-d2">
+						<div class="value-card teal">
+							<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M8 16l2 -6l6 -2l-2 6l-6 2" /> <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /> <path d="M12 3l0 2" /> <path d="M12 19l0 2" /> <path d="M3 12l2 0" /> <path d="M19 12l2 0" /></svg>
+							<h3>{% trans 'Sharing the underground' %}</h3>
+							<p>{% trans 'Youth lessons, public openings, camps: what we learn under the Basilica, we pass on.' %}</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<div class="container" aria-hidden="true">
+			<hr class="rope-divider">
+		</div>
+
+		<!-- Weekly schedule -->
+		<section class="section section-cream" id="schedule" aria-labelledby="schedule-title">
+			<div class="container">
+				<div class="text-center mb-4">
+					<p class="sticker sticker-orange sec-badge">{% trans 'What we do' %}</p>
+					<h2 class="sec-title mx-auto" id="schedule-title">{% trans 'The weekly rhythm' %}</h2>
+					<p class="sec-lead mx-auto">{% trans 'Everything happens under (or around) the Koekelberg Basilica. Find your slot:' %}</p>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-11">
+						<div class="table-redan-wrap">
+							<div class="table-responsive">
+								<table class="table table-redan align-middle">
+									<thead>
+										<tr>
+											<th scope="col">{% trans 'When' %}</th>
+											<th scope="col">{% trans 'What' %}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row" class="row-when"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M12 7v5l3 3" /></svg><span>{% trans 'Every Tuesday evening, from 8:00 PM' %}</span></th>
+											<td>{% trans 'Members’ training' %}</td>
+										</tr>
+										<tr>
+											<th scope="row" class="row-when"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /> <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg><span>{% trans 'Wednesday afternoon (school year)' %}</span></th>
+											<td>{% trans 'Caving lessons for youth, focus on SRT' %}</td>
+										</tr>
+										<tr>
+											<th scope="row" class="row-when"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /> <path d="M16 3l0 4" /> <path d="M8 3l0 4" /> <path d="M4 11l16 0" /> <path d="M8 15h2v2h-2z" /></svg><span>{% trans 'Odd Mondays, 7:30 pm – 10:30 pm' %}</span></th>
+											<td>{% trans 'Public openings of the training hall' %}</td>
+										</tr>
+										<tr>
+											<th scope="row" class="row-when"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M11 14l4 6h6l-9 -16l-9 16h6l4 -6" /></svg><span>{% trans 'Autumn and Spring holidays (French-speaking)' %}</span></th>
+											<td>{% trans 'Club camps' %}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Youth program -->
+		<section class="section section-paper" id="youth" aria-labelledby="youth-title">
+			<div class="container">
+				<div class="row g-4 g-lg-5 align-items-center">
+					<div class="col-lg-5 media-row reveal">
+						<img src="/tower.webp" width="800" height="613" loading="lazy" decoding="async"
+							alt="{% trans 'A caver seen from the bottom of a brick shaft, silhouetted against the light' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+					</div>
+					<div class="col-lg-7 reveal reveal-d1">
+						<p class="sticker sticker-green sec-badge">{% trans 'Young cavers' %}</p>
+						<h2 class="sec-title" id="youth-title">{% trans 'Youth program' %}</h2>
+						<p>{% trans 'Groupe Spéléo du Redan offers caving lessons with an emphasis on SRT for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar).' %}</p>
+						<p>{% trans 'The emphasis is on SRT (Single Rope Technique): moving up and down a single rope, just like in real caves. Youngsters who master the basics then join us at camp.' %}</p>
+						<a class="btn-redan mt-2"
+							href="/#contact" data-topic="youth"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 14l11 -11" /> <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" /></svg> <span>{% trans 'Get extra information' %}</span></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Camps -->
+		<section class="section section-cream" id="camps" aria-labelledby="camps-title">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="camp-panel reveal">
+							<div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+								<div>
+									<p class="sticker sec-badge mb-2">{% trans '2 × a year' %}</p>
+									<h2 class="sec-title m-0" id="camps-title">{% trans 'Camps' %}</h2>
+								</div>
+								<div class="camp-icons" aria-hidden="true">
+									<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M11 14l4 6h6l-9 -16l-9 16h6l4 -6" /></svg>
+									<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 21l16 -4" /> <path d="M20 21l-16 -4" /> <path d="M12 15a4 4 0 0 0 4 -4c0 -3 -2 -3 -2 -8c-4 2 -6 5 -6 8a4 4 0 0 0 4 4z" /></svg>
+									<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 20h18l-6.921 -14.612a2.3 2.3 0 0 0 -4.158 0l-6.921 14.612z" /> <path d="M7.5 11l2 2.5l2.5 -2.5l2 3l2.5 -2" /></svg>
+								</div>
+							</div>
+							<p class="mt-3 mb-2">{% trans 'Two camps a year, during the French-speaking autumn and spring holidays: real caves, real mud and a schedule only cavers understand.' %}</p>
+							<p class="mb-0">{% trans 'Youngsters who master the basic techniques join in — the reward after all those Wednesday trainings.' %}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Join CTA -->
+		<section class="section section-brown" id="join" aria-labelledby="join-title">
+			<div class="container">
+				<div class="row justify-content-center text-center">
+					<div class="col-lg-8">
+						<h2 class="sec-title mx-auto" id="join-title">{% trans 'Ready to join us?' %}</h2>
+						<p class="sec-lead mx-auto">{% trans 'No experience needed to start: we’ll teach you everything, from your first knot to your first descent. Contact us and come try a session — Wednesdays for the youth, a Tuesday for your first evening with us. On odd Mondays, training is self-led.' %}</p>
+						<div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+							<a class="btn-yellow" href="/#contact" data-topic="club"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 14l11 -11" /> <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" /></svg><span>{% trans 'Open the contact form' %}</span></a>
+							<a class="btn-ghost-light" href="#faq"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /> <path d="M12 17l0 .01" /> <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" /></svg><span>{% trans 'Read the FAQ' %}</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section class="section section-paper" id="faq" aria-labelledby="faq-title">
+			<div class="container">
+				<div class="text-center mb-5">
+					<h2 class="sec-title mx-auto" id="faq-title">{% trans 'Frequently asked questions' %}</h2>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-9">
+						<div class="accordion accordion-redan" id="faqAccordion">
+							<div class="accordion-item reveal">
+								<h3 class="accordion-header">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">{% trans 'Do I need experience to join the club?' %}</button>
+								</h3>
+								<div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+									<div class="accordion-body">{% trans 'No — beginners are welcome. Tuesday training exists exactly for that: learning knots, technique and caution, in the hall under the Basilica.' %}</div>
+								</div>
+							</div>
+							<div class="accordion-item reveal">
+								<h3 class="accordion-header">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">{% trans 'I’m not a member: how can I try caving?' %}</button>
+								</h3>
+								<div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+									<div class="accordion-body">{% trans 'Contact us through the form and come over on a Tuesday evening: you’ll discover the hall and the basics with us. On odd Mondays, training is self-led — everyone progresses on their own, we don’t provide assistance.' %}</div>
+								</div>
+							</div>
+							<div class="accordion-item reveal">
+								<h3 class="accordion-header">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">{% trans 'What is SRT?' %}</button>
+								</h3>
+								<div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+									<div class="accordion-body">{% trans 'Single Rope Technique: moving along a single rope with ascenders and a descender — the foundation of vertical caving. It’s the core of our trainings, especially for the youth.' %}</div>
+								</div>
+							</div>
+							<div class="accordion-item reveal">
+								<h3 class="accordion-header">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">{% trans 'Can I watch the Rally without descending?' %}</button>
+								</h3>
+								<div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+									<div class="accordion-body">{% trans 'Yes! The Rally is for experienced cavers, but spectators are very welcome. Honestly: 2,000 metres of rope on a basilica is worth the trip.' %}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+{% endblock content %}

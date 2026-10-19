@@ -45,6 +45,18 @@ application (tigron/skeleton + Twig + tabler) with:
   `Handler::enable()`. Deprecations are logged to the normal error log but not
   fatal; real errors still throw. When the framework gains PHP 8.5 support,
   remove this line.
+- The `tmp/` tree **must exist**: `Skeleton\Error\Config` and the request
+  logger (`lib/base/Util/Log.php`) write into `tmp/log/`, and other components
+  write into `tmp/languages/`, `tmp/picture/`, `tmp/twig/`. It is not created
+  on demand: with `tmp/log/` missing, `file_put_contents()` raises an
+  `E_WARNING` mid-response, the skeleton error handler appends a full HTML
+  error page to the already-started output, and a media response such as
+  `/scripts.js` ends up as JS followed by ~4 KB of HTML — a browser console
+  `SyntaxError: Unexpected token '<'` with no visible page symptom. The
+  directory was created on the server (2026-10-19) after exactly this
+  happened. Committing an empty `tmp/log/` placeholder via `.gitkeep` only
+  works where the deploy does not `.gitignore` `tmp/`; as long as it is
+  ignored, an environment check for the directory is the safer fix.
 
 ## Roles
 

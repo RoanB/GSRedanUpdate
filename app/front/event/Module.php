@@ -58,33 +58,31 @@ class Module extends \Skeleton\Application\Web\Event\Module {
 
 		$template->assign('environment', \Skeleton\Core\Config::get()->environment);
 
-		// Homepage menu: visible blocks with a non-empty anchor AND title
-		$language = \Language::get();
-		$nav_items = [];
-		$blocks = \Block::get_visible_ordered();
-		foreach ($blocks as $block) {
-			if (empty($block->anchor)) {
-				continue;
-			}
-
-			try {
-				$translation = $block->get_translation($language);
-			} catch (\Exception $e) {
-				$translation = null;
-			}
-
-			if ($translation === null || $translation->title === '') {
-				continue;
-			}
-
-			$nav_items[] = [
-				'anchor' => $block->anchor,
-				'title' => $translation->title,
-			];
-		}
-		$template->assign('nav_items', $nav_items);
+		// Site settings (contact email, addresses, socials, footer lines,
+		// the rally dates): the layout footer and the 404 page render them
+		// on every request.
 		$template->assign('settings', \Setting::get_all());
-		$this->assign_masthead_image();
+
+		// The rally date line (home rally band + rallye hero): rendered
+		// from the rally settings so the club changes the dates in one
+		// place. Empty string when the dates are not set; the templates
+		// then hide the date line.
+		$template->assign('rally_date_label', \Date_Label::format_range(
+			(string)\Setting::get_by_name('rally_start_date'),
+			(string)\Setting::get_by_name('rally_end_date'),
+			\Language::get()->name_short
+		));
+
+		// The rally year, for the labels that carry it (nav, footer, hero
+		// CTA, countdown label, contact topic): the year of the start date.
+		// Empty when the setting is unset or unparsable — the year simply
+		// disappears from the labels instead of printing garbage.
+		try {
+			$rally_year = (new \DateTime((string)\Setting::get_by_name('rally_start_date'), new \DateTimeZone(\Calendar_Event::DISPLAY_TIMEZONE)))->format('Y');
+		} catch (\Exception $e) {
+			$rally_year = '';
+		}
+		$template->assign('rally_year', $rally_year);
 	}
 
 	/**
@@ -109,6 +107,7 @@ class Module extends \Skeleton\Application\Web\Event\Module {
 		$template = \Skeleton\Application\Web\Template::get();
 		$template->assign('title', 'Not found');
 		$template->assign('languages', \Language::get_all());
+		$template->assign('settings', \Setting::get_all());
 
 		if (isset($_GET['language']) === true && is_string($_GET['language']) === true) {
 			try {
@@ -120,41 +119,9 @@ class Module extends \Skeleton\Application\Web\Event\Module {
 		}
 
 		\Language::set($_SESSION['language']);
-		$language = \Language::get();
 
-		$nav_items = [];
-		$blocks = \Block::get_visible_ordered();
-		foreach ($blocks as $block) {
-			if (empty($block->anchor)) {
-				continue;
-			}
-
-			try {
-				$translation = $block->get_translation($language);
-			} catch (\Exception $e) {
-				$translation = null;
-			}
-
-			if ($translation === null || $translation->title === '') {
-				continue;
-			}
-
-			$nav_items[] = [
-				'anchor' => $block->anchor,
-				'title' => $translation->title,
-			];
-		}
-		$template->assign('nav_items', $nav_items);
-		$template->assign('settings', \Setting::get_all());
-
-		// The error pages carry no photo, so the masthead photo is not resolved
-		// here. Two consequences, both wanted: the 404 does not spend the three
-		// extra /picture requests the homepage makes, and hero_image.twig skips
-		// its <link rel="preload"> block, which would otherwise pull a caving
-		// banner nobody paints. The same flag puts `error-page` on <body> in
-		// layout.public.twig, which is what forces the navbar into its solid
-		// state: the pages are light, and the navbar's own default is white
-		// text meant for a dark photo behind it.
+		// The error page carries no navbar and no photo (it is the e404 page
+		// of the static design). The flag skips both in layout.public.twig.
 		$template->assign('error_page', true);
 
 		// display(), not render(): render() returns the HTML as a string and
@@ -163,28 +130,5 @@ class Module extends \Skeleton\Application\Web\Event\Module {
 		// body (content-length: 0). display() is what the framework itself
 		// uses for every normal page, via Module::handle_request().
 		$template->display('error404.twig');
-	}
-
-	/**
-	 * Assign the masthead hero image to the template
-	 *
-	 * Not every page carries the masthead block (the members area and the
-	 * error pages have their own hero markup), but the photo behind the hero
-	 * is the same on all of them. Resolving it here keeps one copy of that
-	 * decision: the layout hands the three variants to styles.css, and
-	 * og:image points at the largest one.
-	 *
-	 * Called from not_found() as well, because the 404 page goes through the
-	 * public layout without ever reaching bootstrap().
-	 *
-	 * @access private
-	 */
-	private function assign_masthead_image(): void {
-		$template = \Skeleton\Application\Web\Template::get();
-
-		$masthead_image = \Masthead_Image::get_urls();
-
-		$template->assign('masthead_image', $masthead_image);
-		$template->assign('masthead_image_share', \Masthead_Image::get_absolute_url($masthead_image));
 	}
 }

@@ -124,27 +124,11 @@ class Bootstrap {
 		\Skeleton\File\Picture\Config::add_resize_configuration('50x50', 88, 88);
 		\Skeleton\File\Picture\Config::add_resize_configuration('25x25', 25, 25);
 
-		// Card image sizes (activity hero images, gallery pictures)
+		// Card image sizes, served through /picture by id
 		\Skeleton\File\Picture\Config::add_resize_configuration('1600x1200', 1600, 1200, 'auto');
 		\Skeleton\File\Picture\Config::add_resize_configuration('1200x900', 1200, 900, 'auto');
 		\Skeleton\File\Picture\Config::add_resize_configuration('800x600', 800, 600, 'auto');
 		\Skeleton\File\Picture\Config::add_resize_configuration('400x300', 400, 300, 'auto');
-
-		// Masthead hero sizes: one full-width banner variant per breakpoint
-		// (Masthead_Image::SIZES). Separate from the card sizes above,
-		// because the hero is a full-bleed banner and not a card in a column.
-		//
-		// The variant is the viewport range it serves, and the masthead is
-		// `width: 100%` with `background-size: cover`, so every one of these
-		// has to be at least as wide as the widest viewport in its range or
-		// the browser upscales the hero. That is why the steps are 640/1280/
-		// 1920/2560 and not Bootstrap's 768/992/1200/1400: the breakpoints in
-		// styles.css have to be these numbers. Keep the two in step — the
-		// matching preloads live in _default/hero_image.twig.
-		\Skeleton\File\Picture\Config::add_resize_configuration('2560x1280', 2560, 1280, 'auto');
-		\Skeleton\File\Picture\Config::add_resize_configuration('1920x960', 1920, 960, 'auto');
-		\Skeleton\File\Picture\Config::add_resize_configuration('1280x640', 1280, 640, 'auto');
-		\Skeleton\File\Picture\Config::add_resize_configuration('640x320', 640, 320, 'auto');
 
 		/**
 		 * Initialize the pager

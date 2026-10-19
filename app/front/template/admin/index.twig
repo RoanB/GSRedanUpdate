@@ -7,21 +7,10 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if sticky_session.saved is defined %}
+	{% if env.sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
 	<div class="row row-cards">
-		<div class="col-sm-6 col-lg-4">
-			<div class="card">
-				<div class="card-body">
-					<div class="d-flex align-items-center">
-						<div class="subheader">{% trans "Cards" %}</div>
-					</div>
-					<div class="h1 mb-3">{{ block_active_count }} / {{ block_count }}</div>
-					<a href="/admin/block" class="card-link">{% trans "Manage cards" %}</a>
-				</div>
-			</div>
-		</div>
 		<div class="col-sm-6 col-lg-4">
 			<div class="card">
 				<div class="card-body">

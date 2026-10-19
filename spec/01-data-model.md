@@ -25,6 +25,12 @@ Domibus junk). It has been **neutralized** (no-op); the real schema lives in
 
 New:
 
+*(2026-10-19: the `block`, `block_translation` and `block_picture` tables
+described below were **dropped** — the public site no longer renders DB
+blocks, see spec/02. The schema text is kept for history; migration
+`20261019_120000_drop_blocks` did the drop, its `down()` recreates the
+empty tables.)*
+
 ### `block`
 The homepage order. One row per block.
 

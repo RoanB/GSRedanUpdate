@@ -25,8 +25,6 @@ class Admin extends Admin\Base {
 
 		$template = \Skeleton\Application\Web\Template::get();
 
-		$template->assign('block_count', \Block::count_all());
-		$template->assign('block_active_count', \Block::count_active());
 		$template->assign('download_count', \Download_File::count_all());
 		$template->assign('calendar_count', \Calendar_Event::count_all());
 		$template->assign('user_count', \User::count_all());

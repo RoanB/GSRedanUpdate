@@ -7,19 +7,19 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if sticky_session.archived is defined %}
+	{% if env.sticky_session.archived is defined %}
 		{{ tabler.alert('success', 'User archived'|trans, 'The account can no longer log in.'|trans) }}
 	{% endif %}
-	{% if sticky_session.reset_sent is defined %}
+	{% if env.sticky_session.reset_sent is defined %}
 		{{ tabler.alert('success', 'Reset mail sent'|trans, 'The user picks the new password from the link in the mail.'|trans) }}
 	{% endif %}
-	{% if sticky_session.reset_failed is defined %}
+	{% if env.sticky_session.reset_failed is defined %}
 		{{ tabler.alert('danger', 'Reset mail not sent'|trans, 'Check the mail configuration and the contact_email setting, then try again.'|trans) }}
 	{% endif %}
-	{% if sticky_session.self_archive is defined %}
+	{% if env.sticky_session.self_archive is defined %}
 		{{ tabler.alert('danger', 'Cannot archive yourself'|trans, 'You would lock yourself out of the admin.'|trans) }}
 	{% endif %}
-	{% if sticky_session.saved is defined %}
+	{% if env.sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
 	<div class="card">

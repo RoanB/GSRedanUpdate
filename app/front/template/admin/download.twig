@@ -7,7 +7,7 @@
 {% endblock header_breadcrumb %}
 
 {% block content %}
-	{% if sticky_session.saved is defined %}
+	{% if env.sticky_session.saved is defined %}
 		{{ tabler.alert('success', 'Saved'|trans) }}
 	{% endif %}
 

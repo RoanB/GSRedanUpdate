@@ -1,0 +1,8 @@
+{% if copy %}{% trans "Here is a copy of the message you sent through gsredan.be:" %}{% else %}{% trans "A visitor wrote through the contact form on gsredan.be:" %}{% endif %}
+
+{{ name }} <{{ email }}>
+{% trans "Topic" %}: {% if topic == 'club' %}{% trans "Join the club" %}{% elseif topic == 'youth' %}{% trans "Youth program" %}{% elseif topic == 'rally' %}{% trans "Rally" %} {{ year }}{% else %}{% trans "Something else" %}{% endif %}
+
+{{ message }}
+
+{% if copy %}{% trans "You receive this copy because you filled in the contact form on gsredan.be." %}{% else %}{% trans "Reply to this mail to answer the visitor directly." %}{% endif %}

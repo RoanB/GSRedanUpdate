@@ -12,7 +12,7 @@
 			<div class="card-body">
 				<h2 class="h2 text-center mb-3">{% trans "Members area" %}</h2>
 				<p class="text-secondary text-center mb-4">{% trans "Password protected. Enter the shared password." %}</p>
-				{% if sticky_session.failed is defined %}
+				{% if env.sticky_session.failed is defined %}
 					<div class="alert alert-danger mb-3">{% trans "Wrong password, try again." %}</div>
 				{% endif %}
 				<form method="post" action="/members?action=gate">

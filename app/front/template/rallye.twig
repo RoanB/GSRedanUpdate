@@ -1,0 +1,247 @@
+{% extends "_default/layout.public.twig" %}
+
+{% block page_title %}{{ 'Rally'|trans }} {{ rally_year }} — GS Redan{% endblock page_title %}
+{% block page_description %}{% trans 'Basilica caving rally: 3 routes, 2,000+ metres of rope on the Koekelberg Basilica and a view all the way to the Atomium.' %}{% endblock page_description %}
+
+{% block page_head %}
+	<link rel="canonical" href="https://www.gsredan.be/rallye/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="GS Redan">
+	<meta property="og:title" content="{{ 'Rally'|trans }} {{ rally_year }} — GS Redan">
+	<meta property="og:description"
+		content="{% trans 'Basilica caving rally: 3 routes, 2,000+ metres of rope on the Koekelberg Basilica and a view all the way to the Atomium.' %}">
+	<meta property="og:image" content="https://www.gsredan.be/rallye-main.webp">
+	<meta property="og:url" content="https://www.gsredan.be/rallye/">
+	<meta property="og:locale" content="fr_BE">
+	<meta property="og:locale:alternate" content="nl_BE">
+	<meta property="og:locale:alternate" content="en_GB">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{ 'Rally'|trans }} {{ rally_year }} — GS Redan">
+	<meta name="twitter:description"
+		content="{% trans 'Basilica caving rally: 3 routes, 2,000+ metres of rope on the Koekelberg Basilica and a view all the way to the Atomium.' %}">
+	<meta name="twitter:image" content="https://www.gsredan.be/rallye-main.webp">
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Event",
+		"name": "Basilica caving rally {{ rally_year }}",
+		"startDate": "{{ settings.rally_start_date|slice(0, 10) }}",
+		"endDate": "{{ settings.rally_end_date|slice(0, 10) }}",
+		"eventStatus": "https://schema.org/EventScheduled",
+		"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+		"location": {
+			"@type": "Place",
+			"name": "Basilique Nationale du Sacré-Cœur (Koekelberg)",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Parvis de la Basilique 1",
+				"postalCode": "1083",
+				"addressLocality": "Ganshoren",
+				"addressCountry": "BE"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": 50.867137,
+				"longitude": 4.317509
+			}
+		},
+		"image": [
+			"https://www.gsredan.be/rallye-main.webp",
+			"https://www.gsredan.be/rally.webp"
+		],
+		"description": "Tous les trois ou quatre ans, GS Redan installe des parcours de cordes sur et dans la Basilique : trois itinéraires de difficulté croissante, more than 2,000 metres of rope et une vue exceptionnelle jusqu’à l’Atomium. Environ 250 participants venus de toute l’Europe avaient pris part à la dernière édition.",
+		"organizer": {
+			"@type": "SportsOrganization",
+			"name": "Groupe Spéléo du Redan",
+			"url": "https://www.gsredan.be/"
+		},
+		"url": "https://www.gsredan.be/rallye/"
+	}
+	</script>
+	<!-- Preload the LCP hero background -->
+	<link rel="preload" as="image" href="/rallye-main.webp" fetchpriority="high">
+{% endblock page_head %}
+
+{% block body_page %}rallye{% endblock body_page %}
+
+{% block content %}
+
+		<!-- Hero -->
+		<section class="hero page-hero-photo" aria-labelledby="rallye-title">
+			<div class="container">
+				<p class="sticker sticker-orange sticker-lg">{% trans 'Edition' %} {{ rally_year }}</p>
+				<h1 id="rallye-title">{% trans 'Basilica caving rally' %}</h1>
+{% if rally_date_label is not empty %}
+				<p class="rally-date mb-1">{{ rally_date_label }}</p>
+{% endif %}
+				<p class="hero-tagline">{% trans 'Every three or four years, GS Redan turns the Koekelberg Basilica into Belgium’s biggest caving site. Hold on tight: the next edition is coming.' %}</p>
+				<div class="hero-ctas">
+					<a class="btn-yellow" href="/#contact" data-topic="rally"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 14l11 -11" /> <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" /></svg> <span>{% trans 'Questions? Write to us' %}</span></a>
+				</div>
+{% if settings.rally_enabled %}
+				<div class="countdown" data-countdown data-target="{{ settings.rally_start_date|replace({' ': 'T'}) }}" role="timer" aria-label="{% trans 'Countdown to the Rally' %}">
+					<span class="cd-label"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /> <path d="M16 3l0 4" /> <path d="M8 3l0 4" /> <path d="M4 11l16 0" /> <path d="M8 15h2v2h-2z" /></svg><span>{% trans 'Rally' %} {{ rally_year }} {% trans 'in' %}</span></span>
+					<span class="cd-cells">
+						<span class="cd-cell"><span class="cd-num" data-cd="d">–</span><span class="cd-unit"
+								data-cd-unit="d">{% trans 'days' %}</span></span>
+						<span class="cd-cell"><span class="cd-num" data-cd="h">–</span><span class="cd-unit"
+								data-cd-unit="h">{% trans 'hours' %}</span></span>
+						<span class="cd-cell"><span class="cd-num" data-cd="m">–</span><span class="cd-unit"
+								data-cd-unit="m">{% trans 'min' %}</span></span>
+						<span class="cd-cell"><span class="cd-num" data-cd="s">–</span><span class="cd-unit"
+								data-cd-unit="s">{% trans 'sec' %}</span></span>
+					</span>
+					<span class="cd-done" hidden>{% trans 'It’s happening — see you at the Basilica!' %}</span>
+				</div>
+{% endif %}
+			</div>
+		</section>
+
+		<!-- Facts -->
+		<section class="section section-yellow" aria-label="{% trans 'Key figures' %}">
+			<div class="container">
+				<div class="fact-strip justify-content-center">
+					<span class="fact-chip"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4z" /> <path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5" /></svg><span>{% trans '3 routes of increasing difficulty' %}</span></span>
+					<span class="fact-chip"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M17 3l4 4l-14 14l-4 -4z" /> <path d="M16 7l-1.5 -1.5" /> <path d="M13 10l-1.5 -1.5" /> <path d="M10 13l-1.5 -1.5" /> <path d="M7 16l-1.5 -1.5" /></svg><span>{% trans 'more than 2,000 metres of rope' %}</span></span>
+					<span class="fact-chip"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg><span>{% trans 'a view all the way to the Atomium' %}</span></span>
+					<span class="fact-chip"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /> <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /> <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg><span>{% trans '≈ 250 participants from across Europe' %}</span></span>
+				</div>
+			</div>
+		</section>
+
+		<!-- The event -->
+		<section class="section section-paper" id="event" aria-labelledby="event-title">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8 text-center">
+						<h2 class="sec-title mx-auto" id="event-title">{% trans 'The event' %}</h2>
+						<p class="sec-lead mx-auto">{% trans 'Once every three or four years, GS Redan rigs rope courses on and inside the Basilica: three routes of increasing difficulty, more than 2,000 metres of rope and a spectacular view all the way to the Atomium. Around 250 participants from across Europe took part in the last edition. The event is open to experienced cavers; spectators are welcome to come and watch. Registration will open as soon as everything has been finalised.' %}</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="container" aria-hidden="true">
+			<hr class="rope-divider">
+		</div>
+
+		<!-- Audience -->
+		<section class="section section-cream" id="audience" aria-labelledby="audience-title">
+			<div class="container">
+				<div class="text-center mb-5">
+					<h2 class="sec-title mx-auto" id="audience-title">{% trans 'Who can take part?' %}</h2>
+				</div>
+				<div class="row g-4">
+					<article class="col-md-6 reveal">
+						<div class="value-card">
+							<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /> <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M13.41 10.59l2.59 -2.59" /> <path d="M7 12a5 5 0 0 1 5 -5" /></svg>
+							<h3>{% trans 'Experienced cavers' %}</h3>
+							<p>{% trans 'The event is open to experienced cavers. Not rope-hardened yet? There’s still time: join the club and train with us. A test course on site will let you check your skills before heading up.' %}</p>
+							<a class="act-link" href="/about/#join"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M5 12l14 0" /> <path d="M15 16l4 -4" /> <path d="M15 8l4 4" /></svg><span>{% trans 'About us' %}</span></a>
+						</div>
+					</article>
+					<article class="col-md-6 reveal reveal-d1">
+						<div class="value-card teal">
+							<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+							<h3>{% trans 'Spectators' %}</h3>
+							<p>{% trans 'Spectators are welcome to come and watch — 2,000 metres of rope on a basilica isn’t something you see every day.' %}</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- Programme -->
+		<section class="section section-paper" id="programme" aria-labelledby="programme-title">
+			<div class="container">
+				<div class="row g-4 g-lg-5">
+					<div class="col-lg-4">
+						<p class="sticker sec-badge">{% trans 'What we do' %}</p>
+						<h2 class="sec-title" id="programme-title">{% trans 'Provisional programme' %}</h2>
+						<p class="d-flex gap-2 align-items-start"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M12 8v4" /> <path d="M12 16h.01" /></svg><span>{% trans 'Still provisional: the organisation isn’t finalised, the programme may change.' %}</span></p>
+					</div>
+					<div class="col-lg-8">
+						<div class="value-card reveal">
+							<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /> <path d="M16 3l0 4" /> <path d="M8 3l0 4" /> <path d="M4 11l16 0" /> <path d="M8 15h2v2h-2z" /></svg>
+							<h3 class="fs-4">{% trans 'The routes start on Friday and end on Sunday.' %}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Registration -->
+		<section class="section section-cream" id="registration" aria-labelledby="registration-title">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-9">
+						<div class="status-card reveal">
+							<div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+								<h2 class="sec-title m-0" id="registration-title">{% trans 'Registration' %}</h2>
+								<span class="sticker sticker-orange">{% trans 'Not open yet' %}</span>
+							</div>
+							<p class="fw-bold mt-3 mb-2">{% trans 'Registration will open as soon as everything has been finalised.' %}</p>
+							<p class="mb-3">{% trans 'In the meantime, send your questions through the contact form — and keep an eye on our socials.' %}</p>
+							<div class="d-flex flex-wrap gap-3 align-items-center">
+								<a class="btn-redan" href="/#contact" data-topic="rally"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 14l11 -11" /> <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" /></svg> <span>{% trans 'Ask a question' %}</span></a>
+								<a class="social-btn instagram" href="{{ settings.social_instagram }}"
+									target="_blank" rel="noopener" aria-label="{% trans 'GS Redan on Instagram' %}"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /> <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M16.5 7.5l0 .01" /></svg></a>
+								<a class="social-btn facebook" href="{{ settings.social_facebook }}"
+									target="_blank" rel="noopener" aria-label="{% trans 'GS Redan on Facebook' %}"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Gallery -->
+		<section class="section section-paper" id="gallery" aria-labelledby="gallery-title">
+			<div class="container">
+				<div class="text-center mb-5">
+					<h2 class="sec-title mx-auto" id="gallery-title">{% trans 'Past editions' %}</h2>
+				</div>
+				<div class="row g-4">
+					<figure class="col-md-6 gallery-figure reveal mb-0">
+						<img src="/rallye-main.webp" width="1200" height="800" loading="lazy"
+							decoding="async" alt="{% trans 'View over Brussels from the Basilica’s dome' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+						<figcaption>{% trans 'The view from the Basilica’s heights — all the way to the Atomium.' %}</figcaption>
+					</figure>
+					<figure class="col-md-6 gallery-figure reveal reveal-d1 mb-0">
+						<img src="/rallye-1.webp" width="800" height="534" loading="lazy" decoding="async"
+							alt="{% trans 'Abseiling down one of the Basilica’s towers' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+						<figcaption>{% trans 'Abseiling down one of the Basilica’s towers.' %}</figcaption>
+					</figure>
+					<figure class="col-md-6 gallery-figure reveal reveal-d2 mb-0">
+						<img src="/rallye-2.webp" width="800" height="534" loading="lazy" decoding="async"
+							alt="{% trans 'Cavers on the Basilica’s facade, Belgian flag in the foreground' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+						<figcaption>{% trans 'Rope course on the facade, Belgian flag included.' %}</figcaption>
+					</figure>
+					<figure class="col-md-6 gallery-figure reveal reveal-d3 mb-0">
+						<img src="/rallye-3.webp" width="800" height="534" loading="lazy" decoding="async"
+							alt="{% trans 'The Koekelberg Basilica at sunset' %}"
+							onerror="this.onerror=null;this.src='/img-fallback.svg';">
+						<figcaption>{% trans 'The Basilica at sunset, between rope sessions.' %}</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<!-- Venue -->
+		<section class="section section-cream" id="venue" aria-labelledby="venue-title">
+			<div class="container">
+				<div class="row justify-content-center text-center">
+					<div class="col-lg-8">
+						<h2 class="sec-title mx-auto" id="venue-title">{% trans 'The venue' %}</h2>
+						<p class="sec-lead mx-auto">{% trans 'Basilique Nationale du Sacré-Cœur — the club’s training hall is right underneath, literally.' %}</p>
+						<p class="mx-auto mb-0">{{ settings.address_local_street }}, {{ settings.address_local_zip }} {{ settings.address_local_city }}</p>
+						<a class="btn-redan mt-2" href="{{ settings.address_local_maps }}" target="_blank"
+							rel="noopener"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /> <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></svg> <span>{% trans 'Open in Google Maps' %}</span></a>
+					</div>
+				</div>
+			</div>
+		</section>
+{% endblock content %}
