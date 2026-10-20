@@ -97,6 +97,18 @@ come from settings. The footer-legal line is
 `{{ settings.footer_legal_entity }} · {{ 'Company number:'|trans }}
 {{ settings.footer_company_number }}`.
 
+**2026-10-20 footer contrast:** the footer body text and links sat at
+85% cream over `--brown-deep`, which read dim next to the full-cream
+brandline; both now use full `var(--cream)` (~15:1 on #2E2019, WCAG
+AAA) and the legal row's dashed separator went from .25 to .4 opacity.
+The full-cream link colour briefly painted the Members button's label
+white-on-yellow (`.footer a` at 0,1,1 out-specifies `.btn-yellow` at
+0,1,0 — the same trap the ghost button already documented): the fix is
+a `.footer a.btn-yellow { color: var(--brown-dark); }` exception next
+to the ghost one, restoring dark-on-yellow (~8.3:1). Social icons were
+already high-contrast and stay untouched. `styles.css` cache-buster
+bumped to `20261019e`.
+
 **Every social link on the public site comes from the settings** —
 footer, contact section, the rallye registration card, the 404 socials,
 and the `sameAs` entries of the home JSON-LD. No instagram/facebook URL
@@ -122,11 +134,18 @@ the combined footer-legal line dropped from the templates; `Company
 number:` (with colon) is a separate msgid so French can carry the espace
 before the colon.
 
-Limitation: `footer_legal_entity` is one value rendered in every
-language (the seed stores the French wording). Addresses are inherently
-language-neutral; if the entity line ever needs per-language values,
-that is a schema change to `setting` (per-language rows), not a
-template fix.
+Limitation resolved (2026-10-20): `footer_legal_entity` used to be one
+value rendered in every language (the seed stored the French wording).
+The templates now render it through the translator — `{{ settings.
+footer_legal_entity|trans }}` — and the value stored in `setting` is the
+English msgid `Non-profit organisation (ASBL)` (the string the legal page
+already carries, so the catalog needs no extra entry; the msgid survives
+`i18n:generate` for as long as `legal.twig` keeps that literal). The
+stored value was swapped from the French seed by migration
+`20261020_100000_footer_legal_entity_english`, which only rewrites the
+exact seed string — an admin-customised value is never clobbered. An
+admin who enters custom text should enter it in English; anything that
+does not match a msgid renders verbatim in every language.
 
 ## Rally settings
 
@@ -178,6 +197,146 @@ the contract change is free.
 The admin card uses `datetime-local` inputs;
 `Admin\Settings::normalize_rally_datetime()` converts the `T`-format
 posts back to the `Y-m-d H:i:s` storage format (empty stays empty).
+
+**2026-10-19 — save-the-date messaging.** The announcement is explicitly
+a save-the-date while details are still being finalised, in three places:
+the rallye hero carries a `Save the date` sticker (orange, first) next to
+the smaller cream `Edition <year>` sticker and a line under the tagline
+("The details are still being finalised — registration will open
+later."); the home rally band adds a bold line right under the date
+("Save the date — the details are still being finalised.", shown only
+when a date is set — no date, nothing to save); the programme section
+keeps its "Still provisional" warning and the registration card its
+"Not open yet" sticker, which together already carried the
+not-finalised message. New po strings: `Save the date`,
+`Save the date — the details are still being finalised.` and
+`The details are still being finalised — registration will open later.`
+(FR `Réservez la date`…, NL `Houd de datum vrij`…). The JSON-LD
+`eventStatus` stays `EventScheduled`: the event IS scheduled, the
+save-the-date nuance is page copy, not structured data. **2026-10-19
+follow-up:** the programme section states the reason too — under the
+"Still provisional" info line it now explains *why* ("Why still
+provisional? We are waiting for the permits and finishing the practical
+details. The dates are set — save the date, the rest follows."), so the
+save-the-date ask and the pending permits sit right next to the
+provisional programme instead of only in the hero. **2026-10-19
+follow-up — no image in the home teaser:** the rally band dropped its
+`/rally.webp` media column (user call: the rally does not need an image
+there); the band is now a single full-width text banner — sticker, title,
+date, save-the-date line, pitch, CTA — and the dead `.rally-band-media`
+CSS rules were removed (`styles.css` cache-buster bumped to
+`20261019c`). `/rally.webp` itself stays: the rallye page still uses it
+as `og:image`. The save-the-date band line had to be re-added along the
+way: an intermediate editor save reverted the section to its pre-edit
+shape and silently dropped it. **Placement (same
+day, after seeing it rendered):** the clarification lives INSIDE the
+right-hand value-card, as the paragraph under "The routes start on
+Friday and end on Sunday." — the left column keeps only the short
+"Still provisional" info line, so the card's empty space carries the
+why instead of duplicating it next to the title.
+
+## Rally teaser + Reserve: two cards side by side (2026-10-19)
+
+The rally teaser and the reserve panel share ONE section
+(`section-paper pt-0`) as **two cards in a row** (`row g-4
+justify-content-center align-items-stretch`):
+
+- **Rally card** (only when `rally_enabled`): an `act-card` like the
+  activity cards — image on top (`/rally.webp`, sticker "Every 3–4
+  years" overlaid), body with the h3 title (id `rally-title`), the
+  dynamic `rally_date_label`, the pitch and the "All the Rally details"
+  button. The old full-width `rally-band` markup is gone.
+- **Reserve card**: the camp-panel (green-soft, border + hard shadow)
+  with id `reserve`, h2 `Reserve the hall` + the pitch + the
+  `Reserve` CTA (`data-topic="reserve"`, label shortened from `Reserve your day` on 2026-10-20).
+
+Both columns are `col-lg-6` with `h-100` cards, so the pair renders
+equal-height side by side on desktop and stacks on mobile. With the
+rally off, the reserve card centers alone (`justify-content-center`)
+and takes the whole row.
+
+## Reserve the hall (2026-10-19)
+
+The reserve panel lives next to the rally card (see above). Its copy
+started as a longer pitch (evening → day, "alone or with your group",
+"everything is already rigged") and was trimmed by the club to the
+essentials; the current wording is:
+
+> Your club can reserve the training area for a day. Everything
+> stays rigged between sessions, so you lose no time setting up — just
+> bring your boots and your gear. And it is not
+> expensive.
+
+(fr "Votre club peut réserver l’espace d’entraînement pour une journée.
+Tout reste équipé entre les séances : aucune installation à faire —
+apportez juste vos bottines et votre matériel. Et ce n’est pas cher.")
+— with a btn-yellow CTA (`Reserve`) pointing
+at the contact form with `data-topic="reserve"` — main.js pre-selects
+the new form topic. It sat between the activities and the rally at
+first, which broke the paper-section run and read as a wedge.
+
+**2026-10-20 — wording + parity with the rally card.** "Hall" became
+"training area" everywhere (card title `Reserve the training area`, body
+copy, contact-form option label, mail-subject label — FR
+`l’espace d’entraînement`, NL `de trainingsruimte`), "something to
+drink" dropped from the gear list, and "for a day of training" trimmed
+to "for a day" so the renamed area does not read "training … training".
+The card now matches the rally band's styling: plain `h2 m-0` title
+(was `sec-title`, whose display size + yellow dots clashed next to the
+rally title) and the same `btn-yellow` CTA (was the dark `btn-redan`);
+the green camp-panel background and teal sticker stay as the card's
+accent. The contact form gained its missing `<option value="reserve">`
+(between Youth and Rally) — it had been lost with the index revert,
+which is why `data-topic="reserve"` pre-selected nothing.
+
+**2026-10-19 — placement, and the rebuild after the index revert.** An
+editor save reverted index.twig to its last committed shape, which
+dropped the reserve panel entirely (along with the rally band's
+save-the-date line — both re-added). The panel is now a `camp-panel`
+card **next to the rally band** in one shared `row g-4
+align-items-stretch` (both `col-12 col-lg-6`, both `h-100`): no picture,
+teal `Extra training` sticker, clock + calendar `camp-icons`, the
+trimmed copy above, and the `Reserve` CTA. The card renders
+**independently of `rally_enabled`** — renting the hall is not a rally
+feature — so the section wrapper is no longer inside the rally if; the
+rally column is, and the reserve column widens to `col-lg-12` when the
+rally is switched off. `#reserve` stays the panel's anchor id. All
+support pieces (Contact topic, mail branches, po strings, camp-panel
+CSS) survived the revert untouched; only the index.twig markup was
+rebuilt. **Same day — vertical rhythm:** both cards pin their CTA to
+the bottom edge (`mt-auto` on the button wrapper — the reserve panel
+also gained `d-flex flex-column`), so the stretch-matched heights fill
+with the slack between text and button instead of a dead zone under it;
+the two buttons now align horizontally. `pt-3` on the reserve wrapper
+keeps a minimum gap when the cards stack on mobile.
+
+**New contact topic `reserve`**: an option between Youth and Rally
+(label `Reserve the training area` since 2026-10-20), added to
+`Contact::TOPICS` so the server validation accepts it, and a branch in
+the contact mail templates so the club sees the topic label as the
+subject. The main.js
+data-topic preselect needed no change.
+
+**Two fixes found while testing the preselect (2026-10-19, later):**
+
+- **The data-topic handler chose "select now" too eagerly.** It decided
+  by "does the form exist on this page" — but a `/#contact` CTA on a
+  `/fr` URL NAVIGATES (different path), and the reload wiped the
+  selection it had just made. The handler now looks at the LINK: a pure
+  anchor (`#contact`) selects right away; a full URL remembers the
+  topic in sessionStorage and the restore applies it after the page
+  load. The reserve CTA is a pure anchor (same page as the form).
+- **The club's mail subject now carries the topic** (like the old
+  mailto did): `[gsredan.be] Réserver le local` / `… Join the club` /
+  `… Rally 2027` (visitor's language). The visitor's copy keeps
+  `Your message to GS Redan`.
+
+**Found while testing (same day): the Twig compiled-template cache
+served stale templates on this dev box.** `auto_reload` compares file
+mtimes, and on the gvfs/sftp mount source edits could read older than
+the compiled copy — edits never reached the page. `Bootstrap` now only
+enables the cache directory when `debug` is false: development always
+compiles fresh, production keeps the cache.
 
 ## Monday openings (calendar-fed)
 

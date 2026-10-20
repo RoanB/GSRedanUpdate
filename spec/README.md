@@ -14,6 +14,8 @@ Documents:
 | [04-download-center.md](04-download-center.md) | Password-gated download center |
 | [05-i18n.md](05-i18n.md) | Translation strategy: po trans tags + DB block content |
 | [06-testing.md](06-testing.md) | Tests, commands, verification checklist |
+| [07-members-calendar.md](07-members-calendar.md) | Members area: files + calendar, ICS/CalDAV |
+| [08-google-sync.md](08-google-sync.md) | Two-way Google Calendar sync |
 
 Source references:
 

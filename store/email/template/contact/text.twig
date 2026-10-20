@@ -1,7 +1,7 @@
 {% if copy %}{% trans "Here is a copy of the message you sent through gsredan.be:" %}{% else %}{% trans "A visitor wrote through the contact form on gsredan.be:" %}{% endif %}
 
 {{ name }} <{{ email }}>
-{% trans "Topic" %}: {% if topic == 'club' %}{% trans "Join the club" %}{% elseif topic == 'youth' %}{% trans "Youth program" %}{% elseif topic == 'rally' %}{% trans "Rally" %} {{ year }}{% else %}{% trans "Something else" %}{% endif %}
+{% trans "Topic" %}: {% if topic == 'club' %}{% trans "Join the club" %}{% elseif topic == 'youth' %}{% trans "Youth program" %}{% elseif topic == 'reserve' %}{% trans "Reserve the training area" %}{% elseif topic == 'rally' %}{% trans "Rally" %} {{ year }}{% else %}{% trans "Something else" %}{% endif %}
 
 {{ message }}
 

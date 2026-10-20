@@ -40,7 +40,7 @@
 						<p class="mb-0" style="color: rgba(255,249,239,.7);">
 							<a href="/" style="color: var(--yellow); text-decoration: none; font-weight: 800;">GS
 								Redan</a>
-							· <span>{{ settings.footer_legal_entity }} · {{ 'Company number:'|trans }} {{ settings.footer_company_number }}</span>
+							· <span>{{ settings.footer_legal_entity|trans }} · {{ 'Company number:'|trans }} {{ settings.footer_company_number }}</span>
 						</p>
 					</div>
 				</div>
@@ -50,4 +50,5 @@
 
 {% block scripts %}
 	<script defer src="/main.js?v=20261019a"></script>
+	{% include '_default/analytics.twig' %}
 {% endblock scripts %}

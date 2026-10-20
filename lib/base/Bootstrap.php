@@ -78,7 +78,13 @@ class Bootstrap {
 		/**
 		 * Initialize the template
 		 */
-		\Skeleton\Template\Twig\Config::$cache_directory = $config->tmp_path . 'twig/';
+		// The compiled-template cache is skipped in debug mode: auto_reload
+		// compares file mtimes, and on a network mount (gvfs/sftp) source
+		// mtimes can read older than the compiled copy — edits then never
+		// reach the page. Production (debug false) keeps the cache.
+		if ($config->debug === false) {
+			\Skeleton\Template\Twig\Config::$cache_directory = $config->tmp_path . 'twig/';
+		}
 		\Skeleton\Template\Twig\Config::$debug = $config->debug;
 
 		/**

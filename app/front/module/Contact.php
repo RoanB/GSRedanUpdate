@@ -40,7 +40,7 @@ class Contact extends \Skeleton\Application\Web\Module {
 	 *
 	 * @var array $topics
 	 */
-	const TOPICS = [ 'club', 'youth', 'rally', 'other' ];
+	const TOPICS = [ 'club', 'youth', 'reserve', 'rally', 'other' ];
 
 	/**
 	 * Process the form

@@ -49,7 +49,7 @@
 			"https://www.gsredan.be/rallye-main.webp",
 			"https://www.gsredan.be/rally.webp"
 		],
-		"description": "Tous les trois ou quatre ans, GS Redan installe des parcours de cordes sur et dans la Basilique : trois itinéraires de difficulté croissante, more than 2,000 metres of rope et une vue exceptionnelle jusqu’à l’Atomium. Environ 250 participants venus de toute l’Europe avaient pris part à la dernière édition.",
+		"description": "Every three or four years, GS Redan rigs rope courses on and inside the Basilica: three routes of increasing difficulty, more than 2,000 metres of rope and a spectacular view all the way to the Atomium. Around 250 participants from across Europe took part in the last edition.",
 		"organizer": {
 			"@type": "SportsOrganization",
 			"name": "Groupe Spéléo du Redan",
@@ -69,12 +69,16 @@
 		<!-- Hero -->
 		<section class="hero page-hero-photo" aria-labelledby="rallye-title">
 			<div class="container">
-				<p class="sticker sticker-orange sticker-lg">{% trans 'Edition' %} {{ rally_year }}</p>
+				<p>
+					<span class="sticker sticker-orange sticker-lg">{% trans 'Save the date' %}</span>
+					<span class="sticker sticker-cream">{% trans 'Edition' %} {{ rally_year }}</span>
+				</p>
 				<h1 id="rallye-title">{% trans 'Basilica caving rally' %}</h1>
 {% if rally_date_label is not empty %}
 				<p class="rally-date mb-1">{{ rally_date_label }}</p>
 {% endif %}
 				<p class="hero-tagline">{% trans 'Every three or four years, GS Redan turns the Koekelberg Basilica into Belgium’s biggest caving site. Hold on tight: the next edition is coming.' %}</p>
+				<p class="hero-tagline">{% trans 'The details are still being finalised — registration will open later.' %}</p>
 				<div class="hero-ctas">
 					<a class="btn-yellow" href="/#contact" data-topic="rally"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M10 14l11 -11" /> <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" /></svg> <span>{% trans 'Questions? Write to us' %}</span></a>
 				</div>
@@ -164,6 +168,7 @@
 						<div class="value-card reveal">
 							<svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /> <path d="M16 3l0 4" /> <path d="M8 3l0 4" /> <path d="M4 11l16 0" /> <path d="M8 15h2v2h-2z" /></svg>
 							<h3 class="fs-4">{% trans 'The routes start on Friday and end on Sunday.' %}</h3>
+							<p class="mb-0">{% trans 'Why still provisional? We are waiting for the permits and finishing the practical details. The dates are set — save the date, the rest follows.' %}</p>
 						</div>
 					</div>
 				</div>

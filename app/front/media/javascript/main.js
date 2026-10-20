@@ -61,21 +61,29 @@
 		/* ------------------------------------------------------------------
 		 * Topic pre-selection: any a[data-topic] link routes the request
 		 * through the contact form with the right topic pre-selected.
+		 *
+		 * A pure anchor link (#contact) stays on this page — select the
+		 * topic right away. A full URL (/#contact from /fr, or a link
+		 * from another page) navigates and reloads the page, which would
+		 * wipe an in-page selection — remember the choice in
+		 * sessionStorage instead; the restore below applies it when the
+		 * form page loads.
 		 * ------------------------------------------------------------------ */
 		document.addEventListener('click', function (event) {
 			var link = event.target.closest('a[data-topic]');
 			if (!link) { return; }
 			var topic = link.getAttribute('data-topic');
+			var href = link.getAttribute('href') || '';
 			var select = document.getElementById('cf-topic');
 
-			if (select) {
+			if (select && href.charAt(0) === '#') {
 				/* Same page: select right away, no need to remember anything */
 				select.value = topic;
 				select.classList.remove('is-invalid');
 				select.removeAttribute('aria-invalid');
 				try { window.sessionStorage.removeItem('gsredan.topic'); } catch (e) { /* ignore */ }
 			} else {
-				/* Cross-page: remember the choice for the home page form */
+				/* Navigating: remember the choice for the home page form */
 				try { window.sessionStorage.setItem('gsredan.topic', topic); } catch (e) { /* ignore */ }
 			}
 		});

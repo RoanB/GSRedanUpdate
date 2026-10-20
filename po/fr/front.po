@@ -2,8 +2,8 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: front-fr.1792420713\n"
-"PO-Revision-Date: 2026-10-19 14:38+0000\n"
+"Project-Id-Version: front-fr.1792424101\n"
+"PO-Revision-Date: 2026-10-19 15:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,7 +34,7 @@ msgid "3 · One-shot ICS import"
 msgstr "3 · Import ICS unique"
 
 msgid "A caver seen from the bottom of a brick shaft, silhouetted against the light"
-msgstr "Spéléo vu du fond d’une chemisée en briques, silhouette à la lumière"
+msgstr "Spéléo vu du fond d’une cheminée en briques, en silhouette à contre-jour"
 
 msgid "A club, a basilica, a lot of rope"
 msgstr "Un club, une basilique, beaucoup de cordes"
@@ -42,7 +42,7 @@ msgstr "Un club, une basilique, beaucoup de cordes"
 msgid "A question about this page?"
 msgstr "Une question sur cette page ?"
 
-msgid "A stone fell on our head: the server ran into an error. Our crews are restoring the passage."
+msgid "A stone fell on our heads: the server ran into an error. Our crews are restoring the passage."
 msgstr "Une pierre nous est tombée sur la tête : le serveur a rencontré une erreur. Nos équipes rétablissent le passage."
 
 msgid "A unique event, on and inside the Basilica. All details, the programme and registration live on the Rally page."
@@ -411,6 +411,9 @@ msgstr "Spéléologues confirmés"
 msgid "Explore"
 msgstr "Explorer"
 
+msgid "Extra training"
+msgstr "Entraînement en plus"
+
 msgid "Fancy coming down with us?"
 msgstr "Envie de descendre avec nous ?"
 
@@ -468,10 +471,10 @@ msgstr "Groupe Spéléo du Redan ASBL"
 msgid "Groupe Spéléo du Redan is one of the largest caving clubs in Belgium. The club has a training facility located in the basement of the Koekelberg Basilica and also runs an active youth program. And sometimes, the entire basilica becomes our playground — see below."
 msgstr "Le Groupe Spéléo du Redan est l’un des grands clubs de spéléologie de Belgique. Le club dispose d’une salle d’entraînement située dans les caves de la Basilique de Koekelberg et gère également un programme de formation destiné aux jeunes. Et parfois, la Basilique entière devient notre terrain de jeu — regardez plus bas."
 
-msgid "Groupe Spéléo du Redan offers caving lessons with an emphasis on SRT for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar)."
+msgid "Groupe Spéléo du Redan offers caving lessons for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar)."
 msgstr "Chaque mercredi après-midi pendant l’année scolaire, le Groupe Spéléo du Redan organise des cours de spéléologie spécialement destinés aux jeunes. Les jeunes qui maîtrisent suffisamment les techniques peuvent participer aux camps organisés pendant les vacances d’automne et de printemps francophones."
 
-msgid "Groupe Spéléo du Redan offers caving lessons with an emphasis on SRT for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar). For more information or to register for the youth program, please use the contact form."
+msgid "Groupe Spéléo du Redan offers caving lessons for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar). For more information or to register for the youth program, please use the contact form."
 msgstr "Chaque mercredi après-midi pendant l’année scolaire, le Groupe Spéléo du Redan organise des cours de spéléologie spécialement destinés aux jeunes. Les jeunes qui maîtrisent suffisamment les techniques peuvent participer aux camps organisés pendant les vacances d’automne et de printemps francophones. Pour plus d’informations ou pour vous inscrire aux activités pour les jeunes, utilisez le formulaire de contact."
 
 msgid "GS Redan"
@@ -492,14 +495,11 @@ msgstr "GS Redan sur Instagram"
 msgid "GS Redan — Caving club in Brussels, training under the Basilica"
 msgstr "GS Redan — Club de spéléologie à Bruxelles, entraînement sous la Basilique"
 
-msgid "GS Redan — message from the contact form"
-msgstr "GS Redan — message du formulaire de contact"
-
 msgid "GS Redan, one of Belgium’s largest caving clubs: training beneath the Koekelberg Basilica, a youth programme, camps and the famous Rally."
-msgstr "GS Redan, l’un des grands clubs de spéléologie de Belgique : entraînement sous la Basilique de Koekelberg, jeunesse, camps et le célèbre Rallye."
+msgstr "GS Redan, l’un des grands clubs de spéléologie de Belgique : entraînement sous la Basilique de Koekelberg, activités pour les jeunes, camps et le célèbre Rallye."
 
 msgid "GS Redan, one of Belgium’s largest caving clubs: training beneath the Koekelberg Basilica, a youth programme, camps and the famous Rally. Join us!"
-msgstr "Le GS Redan, l’un des grands clubs de spéléologie de Belgique : entraînement sous la Basilique de Koekelberg, jeunesse, camps et le célèbre Rallye. Rejoignez-nous !"
+msgstr "Le GS Redan, l’un des grands clubs de spéléologie de Belgique : entraînement sous la Basilique de Koekelberg, activités pour les jeunes, camps et le célèbre Rallye. Rejoignez-nous !"
 
 msgid "GS Redan: reset your password"
 msgstr "GS Redan : réinitialisation de votre mot de passe"
@@ -538,7 +538,7 @@ msgid "If the button does not work, copy this address into your browser:"
 msgstr "Si le bouton ne fonctionne pas, copiez cette adresse dans votre navigateur :"
 
 msgid "If you email us, we use your address only to reply and handle your request (membership, youth programme, Rally). We never sell or share your data with third parties."
-msgstr "Si vous nous écrivez par e-mail, nous utilisons votre adresse uniquement pour vous répondre et pour traiter votre demande (inscription, jeunesse, Rallye). Nous ne vendons ni ne partageons vos données avec des tiers."
+msgstr "Si vous nous écrivez par e-mail, nous utilisons votre adresse uniquement pour vous répondre et pour traiter votre demande (adhésion, activités pour les jeunes, Rallye). Nous ne vendons ni ne partageons vos données avec des tiers."
 
 msgid "in"
 msgstr "dans"
@@ -658,7 +658,7 @@ msgid "Masthead title"
 msgstr "Titre du masthead"
 
 msgid "Meet Groupe Spéléo du Redan: the club, the hall beneath the Basilica, Tuesday trainings, the youth programme, camps — and every practical answer."
-msgstr "Découvrez le Groupe Spéléo du Redan : le club, la salle sous la Basilique, les entraînements du mardi, la jongerenwerking, les camps et toutes les réponses pratiques."
+msgstr "Découvrez le Groupe Spéléo du Redan : le club, la salle sous la Basilique, les entraînements du mardi, les activités pour les jeunes, les camps et toutes les réponses pratiques."
 
 msgid "Members"
 msgstr "Membres"
@@ -805,7 +805,7 @@ msgid "Page not found (404) — GS Redan"
 msgstr "Page introuvable (404) — GS Redan"
 
 msgid "Participation fee: €5"
-msgstr "PAF : 5 €"
+msgstr "Participation : 5 €"
 
 msgid "Password"
 msgstr "Mot de passe"
@@ -868,10 +868,16 @@ msgid "Repeat new password"
 msgstr "Répéter le nouveau mot de passe"
 
 msgid "Reply to this mail to answer the visitor directly."
-msgstr "Répondez à ce mail pour répondre directement au visiteur."
+msgstr "Répondez à ce mail pour joindre directement le visiteur."
 
 msgid "Report the missing page"
 msgstr "Signaler la page disparue"
+
+msgid "Reserve"
+msgstr "Réserver"
+
+msgid "Reserve the training area"
+msgstr "Réserver l’espace d’entraînement"
 
 msgid "Reset mail not sent"
 msgstr "Mail de réinitialisation non envoyé"
@@ -895,7 +901,7 @@ msgid "Rope courses rigged between the Basilica’s towers"
 msgstr "Parcours de cordes tendus entre les tours de la Basilique"
 
 msgid "Same answer whether or not the address is known."
-msgstr "Même réponse que l'adresse soit connue ou non."
+msgstr "Même réponse, que l'adresse soit connue ou non."
 
 msgid "Save"
 msgstr "Enregistrer"
@@ -905,6 +911,12 @@ msgstr "Enregistrer l'événement"
 
 msgid "Save new password"
 msgstr "Enregistrer le nouveau mot de passe"
+
+msgid "Save the date"
+msgstr "Save the date"
+
+msgid "Save the date — the details are still being finalised."
+msgstr "Save the date — les détails sont encore en cours de finalisation."
 
 msgid "Save user"
 msgstr "Enregistrer l'utilisateur"
@@ -939,8 +951,8 @@ msgstr "Afficher le mot de passe"
 msgid "Show the Rally countdown on the site"
 msgstr "Afficher le compte à rebours du Rallye sur le site"
 
-msgid "Shown in the footer and on the 404 page, before the company number."
-msgstr "Affichée dans le pied de page et sur la page 404, avant le numéro d’entreprise."
+msgid "Shown in the footer and on the 404 page, before the company number. Enter the English wording; the site translates it."
+msgstr "Affichée dans le pied de page et sur la page 404, avant le numéro d’entreprise. Saisissez la formulation anglaise ; le site la traduit."
 
 msgid "Shown on members page and exported to calendars."
 msgstr "Affiché sur la page membres et exporté vers les calendriers."
@@ -1029,6 +1041,9 @@ msgstr "Le formulaire de contact fait passer votre message par notre serveur jus
 msgid "The countdown on the site counts to this date and time."
 msgstr "Le compte à rebours sur le site arrive à cette date et heure."
 
+msgid "The details are still being finalised — registration will open later."
+msgstr "Les détails sont encore en cours de finalisation — les inscriptions ouvriront plus tard."
+
 msgid "The emphasis is on SRT (Single Rope Technique): moving up and down a single rope, just like in real caves. Youngsters who master the basics then join us at camp."
 msgstr "L’accent est mis sur la SRT (Single Rope Technique) : monter et descendre sur une seule corde, comme dans les vraies grottes. Les jeunes qui maîtrisent les bases partent ensuite avec nous en camp."
 
@@ -1098,8 +1113,8 @@ msgstr "Cette page est fermée au public."
 msgid "This reset link is no longer valid."
 msgstr "Ce lien de réinitialisation n'est plus valable."
 
-msgid "This site sets no tracking cookies. The only cookie is the anonymous session cookie that carries your language choice between pages. Nothing else is stored on your device."
-msgstr "Ce site ne dépose aucun cookie de suivi. Le seul cookie est le cookie de session anonyme qui garde votre choix de langue d’une page à l’autre. Rien d’autre n’est stocké sur votre appareil."
+msgid "This site sets no tracking cookies. The only cookie is the anonymous session cookie that carries your language choice between pages. Nothing else is stored on your device. We measure anonymous, cookie-free usage statistics with Umami; no personal data is collected."
+msgstr "Ce site ne dépose aucun cookie de suivi. Le seul cookie est le cookie de session anonyme qui garde votre choix de langue d’une page à l’autre. Rien d’autre n’est stocké sur votre appareil. Nous mesurons des statistiques d’utilisation anonymes et sans cookies avec Umami ; aucune donnée personnelle n’est collectée."
 
 msgid "Through the contact form"
 msgstr "Via le formulaire de contact"
@@ -1119,7 +1134,7 @@ msgstr "Sujet"
 msgid "Training facility address"
 msgstr "Adresse du local"
 
-msgid "Training sessions on odd Mondays, from 7.30 pm to 10.30 pm."
+msgid "Training sessions on odd Mondays, from 7:30 pm to 10:30 pm."
 msgstr "Séances d’entraînement les lundis impairs, de 19h30 à 22h30."
 
 msgid "Trouble with the form? Try again, or reach us on Instagram or Facebook."
@@ -1203,6 +1218,9 @@ msgstr "Où nous trouver"
 msgid "Who can take part?"
 msgstr "Qui peut participer ?"
 
+msgid "Why still provisional? We are waiting for the permits and finishing the practical details. The dates are set — save the date, the rest follows."
+msgstr "Pourquoi encore provisoire ? Nous attendons les autorisations et terminons les détails pratiques. Les dates sont fixées — save the date, le reste suivra."
+
 msgid "Write at least a few words."
 msgstr "Écrivez au moins quelques mots."
 
@@ -1245,6 +1263,9 @@ msgstr "Jeunes"
 msgid "Youngsters who master the basic techniques join in — the reward after all those Wednesday trainings."
 msgstr "Les jeunes qui maîtrisent les techniques de base y participent — c’est la récompense après les mercredis d’entraînement."
 
+msgid "Your club can reserve the training area for a day. Everything stays rigged between sessions, so you lose no time setting up — just bring your boots and your gear. And it is not expensive."
+msgstr "Votre club peut réserver l’espace d’entraînement pour une journée. Tout reste équipé entre les séances : aucune installation à faire — apportez juste vos bottines et votre matériel. Et ce n’est pas cher."
+
 msgid "Your message could not be sent — something went wrong on our side. Please try again later, or reach us on Instagram or Facebook."
 msgstr "Votre message n’a pas pu être envoyé — quelque chose a mal tourné de notre côté. Réessayez plus tard, ou passez par Instagram ou Facebook."
 
@@ -1255,7 +1276,7 @@ msgid "Your name"
 msgstr "Votre nom"
 
 msgid "Your new password is saved. Log in with it below."
-msgstr "Votre nouveau mot de passe est enregistré. Connectez-vous avec ci-dessous."
+msgstr "Votre nouveau mot de passe est enregistré. Connectez-vous ci-dessous avec celui-ci."
 
 msgid "your@email.com"
 msgstr "votre@email.com"

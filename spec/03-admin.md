@@ -21,6 +21,18 @@ inputs, stored as `Y-m-d H:i:s` and normalised by
 and on the 404). The values travel through the same POST as every other
 setting; the checkbox absent means off.
 
+**2026-10-20 — Analytics snippet (hardcoded).** The Umami
+(umami.is, cookie-free) snippet lives once in
+`_default/analytics.twig` and is included by every layout — public
+(+ the 403/404/500 pages), admin, members and login — so "everything" is
+measured, per the club's choice. It is **hardcoded on purpose** (no
+settings keys, no admin card): the tag targets Umami Cloud
+(`https://cloud.umami.is/script.js`, website id
+`10fb6be6-4c6b-48ba-8f62-c23924ef1168`). The Legal page's cookies
+paragraph discloses the measurement (msgid reworded in all three
+catalogs): Umami sets no cookies and collects no personal data, so the
+"no tracking cookies" claim stays true.
+
 **2026-09-28 — `Admin\Base`:** that `secure()` check (plus the
 `$login_required = true` flag) lived in every admin module. It now lives once
 in `App\Front\Module\Admin\Base` (`app/front/module/Admin/Base.php`),

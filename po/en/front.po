@@ -2,8 +2,8 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: front-en.1792420713\n"
-"PO-Revision-Date: 2026-10-19 14:38+0000\n"
+"Project-Id-Version: front-en.1792424101\n"
+"PO-Revision-Date: 2026-10-19 15:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "A question about this page?"
 msgstr ""
 
-msgid "A stone fell on our head: the server ran into an error. Our crews are restoring the passage."
+msgid "A stone fell on our heads: the server ran into an error. Our crews are restoring the passage."
 msgstr ""
 
 msgid "A unique event, on and inside the Basilica. All details, the programme and registration live on the Rally page."
@@ -411,6 +411,9 @@ msgstr ""
 msgid "Explore"
 msgstr ""
 
+msgid "Extra training"
+msgstr ""
+
 msgid "Fancy coming down with us?"
 msgstr ""
 
@@ -468,10 +471,10 @@ msgstr ""
 msgid "Groupe Spéléo du Redan is one of the largest caving clubs in Belgium. The club has a training facility located in the basement of the Koekelberg Basilica and also runs an active youth program. And sometimes, the entire basilica becomes our playground — see below."
 msgstr ""
 
-msgid "Groupe Spéléo du Redan offers caving lessons with an emphasis on SRT for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar)."
+msgid "Groupe Spéléo du Redan offers caving lessons for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar)."
 msgstr ""
 
-msgid "Groupe Spéléo du Redan offers caving lessons with an emphasis on SRT for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar). For more information or to register for the youth program, please use the contact form."
+msgid "Groupe Spéléo du Redan offers caving lessons for youth every Wednesday afternoon during the school year. Young participants who have mastered the basic techniques are invited to join the club’s camps during the Autumn and Spring holidays (according to the French-speaking school calendar). For more information or to register for the youth program, please use the contact form."
 msgstr ""
 
 msgid "GS Redan"
@@ -490,9 +493,6 @@ msgid "GS Redan on Instagram"
 msgstr ""
 
 msgid "GS Redan — Caving club in Brussels, training under the Basilica"
-msgstr ""
-
-msgid "GS Redan — message from the contact form"
 msgstr ""
 
 msgid "GS Redan, one of Belgium’s largest caving clubs: training beneath the Koekelberg Basilica, a youth programme, camps and the famous Rally."
@@ -873,6 +873,12 @@ msgstr ""
 msgid "Report the missing page"
 msgstr ""
 
+msgid "Reserve"
+msgstr ""
+
+msgid "Reserve the training area"
+msgstr ""
+
 msgid "Reset mail not sent"
 msgstr ""
 
@@ -904,6 +910,12 @@ msgid "Save event"
 msgstr ""
 
 msgid "Save new password"
+msgstr ""
+
+msgid "Save the date"
+msgstr ""
+
+msgid "Save the date — the details are still being finalised."
 msgstr ""
 
 msgid "Save user"
@@ -939,7 +951,7 @@ msgstr ""
 msgid "Show the Rally countdown on the site"
 msgstr ""
 
-msgid "Shown in the footer and on the 404 page, before the company number."
+msgid "Shown in the footer and on the 404 page, before the company number. Enter the English wording; the site translates it."
 msgstr ""
 
 msgid "Shown on members page and exported to calendars."
@@ -1029,6 +1041,9 @@ msgstr ""
 msgid "The countdown on the site counts to this date and time."
 msgstr ""
 
+msgid "The details are still being finalised — registration will open later."
+msgstr ""
+
 msgid "The emphasis is on SRT (Single Rope Technique): moving up and down a single rope, just like in real caves. Youngsters who master the basics then join us at camp."
 msgstr ""
 
@@ -1098,7 +1113,7 @@ msgstr ""
 msgid "This reset link is no longer valid."
 msgstr ""
 
-msgid "This site sets no tracking cookies. The only cookie is the anonymous session cookie that carries your language choice between pages. Nothing else is stored on your device."
+msgid "This site sets no tracking cookies. The only cookie is the anonymous session cookie that carries your language choice between pages. Nothing else is stored on your device. We measure anonymous, cookie-free usage statistics with Umami; no personal data is collected."
 msgstr ""
 
 msgid "Through the contact form"
@@ -1119,7 +1134,7 @@ msgstr ""
 msgid "Training facility address"
 msgstr ""
 
-msgid "Training sessions on odd Mondays, from 7.30 pm to 10.30 pm."
+msgid "Training sessions on odd Mondays, from 7:30 pm to 10:30 pm."
 msgstr ""
 
 msgid "Trouble with the form? Try again, or reach us on Instagram or Facebook."
@@ -1203,6 +1218,9 @@ msgstr ""
 msgid "Who can take part?"
 msgstr ""
 
+msgid "Why still provisional? We are waiting for the permits and finishing the practical details. The dates are set — save the date, the rest follows."
+msgstr ""
+
 msgid "Write at least a few words."
 msgstr ""
 
@@ -1243,6 +1261,9 @@ msgid "Young cavers"
 msgstr ""
 
 msgid "Youngsters who master the basic techniques join in — the reward after all those Wednesday trainings."
+msgstr ""
+
+msgid "Your club can reserve the training area for a day. Everything stays rigged between sessions, so you lose no time setting up — just bring your boots and your gear. And it is not expensive."
 msgstr ""
 
 msgid "Your message could not be sent — something went wrong on our side. Please try again later, or reach us on Instagram or Facebook."

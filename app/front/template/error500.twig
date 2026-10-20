@@ -21,7 +21,7 @@
 						<p class="sticker sticker-lg">{% trans 'Error 500' %}</p>
 						<h1 id="error-title">{% trans 'Rockfall in the gallery…' %}</h1>
 						<div class="error-card my-4">
-							<p class="mb-0">{% trans 'A stone fell on our head: the server ran into an error. Our crews are restoring the passage.' %}</p>
+							<p class="mb-0">{% trans 'A stone fell on our heads: the server ran into an error. Our crews are restoring the passage.' %}</p>
 						</div>
 						<div class="d-flex flex-wrap gap-3">
 							<a class="btn-yellow" href="/"><svg class="icon ti" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M12 5l0 14" /> <path d="M18 11l-6 -6" /> <path d="M6 11l6 -6" /></svg>
@@ -38,7 +38,7 @@
 						<p class="mb-0" style="color: rgba(255,249,239,.7);">
 							<a href="/" style="color: var(--yellow); text-decoration: none; font-weight: 800;">GS
 								Redan</a>
-							· <span>{{ settings.footer_legal_entity }} · {{ 'Company number:'|trans }} {{ settings.footer_company_number }}</span>
+							· <span>{{ settings.footer_legal_entity|trans }} · {{ 'Company number:'|trans }} {{ settings.footer_company_number }}</span>
 						</p>
 					</div>
 				</div>
@@ -48,4 +48,5 @@
 
 {% block scripts %}
 	<script defer src="/main.js?v=20261019a"></script>
+	{% include '_default/analytics.twig' %}
 {% endblock scripts %}
